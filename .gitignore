@@ -1,0 +1,18 @@
+# Learners' personal data
+*.db
+*.db-journal
+*.db-wal
+*.db-shm
+*.csv
+digital-saathi-certificate-*.html
+
+# Private settings (the admin password)
+.streamlit/secrets.toml
+
+# Local-only setting; the hosted version shouldn't be limited to localhost
+.streamlit/config.toml
+
+# Python
+.venv/
+.venv-1/
+__pycache__/

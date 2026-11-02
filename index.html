@@ -1,0 +1,706 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Digital Saathi — learn everyday digital skills</title>
+<!--
+  DIGITAL SAATHI  ·  Nirman Lab-I project (Problem statement #2: Community Digital Literacy & Skills)
+  Built by Atharva · First Year Computer Engineering
+
+  WHAT THIS IS
+  A simple helper that teaches basic digital skills to people who are new to phones
+  and the internet (elderly relatives, first-time users, job seekers). It has:
+    1. Lessons  — short picture-style lessons with a "Listen" (read-aloud) button
+    2. Quiz     — a quick "check your level" test that suggests what to learn next
+    3. Ask Saathi — type a question, get a simple answer (works offline; AI optional)
+
+  HOW IT RUNS
+  Just open this file in a browser. No installation, no server. Everything works
+  offline. The AI box also works offline using built-in answers. If you add a free
+  API key in Settings, the AI box can answer any question using a real AI model.
+
+  This is one file on purpose, so it is easy to carry, demo and explain in the viva.
+-->
+<style>
+  :root{
+    --bg:#f4f6fb; --surface:#ffffff; --ink:#15213a; --muted:#5a6882;
+    --line:#e2e7f1; --accent:#1f6feb; --accent-ink:#1f6feb; --accent-soft:#e8f0fe;
+    --good:#1a7f45; --good-soft:#e5f6ec; --bad:#b3261e; --bad-soft:#fdecea;
+    --radius:16px; --shadow:0 6px 24px rgba(20,33,58,.08);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#0f1420; --surface:#171d2b; --ink:#eef2fb; --muted:#9aa6be;
+      --line:#283046; --accent:#5b9bff; --accent-ink:#8fb8ff; --accent-soft:#1a2740;
+      --good:#49c17e; --good-soft:#15301f; --bad:#ff6f66; --bad-soft:#2e1513;
+      --shadow:0 6px 24px rgba(0,0,0,.4);
+    }
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{
+    font-family:"Segoe UI",system-ui,-apple-system,Roboto,Arial,sans-serif;
+    background:var(--bg); color:var(--ink); line-height:1.6;
+    font-size:18px; /* large by default — our users need big text */
+  }
+  .wrap{max-width:760px; margin:0 auto; padding:0 16px 56px}
+
+  /* Top bar */
+  header{
+    position:sticky; top:0; z-index:5; background:var(--surface);
+    border-bottom:1px solid var(--line); box-shadow:var(--shadow);
+  }
+  .bar{max-width:760px; margin:0 auto; padding:12px 16px; display:flex; align-items:center; gap:12px; flex-wrap:wrap}
+  .brand{display:flex; align-items:center; gap:10px; font-weight:800; font-size:1.25rem}
+  .brand .logo{width:34px;height:34px;border-radius:10px;background:var(--accent);color:#fff;display:grid;place-items:center;font-size:1.1rem}
+  .brand small{display:block;font-weight:500;font-size:.72rem;color:var(--muted);letter-spacing:.02em}
+  .lang{margin-left:auto; display:flex; gap:6px}
+  .lang button{
+    border:1px solid var(--line); background:transparent; color:var(--muted);
+    padding:6px 10px; border-radius:999px; font-size:.82rem; cursor:pointer; font-weight:600;
+  }
+  .lang button.active{background:var(--accent-soft); color:var(--accent-ink); border-color:var(--accent)}
+
+  /* Bottom / main navigation */
+  nav.tabs{display:flex; gap:8px; max-width:760px; margin:0 auto; padding:10px 16px 0; flex-wrap:wrap}
+  nav.tabs button{
+    flex:1 1 auto; min-width:120px; border:1px solid var(--line); background:var(--surface);
+    color:var(--ink); padding:12px; border-radius:12px; font-size:.95rem; font-weight:700; cursor:pointer;
+    display:flex; align-items:center; justify-content:center; gap:8px;
+  }
+  nav.tabs button.active{background:var(--accent); color:#fff; border-color:var(--accent)}
+
+  h1{font-size:1.7rem; margin:.4rem 0 .2rem}
+  h2{font-size:1.2rem; margin:1.4rem 0 .5rem}
+  p.intro{color:var(--muted); margin:.2rem 0 1rem}
+
+  .card{
+    background:var(--surface); border:1px solid var(--line); border-radius:var(--radius);
+    box-shadow:var(--shadow); padding:20px; margin:14px 0;
+  }
+  .pick{display:grid; gap:12px}
+  @media(min-width:560px){ .pick{grid-template-columns:1fr 1fr 1fr} }
+  .pick .tile{
+    text-align:left; cursor:pointer; border:1px solid var(--line); background:var(--surface);
+    border-radius:var(--radius); padding:18px; box-shadow:var(--shadow); color:var(--ink);
+  }
+  .pick .tile .ic{font-size:2rem; display:block; margin-bottom:6px}
+  .pick .tile b{font-size:1.05rem}
+  .pick .tile span{display:block; color:var(--muted); font-size:.86rem; margin-top:4px}
+
+  button.big{
+    background:var(--accent); color:#fff; border:0; border-radius:12px; padding:14px 20px;
+    font-size:1.05rem; font-weight:700; cursor:pointer;
+  }
+  button.ghost{background:transparent; color:var(--accent-ink); border:1px solid var(--accent); border-radius:12px; padding:10px 16px; font-weight:700; cursor:pointer}
+  .row{display:flex; gap:10px; flex-wrap:wrap; align-items:center}
+
+  /* Lessons */
+  .lesson-list{display:grid; gap:12px}
+  .lesson-list .tile .ic{font-size:1.6rem}
+  ol.steps{margin:.4rem 0 0; padding-left:1.3rem}
+  ol.steps li{margin:.5rem 0; font-size:1.05rem}
+  .listen{display:inline-flex; align-items:center; gap:8px; margin-top:8px}
+
+  /* Quiz */
+  .q{margin:0 0 18px; padding-bottom:14px; border-bottom:1px solid var(--line)}
+  .q:last-child{border-bottom:0}
+  .q .qt{font-weight:700; margin-bottom:8px}
+  .opt{display:block; width:100%; text-align:left; border:1px solid var(--line); background:var(--surface);
+    color:var(--ink); padding:12px 14px; border-radius:10px; margin:6px 0; cursor:pointer; font-size:1rem}
+  .opt.sel{border-color:var(--accent); background:var(--accent-soft)}
+  .opt.right{border-color:var(--good); background:var(--good-soft)}
+  .opt.wrong{border-color:var(--bad); background:var(--bad-soft)}
+  .score{font-size:1.4rem; font-weight:800; margin:.2rem 0}
+
+  /* Ask */
+  textarea{width:100%; min-height:90px; padding:12px 14px; border:1px solid var(--line); border-radius:12px;
+    font:inherit; background:var(--surface); color:var(--ink); resize:vertical}
+  .answer{background:var(--accent-soft); border:1px solid var(--line); border-radius:12px; padding:16px; margin-top:12px; white-space:pre-wrap}
+  .muted{color:var(--muted); font-size:.85rem}
+  input[type=text],input[type=password]{width:100%; padding:10px 12px; border:1px solid var(--line); border-radius:10px; font:inherit; background:var(--surface); color:var(--ink)}
+  label.fld{display:block; margin:10px 0}
+  label.fld span{display:block; font-size:.82rem; color:var(--muted); margin-bottom:4px}
+  details summary{cursor:pointer; font-weight:700; color:var(--accent-ink)}
+  .tag{display:inline-block; font-size:.74rem; padding:3px 8px; border-radius:999px; background:var(--accent-soft); color:var(--accent-ink); font-weight:700}
+  .hidden{display:none !important}
+  footer{max-width:760px;margin:24px auto 0;padding:0 16px;color:var(--muted);font-size:.8rem;text-align:center}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="bar">
+    <div class="brand">
+      <span class="logo">🤝</span>
+      <span>Digital Saathi<small data-ui="tagline">Learn everyday digital skills</small></span>
+    </div>
+    <div class="lang" id="lang">
+      <button data-lang="en" class="active">English</button>
+      <button data-lang="hi">हिंदी</button>
+      <button data-lang="mr">मराठी</button>
+    </div>
+  </div>
+  <nav class="tabs" id="tabs">
+    <button data-view="home" class="active">🏠 <span data-ui="nav_home">Home</span></button>
+    <button data-view="lessons">📘 <span data-ui="nav_lessons">Lessons</span></button>
+    <button data-view="quiz">✅ <span data-ui="nav_quiz">Quiz</span></button>
+    <button data-view="ask">💬 <span data-ui="nav_ask">Ask Saathi</span></button>
+  </nav>
+</header>
+
+<main class="wrap">
+
+  <!-- HOME -->
+  <section id="view-home">
+    <h1 data-ui="home_title">Welcome 👋</h1>
+    <p class="intro" data-ui="home_intro">A friendly helper for learning phones and the internet. Pick what you want to do.</p>
+    <div class="pick">
+      <button class="tile" data-go="lessons"><span class="ic">📘</span><b data-ui="home_c1t">Learn</b><span data-ui="home_c1s">Short, simple lessons</span></button>
+      <button class="tile" data-go="quiz"><span class="ic">✅</span><b data-ui="home_c2t">Check your level</b><span data-ui="home_c2s">A quick quiz</span></button>
+      <button class="tile" data-go="ask"><span class="ic">💬</span><b data-ui="home_c3t">Ask a question</b><span data-ui="home_c3s">Get a simple answer</span></button>
+    </div>
+    <div class="card">
+      <b data-ui="home_tip_t">New here?</b>
+      <p class="muted" data-ui="home_tip_s" style="margin:.4rem 0 0">Start with a lesson, then take the quiz to see what to learn next. Every lesson has a <b>Listen</b> button that reads it aloud.</p>
+    </div>
+  </section>
+
+  <!-- LESSONS -->
+  <section id="view-lessons" class="hidden">
+    <h1 data-ui="lessons_title">Lessons</h1>
+    <p class="intro" data-ui="lessons_intro">Tap a lesson. Read the steps, or press Listen to hear them.</p>
+    <div class="lesson-list" id="lessonList"></div>
+    <div id="lessonDetail" class="hidden"></div>
+  </section>
+
+  <!-- QUIZ -->
+  <section id="view-quiz" class="hidden">
+    <h1 data-ui="quiz_title">Check your level</h1>
+    <p class="intro" data-ui="quiz_intro">Answer these simple questions. There is no pass or fail — it just shows what to learn next.</p>
+    <div class="card" id="quizCard"></div>
+  </section>
+
+  <!-- ASK -->
+  <section id="view-ask" class="hidden">
+    <h1 data-ui="ask_title">Ask Saathi</h1>
+    <p class="intro" data-ui="ask_intro">Type any question about using a phone or the internet. Example: “How do I pay with UPI safely?”</p>
+    <div class="card">
+      <textarea id="askInput" data-ui-ph="ask_ph" placeholder="Type your question here…"></textarea>
+      <div class="row" style="margin-top:10px">
+        <button class="big" id="askBtn" data-ui="ask_btn">Ask</button>
+        <button class="ghost" id="askListen" data-ui="listen">🔊 Listen</button>
+        <span class="tag" id="modeTag">Offline</span>
+      </div>
+      <div class="answer hidden" id="askAnswer"></div>
+
+      <details style="margin-top:16px">
+        <summary data-ui="settings">⚙️ Settings (optional — turn on real AI)</summary>
+        <p class="muted" data-ui="settings_note" style="margin:.6rem 0">Offline mode works without internet using built-in answers. For any question, add a free Google Gemini API key and switch to AI mode.</p>
+        <label class="fld"><span data-ui="mode">Mode</span>
+          <div class="row">
+            <label><input type="radio" name="mode" value="offline" checked> <span data-ui="offline">Offline (built-in)</span></label>
+            <label><input type="radio" name="mode" value="ai"> <span data-ui="ai_mode">AI (needs key)</span></label>
+          </div>
+        </label>
+        <label class="fld"><span data-ui="api_key">API key (kept only on this device)</span>
+          <input type="password" id="apiKey" placeholder="AIza…" autocomplete="off"></label>
+        <label class="fld"><span data-ui="model">Model</span>
+          <input type="text" id="model" value="gemini-1.5-flash"></label>
+        <button class="ghost" id="saveSettings" data-ui="save">Save</button>
+      </details>
+    </div>
+    <p class="muted" data-ui="ask_disclaimer">Tip for your viva: Offline mode always works, so your demo never depends on wifi. Show offline first, then switch on AI mode to answer a surprise question.</p>
+  </section>
+
+</main>
+
+<footer>
+  Digital Saathi · Nirman Lab-I · made for Community Digital Literacy &amp; Skills
+</footer>
+
+<script>
+/* =========================================================================
+   1) CONTENT & TEXT — all in three languages: English (en), Hindi (hi), Marathi (mr)
+   ========================================================================= */
+
+// UI labels (the words on buttons, headings, etc.)
+const UI = {
+  en:{
+    tagline:"Learn everyday digital skills",
+    nav_home:"Home", nav_lessons:"Lessons", nav_quiz:"Quiz", nav_ask:"Ask Saathi",
+    home_title:"Welcome 👋",
+    home_intro:"A friendly helper for learning phones and the internet. Pick what you want to do.",
+    home_c1t:"Learn", home_c1s:"Short, simple lessons",
+    home_c2t:"Check your level", home_c2s:"A quick quiz",
+    home_c3t:"Ask a question", home_c3s:"Get a simple answer",
+    home_tip_t:"New here?",
+    home_tip_s:"Start with a lesson, then take the quiz to see what to learn next. Every lesson has a Listen button that reads it aloud.",
+    lessons_title:"Lessons", lessons_intro:"Tap a lesson. Read the steps, or press Listen to hear them.",
+    quiz_title:"Check your level", quiz_intro:"Answer these simple questions. There is no pass or fail — it just shows what to learn next.",
+    ask_title:"Ask Saathi", ask_intro:"Type any question about using a phone or the internet. Example: “How do I pay with UPI safely?”",
+    ask_ph:"Type your question here…", ask_btn:"Ask", listen:"🔊 Listen", back:"← Back",
+    settings:"⚙️ Settings (optional — turn on real AI)",
+    settings_note:"Offline mode works without internet using built-in answers. For any question, add a free Google Gemini API key and switch to AI mode.",
+    mode:"Mode", offline:"Offline (built-in)", ai_mode:"AI (needs key)",
+    api_key:"API key (kept only on this device)", model:"Model", save:"Save",
+    ask_disclaimer:"Tip for your viva: Offline mode always works, so your demo never depends on wifi. Show offline first, then switch on AI mode to answer a surprise question.",
+    submit:"See my result", your_score:"You got", learn_next:"Learn these next:", restart:"Try again",
+    thinking:"Thinking…", ai_fail:"Could not reach the AI. Check your key and internet, or use Offline mode.",
+    no_answer:"I don't have a built-in answer for that yet. Try the Lessons, or switch on AI mode in Settings."
+  },
+  hi:{
+    tagline:"रोज़मर्रा के डिजिटल कौशल सीखें",
+    nav_home:"होम", nav_lessons:"पाठ", nav_quiz:"क्विज़", nav_ask:"साथी से पूछें",
+    home_title:"स्वागत है 👋",
+    home_intro:"फ़ोन और इंटरनेट सीखने के लिए एक आसान साथी। चुनिए आप क्या करना चाहते हैं।",
+    home_c1t:"सीखें", home_c1s:"छोटे, आसान पाठ",
+    home_c2t:"अपना स्तर जांचें", home_c2s:"एक छोटा क्विज़",
+    home_c3t:"सवाल पूछें", home_c3s:"आसान जवाब पाएं",
+    home_tip_t:"नए हैं?",
+    home_tip_s:"पहले एक पाठ पढ़ें, फिर क्विज़ दें ताकि पता चले आगे क्या सीखना है। हर पाठ में एक सुनें बटन है जो उसे पढ़कर सुनाता है।",
+    lessons_title:"पाठ", lessons_intro:"किसी पाठ पर टैप करें। चरण पढ़ें, या सुनें दबाकर सुनें।",
+    quiz_title:"अपना स्तर जांचें", quiz_intro:"ये आसान सवाल हल करें। पास या फेल नहीं है — यह बस बताता है आगे क्या सीखना है।",
+    ask_title:"साथी से पूछें", ask_intro:"फ़ोन या इंटरनेट के बारे में कोई भी सवाल लिखें। जैसे: “UPI से सुरक्षित भुगतान कैसे करें?”",
+    ask_ph:"अपना सवाल यहाँ लिखें…", ask_btn:"पूछें", listen:"🔊 सुनें", back:"← वापस",
+    settings:"⚙️ सेटिंग्स (ऐच्छिक — असली AI चालू करें)",
+    settings_note:"ऑफ़लाइन मोड बिना इंटरनेट के, बने-बनाए जवाबों से काम करता है। किसी भी सवाल के लिए, मुफ़्त Google Gemini API key डालें और AI मोड चुनें।",
+    mode:"मोड", offline:"ऑफ़लाइन (बिल्ट-इन)", ai_mode:"AI (key चाहिए)",
+    api_key:"API key (सिर्फ़ इसी डिवाइस पर रहती है)", model:"मॉडल", save:"सेव करें",
+    ask_disclaimer:"वाइवा के लिए सुझाव: ऑफ़लाइन मोड हमेशा काम करता है, इसलिए डेमो wifi पर निर्भर नहीं रहता। पहले ऑफ़लाइन दिखाएं, फिर कोई नया सवाल दिखाने के लिए AI मोड चालू करें।",
+    submit:"मेरा परिणाम देखें", your_score:"आपको मिले", learn_next:"आगे ये सीखें:", restart:"फिर से करें",
+    thinking:"सोच रहा हूँ…", ai_fail:"AI तक नहीं पहुँच सका। अपनी key और इंटरनेट जांचें, या ऑफ़लाइन मोड इस्तेमाल करें।",
+    no_answer:"इसका बना-बनाया जवाब अभी मेरे पास नहीं है। पाठ देखें, या सेटिंग्स में AI मोड चालू करें।"
+  },
+  mr:{
+    tagline:"रोजचे डिजिटल कौशल्य शिका",
+    nav_home:"होम", nav_lessons:"धडे", nav_quiz:"क्विझ", nav_ask:"साथीला विचारा",
+    home_title:"स्वागत आहे 👋",
+    home_intro:"फोन आणि इंटरनेट शिकण्यासाठी एक सोपा साथी. तुम्हाला काय करायचे ते निवडा.",
+    home_c1t:"शिका", home_c1s:"छोटे, सोपे धडे",
+    home_c2t:"तुमची पातळी तपासा", home_c2s:"एक छोटी क्विझ",
+    home_c3t:"प्रश्न विचारा", home_c3s:"सोपे उत्तर मिळवा",
+    home_tip_t:"नवीन आहात?",
+    home_tip_s:"आधी एक धडा वाचा, मग क्विझ द्या म्हणजे पुढे काय शिकायचे ते कळेल. प्रत्येक धड्याला ऐका बटण आहे जे तो वाचून दाखवते.",
+    lessons_title:"धडे", lessons_intro:"एखाद्या धड्यावर टॅप करा. पायऱ्या वाचा, किंवा ऐका दाबून ऐका.",
+    quiz_title:"तुमची पातळी तपासा", quiz_intro:"हे सोपे प्रश्न सोडवा. पास-नापास नाही — हे फक्त पुढे काय शिकायचे ते दाखवते.",
+    ask_title:"साथीला विचारा", ask_intro:"फोन किंवा इंटरनेटबद्दल कोणताही प्रश्न लिहा. उदा.: “UPI ने सुरक्षित पैसे कसे द्यायचे?”",
+    ask_ph:"तुमचा प्रश्न इथे लिहा…", ask_btn:"विचारा", listen:"🔊 ऐका", back:"← मागे",
+    settings:"⚙️ सेटिंग्ज (ऐच्छिक — खरे AI सुरू करा)",
+    settings_note:"ऑफलाइन मोड इंटरनेटशिवाय, आधीच तयार उत्तरांनी चालतो. कोणत्याही प्रश्नासाठी, मोफत Google Gemini API key टाका आणि AI मोड निवडा.",
+    mode:"मोड", offline:"ऑफलाइन (बिल्ट-इन)", ai_mode:"AI (key लागते)",
+    api_key:"API key (फक्त याच डिव्हाइसवर राहते)", model:"मॉडेल", save:"सेव्ह करा",
+    ask_disclaimer:"व्हायवासाठी टीप: ऑफलाइन मोड नेहमी चालतो, त्यामुळे डेमो wifi वर अवलंबून नसतो. आधी ऑफलाइन दाखवा, मग नवीन प्रश्नासाठी AI मोड सुरू करा.",
+    submit:"माझा निकाल पाहा", your_score:"तुम्हाला मिळाले", learn_next:"पुढे हे शिका:", restart:"पुन्हा करा",
+    thinking:"विचार करत आहे…", ai_fail:"AI पर्यंत पोहोचता आले नाही. तुमची key आणि इंटरनेट तपासा, किंवा ऑफलाइन मोड वापरा.",
+    no_answer:"याचे तयार उत्तर माझ्याकडे अजून नाही. धडे पाहा, किंवा सेटिंग्जमध्ये AI मोड सुरू करा."
+  }
+};
+
+// LESSONS — 3 lessons, each with steps, in all three languages.
+const LESSONS = {
+  en:[
+    {id:"upi", icon:"💸", title:"Pay with UPI safely", steps:[
+      "Open your UPI app (like a payment app on your phone) and log in with your PIN.",
+      "Choose “Pay” and scan the shop's QR code, or enter the person's UPI ID.",
+      "Check the name and amount on the screen carefully before paying.",
+      "Enter your UPI PIN to confirm. Never share this PIN with anyone.",
+      "Remember: you NEVER need a PIN to receive money. If someone asks for your PIN to send you money, it is a scam."
+    ]},
+    {id:"scam", icon:"🛡️", title:"Spot a scam message", steps:[
+      "Be careful with messages that say you won a prize or lottery you never entered.",
+      "Never click links that ask for your bank details, OTP or password.",
+      "A real bank will never ask for your OTP or PIN by call, SMS or WhatsApp.",
+      "If a message creates fear or hurry (“account will close today!”), slow down — that is a trick.",
+      "When unsure, do not reply. Ask a family member, or call the bank's official number from its website."
+    ]},
+    {id:"email", icon:"✉️", title:"Set up and use email", steps:[
+      "Open the Gmail app or gmail.com in a browser.",
+      "Tap “Create account” and fill your name, a username and a strong password.",
+      "Write the password somewhere safe. Do not share it with anyone.",
+      "To send a mail: tap Compose, type the person's email address, a subject, your message, then Send.",
+      "Check for new mail in your Inbox. Do not open attachments from people you do not know."
+    ]},
+    {id:"search", icon:"🔎", title:"Search the internet safely", steps:[
+      "Open the Google app, or go to google.com in a browser.",
+      "Type what you want to know in simple words, then press search.",
+      "Read the top few results. Prefer well-known websites — news sites, or government sites ending in .gov.in.",
+      "Don't trust a single forwarded message. Check the same news on 2–3 trusted websites.",
+      "If a result asks you to pay or share personal details just to “see the answer”, close it."
+    ]}
+  ],
+  hi:[
+    {id:"upi", icon:"💸", title:"UPI से सुरक्षित भुगतान", steps:[
+      "अपना UPI ऐप खोलें और अपने PIN से लॉग इन करें।",
+      "“Pay” चुनें और दुकान का QR कोड स्कैन करें, या व्यक्ति की UPI ID डालें।",
+      "भुगतान से पहले स्क्रीन पर नाम और राशि ध्यान से जांचें।",
+      "पुष्टि के लिए अपना UPI PIN डालें। यह PIN कभी किसी से साझा न करें।",
+      "याद रखें: पैसे लेने के लिए कभी PIN की ज़रूरत नहीं होती। अगर कोई पैसे भेजने के लिए आपका PIN मांगे, तो वह धोखा है।"
+    ]},
+    {id:"scam", icon:"🛡️", title:"धोखे वाला संदेश पहचानें", steps:[
+      "जिन संदेशों में कहा जाए कि आपने ऐसा इनाम या लॉटरी जीती जिसमें आपने भाग ही नहीं लिया — उनसे सावधान रहें।",
+      "ऐसे लिंक कभी न खोलें जो आपके बैंक विवरण, OTP या पासवर्ड मांगें।",
+      "असली बैंक कभी कॉल, SMS या WhatsApp पर आपका OTP या PIN नहीं मांगता।",
+      "अगर संदेश डर या जल्दबाज़ी पैदा करे (“आज खाता बंद हो जाएगा!”), तो रुकें — यह एक चाल है।",
+      "संदेह हो तो जवाब न दें। किसी परिजन से पूछें, या बैंक की वेबसाइट से उसका आधिकारिक नंबर लेकर कॉल करें।"
+    ]},
+    {id:"email", icon:"✉️", title:"ईमेल बनाएं और इस्तेमाल करें", steps:[
+      "Gmail ऐप या ब्राउज़र में gmail.com खोलें।",
+      "“Create account” पर टैप करें और अपना नाम, यूज़रनेम और मज़बूत पासवर्ड भरें।",
+      "पासवर्ड किसी सुरक्षित जगह लिखें। किसी से साझा न करें।",
+      "मेल भेजने के लिए: Compose दबाएं, व्यक्ति का ईमेल पता, विषय और संदेश लिखें, फिर Send दबाएं।",
+      "नई मेल Inbox में देखें। अनजान लोगों से आए अटैचमेंट न खोलें।"
+    ]},
+    {id:"search", icon:"🔎", title:"इंटरनेट पर सुरक्षित खोजें", steps:[
+      "Google ऐप खोलें, या ब्राउज़र में google.com पर जाएं।",
+      "आसान शब्दों में जो जानना है वह लिखें, फिर search दबाएं।",
+      "ऊपर के कुछ परिणाम पढ़ें। जानी-मानी वेबसाइट चुनें — समाचार साइट, या .gov.in वाली सरकारी साइट।",
+      "किसी एक फॉरवर्ड संदेश पर भरोसा न करें। वही खबर 2–3 भरोसेमंद वेबसाइटों पर जांचें।",
+      "अगर कोई परिणाम सिर्फ़ “जवाब देखने” के लिए पैसे या निजी जानकारी मांगे, तो उसे बंद कर दें।"
+    ]}
+  ],
+  mr:[
+    {id:"upi", icon:"💸", title:"UPI ने सुरक्षित पैसे द्या", steps:[
+      "तुमचे UPI ॲप उघडा आणि तुमच्या PIN ने लॉग इन करा.",
+      "“Pay” निवडा आणि दुकानाचा QR कोड स्कॅन करा, किंवा व्यक्तीची UPI ID टाका.",
+      "पैसे देण्याआधी स्क्रीनवरील नाव आणि रक्कम काळजीपूर्वक तपासा.",
+      "पुष्टीसाठी तुमचा UPI PIN टाका. हा PIN कधीही कोणाला सांगू नका.",
+      "लक्षात ठेवा: पैसे घेण्यासाठी कधीही PIN लागत नाही. कोणी पैसे पाठवण्यासाठी तुमचा PIN मागत असेल, तर ती फसवणूक आहे."
+    ]},
+    {id:"scam", icon:"🛡️", title:"फसवा संदेश ओळखा", steps:[
+      "तुम्ही भाग घेतला नसताना बक्षीस किंवा लॉटरी जिंकल्याचे सांगणाऱ्या संदेशांपासून सावध राहा.",
+      "तुमची बँक माहिती, OTP किंवा पासवर्ड मागणाऱ्या लिंकवर कधीही क्लिक करू नका.",
+      "खरी बँक कधीही कॉल, SMS किंवा WhatsApp वर तुमचा OTP किंवा PIN मागत नाही.",
+      "संदेश भीती किंवा घाई निर्माण करत असेल (“आज खाते बंद होईल!”), तर थांबा — ही एक युक्ती आहे.",
+      "शंका असल्यास उत्तर देऊ नका. घरातील कोणाला विचारा, किंवा बँकेच्या वेबसाइटवरून अधिकृत नंबर घेऊन कॉल करा."
+    ]},
+    {id:"email", icon:"✉️", title:"ईमेल तयार करा आणि वापरा", steps:[
+      "Gmail ॲप किंवा ब्राउझरमध्ये gmail.com उघडा.",
+      "“Create account” वर टॅप करा आणि तुमचे नाव, युझरनेम आणि मजबूत पासवर्ड भरा.",
+      "पासवर्ड सुरक्षित ठिकाणी लिहा. कोणालाही सांगू नका.",
+      "मेल पाठवण्यासाठी: Compose दाबा, व्यक्तीचा ईमेल पत्ता, विषय आणि संदेश लिहा, मग Send दाबा.",
+      "नवीन मेल Inbox मध्ये पाहा. अनोळखी लोकांकडून आलेले अटॅचमेंट उघडू नका."
+    ]},
+    {id:"search", icon:"🔎", title:"इंटरनेटवर सुरक्षित शोधा", steps:[
+      "Google ॲप उघडा, किंवा ब्राउझरमध्ये google.com वर जा.",
+      "जे जाणून घ्यायचे ते सोप्या शब्दांत लिहा, मग search दाबा.",
+      "वरचे काही निकाल वाचा. ओळखीच्या वेबसाइट निवडा — बातम्यांच्या साइट, किंवा .gov.in सरकारी साइट.",
+      "एकाच फॉरवर्ड संदेशावर विश्वास ठेवू नका. तीच बातमी 2–3 विश्वासार्ह वेबसाइटवर तपासा.",
+      "एखादा निकाल फक्त “उत्तर पाहण्यासाठी” पैसे किंवा वैयक्तिक माहिती मागत असेल, तर तो बंद करा."
+    ]}
+  ]
+};
+
+// QUIZ — each question links to a lesson id, so wrong answers suggest that lesson.
+const QUIZ = {
+  en:[
+    {q:"Someone messages: “Share your OTP to receive ₹5000.” What do you do?",
+     options:["Share the OTP","Never share it — it is a scam","Share only the first 3 digits"], answer:1, lesson:"scam"},
+    {q:"Do you need a UPI PIN to RECEIVE money?",
+     options:["Yes, always","No, never","Only for big amounts"], answer:1, lesson:"upi"},
+    {q:"A message says you won a lottery you never entered. It is probably…",
+     options:["True, collect the prize","A scam, ignore it","A bank offer"], answer:1, lesson:"scam"},
+    {q:"Before paying on UPI, you should check…",
+     options:["Nothing, just pay fast","The name and amount on screen","Only the colour of the app"], answer:1, lesson:"upi"},
+    {q:"You get an email attachment from an unknown person. You should…",
+     options:["Open it quickly","Not open it","Forward it to friends"], answer:1, lesson:"email"},
+    {q:"A good password is…",
+     options:["1234","Your name","Long and hard to guess"], answer:2, lesson:"email"},
+    {q:"You read shocking news in a forwarded WhatsApp message. Before believing it, you should…",
+     options:["Forward it to everyone","Check it on 2–3 trusted websites","Believe it because a friend sent it"], answer:1, lesson:"search"}
+  ],
+  hi:[
+    {q:"कोई संदेश भेजता है: “₹5000 पाने के लिए अपना OTP बताएं।” आप क्या करेंगे?",
+     options:["OTP बता दें","कभी न बताएं — यह धोखा है","सिर्फ़ पहले 3 अंक बताएं"], answer:1, lesson:"scam"},
+    {q:"पैसे लेने (RECEIVE) के लिए क्या UPI PIN चाहिए?",
+     options:["हाँ, हमेशा","नहीं, कभी नहीं","सिर्फ़ बड़ी राशि के लिए"], answer:1, lesson:"upi"},
+    {q:"एक संदेश कहता है आपने ऐसी लॉटरी जीती जिसमें आपने भाग नहीं लिया। यह शायद…",
+     options:["सच है, इनाम लें","धोखा है, ध्यान न दें","बैंक का ऑफर है"], answer:1, lesson:"scam"},
+    {q:"UPI पर भुगतान से पहले आपको जांचना चाहिए…",
+     options:["कुछ नहीं, जल्दी भुगतान करें","स्क्रीन पर नाम और राशि","सिर्फ़ ऐप का रंग"], answer:1, lesson:"upi"},
+    {q:"अनजान व्यक्ति से ईमेल अटैचमेंट आए तो आपको…",
+     options:["जल्दी खोल लेना चाहिए","नहीं खोलना चाहिए","दोस्तों को भेज देना चाहिए"], answer:1, lesson:"email"},
+    {q:"अच्छा पासवर्ड होता है…",
+     options:["1234","आपका नाम","लंबा और मुश्किल से अंदाज़ा लगने वाला"], answer:2, lesson:"email"},
+    {q:"किसी फॉरवर्ड किए गए WhatsApp संदेश में चौंकाने वाली खबर पढ़ी। मानने से पहले आपको…",
+     options:["सबको फॉरवर्ड कर देना चाहिए","2–3 भरोसेमंद वेबसाइटों पर जांचना चाहिए","दोस्त ने भेजा इसलिए मान लेना चाहिए"], answer:1, lesson:"search"}
+  ],
+  mr:[
+    {q:"कोणी संदेश पाठवतो: “₹5000 मिळवण्यासाठी तुमचा OTP सांगा.” तुम्ही काय कराल?",
+     options:["OTP सांगून टाका","कधीही सांगू नका — ही फसवणूक आहे","फक्त पहिले 3 अंक सांगा"], answer:1, lesson:"scam"},
+    {q:"पैसे घेण्यासाठी (RECEIVE) UPI PIN लागतो का?",
+     options:["हो, नेहमी","नाही, कधीच नाही","फक्त मोठ्या रकमेसाठी"], answer:1, lesson:"upi"},
+    {q:"एक संदेश सांगतो की तुम्ही भाग न घेता लॉटरी जिंकली. हे बहुधा…",
+     options:["खरे आहे, बक्षीस घ्या","फसवणूक आहे, दुर्लक्ष करा","बँकेची ऑफर आहे"], answer:1, lesson:"scam"},
+    {q:"UPI वर पैसे देण्याआधी तुम्ही तपासावे…",
+     options:["काहीच नाही, पटकन पैसे द्या","स्क्रीनवरील नाव आणि रक्कम","फक्त ॲपचा रंग"], answer:1, lesson:"upi"},
+    {q:"अनोळखी व्यक्तीकडून ईमेल अटॅचमेंट आल्यास तुम्ही…",
+     options:["पटकन उघडावे","उघडू नये","मित्रांना पाठवावे"], answer:1, lesson:"email"},
+    {q:"चांगला पासवर्ड म्हणजे…",
+     options:["1234","तुमचे नाव","लांब आणि ओळखायला कठीण"], answer:2, lesson:"email"},
+    {q:"फॉरवर्ड केलेल्या WhatsApp संदेशात धक्कादायक बातमी वाचली. विश्वास ठेवण्याआधी तुम्ही…",
+     options:["सगळ्यांना फॉरवर्ड करावी","2–3 विश्वासार्ह वेबसाइटवर तपासावी","मित्राने पाठवली म्हणून विश्वास ठेवावा"], answer:1, lesson:"search"}
+  ]
+};
+
+// OFFLINE ANSWER BANK for "Ask Saathi" — keyword match. Works with no internet.
+const ANSWERS = {
+  en:[
+    {keys:["upi","payment","pay","money","scan","qr"], a:"To pay with UPI safely:\n1. Open your UPI app and log in.\n2. Scan the QR code or enter the UPI ID.\n3. Check the name and amount carefully.\n4. Enter your PIN to pay. Never share your PIN. You never need a PIN to RECEIVE money."},
+    {keys:["otp","password","pin"], a:"Never share your OTP, PIN or password with anyone — not even someone claiming to be from your bank. A real bank never asks for these. If someone asks, it is a scam."},
+    {keys:["scam","fraud","fake","lottery","prize","win"], a:"To stay safe from scams:\n1. Ignore messages about prizes or lotteries you never entered.\n2. Don't click links asking for bank details or OTP.\n3. If a message creates fear or hurry, stop and think.\n4. When unsure, ask a family member before doing anything."},
+    {keys:["email","gmail","mail"], a:"To use email:\n1. Open Gmail and sign in.\n2. Tap Compose to write a new mail.\n3. Enter the address, subject and message, then Send.\n4. Don't open attachments from unknown people."},
+    {keys:["wifi","internet","data","connect"], a:"To connect to the internet: open Settings → Wi-Fi, choose your network name, and enter its password. On mobile data, turn on the Data button in the top menu."},
+    {keys:["whatsapp","message","chat"], a:"To send a WhatsApp message: open WhatsApp, tap a contact, type your message in the box at the bottom, and press the send (arrow) button. Don't forward messages you are not sure are true."},
+    {keys:["search","google","find","information","news","fake"], a:"To search safely:\n1. Open Google and type your question in simple words.\n2. Prefer well-known or government (.gov.in) websites.\n3. For news, check 2–3 trusted sites before believing it.\n4. Close any page that demands payment or personal details just to show an answer."}
+  ],
+  hi:[
+    {keys:["upi","भुगतान","पैसे","स्कैन","qr"], a:"UPI से सुरक्षित भुगतान के लिए:\n1. अपना UPI ऐप खोलें और लॉग इन करें।\n2. QR कोड स्कैन करें या UPI ID डालें।\n3. नाम और राशि ध्यान से जांचें।\n4. भुगतान के लिए PIN डालें। PIN कभी साझा न करें। पैसे लेने के लिए PIN की ज़रूरत नहीं होती।"},
+    {keys:["otp","पासवर्ड","pin","पिन"], a:"अपना OTP, PIN या पासवर्ड कभी किसी से साझा न करें — भले ही कोई खुद को बैंक का बताए। असली बैंक ये कभी नहीं मांगता। कोई मांगे तो यह धोखा है।"},
+    {keys:["धोखा","फ्रॉड","फर्जी","लॉटरी","इनाम","जीत"], a:"धोखे से बचने के लिए:\n1. जिस इनाम या लॉटरी में भाग नहीं लिया, उसके संदेश न मानें।\n2. बैंक विवरण या OTP मांगने वाले लिंक न खोलें।\n3. डर या जल्दबाज़ी वाले संदेश पर रुककर सोचें।\n4. संदेह हो तो कुछ भी करने से पहले परिजन से पूछें।"},
+    {keys:["ईमेल","gmail","मेल"], a:"ईमेल इस्तेमाल करने के लिए:\n1. Gmail खोलें और साइन इन करें।\n2. नई मेल के लिए Compose दबाएं।\n3. पता, विषय और संदेश लिखें, फिर Send दबाएं।\n4. अनजान लोगों के अटैचमेंट न खोलें।"},
+    {keys:["वाईफाई","इंटरनेट","डेटा","कनेक्ट"], a:"इंटरनेट से जुड़ने के लिए: Settings → Wi-Fi खोलें, अपना नेटवर्क चुनें और उसका पासवर्ड डालें। मोबाइल डेटा के लिए ऊपर के मेन्यू में Data बटन चालू करें।"},
+    {keys:["whatsapp","व्हाट्सएप","संदेश","चैट"], a:"WhatsApp संदेश भेजने के लिए: WhatsApp खोलें, किसी संपर्क पर टैप करें, नीचे बॉक्स में संदेश लिखें और भेजें (तीर) दबाएं। जिन संदेशों की सच्चाई पक्की न हो, उन्हें फॉरवर्ड न करें।"},
+    {keys:["search","google","खोज","जानकारी","खबर","फेक"], a:"सुरक्षित खोज के लिए:\n1. Google खोलें और आसान शब्दों में सवाल लिखें।\n2. जानी-मानी या सरकारी (.gov.in) वेबसाइट चुनें।\n3. खबर के लिए मानने से पहले 2–3 भरोसेमंद साइटों पर जांचें।\n4. जो पेज सिर्फ़ जवाब दिखाने के लिए पैसे या निजी जानकारी मांगे, उसे बंद कर दें।"}
+  ],
+  mr:[
+    {keys:["upi","पैसे","स्कॅन","qr","पेमेंट"], a:"UPI ने सुरक्षित पैसे देण्यासाठी:\n1. तुमचे UPI ॲप उघडा आणि लॉग इन करा.\n2. QR कोड स्कॅन करा किंवा UPI ID टाका.\n3. नाव आणि रक्कम काळजीपूर्वक तपासा.\n4. पैसे देण्यासाठी PIN टाका. PIN कधीही कोणाला सांगू नका. पैसे घेण्यासाठी PIN लागत नाही."},
+    {keys:["otp","पासवर्ड","pin","पिन"], a:"तुमचा OTP, PIN किंवा पासवर्ड कधीही कोणाला सांगू नका — बँकेचा असल्याचे सांगणाऱ्यालाही नाही. खरी बँक हे कधीच मागत नाही. कोणी मागितले तर ती फसवणूक आहे."},
+    {keys:["फसवणूक","फ्रॉड","खोटे","लॉटरी","बक्षीस","जिंक"], a:"फसवणुकीपासून वाचण्यासाठी:\n1. भाग न घेतलेल्या बक्षीस किंवा लॉटरीच्या संदेशांवर विश्वास ठेवू नका.\n2. बँक माहिती किंवा OTP मागणाऱ्या लिंक उघडू नका.\n3. भीती किंवा घाई निर्माण करणाऱ्या संदेशावर थांबून विचार करा.\n4. शंका असल्यास काहीही करण्याआधी घरातील कोणाला विचारा."},
+    {keys:["ईमेल","gmail","मेल"], a:"ईमेल वापरण्यासाठी:\n1. Gmail उघडा आणि साइन इन करा.\n2. नवीन मेलसाठी Compose दाबा.\n3. पत्ता, विषय आणि संदेश लिहा, मग Send दाबा.\n4. अनोळखी लोकांचे अटॅचमेंट उघडू नका."},
+    {keys:["वायफाय","इंटरनेट","डेटा","कनेक्ट"], a:"इंटरनेटला जोडण्यासाठी: Settings → Wi-Fi उघडा, तुमचे नेटवर्क निवडा आणि त्याचा पासवर्ड टाका. मोबाइल डेटासाठी वरच्या मेन्यूमध्ये Data बटण सुरू करा."},
+    {keys:["whatsapp","व्हॉट्सॲप","संदेश","चॅट"], a:"WhatsApp संदेश पाठवण्यासाठी: WhatsApp उघडा, एखाद्या संपर्कावर टॅप करा, खाली बॉक्समध्ये संदेश लिहा आणि पाठवा (बाण) दाबा. खात्री नसलेले संदेश फॉरवर्ड करू नका."},
+    {keys:["search","google","शोध","माहिती","बातमी","फेक"], a:"सुरक्षित शोधण्यासाठी:\n1. Google उघडा आणि सोप्या शब्दांत प्रश्न लिहा.\n2. ओळखीच्या किंवा सरकारी (.gov.in) वेबसाइट निवडा.\n3. बातमीसाठी विश्वास ठेवण्याआधी 2–3 विश्वासार्ह साइटवर तपासा.\n4. फक्त उत्तर दाखवण्यासाठी पैसे किंवा वैयक्तिक माहिती मागणारे पेज बंद करा."}
+  ]
+};
+
+/* =========================================================================
+   2) APP LOGIC
+   ========================================================================= */
+let lang = "en";
+const $  = (s)=>document.querySelector(s);
+const $$ = (s)=>document.querySelectorAll(s);
+function t(key){ return (UI[lang] && UI[lang][key]) || UI.en[key] || key; }
+
+// speech language codes for read-aloud
+const SPEECH = { en:"en-IN", hi:"hi-IN", mr:"mr-IN" };
+function speak(text){
+  try{
+    window.speechSynthesis.cancel();
+    const u = new SpeechSynthesisUtterance(text);
+    u.lang = SPEECH[lang] || "en-IN";
+    u.rate = 0.95;
+    window.speechSynthesis.speak(u);
+  }catch(e){ /* some browsers block speech until a click — ignore */ }
+}
+
+// Apply all UI text for the current language
+function applyLanguage(){
+  $$("[data-ui]").forEach(el=>{ el.textContent = t(el.dataset.ui); });
+  $$("[data-ui-ph]").forEach(el=>{ el.setAttribute("placeholder", t(el.dataset.uiPh)); });
+  document.documentElement.lang = lang;
+  renderLessons();
+  renderQuiz();
+  $("#askAnswer").classList.add("hidden"); // clear stale answer in old language
+}
+
+// ---- Views (Home / Lessons / Quiz / Ask) ----
+function showView(v){
+  ["home","lessons","quiz","ask"].forEach(name=>{
+    $("#view-"+name).classList.toggle("hidden", name!==v);
+  });
+  $$("#tabs button").forEach(b=> b.classList.toggle("active", b.dataset.view===v));
+  window.scrollTo(0,0);
+}
+
+// ---- Lessons ----
+function renderLessons(){
+  const list = $("#lessonList");
+  const detail = $("#lessonDetail");
+  detail.classList.add("hidden");
+  list.classList.remove("hidden");
+  list.innerHTML = "";
+  LESSONS[lang].forEach(les=>{
+    const b = document.createElement("button");
+    b.className = "tile";
+    b.innerHTML = `<span class="ic">${les.icon}</span><b>${les.title}</b>`;
+    b.onclick = ()=> openLesson(les.id);
+    list.appendChild(b);
+  });
+}
+function openLesson(id){
+  const les = LESSONS[lang].find(l=>l.id===id);
+  if(!les) return;
+  const detail = $("#lessonDetail");
+  $("#lessonList").classList.add("hidden");
+  const stepsHtml = les.steps.map(s=>`<li>${s}</li>`).join("");
+  const readText = les.title + ". " + les.steps.join(". ");
+  detail.innerHTML = `
+    <button class="ghost" id="backBtn">${t("back")}</button>
+    <div class="card">
+      <h2>${les.icon} ${les.title}</h2>
+      <ol class="steps">${stepsHtml}</ol>
+      <div class="listen"><button class="ghost btn-listen">${t("listen")}</button></div>
+    </div>`;
+  detail.classList.remove("hidden");
+  $("#backBtn").onclick = renderLessons;
+  detail.querySelector(".btn-listen").onclick = ()=> speak(readText);
+}
+
+// ---- Quiz ----
+let quizState = {};
+function renderQuiz(){
+  quizState = {};
+  const card = $("#quizCard");
+  const qs = QUIZ[lang];
+  card.innerHTML = qs.map((item,i)=>{
+    const opts = item.options.map((o,j)=>
+      `<button class="opt" data-q="${i}" data-o="${j}">${o}</button>`).join("");
+    return `<div class="q"><div class="qt">${i+1}. ${item.q}</div>${opts}</div>`;
+  }).join("") + `<button class="big" id="quizSubmit">${t("submit")}</button><div id="quizResult"></div>`;
+
+  card.querySelectorAll(".opt").forEach(btn=>{
+    btn.onclick = ()=>{
+      const qi = btn.dataset.q;
+      card.querySelectorAll(`.opt[data-q="${qi}"]`).forEach(b=>b.classList.remove("sel"));
+      btn.classList.add("sel");
+      quizState[qi] = Number(btn.dataset.o);
+    };
+  });
+  $("#quizSubmit").onclick = gradeQuiz;
+}
+function gradeQuiz(){
+  const qs = QUIZ[lang];
+  let score = 0;
+  const wrongLessons = [];
+  qs.forEach((item,i)=>{
+    const chosen = quizState[i];
+    document.querySelectorAll(`.opt[data-q="${i}"]`).forEach(b=>{
+      const o = Number(b.dataset.o);
+      if(o===item.answer) b.classList.add("right");
+      if(o===chosen && chosen!==item.answer) b.classList.add("wrong");
+      b.disabled = true;
+    });
+    if(chosen===item.answer) score++;
+    else if(!wrongLessons.includes(item.lesson)) wrongLessons.push(item.lesson);
+  });
+  // Suggest lessons for wrong answers (that's the "learn next" part)
+  const suggestIds = wrongLessons.length ? wrongLessons : LESSONS[lang].map(l=>l.id);
+  const links = suggestIds.slice(0,3).map(id=>{
+    const les = LESSONS[lang].find(l=>l.id===id);
+    return `<button class="opt" data-lesson="${id}">${les.icon} ${les.title}</button>`;
+  }).join("");
+  const res = $("#quizResult");
+  res.innerHTML = `
+    <div class="score">${t("your_score")} ${score} / ${qs.length}</div>
+    <p><b>${t("learn_next")}</b></p>${links}
+    <div style="margin-top:10px"><button class="ghost" id="quizRetry">${t("restart")}</button></div>`;
+  res.querySelectorAll("[data-lesson]").forEach(b=>{
+    b.onclick = ()=>{ showView("lessons"); openLesson(b.dataset.lesson); };
+  });
+  $("#quizRetry").onclick = renderQuiz;
+  res.scrollIntoView({behavior:"smooth"});
+}
+
+// ---- Ask Saathi ----
+function offlineAnswer(question){
+  const q = question.toLowerCase();
+  for(const item of ANSWERS[lang]){
+    if(item.keys.some(k=> q.includes(k.toLowerCase()))) return item.a;
+  }
+  return t("no_answer");
+}
+async function aiAnswer(question){
+  const key = (localStorage.getItem("ds_key")||"").trim();
+  const model = (localStorage.getItem("ds_model")||"gemini-1.5-flash").trim();
+  if(!key) return t("ai_fail");
+  const langName = {en:"English", hi:"Hindi", mr:"Marathi"}[lang];
+  const prompt =
+    `You are "Digital Saathi", a kind helper teaching basic digital skills to beginners.`+
+    ` Answer in ${langName}, in very simple words, as short numbered steps (max 4 steps).`+
+    ` If the question is about money/OTP/PIN, add a one-line safety warning.`+
+    ` Question: ${question}`;
+  const url = `https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(model)}:generateContent?key=${encodeURIComponent(key)}`;
+  try{
+    const r = await fetch(url,{
+      method:"POST", headers:{"Content-Type":"application/json"},
+      body: JSON.stringify({ contents:[{ parts:[{text:prompt}] }] })
+    });
+    const data = await r.json();
+    const text = data?.candidates?.[0]?.content?.parts?.[0]?.text;
+    return text ? text.trim() : t("ai_fail");
+  }catch(e){ return t("ai_fail"); }
+}
+async function handleAsk(){
+  const q = $("#askInput").value.trim();
+  if(!q) return;
+  const box = $("#askAnswer");
+  box.classList.remove("hidden");
+  const mode = (document.querySelector('input[name="mode"]:checked')||{}).value || "offline";
+  if(mode==="ai"){
+    box.textContent = t("thinking");
+    box.textContent = await aiAnswer(q);
+  }else{
+    box.textContent = offlineAnswer(q);
+  }
+}
+
+// ---- Settings (saved on this device only) ----
+function loadSettings(){
+  const key = localStorage.getItem("ds_key")||"";
+  const model = localStorage.getItem("ds_model")||"gemini-1.5-flash";
+  const mode = localStorage.getItem("ds_mode")||"offline";
+  $("#apiKey").value = key;
+  $("#model").value = model;
+  const radio = document.querySelector(`input[name="mode"][value="${mode}"]`);
+  if(radio) radio.checked = true;
+  updateModeTag();
+}
+function saveSettings(){
+  try{
+    localStorage.setItem("ds_key", $("#apiKey").value.trim());
+    localStorage.setItem("ds_model", $("#model").value.trim()||"gemini-1.5-flash");
+    const mode = (document.querySelector('input[name="mode"]:checked')||{}).value||"offline";
+    localStorage.setItem("ds_mode", mode);
+  }catch(e){}
+  updateModeTag();
+}
+function updateModeTag(){
+  const mode = (document.querySelector('input[name="mode"]:checked')||{}).value||"offline";
+  $("#modeTag").textContent = mode==="ai" ? "AI" : "Offline";
+}
+
+/* =========================================================================
+   3) WIRE UP EVENTS
+   ========================================================================= */
+// Language buttons
+$("#lang").addEventListener("click", e=>{
+  const b = e.target.closest("button[data-lang]"); if(!b) return;
+  lang = b.dataset.lang;
+  $$("#lang button").forEach(x=> x.classList.toggle("active", x===b));
+  applyLanguage();
+});
+// Tab buttons
+$("#tabs").addEventListener("click", e=>{
+  const b = e.target.closest("button[data-view]"); if(!b) return;
+  showView(b.dataset.view);
+});
+// Home tiles
+$$("[data-go]").forEach(b=> b.addEventListener("click", ()=> showView(b.dataset.go)));
+// Ask
+$("#askBtn").addEventListener("click", handleAsk);
+$("#askListen").addEventListener("click", ()=>{
+  const txt = $("#askAnswer").textContent.trim();
+  if(txt) speak(txt);
+});
+$("#saveSettings").addEventListener("click", saveSettings);
+$$('input[name="mode"]').forEach(r=> r.addEventListener("change", ()=>{ saveSettings(); }));
+
+// Start
+loadSettings();
+applyLanguage();
+showView("home");
+</script>
+</body>
+</html>
