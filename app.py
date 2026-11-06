@@ -826,7 +826,7 @@ st.sidebar.markdown("---")
 st.sidebar.caption("⚙️ AI settings (optional)")
 mode = st.sidebar.radio(T["mode"], [T["offline"], T["ai"]])
 api_key = st.sidebar.text_input(T["api_key"], type="password")
-model = st.sidebar.text_input(T["model"], value="gemini-1.5-flash")
+model = st.sidebar.text_input(T["model"], value="gemini-flash-latest")   # Google's name for its newest Flash model
 
 # --- Header ---
 st.title(T["title"])
