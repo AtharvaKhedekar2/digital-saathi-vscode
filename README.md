@@ -7,20 +7,29 @@ Built by Atharva — First Year Computer Engineering, Terna
 ---
 
 ## What it is
-The website of Digital Saathi — a free, student-led community initiative that helps people
-who are new to phones and the internet (elderly relatives, first-time smartphone users,
-people looking for work) learn basic digital skills.
+The website of Digital Saathi — a free, student-led community initiative where **senior citizens,
+housewives and children** learn everyday digital skills at their own pace. The site is written
+from the learner's side: what you will learn, and what you will be able to do in daily life
+(video-call family, search Google, learn on YouTube, avoid scams, pay with UPI, use government
+services and senior citizen benefits, and use AI tools like ChatGPT, Gemini and Copilot).
 
 It is one long page with a menu on the left (or a **Menu** button on phones):
-**About · Services · How it works · Learn · Impact · Get involved · Contact**
+**About · Your Saathi Journey · Learn · Certificate · Outcomes · Contact**, plus a separate **Quizzes** page (menu → Quizzes)
 
 The **Learn** section is the interactive part:
-1. **Lessons** — six short, big-text lessons (smartphone basics, UPI payments, spotting scams, bills & government services, email, searching safely), each with a **Listen** button that reads it aloud.
-2. **Quiz** — a quick "check your level" test, one question at a time, that suggests which lessons to study next.
-3. **Ask Saathi** — type any question and get a simple answer.
+1. **Learning path** — six steps, each with five skills and a **Listen** button that reads it aloud:
+   1. Smartphone basics · 2. Google, Gmail & YouTube · 3. Communication with family & friends ·
+   4. Stay safe online · 5. Digital payments & government services · 6. AI tools & family digital safety.
+   Each step's points come word for word from the approved "Steps Digital Saathi" document (6, 6, 6, 8, 8 and 6 points).
+2. **Quizzes page** — a **Pre-Assessment** (before learning, no pass or fail, suggests where to start) and a **Post-Assessment** (same 11 questions in a new order, shows "Before → Now", and 8 of 11 = 70 % qualifies for the certificate). Scores are kept only on the learner's own device; the Digital Saathi team checks results and sends certificates later.
+3. **Ask Saathi** — type a question and get a simple built-in answer (no internet needed).
 4. **Pocket safety card** — five golden rules that can be printed.
 
 Every word is in **three languages** — English, हिंदी, मराठी — and a **text size** button (A / A+ / A++) makes everything bigger for anyone who finds the screen hard to read.
+
+**Light and dark mode:** the site follows the phone's own setting until the visitor chooses. The switch is the **Light / Dark** buttons in the sidebar or the Menu, or the sun/moon button in the top bar on phones. The choice is remembered on that device, colours fade smoothly when it changes, and printing always uses light colours.
+
+**Fully static:** no sign-up, no login, no forms that send data, and no connection to any server or AI service.
 
 ## How to run it
 1. Double-click **`index.html`** — it opens in any browser. That's it (no install, no server).
@@ -29,26 +38,22 @@ Every word is in **three languages** — English, हिंदी, मराठ�
 
 ## Before you share the site
 Open `index.html` and fill in the **`CONTACT`** block near the top of the `<script>`
-(WhatsApp number, email, and where/when the help desk meets). Until then the Contact
-section honestly shows "Coming soon", and the contact form shows the visitor's finished
-message so they can copy it. Once a WhatsApp number is filled in, the form opens WhatsApp
-with the message already typed.
+(WhatsApp number and email). Until then the Contact section honestly shows "Coming soon".
+The Contact section also has a "Coming to a virtual workshop?" card marked **Coming soon**
+(what to keep ready); it is plain information, with nothing to fill in.
 
-## Turning on real AI (optional)
-The Ask box can use a real AI model for *any* question:
-1. Get a free key at <https://aistudio.google.com/apikey>.
-2. In the app, open **⚙️ Settings**, paste the key, choose **AI** mode, and press **Save**.
-3. The key is stored only on your own device.
-> Keep **Offline** mode for the viva demo — it never needs wifi. Switch to AI only to answer a surprise question.
-
-The **Model** box is set to `gemini-flash-latest`, Google's name for its newest Flash model.
-(The old `gemini-1.5-flash` was switched off by Google in 2025, so it no longer answers.)
+## Pre-Assessment on Google Forms
+The Pre-Assessment Quiz can run as a Google Form. `google-form/pre-assessment-form.gs` creates the form
+(same 11 questions as the site, one page per learning module, automatic scoring), and
+`google-form/GOOGLE-FORM-GUIDE.md` explains every step. Paste the form's share link into **`PRE_FORM`** in
+`index.html` (just below `CONTACT`); the Pre-Assessment section then shows the form, with the site's own quick
+check as a second tab. While `PRE_FORM` is empty, nothing changes.
 
 ## How it's built
 One file, so it's easy to carry and explain:
 - **HTML** — the page structure: a sidebar menu, and one `<section>` for each part of the site.
-- **CSS** — the design. All colours and fonts are set once at the top ("design tokens"), so the look stays consistent. Large text and high contrast, made for people who find screens hard.
-- **JavaScript** — all content (lessons, quiz, answers and every label) in three languages, plus the quiz logic, read-aloud (browser text-to-speech), the contact form and the optional AI call.
+- **CSS** — the design. All colours and fonts are set once at the top ("design tokens"), so the look stays consistent. Dark mode is a second set of the same tokens, switched by `data-theme="dark"` on the page. Large text and high contrast, made for people who find screens hard.
+- **JavaScript** — all content (lessons, quiz, answers and every label) in three languages, plus the quiz logic, read-aloud (browser text-to-speech), the offline Ask box and the light/dark switch.
 - The numbers in the Impact section (lessons, quiz questions, languages) are **counted from the content**, so they are always true. There are no made-up statistics or testimonials.
 
 ## What I built and why *(adapt this for your report / viva)*
@@ -68,4 +73,4 @@ One file, so it's easy to carry and explain:
 
 ## For the marks
 - **Term work (25):** keep a weekly logbook with dated screenshots; show a running version at each monthly review.
-- **Viva (25):** rehearse a 5-minute walkthrough — problem → your user → live demo → what you learned. Know how the AI call works. Have the offline demo ready as backup.
+- **Viva (25):** rehearse a 5-minute walkthrough — problem → your user → live demo → what you learned. Be ready to explain how the light/dark switch works (design tokens + `data-theme`).
