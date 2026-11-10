@@ -19,8 +19,7 @@
     Home (hero) → About → Your Saathi Journey → Learn → Saathi Wins → Contact
   The "Learn" section holds:
     1. Lessons     — six short lessons, each with a "Listen" (read-aloud) button
-    2. Ask Saathi  — type a question, get a simple built-in answer (works offline)
-    3. Safety card — five golden rules that can be printed
+    2. Safety card — five golden rules that can be printed
   A separate Quizzes page has the Pre-Assessment (one big button that opens the team's
   Google Form in a new tab) and the Post-Assessment (the same, with its own Google Form).
   Every word on the page is available in English, Hindi and Marathi, and the page has
@@ -233,7 +232,6 @@ html:lang(hi) .link-u,html:lang(mr) .link-u{font-family:var(--f-body);font-size:
 
 .chip{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border:1px solid var(--line-2);border-radius:999px;background:var(--card);color:var(--ink);font-size:.92rem;font-weight:600;line-height:1.35;text-align:left;text-decoration:none;transition:border-color .2s,background-color .2s}
 .chip:hover{border-color:var(--ink);background:var(--paper)}
-.chips{list-style:none;margin:14px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:10px}
 
 /* Segmented buttons: language and text size */
 .seg{display:flex;border:1px solid var(--line-2);background:var(--card)}
@@ -501,7 +499,7 @@ html:lang(hi) .how-step h3,html:lang(mr) .how-step h3{font-size:1.4rem;font-weig
 @media (max-width:899px){.how-grid{grid-template-columns:1fr}.how-side{position:static}}
 
 /* =========================================================================
-   7. LEARN — lessons, lesson window, quiz, Ask Saathi, safety card
+   7. LEARN — lessons, lesson window, quiz, safety card
    ========================================================================= */
 .jump{display:flex;flex-wrap:wrap;gap:10px;margin:30px 0 0;padding:0;list-style:none}
 .path-label{display:flex;align-items:center;gap:10px;margin:0 0 18px;color:var(--green)}
@@ -563,22 +561,6 @@ html:lang(hi) .pr-extra h3,html:lang(mr) .pr-extra h3{font-weight:400;font-size:
 @media (max-width:899px){.learn-block{grid-template-columns:1fr}}
 
 
-/* Ask Saathi */
-.ask-label{display:block;margin-bottom:10px;font-weight:700}
-.ask-input{width:100%;border:1px solid var(--line-2);border-radius:0;background:var(--paper);color:var(--ink);transition:border-color .2s,box-shadow .2s}
-.ask-input{min-height:130px;padding:16px 18px;font-size:1.1rem;line-height:1.5;resize:vertical}
-.ask-input:focus{outline:none;border-color:var(--green);box-shadow:0 0 0 3px rgba(44,88,65,.2)}
-.ask-warn{display:flex;align-items:flex-start;gap:10px;margin:12px 0 0;color:var(--brick);font-size:.92rem;font-weight:700}
-.ask-warn .ic{margin-top:.15em}
-.ask-hint{margin:10px 0 0;color:var(--brick);font-weight:700}
-.ask-note{display:flex;align-items:flex-start;gap:10px;margin:22px 0 0;padding-top:16px;border-top:1px solid var(--line);color:var(--ink-2);font-size:.92rem}
-.ask-note .ic{margin-top:.15em;color:var(--green)}
-.ask-row{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin-top:18px}
-.answer{margin-top:22px;padding:20px 22px;border-left:3px solid var(--green);background:var(--green-soft)}
-.answer-head{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;margin-bottom:10px}
-.answer-label{display:flex;align-items:center;gap:8px;margin:0;color:var(--green)}
-.answer .btn-listen{background:var(--card)}
-.answer-text{margin:0;white-space:pre-wrap;font-size:1.06rem}
 
 /* Pocket safety card */
 .safety{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(28px,5vw,80px);margin-top:clamp(80px,10vw,140px);padding:clamp(28px,5vw,72px);background:var(--sun);color:var(--ink);
@@ -1455,7 +1437,6 @@ html.hero-off .lamp,html.visit-off .vb-dot{animation-play-state:paused}
       <p class="hero-text"><span class="lead-line" data-ui="hero_lead">A little help. A lot more confidence.</span><span data-ui="hero_text">Friendly, free digital-skills learning for everyone in our community — in Marathi, Hindi and English, with college students by your side.</span></p>
       <div class="hero-actions">
         <a class="btn btn-dark" href="#lessons"><span data-ui="hero_cta1">Start learning</span><svg class="ic ic-ur" aria-hidden="true"><use href="#i-arrow-ur"></use></svg></a>
-        <a class="btn btn-outline" href="#ask"><span data-ui="hero_cta2">Ask Saathi</span></a>
       </div>
     </div>
 
@@ -1647,7 +1628,6 @@ html.hero-off .lamp,html.visit-off .vb-dot{animation-play-state:paused}
             <ul class="jump">
               <li><a class="chip" href="#lessons"><svg class="ic" aria-hidden="true"><use href="#i-book"></use></svg><span data-ui="jump_lessons">Lessons</span></a></li>
               <li><a class="chip" href="#quizzes"><svg class="ic" aria-hidden="true"><use href="#i-help"></use></svg><span data-ui="jump_quiz">Check your skills</span></a></li>
-              <li><a class="chip" href="#ask"><svg class="ic" aria-hidden="true"><use href="#i-chat"></use></svg><span data-ui="jump_ask">Ask Saathi</span></a></li>
               <li><a class="chip" href="#safety"><svg class="ic" aria-hidden="true"><use href="#i-shield"></use></svg><span data-ui="jump_card">Safety card</span></a></li>
             </ul>
           </div>
@@ -1661,34 +1641,6 @@ html.hero-off .lamp,html.visit-off .vb-dot{animation-play-state:paused}
         <div class="step-tabs" id="stepTabs" role="tablist" aria-label="Your learning path" data-ui-aria="path_label"></div>
         <div class="step-panel" id="stepPanel" role="tabpanel" tabindex="0"></div>
       </div>
-      </div>
-
-      <!-- Quiz -->
-      <div class="learn-block fit-screen scroll-target" id="ask">
-        <div class="lb-side reveal">
-          <p class="eyebrow mono"><svg class="ic" aria-hidden="true"><use href="#i-chat"></use></svg><span data-ui="ask_label">Ask Saathi</span></p>
-          <h3 class="display h3big" data-ui-html="ask_title">Ask anything, <em>anytime.</em></h3>
-          <p class="sec-intro" data-ui="ask_intro"></p>
-          <p class="mono" style="margin:28px 0 0" data-ui="ask_try">Try asking</p>
-          <ul class="chips" id="askExamples"></ul>
-        </div>
-        <form class="panel reveal" id="askForm">
-          <label class="ask-label" for="askInput" data-ui="ask_q_label">Your question</label>
-          <textarea id="askInput" class="ask-input" maxlength="500" data-ui-ph="ask_ph" placeholder="Type your question here…"></textarea>
-          <p class="ask-warn"><svg class="ic" aria-hidden="true"><use href="#i-shield"></use></svg><span data-ui="ask_warn">Never type your PIN, OTP or password here.</span></p>
-          <p class="ask-hint" id="askHint" role="alert" hidden data-ui="ask_empty">Please type a question first.</p>
-          <div class="ask-row">
-            <button type="submit" class="btn btn-dark" id="askBtn"><span data-ui="ask_btn">Ask</span><svg class="ic" aria-hidden="true"><use href="#i-send"></use></svg></button>
-          </div>
-          <div class="answer" id="askAnswer" hidden>
-            <div class="answer-head">
-              <p class="answer-label mono"><svg class="ic" aria-hidden="true"><use href="#i-sparkle"></use></svg><span data-ui="ask_says">Saathi says</span></p>
-              <button type="button" class="btn btn-outline btn-sm btn-listen" id="askListen"><svg class="ic" aria-hidden="true"><use href="#i-volume"></use></svg><span data-ui="listen">Listen</span></button>
-            </div>
-            <p class="answer-text" id="askAnswerText" aria-live="polite"></p>
-          </div>
-          <p class="ask-note"><svg class="ic" aria-hidden="true"><use href="#i-wifi-off"></use></svg><span data-ui="ask_note">Answers are built into this page, so Ask Saathi works even without internet.</span></p>
-        </form>
       </div>
 
       <!-- Pocket safety card -->
@@ -2027,7 +1979,7 @@ html.hero-off .lamp,html.visit-off .vb-dot{animation-play-state:paused}
 
 <div id="printArea"></div>
 <div id="announcer" class="sr-only" aria-live="polite"></div>
-<noscript><p class="noscript">Lessons, the quiz and Ask Saathi need JavaScript. Please turn it on in your browser settings.</p></noscript>
+<noscript><p class="noscript">Lessons and the quiz need JavaScript. Please turn it on in your browser settings.</p></noscript>
 
 <script>
 /* =========================================================================
@@ -2054,7 +2006,7 @@ const UI = {
     hero_l1:"Go digital.", hero_l2:"Stay safe.", hero_l3:"With a Saathi.",
     hero_lead:"Learn at your own pace. Grow in confidence.",
     hero_text:"Learn to video-call your family, search Google, pay with UPI, stay safe from scams and even use AI — in simple steps, in Marathi, Hindi or English.",
-    hero_cta1:"Start learning", hero_cta2:"Ask Saathi",
+    hero_cta1:"Start learning",
     hero_side:"Digital Saathi — your digital companion",
     badge:"LEARN FREE ✦ AT YOUR OWN PACE ✦ FOR EVERYONE ✦", badge_word:"Free",
     ph_lesson:"Today's lesson", ph_title:"Pay with UPI safely",
@@ -2095,7 +2047,7 @@ const UI = {
     learn_label:"Learning resources",
     learn_title:"Learn at your <em>own pace.</em>",
     learn_intro:"Six steps, from your very first tap to using AI with confidence. Open a step to see what you will be able to do — or press Listen to hear it.",
-    jump_lessons:"Lessons", jump_quiz:"Check your skills", jump_ask:"Ask Saathi", jump_card:"Safety card",
+    jump_lessons:"Lessons", jump_quiz:"Check your skills", jump_card:"Safety card",
     step_word:"Step", skills_word:"skills", read_aloud:"Read-aloud", path_label:"Your learning path",
     prev:"Previous", next_lesson:"Next lesson", to_quiz:"Check your skills",
     listen:"Listen", stop:"Stop",
@@ -2132,7 +2084,7 @@ const UI = {
     pf_note:"Your answers go to the Digital Saathi team, and you see your score at the end. Never type your OTP, PIN or bank details.",
     pre_here:"Start here",
     pre_map:"Your learning journey has six steps. This quiz shows which one to start with.",
-    post_retake:"Retakes are free", 
+    post_retake:"Retakes are free",
     cert_label:"Certificate",
     cert_title:"Earn your <em>certificate.</em>",
     cert_intro:"Your hard work deserves recognition. Complete these four things to earn the Digital Saathi Certificate of Completion.",
@@ -2152,17 +2104,17 @@ const UI = {
     quiz_intro:"Answer 11 short questions. Some are tricky, and it is fine not to know. There is no pass or fail — you will see what you already know and what to learn next.",
     quiz_meta:"{n} questions · about 3 minutes",
     // ask
-    ask_label:"Ask Saathi",
-    ask_title:"Ask anything, <em>anytime.</em>",
-    ask_intro:"Type any question about using a phone or the internet. Example: “How do I pay with UPI safely?”",
-    ask_try:"Try asking",
-    ask_ex1:"How do I pay with UPI safely?", ask_ex2:"Someone is asking for my OTP",
-    ask_ex3:"How do I pay my electricity bill?", ask_ex4:"How can I make the text bigger?",
-    ask_q_label:"Your question", ask_ph:"Type your question here…", ask_btn:"Ask",
-    ask_warn:"Never type your PIN, OTP or password here.", ask_empty:"Please type a question first.",
-    ask_says:"Saathi says",
-    ask_note:"Answers are built into this page, so Ask Saathi works even without internet.",
-    no_answer:"I don't have a built-in answer for that yet. Try the learning path, or bring your question to a workshop near you.",
+
+
+
+
+
+
+
+
+
+
+
     // safety card
     card_label:"Pocket safety card",
     card_title:"Five golden <em>rules.</em>",
@@ -2230,7 +2182,7 @@ const UI = {
     hero_l1:"डिजिटल बनें।", hero_l2:"सुरक्षित रहें।", hero_l3:"साथी के साथ।",
     hero_lead:"अपनी रफ़्तार से सीखें। आत्मविश्वास बढ़ाएं।",
     hero_text:"परिवार से वीडियो कॉल, Google पर खोज, UPI से भुगतान, धोखे से बचाव और AI का इस्तेमाल भी सीखें — आसान चरणों में, मराठी, हिंदी या अंग्रेज़ी में।",
-    hero_cta1:"सीखना शुरू करें", hero_cta2:"साथी से पूछें",
+    hero_cta1:"सीखना शुरू करें",
     hero_side:"डिजिटल साथी — आपका डिजिटल हमसफ़र",
     badge:"मुफ़्त ✦ अपनी रफ़्तार से सीखें ✦ सबके लिए ✦", badge_word:"मुफ़्त",
     ph_lesson:"आज का पाठ", ph_title:"UPI से सुरक्षित भुगतान",
@@ -2268,7 +2220,7 @@ const UI = {
     learn_label:"सीखने की सामग्री",
     learn_title:"<em>अपनी रफ़्तार</em> से सीखें।",
     learn_intro:"छह चरण — पहली बार स्क्रीन छूने से लेकर आत्मविश्वास से AI इस्तेमाल करने तक। कोई चरण खोलकर देखें कि आप क्या-क्या कर पाएंगे — या सुनने के लिए “सुनें” दबाएं।",
-    jump_lessons:"पाठ", jump_quiz:"अपने कौशल जांचें", jump_ask:"साथी से पूछें", jump_card:"सुरक्षा कार्ड",
+    jump_lessons:"पाठ", jump_quiz:"अपने कौशल जांचें", jump_card:"सुरक्षा कार्ड",
     step_word:"चरण", skills_word:"कौशल", read_aloud:"सुनने की सुविधा", path_label:"आपका सीखने का रास्ता",
     prev:"पिछला", next_lesson:"अगला पाठ", to_quiz:"अपने कौशल जांचें",
     listen:"सुनें", stop:"रोकें",
@@ -2304,7 +2256,7 @@ const UI = {
     pf_note:"आपके जवाब डिजिटल साथी टीम तक पहुंचते हैं, और अंत में आपको अपना स्कोर दिखता है। कभी भी अपना OTP, PIN या बैंक की जानकारी न लिखें।",
     pre_here:"यहाँ से शुरू",
     pre_map:"आपकी सीखने की यात्रा में छह चरण हैं। यह क्विज़ बताता है कि किस चरण से शुरू करें।",
-    post_retake:"दोबारा देना मुफ़्त", 
+    post_retake:"दोबारा देना मुफ़्त",
     cert_label:"प्रमाणपत्र",
     cert_title:"अपना <em>प्रमाणपत्र</em> पाएं।",
     cert_intro:"आपकी मेहनत की पहचान होनी चाहिए। डिजिटल साथी पूर्णता प्रमाणपत्र पाने के लिए ये चार काम पूरे करें।",
@@ -2323,17 +2275,17 @@ const UI = {
     quiz_title:"जानें आपको <em>पहले से क्या आता है।</em>",
     quiz_intro:"11 छोटे सवालों के जवाब दें। कुछ मुश्किल हैं, और न आते हों तो कोई बात नहीं। इसमें पास या फ़ेल नहीं होता — आप देखेंगे कि आपको क्या आता है और आगे क्या सीखना है।",
     quiz_meta:"{n} सवाल · लगभग 3 मिनट",
-    ask_label:"साथी से पूछें",
-    ask_title:"कुछ भी पूछें, <em>कभी भी।</em>",
-    ask_intro:"फ़ोन या इंटरनेट के बारे में कोई भी सवाल लिखें। जैसे: “UPI से सुरक्षित भुगतान कैसे करें?”",
-    ask_try:"ऐसे पूछकर देखें",
-    ask_ex1:"UPI से सुरक्षित भुगतान कैसे करें?", ask_ex2:"कोई मेरा OTP मांग रहा है",
-    ask_ex3:"बिजली का बिल ऑनलाइन कैसे भरें?", ask_ex4:"फ़ोन पर अक्षर बड़े कैसे करें?",
-    ask_q_label:"आपका सवाल", ask_ph:"अपना सवाल यहाँ लिखें…", ask_btn:"पूछें",
-    ask_warn:"यहां कभी भी अपना PIN, OTP या पासवर्ड न लिखें।", ask_empty:"कृपया पहले अपना सवाल लिखें।",
-    ask_says:"साथी का जवाब",
-    ask_note:"जवाब इसी पेज में मौजूद हैं, इसलिए यह बिना इंटरनेट के भी काम करता है।",
-    no_answer:"इसका बना-बनाया जवाब अभी मेरे पास नहीं है। सीखने का रास्ता देखें, या यह सवाल अपने पास की कार्यशाला में ले आएं।",
+
+
+
+
+
+
+
+
+
+
+
     card_label:"जेब में रखने वाला सुरक्षा कार्ड",
     card_title:"पांच सुनहरे <em>नियम।</em>",
     card_intro:"इसे प्रिंट करें, फ़ोन के पास रखें, परिवार के साथ साझा करें।",
@@ -2397,7 +2349,7 @@ const UI = {
     hero_l1:"डिजिटल व्हा.", hero_l2:"सुरक्षित राहा.", hero_l3:"साथीसोबत.",
     hero_lead:"तुमच्या गतीने शिका. आत्मविश्वास वाढवा.",
     hero_text:"कुटुंबाला व्हिडिओ कॉल, Google वर शोध, UPI ने पैसे देणे, फसवणुकीपासून बचाव आणि AI वापरणेही शिका — सोप्या टप्प्यांत, मराठी, हिंदी किंवा इंग्रजीत.",
-    hero_cta1:"शिकायला सुरुवात करा", hero_cta2:"साथीला विचारा",
+    hero_cta1:"शिकायला सुरुवात करा",
     hero_side:"डिजिटल साथी — तुमचा डिजिटल सोबती",
     badge:"मोफत ✦ तुमच्या गतीने शिका ✦ सर्वांसाठी ✦", badge_word:"मोफत",
     ph_lesson:"आजचा धडा", ph_title:"UPI ने सुरक्षित पैसे द्या",
@@ -2435,7 +2387,7 @@ const UI = {
     learn_label:"शिकण्याचे साहित्य",
     learn_title:"<em>तुमच्या वेगाने</em> शिका.",
     learn_intro:"सहा टप्पे — पहिल्यांदा स्क्रीनला स्पर्श करण्यापासून आत्मविश्वासाने AI वापरण्यापर्यंत. एखादा टप्पा उघडून पाहा तुम्ही काय काय करू शकाल — किंवा ऐकण्यासाठी “ऐका” दाबा.",
-    jump_lessons:"धडे", jump_quiz:"तुमची कौशल्ये तपासा", jump_ask:"साथीला विचारा", jump_card:"सुरक्षा कार्ड",
+    jump_lessons:"धडे", jump_quiz:"तुमची कौशल्ये तपासा", jump_card:"सुरक्षा कार्ड",
     step_word:"टप्पा", skills_word:"कौशल्ये", read_aloud:"ऐकण्याची सोय", path_label:"तुमचा शिकण्याचा मार्ग",
     prev:"मागील", next_lesson:"पुढचा धडा", to_quiz:"तुमची कौशल्ये तपासा",
     listen:"ऐका", stop:"थांबवा",
@@ -2471,7 +2423,7 @@ const UI = {
     pf_note:"तुमची उत्तरे डिजिटल साथी टीमपर्यंत पोहोचतात, आणि शेवटी तुम्हाला तुमचे गुण दिसतात. कधीही तुमचा OTP, PIN किंवा बँकेची माहिती लिहू नका.",
     pre_here:"इथून सुरुवात",
     pre_map:"तुमच्या शिकण्याच्या प्रवासात सहा टप्पे आहेत. कोणत्या टप्प्यापासून सुरुवात करायची ते ही क्विझ दाखवते.",
-    post_retake:"पुन्हा देणे मोफत", 
+    post_retake:"पुन्हा देणे मोफत",
     cert_label:"प्रमाणपत्र",
     cert_title:"तुमचे <em>प्रमाणपत्र</em> मिळवा.",
     cert_intro:"तुमच्या मेहनतीची दखल घेतली पाहिजे. डिजिटल साथी पूर्णता प्रमाणपत्र मिळवण्यासाठी या चार गोष्टी पूर्ण करा.",
@@ -2490,17 +2442,17 @@ const UI = {
     quiz_title:"तुम्हाला <em>आधीच काय येते</em> ते जाणून घ्या.",
     quiz_intro:"11 छोट्या प्रश्नांची उत्तरे द्या. काही अवघड आहेत, आणि येत नसतील तरी हरकत नाही. यात पास-नापास नाही — तुम्हाला काय येते आणि पुढे काय शिकायचे ते दिसेल.",
     quiz_meta:"{n} प्रश्न · सुमारे 3 मिनिटे",
-    ask_label:"साथीला विचारा",
-    ask_title:"काहीही विचारा, <em>केव्हाही.</em>",
-    ask_intro:"फोन किंवा इंटरनेटबद्दल कोणताही प्रश्न लिहा. उदा.: “UPI ने सुरक्षित पैसे कसे द्यायचे?”",
-    ask_try:"असे विचारून पाहा",
-    ask_ex1:"UPI ने सुरक्षित पैसे कसे द्यायचे?", ask_ex2:"कोणीतरी माझा OTP मागत आहे",
-    ask_ex3:"वीज बिल ऑनलाइन कसे भरायचे?", ask_ex4:"फोनवरची अक्षरे मोठी कशी करायची?",
-    ask_q_label:"तुमचा प्रश्न", ask_ph:"तुमचा प्रश्न इथे लिहा…", ask_btn:"विचारा",
-    ask_warn:"इथे कधीही तुमचा PIN, OTP किंवा पासवर्ड लिहू नका.", ask_empty:"कृपया आधी तुमचा प्रश्न लिहा.",
-    ask_says:"साथीचे उत्तर",
-    ask_note:"उत्तरे याच पेजमध्ये आहेत, त्यामुळे हे इंटरनेटशिवायही चालते.",
-    no_answer:"याचे तयार उत्तर माझ्याकडे अजून नाही. शिकण्याचा मार्ग पाहा, किंवा हा प्रश्न जवळच्या कार्यशाळेत घेऊन या.",
+
+
+
+
+
+
+
+
+
+
+
     card_label:"खिशात ठेवायचे सुरक्षा कार्ड",
     card_title:"पाच सोनेरी <em>नियम.</em>",
     card_intro:"हे प्रिंट करा, फोनजवळ ठेवा, घरच्यांसोबत शेअर करा.",
@@ -3003,62 +2955,6 @@ const QUIZ = {
   ]
 };
 
-// OFFLINE ANSWER BANK for "Ask Saathi" — keyword match. Works with no internet.
-// The first entry whose keyword appears in the question wins, so the order matters:
-// specific topics (fraud already happened, bills) come before general ones (UPI, phone).
-const ANSWERS = {
-  en:[
-    {keys:["1930","report","complaint","cheated","lost money","hacked"], a:"If you have been cheated online, act fast:\n1. Call 1930 — the National Cyber Crime Helpline.\n2. Report it at cybercrime.gov.in.\n3. Call your bank on its official number to block your card or UPI.\n4. Keep screenshots of the messages and the transaction ID."},
-    {keys:["chatgpt","copilot","gemini"," ai ","artificial"], a:"Using AI helpers like ChatGPT, Copilot or Gemini:\n1. Use only the official app or website.\n2. Ask clearly, in simple words — you can ask it to explain again, more simply.\n3. AI can be wrong: check health, money and legal answers with a doctor, your bank or an official website.\n4. Never type your OTP, passwords, Aadhaar or bank details into an AI chat."},
-    {keys:["parental","family link","child","children","kids","grandchild"], a:"To keep children safe online:\n1. Install Google Family Link to set screen-time limits and approve the apps they download.\n2. Use the YouTube Kids app, or turn on Restricted Mode in YouTube.\n3. Teach them never to share personal details or photos with strangers."},
-    {keys:["bill","electricity","recharge","gas cylinder","water"], a:"To pay a bill online:\n1. Open your UPI app → “Recharge & bills”.\n2. Choose the bill type (electricity, mobile, gas, water) and your provider.\n3. Enter the consumer number from your bill, and check the name and amount.\n4. Pay with your UPI PIN and keep the receipt (screenshot or transaction ID)."},
-    {keys:["government","govt","digilocker","aadhaar","aadhar","pan card","certificate","life certificate","jeevan","pension","ayushman","scheme","ration"], a:"For government services online:\n1. Use only official apps and websites ending in .gov.in.\n2. Keep Aadhaar, PAN and certificates safe in DigiLocker (digilocker.gov.in).\n3. Pensioners can submit the life certificate from home with a face scan (Jeevan Pramaan).\n4. Everyone aged 70+ can get the Ayushman Vay Vandana card for free treatment cover.\n5. Never pay an “agent” for a service that is free."},
-    {keys:["upi","payment","pay","money","scan","qr"], a:"To pay with UPI safely:\n1. Open your UPI app and log in.\n2. Scan the QR code or enter the UPI ID.\n3. Check the name and amount carefully.\n4. Enter your PIN to pay. Never share your PIN. You never need a PIN to RECEIVE money."},
-    {keys:["otp","password","pin"], a:"Never share your OTP, PIN or password with anyone — not even someone claiming to be from your bank. A real bank never asks for these. If someone asks, it is a scam. Tip: make a strong password from 3–4 unrelated words plus numbers, and use a different one for each account."},
-    {keys:["scam","fraud","fake","digital arrest","arrest","kyc","parcel","apk","code word","lottery","prize","win"], a:"To stay safe from scams:\n1. Police never do a “digital arrest” on a video call — hang up and call 1930.\n2. Fake KYC, electricity bill and parcel messages: check only in the official app.\n3. Never install an app (.apk) from a link someone sends you.\n4. Agree on a family code word against fake voice calls.\n5. Lost money? Call 1930 within the first hour, or report at cybercrime.gov.in."},
-    {keys:["google account","gmail account","create account","new account"], a:"To create a Google account:\n1. Open Settings → Accounts (or Google) → Add account → Google.\n2. Tap “Create account” and follow the steps. Many phones already have an account — check there first.\n3. Choose a strong password, write it somewhere safe, and add your mobile number so you can recover the account."},
-    {keys:["email","gmail","mail"], a:"To use email:\n1. Open Gmail and sign in.\n2. Tap Compose to write a new mail.\n3. Enter the address, subject and message, then Send.\n4. Don't open attachments from unknown people."},
-    {keys:["wifi","internet","data","connect"], a:"To connect to the internet: open Settings → Wi-Fi, choose your network name, and enter its password. On mobile data, turn on the Data button in the top menu."},
-    {keys:["whatsapp","live location","backup","unknown","mute","group","message","chat","photo","video call"], a:"WhatsApp basics:\n1. Live location: in a chat tap 📎 → Location → Share live location.\n2. Never lose chats: Settings → Chats → Chat backup.\n3. Stop strangers adding you: Settings → Privacy → Groups → My contacts.\n4. Silence unknown callers: Settings → Privacy → Calls.\n5. Video call: open the chat and tap the video camera icon — you can share your screen to get help.\nDon't forward messages you are not sure are true."},
-    {keys:["youtube","restricted","channel"], a:"To use YouTube safely:\n1. Open YouTube, tap the search (magnifying glass) icon and type what you want to learn.\n2. For young children, use the YouTube Kids app.\n3. On regular YouTube, turn on Restricted Mode in Settings → General.\n4. Don't believe every video — check important news on trusted websites."},
-    {keys:["search","google","find","information","news","fake"], a:"To search safely:\n1. Open Google and type your question in simple words.\n2. Prefer well-known or government (.gov.in) websites.\n3. For news, check 2–3 trusted sites before believing it.\n4. Close any page that demands payment or personal details just to show an answer."},
-    {keys:["sos","emergency","battery","scan","remind","text","font","bigger","read aloud","camera","switch on","power","call","contact","screen","phone","mobile"], a:"Smartphone basics:\n1. Emergency SOS: Settings → Safety & emergency; press the power button 5 times for help.\n2. Bigger text: Settings → Display → Font size. Read aloud: Select to Speak in Accessibility.\n3. Scan a document: Google Drive → + → Scan.\n4. Before handing the phone to a child: turn on App pinning.\n5. Reminders: say “Hey Google, remind me to…”.\n6. Longer battery: turn on Battery Saver."}
-  ],
-  hi:[
-    {keys:["1930","शिकायत","ठगी","ठगा","धोखा हुआ","पैसे गए","पैसे कट","हैक"], a:"अगर आपके साथ ऑनलाइन ठगी हुई है, तो तुरंत:\n1. 1930 पर कॉल करें — राष्ट्रीय साइबर अपराध हेल्पलाइन।\n2. cybercrime.gov.in पर शिकायत दर्ज करें।\n3. बैंक के आधिकारिक नंबर पर कॉल करके अपना कार्ड या UPI ब्लॉक कराएं।\n4. संदेशों के स्क्रीनशॉट और ट्रांज़ैक्शन ID संभालकर रखें।"},
-    {keys:["chatgpt","copilot","gemini"," ai ","एआई","कृत्रिम"], a:"ChatGPT, Copilot या Gemini जैसे AI सहायक इस्तेमाल करते समय:\n1. सिर्फ़ आधिकारिक ऐप या वेबसाइट इस्तेमाल करें।\n2. आसान शब्दों में साफ़ पूछें — आप दोबारा, और आसान तरीके से समझाने को कह सकते हैं।\n3. AI गलत भी हो सकता है: सेहत, पैसे और कानूनी जवाब डॉक्टर, बैंक या आधिकारिक वेबसाइट से जांचें।\n4. AI चैट में कभी OTP, पासवर्ड, आधार या बैंक विवरण न लिखें।"},
-    {keys:["पैरेंटल","family link","बच्चे","बच्चों","kids","पोते-पोती"], a:"बच्चों को ऑनलाइन सुरक्षित रखने के लिए:\n1. Google Family Link लगाएं — इससे स्क्रीन टाइम की सीमा तय करें और उनके ऐप मंज़ूर करें।\n2. YouTube Kids ऐप इस्तेमाल करें, या YouTube में Restricted Mode चालू करें।\n3. उन्हें सिखाएं कि अनजान लोगों को निजी जानकारी या फ़ोटो कभी न भेजें।"},
-    {keys:["बिल","बिजली","रिचार्ज","गैस","पानी","bill"], a:"बिल ऑनलाइन भरने के लिए:\n1. अपना UPI ऐप खोलें → “Recharge & bills”।\n2. बिल का प्रकार (बिजली, मोबाइल, गैस, पानी) और अपनी कंपनी चुनें।\n3. बिल पर छपा उपभोक्ता क्रमांक डालें और नाम व राशि जांचें।\n4. UPI PIN से भुगतान करें और रसीद (स्क्रीनशॉट या ट्रांज़ैक्शन ID) संभालकर रखें।"},
-    {keys:["सरकारी","डिजिलॉकर","digilocker","आधार","प्रमाणपत्र","जीवन प्रमाणपत्र","पेंशन","आयुष्मान","योजना","राशन","पैन"], a:"ऑनलाइन सरकारी सेवाओं के लिए:\n1. सिर्फ़ आधिकारिक ऐप और .gov.in से खत्म होने वाली वेबसाइटें इस्तेमाल करें।\n2. आधार, PAN और प्रमाणपत्र DigiLocker (digilocker.gov.in) में सुरक्षित रखें।\n3. पेंशनभोगी चेहरे के स्कैन से घर बैठे जीवन प्रमाणपत्र जमा कर सकते हैं (Jeevan Pramaan)।\n4. 70+ उम्र के सभी लोग मुफ़्त इलाज के कवर के लिए आयुष्मान वय वंदना कार्ड पा सकते हैं।\n5. मुफ़्त सेवा के लिए किसी “एजेंट” को पैसे न दें।"},
-    {keys:["upi","भुगतान","पैसे","स्कैन","qr"], a:"UPI से सुरक्षित भुगतान के लिए:\n1. अपना UPI ऐप खोलें और लॉग इन करें।\n2. QR कोड स्कैन करें या UPI ID डालें।\n3. नाम और राशि ध्यान से जांचें।\n4. भुगतान के लिए PIN डालें। PIN कभी साझा न करें। पैसे लेने के लिए PIN की ज़रूरत नहीं होती।"},
-    {keys:["otp","पासवर्ड","pin","पिन"], a:"अपना OTP, PIN या पासवर्ड कभी किसी से साझा न करें — भले ही कोई खुद को बैंक का बताए। असली बैंक ये कभी नहीं मांगता। कोई मांगे तो यह धोखा है। सलाह: 3–4 अलग-अलग शब्दों और अंकों से मज़बूत पासवर्ड बनाएं, और हर खाते का पासवर्ड अलग रखें।"},
-    {keys:["धोखा","फ्रॉड","फर्जी","नकली","डिजिटल अरेस्ट","अरेस्ट","kyc","पार्सल","apk","कोड वर्ड","लॉटरी","इनाम","जीत"], a:"धोखे से बचने के लिए:\n1. पुलिस कभी वीडियो कॉल पर “डिजिटल अरेस्ट” नहीं करती — कॉल काटें और 1930 पर कॉल करें।\n2. नकली KYC, बिजली बिल और पार्सल वाले संदेश: सिर्फ़ आधिकारिक ऐप में जांचें।\n3. किसी के भेजे लिंक से कभी कोई ऐप (.apk) इंस्टॉल न करें।\n4. नकली आवाज़ वाली कॉल से बचने के लिए परिवार का कोड वर्ड तय करें।\n5. पैसे गए? पहले घंटे के अंदर 1930 पर कॉल करें या cybercrime.gov.in पर शिकायत करें।"},
-    {keys:["google खाता","गूगल खाता","google account","खाता बना","अकाउंट"], a:"Google खाता बनाने के लिए:\n1. Settings → Accounts (या Google) → Add account → Google खोलें।\n2. “Create account” पर टैप करें और चरण पूरे करें। कई फ़ोन में खाता पहले से होता है — पहले वहीं देख लें।\n3. मज़बूत पासवर्ड रखें, उसे सुरक्षित जगह लिखें और खाता वापस पाने के लिए अपना मोबाइल नंबर जोड़ें।"},
-    {keys:["ईमेल","gmail","मेल"], a:"ईमेल इस्तेमाल करने के लिए:\n1. Gmail खोलें और साइन इन करें।\n2. नई मेल के लिए Compose दबाएं।\n3. पता, विषय और संदेश लिखें, फिर Send दबाएं।\n4. अनजान लोगों के अटैचमेंट न खोलें।"},
-    {keys:["वाईफाई","इंटरनेट","डेटा","कनेक्ट"], a:"इंटरनेट से जुड़ने के लिए: Settings → Wi-Fi खोलें, अपना नेटवर्क चुनें और उसका पासवर्ड डालें। मोबाइल डेटा के लिए ऊपर के मेन्यू में Data बटन चालू करें।"},
-    {keys:["whatsapp","व्हाट्सएप","लोकेशन","बैकअप","अनजान","म्यूट","ग्रुप","संदेश","चैट","फ़ोटो","फोटो","वीडियो कॉल"], a:"WhatsApp की बुनियादी बातें:\n1. लाइव लोकेशन: चैट में 📎 → Location → Share live location।\n2. चैट कभी न खोएं: Settings → Chats → Chat backup।\n3. अनजान लोग ग्रुप में न जोड़ें: Settings → Privacy → Groups → My contacts।\n4. अनजान कॉल साइलेंट करें: Settings → Privacy → Calls।\n5. वीडियो कॉल: चैट खोलकर ऊपर वीडियो कैमरा आइकन दबाएं — मदद के लिए स्क्रीन भी शेयर कर सकते हैं।\nजिन संदेशों की सच्चाई पक्की न हो, उन्हें फॉरवर्ड न करें।"},
-    {keys:["youtube","यूट्यूब","restricted","चैनल"], a:"YouTube सुरक्षित रूप से इस्तेमाल करने के लिए:\n1. YouTube खोलें, खोज (आवर्धक लेंस) आइकन पर टैप करें और जो सीखना है वह लिखें।\n2. छोटे बच्चों के लिए YouTube Kids ऐप इस्तेमाल करें।\n3. साधारण YouTube में Settings → General में Restricted Mode चालू करें।\n4. हर वीडियो पर भरोसा न करें — ज़रूरी खबर भरोसेमंद वेबसाइटों पर जांचें।"},
-    {keys:["search","google","खोज","जानकारी","खबर","फेक"], a:"सुरक्षित खोज के लिए:\n1. Google खोलें और आसान शब्दों में सवाल लिखें।\n2. जानी-मानी या सरकारी (.gov.in) वेबसाइट चुनें।\n3. खबर के लिए मानने से पहले 2–3 भरोसेमंद साइटों पर जांचें।\n4. जो पेज सिर्फ़ जवाब दिखाने के लिए पैसे या निजी जानकारी मांगे, उसे बंद कर दें।"},
-    {keys:["sos","इमरजेंसी","बैटरी","स्कैन","रिमाइंडर","याद","अक्षर","फ़ॉन्ट","फॉन्ट","font","बड़े","पढ़कर सुन","कैमरा","चालू","कॉल","कॉन्टैक्ट","स्क्रीन","फ़ोन","फोन","मोबाइल"], a:"स्मार्टफ़ोन की बुनियादी बातें:\n1. इमरजेंसी SOS: Settings → Safety & emergency; मदद के लिए पावर बटन 5 बार दबाएं।\n2. बड़े अक्षर: Settings → Display → Font size। पढ़कर सुनें: Accessibility में Select to Speak।\n3. कागज़ स्कैन करें: Google Drive → + → Scan।\n4. बच्चे को फ़ोन देने से पहले: App pinning चालू करें।\n5. रिमाइंडर: बोलें “Hey Google, मुझे याद दिलाओ…”।\n6. ज़्यादा बैटरी: Battery Saver चालू करें।"}
-  ],
-  mr:[
-    {keys:["1930","तक्रार","फसवणूक झाली","फसवले","पैसे गेले","पैसे कापले","हॅक"], a:"तुमची ऑनलाइन फसवणूक झाली असेल, तर लगेच:\n1. 1930 वर कॉल करा — राष्ट्रीय सायबर गुन्हे हेल्पलाइन.\n2. cybercrime.gov.in वर तक्रार नोंदवा.\n3. बँकेच्या अधिकृत नंबरवर कॉल करून तुमचे कार्ड किंवा UPI ब्लॉक करा.\n4. संदेशांचे स्क्रीनशॉट आणि ट्रान्झॅक्शन ID जपून ठेवा."},
-    {keys:["chatgpt","copilot","gemini"," ai ","एआय","कृत्रिम"], a:"ChatGPT, Copilot किंवा Gemini सारखे AI सहाय्यक वापरताना:\n1. फक्त अधिकृत ॲप किंवा वेबसाइट वापरा.\n2. सोप्या शब्दांत स्पष्ट विचारा — पुन्हा, आणखी सोप्या पद्धतीने समजावून सांगायला सांगू शकता.\n3. AI चुकू शकते: आरोग्य, पैसे आणि कायद्याची उत्तरे डॉक्टर, बँक किंवा अधिकृत वेबसाइटवरून तपासा.\n4. AI चॅटमध्ये कधीही OTP, पासवर्ड, आधार किंवा बँक माहिती लिहू नका."},
-    {keys:["पॅरेंटल","family link","मुले","मुलांना","मुलांसाठी","kids","नातवंड"], a:"मुलांना ऑनलाइन सुरक्षित ठेवण्यासाठी:\n1. Google Family Link वापरा — त्याने स्क्रीन टाइमची मर्यादा ठरवा आणि त्यांची ॲप्स मंजूर करा.\n2. YouTube Kids ॲप वापरा, किंवा YouTube मध्ये Restricted Mode सुरू करा.\n3. अनोळखी लोकांना वैयक्तिक माहिती किंवा फोटो कधीही पाठवू नयेत, हे त्यांना शिकवा."},
-    {keys:["बिल","वीज","लाईट","रिचार्ज","गॅस","पाणी","bill"], a:"बिल ऑनलाइन भरण्यासाठी:\n1. तुमचे UPI ॲप उघडा → “Recharge & bills”.\n2. बिलाचा प्रकार (वीज, मोबाइल, गॅस, पाणी) आणि तुमची कंपनी निवडा.\n3. बिलावरचा ग्राहक क्रमांक टाका आणि नाव व रक्कम तपासा.\n4. UPI PIN ने पैसे द्या आणि पावती (स्क्रीनशॉट किंवा ट्रान्झॅक्शन ID) जपून ठेवा."},
-    {keys:["सरकारी","डिजिलॉकर","digilocker","आधार","प्रमाणपत्र","हयातीचा दाखला","पेन्शन","आयुष्मान","योजना","रेशन","पॅन"], a:"ऑनलाइन सरकारी सेवांसाठी:\n1. फक्त अधिकृत ॲप्स आणि .gov.in ने संपणाऱ्या वेबसाइट वापरा.\n2. आधार, PAN आणि प्रमाणपत्रे DigiLocker (digilocker.gov.in) मध्ये सुरक्षित ठेवा.\n3. पेन्शनधारक चेहरा स्कॅन करून घरबसल्या हयातीचा दाखला जमा करू शकतात (Jeevan Pramaan).\n4. 70+ वयाच्या सर्वांना मोफत उपचारांच्या कवचासाठी आयुष्मान वय वंदना कार्ड मिळू शकते.\n5. मोफत सेवेसाठी कोणत्याही “एजंट”ला पैसे देऊ नका."},
-    {keys:["upi","पैसे","स्कॅन","qr","पेमेंट"], a:"UPI ने सुरक्षित पैसे देण्यासाठी:\n1. तुमचे UPI ॲप उघडा आणि लॉग इन करा.\n2. QR कोड स्कॅन करा किंवा UPI ID टाका.\n3. नाव आणि रक्कम काळजीपूर्वक तपासा.\n4. पैसे देण्यासाठी PIN टाका. PIN कधीही कोणाला सांगू नका. पैसे घेण्यासाठी PIN लागत नाही."},
-    {keys:["otp","पासवर्ड","pin","पिन"], a:"तुमचा OTP, PIN किंवा पासवर्ड कधीही कोणाला सांगू नका — बँकेचा असल्याचे सांगणाऱ्यालाही नाही. खरी बँक हे कधीच मागत नाही. कोणी मागितले तर ती फसवणूक आहे. टीप: 3–4 वेगवेगळे शब्द आणि अंक वापरून मजबूत पासवर्ड तयार करा, आणि प्रत्येक खात्याचा पासवर्ड वेगळा ठेवा."},
-    {keys:["फसवणूक","फ्रॉड","खोटे","बनावट","डिजिटल अरेस्ट","अरेस्ट","kyc","पार्सल","apk","कोड वर्ड","लॉटरी","बक्षीस","जिंक"], a:"फसवणुकीपासून वाचण्यासाठी:\n1. पोलीस कधीही व्हिडिओ कॉलवर “डिजिटल अरेस्ट” करत नाहीत — कॉल कट करा आणि 1930 वर कॉल करा.\n2. बनावट KYC, वीज बिल आणि पार्सलचे संदेश: फक्त अधिकृत ॲपमध्ये तपासा.\n3. कोणी पाठवलेल्या लिंकवरून कधीही ॲप (.apk) इन्स्टॉल करू नका.\n4. बनावट आवाजातील कॉलपासून वाचण्यासाठी कुटुंबाचा कोड वर्ड ठरवा.\n5. पैसे गेले? पहिल्या तासाच्या आत 1930 वर कॉल करा किंवा cybercrime.gov.in वर तक्रार करा."},
-    {keys:["google खाते","गूगल खाते","google account","खाते तयार","अकाउंट"], a:"Google खाते तयार करण्यासाठी:\n1. Settings → Accounts (किंवा Google) → Add account → Google उघडा.\n2. “Create account” वर टॅप करा आणि पायऱ्या पूर्ण करा. अनेक फोनमध्ये खाते आधीच असते — आधी तिथेच पाहा.\n3. मजबूत पासवर्ड ठेवा, तो सुरक्षित ठिकाणी लिहा आणि खाते परत मिळवण्यासाठी तुमचा मोबाइल नंबर जोडा."},
-    {keys:["ईमेल","gmail","मेल"], a:"ईमेल वापरण्यासाठी:\n1. Gmail उघडा आणि साइन इन करा.\n2. नवीन मेलसाठी Compose दाबा.\n3. पत्ता, विषय आणि संदेश लिहा, मग Send दाबा.\n4. अनोळखी लोकांचे अटॅचमेंट उघडू नका."},
-    {keys:["वायफाय","इंटरनेट","डेटा","कनेक्ट"], a:"इंटरनेटला जोडण्यासाठी: Settings → Wi-Fi उघडा, तुमचे नेटवर्क निवडा आणि त्याचा पासवर्ड टाका. मोबाइल डेटासाठी वरच्या मेन्यूमध्ये Data बटण सुरू करा."},
-    {keys:["whatsapp","व्हॉट्सॲप","लोकेशन","बॅकअप","अनोळखी","म्यूट","ग्रुप","संदेश","चॅट","फोटो","व्हिडिओ कॉल"], a:"WhatsApp च्या मूलभूत गोष्टी:\n1. लाइव्ह लोकेशन: चॅटमध्ये 📎 → Location → Share live location.\n2. चॅट कधीही गमावू नका: Settings → Chats → Chat backup.\n3. अनोळखी लोकांनी ग्रुपमध्ये जोडू नये: Settings → Privacy → Groups → My contacts.\n4. अनोळखी कॉल सायलेंट करा: Settings → Privacy → Calls.\n5. व्हिडिओ कॉल: चॅट उघडून वरचा व्हिडिओ कॅमेरा आयकॉन दाबा — मदतीसाठी स्क्रीनही शेअर करू शकता.\nखात्री नसलेले संदेश फॉरवर्ड करू नका."},
-    {keys:["youtube","यूट्यूब","restricted","चॅनेल"], a:"YouTube सुरक्षितपणे वापरण्यासाठी:\n1. YouTube उघडा, शोध (भिंग) आयकॉनवर टॅप करा आणि जे शिकायचे ते लिहा.\n2. लहान मुलांसाठी YouTube Kids ॲप वापरा.\n3. नेहमीच्या YouTube मध्ये Settings → General मध्ये Restricted Mode सुरू करा.\n4. प्रत्येक व्हिडिओवर विश्वास ठेवू नका — महत्त्वाची बातमी विश्वासार्ह वेबसाइटवर तपासा."},
-    {keys:["search","google","शोध","माहिती","बातमी","फेक"], a:"सुरक्षित शोधण्यासाठी:\n1. Google उघडा आणि सोप्या शब्दांत प्रश्न लिहा.\n2. ओळखीच्या किंवा सरकारी (.gov.in) वेबसाइट निवडा.\n3. बातमीसाठी विश्वास ठेवण्याआधी 2–3 विश्वासार्ह साइटवर तपासा.\n4. फक्त उत्तर दाखवण्यासाठी पैसे किंवा वैयक्तिक माहिती मागणारे पेज बंद करा."},
-    {keys:["sos","आपत्कालीन","बॅटरी","स्कॅन","रिमाइंडर","आठवण","अक्षर","फॉन्ट","font","मोठी","वाचून","कॅमेरा","सुरू","कॉल","संपर्क","कॉन्टॅक्ट","स्क्रीन","फोन","मोबाइल"], a:"स्मार्टफोनच्या मूलभूत गोष्टी:\n1. आपत्कालीन SOS: Settings → Safety & emergency; मदतीसाठी पॉवर बटण 5 वेळा दाबा.\n2. मोठी अक्षरे: Settings → Display → Font size. वाचून ऐका: Accessibility मध्ये Select to Speak.\n3. कागद स्कॅन करा: Google Drive → + → Scan.\n4. मुलाला फोन देण्याआधी: App pinning सुरू करा.\n5. रिमाइंडर: बोला “Hey Google, मला आठवण कर…”.\n6. जास्त बॅटरी: Battery Saver सुरू करा."}
-  ]
-};
 
 // ✏️ CONTACT DETAILS — fill these in before sharing the website.
 // While a value is empty, the page shows "Coming soon" instead of a made-up number.
@@ -3571,14 +3467,11 @@ function applyLanguage(){
   stopSpeaking();
   renderLessons();
   renderPostForm();
-  renderExamples();
   renderCounts();
   renderContact();
   renderPreForm();
   applyTheme();                         // the colour button's label is translated too
-  $("#askAnswer").hidden = true;       // an old answer would be in the old language
   if(typeof fitScreens === "function" && textSize) requestAnimationFrame(fitScreens);
-  $("#askHint").hidden = true;
 }
 
 // ---- Text size (for anyone who finds the screen hard to read) ----
@@ -3650,7 +3543,7 @@ function fitScreens(){
   document.documentElement.classList.toggle("fit-on", on);
   $$(".fit-screen").forEach(el => { if(on) fitOne(el); else { el.style.zoom = ""; el.style.removeProperty("--z"); } });
 }
-// Re-fit one screen after its content changes (quiz question, Ask answer)
+// Re-fit one screen after its content changes (e.g. a quiz question)
 function refit(el){ if(document.documentElement.classList.contains("fit-on")){ const sc = el.closest(".fit-screen"); if(sc) fitOne(sc); } }
 
 // ---- Moving around the page ----
@@ -3874,31 +3767,6 @@ function renderPostForm(){
   $("#postFormSoon").hidden = !!link;
 }
 
-// ---- Ask Saathi ----
-function renderExamples(){
-  $("#askExamples").innerHTML = ["ask_ex1", "ask_ex2", "ask_ex3", "ask_ex4"].map(key =>
-    `<li><button type="button" class="chip" data-ask="${esc(t(key))}">${icon("i-chat")}${esc(t(key))}</button></li>`).join("");
-}
-// Find a built-in answer by looking for keywords in the question
-// Punctuation becomes spaces, so a short key like " ai " matches the word "AI" but not "email"
-const tidy = text => text.toLowerCase().replace(/[^\p{L}\p{M}\p{N}]+/gu, " ");
-function offlineAnswer(question){
-  const q = " " + tidy(question) + " ";
-  for(const item of ANSWERS[lang]){
-    if(item.keys.some(k => q.includes(tidy(k)))) return item.a;
-  }
-  return t("no_answer");
-}
-function handleAsk(){
-  const question = $("#askInput").value.trim();
-  if(!question){ $("#askHint").hidden = false; $("#askInput").focus(); return; }
-  $("#askHint").hidden = true;
-  stopSpeaking();
-  $("#askAnswerText").textContent = offlineAnswer(question);
-  $("#askAnswer").hidden = false;
-  refit($("#askAnswer"));
-}
-
 // ---- Pre- and Post-Assessment: each is one big button that opens the team's Google Form in a new tab ----
 // Only real Google Forms links are used (https, docs.google.com/forms or forms.gle).
 // A form's "edit" link is turned into the link for answering, so learners never land on the editor.
@@ -3968,14 +3836,13 @@ function printSafetyCard(){
    ========================================================================= */
 // One click listener for the whole page; each kind of button says what it does with a data- attribute
 document.addEventListener("click", event => {
-  const el = event.target.closest("[data-set-lang], [data-set-size], [data-set-theme], [data-open-lesson], [data-open-prereq], [data-ask], [data-close-dialog], a[href^='#']");
+  const el = event.target.closest("[data-set-lang], [data-set-size], [data-set-theme], [data-open-lesson], [data-open-prereq], [data-close-dialog], a[href^='#']");
   if(!el) return;
   if(el.dataset.setLang){ setLanguage(el.dataset.setLang); return; }
   if(el.dataset.setSize){ setTextSize(el.dataset.setSize); announce(t("size_" + textSize)); return; }
   if(el.dataset.setTheme){ setTheme(el.dataset.setTheme); announce(t("theme_on_" + theme)); return; }
   if(el.dataset.openLesson){ openLesson(el.dataset.openLesson); return; }
   if(el.hasAttribute("data-open-prereq")){ event.preventDefault(); openPrereq(); return; }
-  if(el.dataset.ask !== undefined){ $("#askInput").value = el.dataset.ask; handleAsk(); return; }
   if(el.hasAttribute("data-close-dialog")){ closeDialog(el.closest("dialog")); return; }
   const target = document.getElementById(el.getAttribute("href").slice(1));
   if(target){ event.preventDefault(); goTo(target); }
@@ -4013,15 +3880,6 @@ $("#stepTabs").addEventListener("keydown", e => {
 });
 
 
-// Ask Saathi: the Ask button, or Enter in the box (Shift+Enter makes a new line)
-$("#askForm").addEventListener("submit", e => { e.preventDefault(); handleAsk(); });
-$("#askInput").addEventListener("keydown", e => {
-  if(e.key === "Enter" && !e.shiftKey && !e.isComposing){ e.preventDefault(); handleAsk(); }
-});
-$("#askListen").addEventListener("click", e => {
-  const text = $("#askAnswerText").textContent.trim();
-  if(!$("#askAnswer").hidden && text) toggleListen(e.currentTarget, text.split("\n"));
-});
 
 // Safety card
 $("#printCard").addEventListener("click", printSafetyCard);

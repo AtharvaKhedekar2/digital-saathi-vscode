@@ -22,8 +22,7 @@ The **Learn** section is the interactive part:
    4. Stay safe online · 5. Digital payments & government services · 6. AI tools & family digital safety.
    Each step's points come word for word from the approved "Steps Digital Saathi" document (6, 6, 6, 8, 8 and 6 points).
 2. **Quizzes page** — a **Pre-Assessment** (before learning, no pass or fail: one big **Start Pre-Assessment Quiz** button opens the team's Google Form in a new tab) and a **Post-Assessment** that works the same way: one big **Start Post-Assessment Quiz** button opens the team's Post-Assessment Google Form (20 everyday questions grouped by the six learning steps, 4 answer choices each, 8 of them re-testing Pre-Assessment concepts so learning can be compared; 70 % = 14 of 20 qualifies for the certificate). The form links are in `PRE_FORM` and `POST_FORM` in `index.html`; the "14 of 20" shown on the page is counted from `POST_QUIZ`, the same questions as the form. Both quizzes' answers go to the team through Google Forms. The Digital Saathi team checks results and sends certificates later.
-3. **Ask Saathi** — type a question and get a simple built-in answer (no internet needed).
-4. **Pocket safety card** — five golden rules that can be printed.
+3. **Pocket safety card** — five golden rules that can be printed.
 
 Every word is in **three languages** — English, हिंदी, मराठी — and a **text size** button (A / A+ / A++) makes everything bigger for anyone who finds the screen hard to read.
 
@@ -33,7 +32,7 @@ Every word is in **three languages** — English, हिंदी, मराठ�
 
 ## How to run it
 1. Double-click **`index.html`** — it opens in any browser. That's it (no install, no server).
-2. Everything works **offline**, including the Ask Saathi box (built-in answers). Only the two quizzes need internet, because they are Google Forms.
+2. Everything works **offline**. Only the two quizzes and the Google Classroom links need internet.
 3. With internet, the page downloads nicer fonts from Google Fonts. Without internet it uses the computer's own fonts and works exactly the same.
 
 ## Before you share the site
