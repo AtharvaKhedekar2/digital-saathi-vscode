@@ -526,6 +526,27 @@ html:lang(hi) .ld-title,html:lang(mr) .ld-title{font-size:clamp(28px,3.2vw,42px)
 .ld-steps li{display:grid;grid-template-columns:2.7rem 1fr;align-items:start;gap:16px;padding:16px 0;border-top:1px solid var(--line);font-size:1.12rem;line-height:1.6;counter-increment:st}
 .ld-steps b{display:block;margin-bottom:4px;font-size:1.05em;line-height:1.35}
 .ld-steps p{margin:0;color:var(--ink-2)}
+.pr-lead{margin:-6px 0 18px;font-size:1.12rem;line-height:1.6;color:var(--ink-2)}
+.ld-steps .pr-steps{margin:10px 0 0;padding:0;list-style:none;counter-reset:ps}
+.ld-steps .pr-steps li{display:grid;grid-template-columns:1.9rem 1fr;gap:12px;align-items:start;padding:6px 0;border-top:0;font-size:1.02rem;line-height:1.55;counter-increment:ps}
+.ld-steps .pr-steps li::before{content:counter(ps);display:grid;place-items:center;width:1.7rem;height:1.7rem;border-radius:50%;background:var(--green);color:var(--paper);font-family:var(--f-mono);font-size:.8rem;font-weight:500;line-height:1}
+.ld-steps .pr-tip{display:flex;gap:10px;margin-top:12px;padding:10px 14px;border-radius:12px;background:var(--sun-soft);color:var(--ink);font-size:.98rem;line-height:1.5}
+.ld-steps .pr-tip b{display:inline;margin:0;font-size:inherit}
+.pr-extra{margin-top:8px}
+.pr-extra h3{margin:26px 0 12px;font-family:var(--f-display);font-size:1.5rem;font-weight:600;line-height:1.2}
+html:lang(hi) .pr-extra h3,html:lang(mr) .pr-extra h3{font-weight:400;font-size:1.3rem}
+.pr-words{margin:0;padding:0;border:1px solid var(--line-2);border-radius:14px;overflow:hidden}
+.pr-words div{display:grid;grid-template-columns:minmax(7.5rem,10rem) 1fr;gap:6px 16px;padding:11px 16px;border-top:1px solid var(--line);font-size:1rem;line-height:1.5}
+.pr-words div:first-child{border-top:0}
+.pr-words dt{font-weight:700;color:var(--green)}
+.pr-words dd{margin:0;color:var(--ink-2)}
+.pr-join-note{margin:0 0 12px;color:var(--ink-2);font-size:1rem;line-height:1.55}
+.pr-join{margin:0 0 14px;padding:0;list-style:none;border:1px solid var(--line-2);border-radius:14px;overflow:hidden}
+.pr-join li{display:flex;align-items:center;gap:12px;padding:10px 14px;border-top:1px solid var(--line);font-size:1rem;line-height:1.4}
+.pr-join li:first-child{border-top:0}
+.pr-join .pj-n{flex:none;min-width:1.9rem;font-family:var(--f-mono);font-size:.78rem;color:var(--ink-2)}
+.pr-join .pj-t{flex:1;min-width:0}
+@media (max-width:520px){.pr-words div{grid-template-columns:1fr}.pr-join li{flex-wrap:wrap}}
 .ld-emoji{display:grid;place-items:center;width:2.7rem;height:2.7rem;border-radius:50%;background:var(--green-soft);font-size:1.35rem;line-height:1}
 .ld-foot{display:flex;flex-wrap:wrap;align-items:center;gap:12px;padding:16px 28px 20px;border-top:1px solid var(--line-2);background:var(--paper-2)}
 .ld-foot .spacer{flex:1}
@@ -776,7 +797,7 @@ html:lang(hi) .ab-punch,html:lang(mr) .ab-punch{font-size:clamp(26px,2.1vw,33px)
 
 /* Outcomes: a flowchart of the five-stage journey, six short "what you gain" labels and one slim strip.
    Stages sit in a row with gold arrows on wide screens and stack in a column (arrows pointing down) on narrow ones. */
-.flow{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));column-gap:34px;margin:0;padding:0;list-style:none}
+.flow{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));column-gap:30px;margin:0;padding:0;list-style:none}
 .flow>li{position:relative;display:flex}
 .flow-step{position:relative;flex:1;display:flex;flex-direction:column;align-items:center;gap:8px;padding:20px 14px 20px;border:1px solid rgba(242,193,78,.35);border-radius:18px;background:rgba(243,239,228,.07);color:var(--cream);text-align:center;text-decoration:none;transition:transform .35s var(--ease),background-color .35s,border-color .35s}
 .flow-step:hover{transform:translateY(-4px);border-color:var(--sun);background:rgba(243,239,228,.12)}
@@ -806,6 +827,7 @@ html:lang(hi) .flow-t,html:lang(mr) .flow-t{font-size:1.2rem;font-weight:400;lin
 .flow>.reveal:nth-child(3){--d:.16s}
 .flow>.reveal:nth-child(4){--d:.24s}
 .flow>.reveal:nth-child(5){--d:.32s}
+.flow>.reveal:nth-child(6){--d:.4s}
 .oc-gain{display:flex;flex-wrap:wrap;align-items:center;gap:12px 16px;margin-top:clamp(24px,4vw,40px)}
 .oc-gain-t{margin:0;color:var(--sun);font-size:.8rem;font-weight:500}
 .oc-chips{display:flex;flex-wrap:wrap;gap:10px;margin:0;padding:0;list-style:none}
@@ -1002,6 +1024,8 @@ html.fit-on .sp-actions{margin-top:clamp(8px,1.8vh,18px);padding-top:clamp(8px,1
 .how-go{grid-column:2;justify-self:start;display:inline-flex;align-items:center;gap:8px;margin-top:8px;padding:5px 0 5px;border-bottom:1px solid currentColor;color:var(--green);font-family:var(--f-mono);font-size:.72rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;transition:color .2s}
 html:lang(hi) .how-go,html:lang(mr) .how-go{font-family:var(--f-body);font-size:.95rem;font-weight:600;letter-spacing:0;text-transform:none}
 .how-go:hover{color:var(--ink)}
+.how-tag{display:inline-block;margin-left:12px;padding:2px 10px;border-radius:99px;background:var(--sun-soft);color:var(--ink);font-family:var(--f-mono);font-size:.6rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;vertical-align:middle;line-height:1.7;white-space:nowrap}
+html:lang(hi) .how-tag,html:lang(mr) .how-tag{font-family:var(--f-body);font-size:.78rem;font-weight:600;letter-spacing:0;text-transform:none}
 .how-go .ic{transition:transform .3s var(--ease)}
 .how-go:hover .ic{transform:translateX(4px)}
 html.fit-on .how-go{margin-top:clamp(2px,.6vh,8px);padding:2px 0 3px}
@@ -1599,6 +1623,7 @@ html.hero-off .lamp,html.visit-off .vb-dot{animation-play-state:paused}
         </figure>
       </div>
       <ol class="how-list">
+        <li class="how-step how-prereq reveal"><span class="how-num" aria-hidden="true">00</span><h3><span data-ui="pr_t">Get Saathi-ready</span><span class="how-tag" data-ui="pr_tag">Before you begin</span></h3><p data-ui="pr_s"></p><a class="how-go" href="#get-ready" data-open-prereq><span data-ui="pr_go">Get set up</span><svg class="ic ic-r" aria-hidden="true"><use href="#i-arrow-r"></use></svg></a><span class="how-emo emo" aria-hidden="true">🔑</span></li>
         <li class="how-step reveal"><span class="how-num" aria-hidden="true">01</span><h3 data-ui="st1_t">Check where you stand</h3><p data-ui="st1_s"></p><a class="how-go" href="#pre-quiz"><span data-ui="sa1">Start the quiz</span><svg class="ic ic-r" aria-hidden="true"><use href="#i-arrow-r"></use></svg></a><span class="how-emo emo" aria-hidden="true">🧭</span></li>
         <li class="how-step reveal"><span class="how-num" aria-hidden="true">02</span><h3 data-ui="st2_t">Learn step by step</h3><p data-ui="st2_s"></p><a class="how-go" href="#lessons"><span data-ui="sa2">Open the lessons</span><svg class="ic ic-r" aria-hidden="true"><use href="#i-arrow-r"></use></svg></a><span class="how-emo emo" aria-hidden="true">📚</span></li>
         <li class="how-step reveal"><span class="how-num" aria-hidden="true">03</span><h3 data-ui="st3_t">Practise on your own phone</h3><p data-ui="st3_s"></p><a class="how-go" href="#workshop"><span data-ui="sa3">Find a free workshop</span><svg class="ic ic-r" aria-hidden="true"><use href="#i-arrow-r"></use></svg></a><span class="how-emo emo" aria-hidden="true">🙌</span></li>
@@ -1732,7 +1757,8 @@ html.hero-off .lamp,html.visit-off .vb-dot{animation-play-state:paused}
       </header>
       <!-- Flowchart of the learning journey: five stages joined by arrows (a row on computers, a column on phones).
            Each stage is a link to that part of the site. -->
-      <ol class="flow" aria-label="Your learning journey in 5 stages" data-ui-aria="fl_label">
+      <ol class="flow" aria-label="Your learning journey: get ready, then 5 stages" data-ui-aria="fl_label">
+        <li class="reveal"><a class="flow-step" href="#get-ready" data-open-prereq><span class="flow-num mono" aria-hidden="true">00</span><span class="flow-emo" aria-hidden="true">🔑</span><span class="flow-text"><b class="flow-t" data-ui="f0_t">Get Saathi-ready</b><span class="flow-s" data-ui="f0_s">Set up Gmail and Classroom.</span></span></a><span class="flow-arrow" aria-hidden="true"><svg class="ic"><use href="#i-arrow-r"></use></svg></span></li>
         <li class="reveal"><a class="flow-step" href="#pre-quiz"><span class="flow-num mono" aria-hidden="true">01</span><span class="flow-emo" aria-hidden="true">🧭</span><span class="flow-text"><b class="flow-t" data-ui="f1_t">Pre-Assessment</b><span class="flow-s" data-ui="f1_s">Check what you already know.</span></span></a><span class="flow-arrow" aria-hidden="true"><svg class="ic"><use href="#i-arrow-r"></use></svg></span></li>
         <li class="reveal"><a class="flow-step" href="#lessons"><span class="flow-num mono" aria-hidden="true">02</span><span class="flow-emo" aria-hidden="true">📚</span><span class="flow-text"><b class="flow-t" data-ui="f2_t">Six Learning Modules</b><span class="flow-s" data-ui="f2_s">Learn step by step, at your pace.</span></span></a><span class="flow-arrow" aria-hidden="true"><svg class="ic"><use href="#i-arrow-r"></use></svg></span></li>
         <li class="reveal"><a class="flow-step" href="#workshop"><span class="flow-num mono" aria-hidden="true">03</span><span class="flow-emo" aria-hidden="true">🙌</span><span class="flow-text"><b class="flow-t" data-ui="f3_t">Practical Activities</b><span class="flow-s" data-ui="f3_s">Practise on your own phone.</span></span></a><span class="flow-arrow" aria-hidden="true"><svg class="ic"><use href="#i-arrow-r"></use></svg></span></li>
@@ -1985,13 +2011,16 @@ html.hero-off .lamp,html.visit-off .vb-dot{animation-play-state:paused}
   </div>
   <div class="ld-body">
     <h2 class="ld-title display" id="ldTitle"></h2>
+    <p class="pr-lead" id="ldLead" hidden></p>
     <ul class="ld-steps" id="ldSteps"></ul>
+    <div class="pr-extra" id="ldExtra" hidden></div>
   </div>
   <div class="ld-foot">
     <button type="button" class="btn btn-sun btn-listen" id="ldListen"><svg class="ic" aria-hidden="true"><use href="#i-volume"></use></svg><span data-ui="listen">Listen</span></button>
     <span class="spacer"></span>
     <button type="button" class="btn btn-outline btn-sm" id="ldPrev"><svg class="ic" aria-hidden="true"><use href="#i-arrow-l"></use></svg><span data-ui="prev">Previous</span></button>
     <button type="button" class="btn btn-dark btn-sm" id="ldNext"><span data-ui="next_lesson">Next lesson</span><svg class="ic ic-r" aria-hidden="true"><use href="#i-arrow-r"></use></svg></button>
+    <a class="btn btn-outline btn-sm" id="ldClass" target="_blank" rel="noopener" hidden><svg class="ic" aria-hidden="true"><use href="#i-arrow-ur"></use></svg><span data-ui="class_btn">Open class in Google Classroom</span></a>
     <a class="link-u" href="#quizzes" data-ui="to_quiz">Check your skills</a>
   </div>
 </dialog>
@@ -2049,11 +2078,13 @@ const UI = {
     vision_t:"Independence", vision_s:"Do it yourself.",
     purpose_t:"Curiosity", purpose_s:"Keep learning.",
     who_1:"Senior citizens", who_2:"Housewives", who_3:"Children",
-    guide_btn:"See how to do each one", contact_us:"Contact us",
+    guide_btn:"See how to do each one", class_btn:"Open class in Google Classroom", contact_us:"Contact us",
     // how it works
     how_label:"Your Saathi Journey",
     how_title:"Five simple steps to <em>digital confidence.</em>",
     how_intro:"No exams, no pressure — just practical digital skills that make everyday life easier.",
+    pr_t:"Get Saathi-ready", pr_tag:"Before you begin", pr_go:"Unlock your journey",
+    pr_s:"Set up Gmail and learn to sign in safely, join your Google Classroom, and open forms and assignments. Do it once, before Step 01.",
     st1_t:"Check where you stand", st1_s:"Take a short, friendly quiz so we know what you already know and where you should begin.",
     st2_t:"Learn step by step", st2_s:"Go through the six modules in order, one small skill at a time, in your own language.",
     st3_t:"Practise on your own phone", st3_s:"Try every skill hands-on with a Saathi beside you: make a real video call, scan a document, or send ₹1 to a family member.",
@@ -2146,7 +2177,7 @@ const UI = {
     impact_label:"Saathi Wins",
     impact_title:"Small wins, big <em>confidence.</em>",
     impact_intro:"Five clear stages — from your first quiz to your certificate.",
-    fl_label:"Your learning journey in 5 stages", gain_t:"What you gain",
+    fl_label:"Your learning journey: get ready, then 5 stages", f0_t:"Get Saathi-ready", f0_s:"Set up Gmail and Classroom.", gain_t:"What you gain",
     f1_t:"Pre-Assessment", f1_s:"Check what you already know.",
     f2_t:"Six Learning Modules", f2_s:"Learn step by step, at your pace.",
     f3_t:"Practical Activities", f3_s:"Practise on your own phone.",
@@ -2222,10 +2253,12 @@ const UI = {
     vision_t:"आत्मनिर्भरता", vision_s:"सब कुछ खुद करें।",
     purpose_t:"जिज्ञासा", purpose_s:"सीखते रहें।",
     who_1:"वरिष्ठ नागरिक", who_2:"गृहिणियां", who_3:"बच्चे",
-    guide_btn:"हर एक कैसे करें, देखें", contact_us:"संपर्क करें",
+    guide_btn:"हर एक कैसे करें, देखें", class_btn:"Google Classroom में कक्षा खोलें", contact_us:"संपर्क करें",
     how_label:"आपकी साथी यात्रा",
     how_title:"डिजिटल आत्मविश्वास के <em>पांच आसान चरण।</em>",
     how_intro:"न परीक्षा, न दबाव — बस ऐसे व्यावहारिक डिजिटल कौशल जो रोज़ की ज़िंदगी आसान बनाते हैं।",
+    pr_t:"साथी के लिए तैयार हों", pr_tag:"शुरू करने से पहले", pr_go:"अपना सफ़र शुरू करें",
+    pr_s:"Gmail खाता बनाएं, सुरक्षित साइन-इन करना, अपनी Google Classroom में जुड़ना, और फ़ॉर्म व असाइनमेंट खोलना सीखें। यह एक बार करें, चरण 01 से पहले।",
     st1_t:"जानें आप कहां हैं", st1_s:"एक छोटा, आसान क्विज़ दें, ताकि पता चले कि आपको पहले से क्या आता है और कहां से शुरू करना है।",
     st2_t:"कदम-दर-कदम सीखें", st2_s:"छह मॉड्यूल क्रम से पूरे करें — एक बार में एक छोटा कौशल, अपनी भाषा में।",
     st3_t:"अपने फ़ोन पर अभ्यास करें", st3_s:"हर कौशल को साथी के साथ खुद करके देखें: असली वीडियो कॉल करें, कागज़ स्कैन करें या परिवार के किसी सदस्य को ₹1 भेजें।",
@@ -2313,7 +2346,7 @@ const UI = {
     impact_label:"साथी की जीत",
     impact_title:"छोटी जीत, बड़ा <em>आत्मविश्वास।</em>",
     impact_intro:"पाँच आसान चरण — पहले क्विज़ से प्रमाणपत्र तक।",
-    fl_label:"आपकी सीखने की यात्रा, 5 चरणों में", gain_t:"आपको क्या मिलेगा",
+    fl_label:"आपकी सीखने की यात्रा: तैयारी, फिर 5 चरण", f0_t:"साथी के लिए तैयार हों", f0_s:"Gmail और Classroom तैयार करें।", gain_t:"आपको क्या मिलेगा",
     f1_t:"शुरुआती क्विज़", f1_s:"जानें आपको पहले से क्या आता है।",
     f2_t:"सीखने के छह मॉड्यूल", f2_s:"अपनी रफ़्तार से, कदम-दर-कदम सीखें।",
     f3_t:"अभ्यास गतिविधियाँ", f3_s:"अपने फ़ोन पर खुद अभ्यास करें।",
@@ -2387,10 +2420,12 @@ const UI = {
     vision_t:"स्वावलंबन", vision_s:"सगळे स्वतः करा.",
     purpose_t:"कुतूहल", purpose_s:"शिकत राहा.",
     who_1:"ज्येष्ठ नागरिक", who_2:"गृहिणी", who_3:"मुले",
-    guide_btn:"प्रत्येक कसे करायचे ते पाहा", contact_us:"संपर्क करा",
+    guide_btn:"प्रत्येक कसे करायचे ते पाहा", class_btn:"Google Classroom मध्ये वर्ग उघडा", contact_us:"संपर्क करा",
     how_label:"तुमचा साथी प्रवास",
     how_title:"डिजिटल आत्मविश्वासाचे <em>पाच सोपे टप्पे.</em>",
     how_intro:"ना परीक्षा, ना दडपण — फक्त रोजचे जीवन सोपे करणारी व्यावहारिक डिजिटल कौशल्ये.",
+    pr_t:"साथीसाठी तयार व्हा", pr_tag:"सुरू करण्यापूर्वी", pr_go:"तुमचा प्रवास सुरू करा",
+    pr_s:"Gmail खाते तयार करा, सुरक्षित साइन-इन करणे, तुमच्या Google Classroom मध्ये सामील होणे, आणि फॉर्म व असाइनमेंट उघडणे शिका. हे एकदाच करा, टप्पा 01 च्या आधी.",
     st1_t:"तुम्ही कुठे आहात ते जाणून घ्या", st1_s:"एक छोटी, सोपी क्विझ द्या, म्हणजे तुम्हाला आधीच काय येते आणि कुठून सुरुवात करायची ते कळेल.",
     st2_t:"टप्प्याटप्प्याने शिका", st2_s:"सहा मॉड्यूल क्रमाने पूर्ण करा — एका वेळी एक छोटे कौशल्य, तुमच्या भाषेत.",
     st3_t:"तुमच्या फोनवर सराव करा", st3_s:"प्रत्येक कौशल्य साथीसोबत स्वतः करून पाहा: खरा व्हिडिओ कॉल करा, कागद स्कॅन करा किंवा घरातील व्यक्तीला ₹1 पाठवा.",
@@ -2478,7 +2513,7 @@ const UI = {
     impact_label:"साथीचे यश",
     impact_title:"छोटे यश, मोठा <em>आत्मविश्वास.</em>",
     impact_intro:"पाच सोपे टप्पे — पहिल्या क्विझपासून प्रमाणपत्रापर्यंत.",
-    fl_label:"तुमचा शिकण्याचा प्रवास, 5 टप्प्यांत", gain_t:"तुम्हाला काय मिळेल",
+    fl_label:"तुमचा शिकण्याचा प्रवास: तयारी, मग 5 टप्पे", f0_t:"साथीसाठी तयार व्हा", f0_s:"Gmail आणि Classroom तयार करा.", gain_t:"तुम्हाला काय मिळेल",
     f1_t:"सुरुवातीची क्विझ", f1_s:"तुम्हाला आधीच काय येते ते जाणून घ्या.",
     f2_t:"शिकण्याचे सहा मॉड्यूल", f2_s:"तुमच्या वेगाने, टप्प्याटप्प्याने शिका.",
     f3_t:"प्रात्यक्षिक सराव", f3_s:"तुमच्या फोनवर स्वतः सराव करा.",
@@ -3032,6 +3067,36 @@ const CONTACT = {
   email: "khedekaratharvawork2008@gmail.com"   // the team's email address
 };
 
+// ✏️ GOOGLE CLASSROOM CLASSES — one class per learning step, per language (see google-classroom/classrooms.json).
+// The "Open class in Google Classroom" buttons use these. A language with no link yet shows no button
+// (learners are not sent to a class in a different language). All three languages now have their six classes.
+const CLASSROOM = {
+  en: {
+    phone:  "https://classroom.google.com/c/ODkxMDQ5MTIxNzYy",
+    google: "https://classroom.google.com/c/ODkxMDQ4Nzc2ODk2",
+    family: "https://classroom.google.com/c/ODkxMDQ5MDYxMjcy",
+    safety: "https://classroom.google.com/c/ODkxMDQ5MTI4MzEw",
+    money:  "https://classroom.google.com/c/ODkxMDQ4OTk5Nzgw",
+    ai:     "https://classroom.google.com/c/ODkxMDQ5MDk4OTc4"
+  },
+  hi: {
+    phone:  "https://classroom.google.com/c/ODkxMDYzMTMwNjU5",
+    google: "https://classroom.google.com/c/ODkxMDYyNTczMzAz",
+    family: "https://classroom.google.com/c/ODkxMDYyNDAzODE4",
+    safety: "https://classroom.google.com/c/ODkxMDYxNjA2MzMz",
+    money:  "https://classroom.google.com/c/ODkxMDYzMDY5OTM0",
+    ai:     "https://classroom.google.com/c/ODkxMDYyNjczOTYy"
+  },
+  mr: {
+    phone:  "https://classroom.google.com/c/ODkxMDYyNzg3OTIy",
+    google: "https://classroom.google.com/c/ODkxMDYyNzY3NDU2",
+    family: "https://classroom.google.com/c/ODkxMDYyMjg4MTk1",
+    safety: "https://classroom.google.com/c/ODkxMDYyOTcyMzQw",
+    money:  "https://classroom.google.com/c/ODkxMDYyMDY3NzMy",
+    ai:     "https://classroom.google.com/c/ODkxMDYzMTYxNzYw"
+  }
+};
+
 // ✏️ PRE-ASSESSMENT GOOGLE FORM — paste each form's "Share link" here (see google-form/GOOGLE-FORM-GUIDE.md).
 // It looks like https://docs.google.com/forms/d/e/XXXX/viewform. A language left empty uses the English form.
 // The "Start Pre-Assessment Quiz" button opens it in a new tab. While all three are empty, the button says "Coming soon".
@@ -3054,6 +3119,349 @@ const POST_FORM = {
    ========================================================================= */
 const LANG_NAMES = { en:"English", hi:"हिंदी", mr:"मराठी" };
 const LANG_SHORT = { en:"EN", hi:"हिं", mr:"मरा" };
+// ✏️ "GET SAATHI-READY" — the guide behind the Step 00 card: six points with tap-by-tap steps, the words used in Classroom,
+// and a list of the learner's classes. Each point is [emoji, title, one-line intro, [steps], tip].
+const PREREQ = {
+  "en": {
+    "title": "Get Saathi-ready",
+    "intro": "Do these six things once, before Step 01. Go slowly, and ask a family member to sit with you if you like.",
+    "tipLabel": "Tip",
+    "points": [
+      [
+        "📧",
+        "Create your Gmail account",
+        "You need one Gmail account for Classroom and Google Forms. If you already have one, skip to the next point.",
+        [
+          "Open the Gmail app, or go to gmail.com on your phone or computer.",
+          "Tap Create account and choose For myself.",
+          "Type your first and last name, then choose a username. This becomes your address, like name@gmail.com.",
+          "Type a strong password: at least 8 characters, with letters and numbers. Type it again to confirm.",
+          "Add your phone number when asked, so you can get back in if you forget the password. Google may send you a code to check it.",
+          "Read the terms and tap I agree."
+        ],
+        "Write your password on paper and keep it at home. Never share it, or an OTP, with anyone, not even a Saathi."
+      ],
+      [
+        "🔐",
+        "Sign in and sign out safely",
+        "Sign in only on Google's own pages.",
+        [
+          "Go to gmail.com or open the Gmail app.",
+          "Type your Gmail address and tap Next. Then type your password and tap Next.",
+          "If Google sends a code to your phone, type it on the screen only. Never read it out to anyone on a call.",
+          "On a shared or public computer, when you finish, tap your round picture at the top right and then tap Sign out."
+        ],
+        "On your own phone you can stay signed in. On someone else's computer, always sign out and never save the password. Google never asks for your password or OTP by call or message."
+      ],
+      [
+        "✉️",
+        "Know the Gmail basics",
+        "Gmail is your post box.",
+        [
+          "Inbox: the emails sent to you. Tap one to read it.",
+          "Compose: tap it to write a new email. Type the address, a subject and your message, then tap Send.",
+          "Sent: the emails you have sent.",
+          "Spam: suspicious emails go here. Do not open them."
+        ],
+        "Do not tap links or open attachments from people you do not know."
+      ],
+      [
+        "🏫",
+        "Join a Google Classroom",
+        "A class code is a short code of letters and numbers. Your Saathi gives it to you.",
+        [
+          "Open classroom.google.com or the Classroom app, and sign in with your Gmail account.",
+          "Tap the + sign at the top, then tap Join class.",
+          "Type the class code and tap Join.",
+          "Your class now appears on your home screen. Tap it to open.",
+          "If you have an invite link instead, just tap the link and then tap Join."
+        ],
+        "Join the class in your own language."
+      ],
+      [
+        "📝",
+        "Open and fill a Google Form",
+        "Digital Saathi uses forms for the Pre-Assessment and Post-Assessment quizzes.",
+        [
+          "Tap the form's link. It opens in your browser.",
+          "Read each question slowly. Tap an answer, or type your own.",
+          "Scroll to the bottom and tap Submit.",
+          "You will see a message that your answer has been recorded."
+        ],
+        "Some forms ask you to sign in with Gmail first. Never type an OTP, PIN or password into a form."
+      ],
+      [
+        "✅",
+        "See and submit assignments in Classroom",
+        "Your class has lessons to read and short tasks to do.",
+        [
+          "Open your class and tap Classwork at the top.",
+          "Tap a topic or a task to open it. A Material is only for reading.",
+          "For a task (an Assignment), read it and do what it says.",
+          "Tap Mark as done. If you see Turn in instead, tap that.",
+          "Your Saathi can now see that you finished."
+        ],
+        "Stream shows announcements, and People shows your teacher and the other learners."
+      ]
+    ],
+    "wordsTitle": "Words you will see in Classroom",
+    "words": [
+      [
+        "Stream",
+        "Where your class announcements and updates appear."
+      ],
+      [
+        "Classwork",
+        "The lessons to read and the tasks to do."
+      ],
+      [
+        "People",
+        "Your teacher and the other learners in the class."
+      ],
+      [
+        "Class code",
+        "The short code that lets you join a class."
+      ],
+      [
+        "Mark as done",
+        "The button you tap to show a task is finished. Some tasks say Turn in instead."
+      ],
+      [
+        "Material",
+        "Something to read or look at. There is nothing to submit."
+      ]
+    ],
+    "joinTitle": "Your Digital Saathi classes",
+    "joinNote": "Joining for the first time? Ask your Saathi for the class code, then follow point 4. Already joined? Tap Open to go straight to your class.",
+    "joinBtn": "Open"
+  },
+  "hi": {
+    "title": "साथी के लिए तैयार हों",
+    "intro": "ये छह काम एक बार करें, चरण 01 से पहले। धीरे-धीरे करें, और चाहें तो परिवार के किसी सदस्य को अपने साथ बैठा लें।",
+    "tipLabel": "सुझाव",
+    "points": [
+      [
+        "📧",
+        "अपना Gmail खाता बनाएं",
+        "Classroom और Google Forms के लिए आपको एक Gmail खाता चाहिए। अगर आपके पास पहले से है, तो अगले बिंदु पर जाएं।",
+        [
+          "Gmail ऐप खोलें, या फ़ोन या कंप्यूटर पर gmail.com पर जाएं।",
+          "Create account दबाएं और For myself चुनें।",
+          "अपना पहला और आख़िरी नाम लिखें, फिर एक यूज़रनेम चुनें। यही आपका पता बनेगा, जैसे name@gmail.com।",
+          "एक मज़बूत पासवर्ड लिखें: कम से कम 8 अक्षर, जिनमें अक्षर और अंक हों। पुष्टि के लिए उसे दोबारा लिखें।",
+          "पूछे जाने पर अपना फ़ोन नंबर जोड़ें, ताकि पासवर्ड भूलने पर आप वापस जा सकें। Google जांच के लिए एक कोड भेज सकता है।",
+          "शर्तें पढ़कर I agree दबाएं।"
+        ],
+        "पासवर्ड काग़ज़ पर लिखकर घर में रखें। उसे या OTP को किसी के साथ साझा न करें, अपने साथी के साथ भी नहीं।"
+      ],
+      [
+        "🔐",
+        "सुरक्षित तरीक़े से साइन-इन और साइन-आउट करें",
+        "साइन-इन सिर्फ़ Google के अपने पेजों पर करें।",
+        [
+          "gmail.com पर जाएं या Gmail ऐप खोलें।",
+          "अपना Gmail पता लिखकर Next दबाएं, फिर पासवर्ड लिखकर Next दबाएं।",
+          "अगर Google आपके फ़ोन पर कोड भेजे, तो उसे सिर्फ़ स्क्रीन पर लिखें। उसे कॉल पर किसी को न बताएं।",
+          "साझा या सार्वजनिक कंप्यूटर पर काम ख़त्म होने पर ऊपर दाईं ओर अपनी गोल फ़ोटो दबाएं, फिर Sign out दबाएं।"
+        ],
+        "अपने फ़ोन में आप साइन-इन रख सकते हैं। किसी और के कंप्यूटर पर हमेशा साइन-आउट करें और पासवर्ड सेव न करें। Google कभी कॉल या मैसेज पर पासवर्ड या OTP नहीं मांगता।"
+      ],
+      [
+        "✉️",
+        "Gmail की बुनियादी बातें जानें",
+        "Gmail आपका डाकघर है।",
+        [
+          "Inbox: आपके पास आए ईमेल। पढ़ने के लिए किसी ईमेल को दबाएं।",
+          "Compose: नया ईमेल लिखने के लिए इसे दबाएं। पता, विषय और संदेश लिखकर Send दबाएं।",
+          "Sent: आपके भेजे हुए ईमेल।",
+          "Spam: संदिग्ध ईमेल यहां जाते हैं। उन्हें न खोलें।"
+        ],
+        "अनजान लोगों के लिंक न दबाएं और उनके अटैचमेंट न खोलें।"
+      ],
+      [
+        "🏫",
+        "Google Classroom में जुड़ें",
+        "क्लास कोड अक्षरों और अंकों का एक छोटा कोड होता है। वह आपका साथी आपको देता है।",
+        [
+          "अपने Gmail खाते से classroom.google.com या Classroom ऐप खोलें और साइन-इन करें।",
+          "ऊपर + का निशान दबाएं, फिर Join class दबाएं।",
+          "क्लास कोड लिखें और Join दबाएं।",
+          "अब आपकी कक्षा होम स्क्रीन पर दिखेगी। उसे खोलने के लिए दबाएं।",
+          "अगर आपके पास इन्वाइट लिंक है, तो बस उस लिंक को दबाएं और फिर Join दबाएं।"
+        ],
+        "अपनी भाषा वाली कक्षा में ही जुड़ें।"
+      ],
+      [
+        "📝",
+        "Google Form खोलें और भरें",
+        "डिजिटल साथी प्री-असेसमेंट और पोस्ट-असेसमेंट क्विज़ के लिए फ़ॉर्म इस्तेमाल करता है।",
+        [
+          "फ़ॉर्म का लिंक दबाएं। वह आपके ब्राउज़र में खुलेगा।",
+          "हर सवाल धीरे-धीरे पढ़ें। कोई जवाब दबाएं, या अपना जवाब लिखें।",
+          "सबसे नीचे जाकर Submit दबाएं।",
+          "आपको एक संदेश दिखेगा कि आपका जवाब दर्ज हो गया है।"
+        ],
+        "कुछ फ़ॉर्म पहले Gmail से साइन-इन मांगते हैं। फ़ॉर्म में कभी OTP, PIN या पासवर्ड न लिखें।"
+      ],
+      [
+        "✅",
+        "Classroom में असाइनमेंट देखें और जमा करें",
+        "आपकी कक्षा में पढ़ने के लिए पाठ और करने के लिए छोटे काम हैं।",
+        [
+          "अपनी कक्षा खोलें और ऊपर Classwork दबाएं।",
+          "किसी विषय या काम को खोलने के लिए दबाएं। Material सिर्फ़ पढ़ने के लिए होता है।",
+          "किसी काम (Assignment) को पढ़ें और उसमें लिखा काम करें।",
+          "Mark as done दबाएं। अगर Turn in दिखे, तो वह दबाएं।",
+          "अब आपके साथी को दिखेगा कि आपने काम पूरा कर लिया है।"
+        ],
+        "Stream में घोषणाएं दिखती हैं और People में आपके शिक्षक और दूसरे सीखने वाले।"
+      ]
+    ],
+    "wordsTitle": "Classroom में दिखने वाले शब्द",
+    "words": [
+      [
+        "Stream",
+        "जहां कक्षा की घोषणाएं और ताज़ा जानकारी दिखती है।"
+      ],
+      [
+        "Classwork",
+        "पढ़ने के पाठ और करने के काम।"
+      ],
+      [
+        "People",
+        "आपके शिक्षक और कक्षा के दूसरे सीखने वाले।"
+      ],
+      [
+        "Class code",
+        "वह छोटा कोड जिससे आप कक्षा में जुड़ते हैं।"
+      ],
+      [
+        "Mark as done",
+        "काम पूरा होने पर दबाया जाने वाला बटन। कुछ कामों में Turn in लिखा होता है।"
+      ],
+      [
+        "Material",
+        "पढ़ने या देखने की चीज़। इसमें कुछ जमा नहीं करना होता।"
+      ]
+    ],
+    "joinTitle": "आपकी डिजिटल साथी कक्षाएं",
+    "joinNote": "पहली बार जुड़ रहे हैं? अपने साथी से क्लास कोड मांगें, फिर बिंदु 4 के अनुसार करें। पहले से जुड़े हैं? सीधे अपनी कक्षा में जाने के लिए खोलें दबाएं।",
+    "joinBtn": "खोलें"
+  },
+  "mr": {
+    "title": "साथीसाठी तयार व्हा",
+    "intro": "हे सहा काम एकदाच करा, टप्पा 01 च्या आधी. सावकाश करा, आणि हवे असल्यास घरातील कोणाला सोबत बसवा.",
+    "tipLabel": "सूचना",
+    "points": [
+      [
+        "📧",
+        "तुमचे Gmail खाते तयार करा",
+        "Classroom आणि Google Forms साठी तुम्हाला एक Gmail खाते लागेल. तुमच्याकडे आधीच असेल, तर पुढच्या मुद्द्यावर जा.",
+        [
+          "Gmail ॲप उघडा, किंवा फोन अथवा संगणकावर gmail.com वर जा.",
+          "Create account दाबा आणि For myself निवडा.",
+          "तुमचे पहिले आणि आडनाव लिहा, मग एक युजरनेम निवडा. हाच तुमचा पत्ता होईल, उदा. name@gmail.com.",
+          "एक मजबूत पासवर्ड लिहा: किमान 8 अक्षरे, ज्यात अक्षरे आणि अंक असावेत. खात्रीसाठी तो पुन्हा लिहा.",
+          "विचारल्यावर तुमचा फोन नंबर जोडा, म्हणजे पासवर्ड विसरल्यास तुम्ही परत जाऊ शकता. तपासणीसाठी Google एक कोड पाठवू शकतो.",
+          "अटी वाचून I agree दाबा."
+        ],
+        "पासवर्ड कागदावर लिहून घरात ठेवा. तो किंवा OTP कोणालाही सांगू नका, तुमच्या साथीलाही नाही."
+      ],
+      [
+        "🔐",
+        "सुरक्षितपणे साइन-इन आणि साइन-आउट करा",
+        "साइन-इन फक्त Google च्या स्वतःच्या पानांवर करा.",
+        [
+          "gmail.com वर जा किंवा Gmail ॲप उघडा.",
+          "तुमचा Gmail पत्ता लिहून Next दाबा, मग पासवर्ड लिहून Next दाबा.",
+          "Google ने तुमच्या फोनवर कोड पाठवला, तर तो फक्त स्क्रीनवर लिहा. कॉलवर कोणालाही सांगू नका.",
+          "सामायिक किंवा सार्वजनिक संगणकावर काम संपल्यावर वर उजवीकडे तुमचा गोल फोटो दाबा, मग Sign out दाबा."
+        ],
+        "तुमच्या फोनमध्ये तुम्ही साइन-इन ठेवू शकता. दुसऱ्याच्या संगणकावर नेहमी साइन-आउट करा आणि पासवर्ड सेव्ह करू नका. Google कधीही कॉल किंवा मेसेजवर पासवर्ड किंवा OTP मागत नाही."
+      ],
+      [
+        "✉️",
+        "Gmail ची मूलतत्त्वे जाणून घ्या",
+        "Gmail म्हणजे तुमची पोस्टपेटी.",
+        [
+          "Inbox: तुम्हाला आलेले ईमेल. वाचण्यासाठी एखाद्या ईमेलवर दाबा.",
+          "Compose: नवीन ईमेल लिहिण्यासाठी हे दाबा. पत्ता, विषय आणि संदेश लिहून Send दाबा.",
+          "Sent: तुम्ही पाठवलेले ईमेल.",
+          "Spam: संशयास्पद ईमेल इथे जातात. ते उघडू नका."
+        ],
+        "अनोळखी लोकांच्या लिंक दाबू नका आणि त्यांचे अटॅचमेंट उघडू नका."
+      ],
+      [
+        "🏫",
+        "Google Classroom मध्ये सामील व्हा",
+        "क्लास कोड म्हणजे अक्षरे आणि अंकांचा एक छोटा कोड. तो तुमचा साथी तुम्हाला देतो.",
+        [
+          "तुमच्या Gmail खात्याने classroom.google.com किंवा Classroom ॲप उघडा आणि साइन-इन करा.",
+          "वर + चे चिन्ह दाबा, मग Join class दाबा.",
+          "क्लास कोड लिहा आणि Join दाबा.",
+          "आता तुमचा वर्ग होम स्क्रीनवर दिसेल. उघडण्यासाठी त्यावर दाबा.",
+          "तुमच्याकडे इन्व्हाइट लिंक असेल, तर फक्त ती लिंक दाबा आणि मग Join दाबा."
+        ],
+        "तुमच्या भाषेतील वर्गातच सामील व्हा."
+      ],
+      [
+        "📝",
+        "Google Form उघडा आणि भरा",
+        "डिजिटल साथी प्री-असेसमेंट आणि पोस्ट-असेसमेंट क्विझसाठी फॉर्म वापरतो.",
+        [
+          "फॉर्मची लिंक दाबा. ती तुमच्या ब्राउझरमध्ये उघडेल.",
+          "प्रत्येक प्रश्न सावकाश वाचा. एखादे उत्तर दाबा, किंवा तुमचे उत्तर लिहा.",
+          "सर्वात खाली जाऊन Submit दाबा.",
+          "तुमचे उत्तर नोंदवले गेले असा संदेश तुम्हाला दिसेल."
+        ],
+        "काही फॉर्म आधी Gmail ने साइन-इन मागतात. फॉर्ममध्ये कधीही OTP, PIN किंवा पासवर्ड लिहू नका."
+      ],
+      [
+        "✅",
+        "Classroom मध्ये असाइनमेंट पाहा आणि जमा करा",
+        "तुमच्या वर्गात वाचण्यासाठी धडे आणि करण्यासाठी छोटी कामे आहेत.",
+        [
+          "तुमचा वर्ग उघडा आणि वर Classwork दाबा.",
+          "एखादा विषय किंवा काम उघडण्यासाठी त्यावर दाबा. Material फक्त वाचण्यासाठी असते.",
+          "एखादे काम (Assignment) वाचा आणि त्यात सांगितलेले करा.",
+          "Mark as done दाबा. Turn in दिसले, तर ते दाबा.",
+          "आता तुमच्या साथीला दिसेल की तुम्ही काम पूर्ण केले आहे."
+        ],
+        "Stream मध्ये घोषणा दिसतात आणि People मध्ये तुमचे शिक्षक आणि इतर शिकणारे."
+      ]
+    ],
+    "wordsTitle": "Classroom मध्ये दिसणारे शब्द",
+    "words": [
+      [
+        "Stream",
+        "जिथे वर्गाच्या घोषणा आणि ताज्या सूचना दिसतात."
+      ],
+      [
+        "Classwork",
+        "वाचायचे धडे आणि करायची कामे."
+      ],
+      [
+        "People",
+        "तुमचे शिक्षक आणि वर्गातील इतर शिकणारे."
+      ],
+      [
+        "Class code",
+        "वर्गात सामील होण्यासाठीचा छोटा कोड."
+      ],
+      [
+        "Mark as done",
+        "काम पूर्ण झाल्यावर दाबायचे बटण. काही कामांवर Turn in असे लिहिलेले असते."
+      ],
+      [
+        "Material",
+        "वाचण्याची किंवा पाहण्याची गोष्ट. यात काही जमा करायचे नसते."
+      ]
+    ],
+    "joinTitle": "तुमचे डिजिटल साथी वर्ग",
+    "joinNote": "पहिल्यांदा सामील होत आहात? तुमच्या साथीकडून क्लास कोड मागा, मग मुद्दा 4 प्रमाणे करा. आधीच सामील आहात? थेट तुमच्या वर्गात जाण्यासाठी उघडा दाबा.",
+    "joinBtn": "उघडा"
+  }
+};
 const LESSON_ICON = { phone:"i-phone", google:"i-search", family:"i-chat", safety:"i-shield", money:"i-scan", ai:"i-sparkle" };
 let lang = "en";
 let textSize = 1;
@@ -3343,9 +3751,84 @@ function showStep(i, focusTab){
     <ol class="sp-list">${les.topics.map(([emoji, point]) => `<li><span class="sp-emo" aria-hidden="true">${emoji}</span><span class="sp-text">${esc(point)}</span></li>`).join("")}</ol>
     <div class="sp-actions">
       <button type="button" class="btn btn-dark" data-open-lesson="${les.id}">${icon("i-book")}<span>${esc(t("guide_btn"))}</span></button>
+      ${classroomLink(les.id) ? `<a class="btn btn-outline" id="spClass" href="${esc(classroomLink(les.id))}" target="_blank" rel="noopener">${icon("i-arrow-ur")}<span>${esc(t("class_btn"))}</span></a>` : ""}
       <span class="sp-listen-note">${icon("i-volume")}<span>${esc(t("read_aloud"))}</span></span>
     </div>`;
   refit(panel);
+}
+// The numbered points of a lesson (or of the Get Saathi-ready guide): emoji, the point in bold, then how to do it
+function stepItems(points){
+  return points.map(([emoji, skill, how]) => {
+    const li = document.createElement("li"), mark = document.createElement("span"), box = document.createElement("div"),
+          b = document.createElement("b"), p = document.createElement("p");
+    mark.className = "ld-emoji"; mark.setAttribute("aria-hidden", "true"); mark.textContent = emoji;
+    b.textContent = skill; p.textContent = how;
+    box.append(b, p); li.append(mark, box);
+    return li;
+  });
+}
+// The Step 00 guide: six points with numbered tap-by-tap steps and a tip, then the Classroom words, then the learner's classes.
+// It opens in the same window as the lessons; "Next lesson" leads on to Step 01 and there is no "Previous".
+function prereqItems(g){
+  return g.points.map(([emoji, skill, intro, steps, tip]) => {
+    const li = document.createElement("li"), mark = document.createElement("span"), box = document.createElement("div"),
+          b = document.createElement("b"), p = document.createElement("p"), ol = document.createElement("ol"), tp = document.createElement("p");
+    mark.className = "ld-emoji"; mark.setAttribute("aria-hidden", "true"); mark.textContent = emoji;
+    b.textContent = skill; p.textContent = intro;
+    ol.className = "pr-steps";
+    steps.forEach(text => { const s = document.createElement("li"); s.textContent = text; ol.append(s); });
+    tp.className = "pr-tip";
+    const tb = document.createElement("b"); tb.textContent = g.tipLabel + ": ";
+    const tx = document.createElement("span"); tx.append(tb, tip);
+    const bulb = document.createElement("span"); bulb.setAttribute("aria-hidden", "true"); bulb.textContent = "💡";
+    tp.append(bulb, tx);
+    box.append(b, p, ol, tp); li.append(mark, box);
+    return li;
+  });
+}
+function prereqExtra(g){
+  const frag = document.createDocumentFragment();
+  const h1 = document.createElement("h3"), dl = document.createElement("dl");
+  h1.textContent = g.wordsTitle; dl.className = "pr-words";
+  g.words.forEach(([term, def]) => {
+    const row = document.createElement("div"), dt = document.createElement("dt"), dd = document.createElement("dd");
+    dt.textContent = term; dd.textContent = def; row.append(dt, dd); dl.append(row);
+  });
+  const h2 = document.createElement("h3"), note = document.createElement("p"), ul = document.createElement("ul");
+  h2.textContent = g.joinTitle; note.className = "pr-join-note"; note.textContent = g.joinNote; ul.className = "pr-join";
+  LESSONS[lang].forEach((les, i) => {
+    const li = document.createElement("li"), n = document.createElement("span"), name = document.createElement("span");
+    n.className = "pj-n"; n.textContent = pad2(i + 1); name.className = "pj-t"; name.textContent = les.title;
+    li.append(n, name);
+    const href = classroomLink(les.id);
+    if(href){
+      const a = document.createElement("a");
+      a.className = "btn btn-outline btn-sm"; a.href = href; a.target = "_blank"; a.rel = "noopener";
+      a.append(document.createTextNode(g.joinBtn + " "));
+      a.insertAdjacentHTML("beforeend", icon("i-arrow-ur"));
+      li.append(a);
+    }
+    ul.append(li);
+  });
+  frag.append(h1, dl, h2, note, ul);
+  return frag;
+}
+function openPrereq(){
+  const g = PREREQ[lang];
+  currentLesson = "prereq";
+  stopSpeaking();
+  $("#ldIcon").innerHTML = icon("i-mail");
+  $("#ldKicker").textContent = `${t("pr_tag")} · ${t("step_word")} 00`;
+  $("#ldTitle").textContent = g.title;
+  const lead = $("#ldLead"); lead.textContent = g.intro; lead.hidden = false;
+  $("#ldSteps").replaceChildren(...prereqItems(g));
+  const extra = $("#ldExtra"); extra.replaceChildren(prereqExtra(g)); extra.hidden = false;
+  $("#ldPrev").disabled = true;
+  $("#ldNext").disabled = false;
+  const classBtn = $("#ldClass"); classBtn.removeAttribute("href"); classBtn.hidden = true;
+  const dialog = $("#lessonDialog");
+  openDialog(dialog);
+  $(".ld-body", dialog).scrollTop = 0;
 }
 function openLesson(id){
   const list = LESSONS[lang];
@@ -3359,14 +3842,10 @@ function openLesson(id){
   $("#ldTitle").textContent = les.title;
   const steps = $("#ldSteps");
   // Each approved point: its emoji, the point in bold, then how to do it
-  steps.replaceChildren(...les.topics.map(([emoji, skill, how]) => {
-    const li = document.createElement("li"), mark = document.createElement("span"), box = document.createElement("div"),
-          b = document.createElement("b"), p = document.createElement("p");
-    mark.className = "ld-emoji"; mark.setAttribute("aria-hidden", "true"); mark.textContent = emoji;
-    b.textContent = skill; p.textContent = how;
-    box.append(b, p); li.append(mark, box);
-    return li;
-  }));
+  steps.replaceChildren(...stepItems(les.topics));
+  $("#ldLead").hidden = true; $("#ldExtra").hidden = true; $("#ldExtra").replaceChildren();
+  const classLink = classroomLink(id), classBtn = $("#ldClass");
+  if(classLink){ classBtn.href = classLink; classBtn.hidden = false; } else { classBtn.removeAttribute("href"); classBtn.hidden = true; }
   $("#ldPrev").disabled = index === 0;
   $("#ldNext").disabled = index === list.length - 1;
   const dialog = $("#lessonDialog");
@@ -3423,6 +3902,14 @@ function handleAsk(){
 // ---- Pre- and Post-Assessment: each is one big button that opens the team's Google Form in a new tab ----
 // Only real Google Forms links are used (https, docs.google.com/forms or forms.gle).
 // A form's "edit" link is turned into the link for answering, so learners never land on the editor.
+// The Google Classroom class for a step in the current language, or "" (only real https classroom.google.com links)
+function classroomLink(id){
+  const raw = ((CLASSROOM[lang] || {})[id] || "").trim();
+  try{
+    const u = new URL(raw);
+    return u.protocol === "https:" && u.hostname === "classroom.google.com" && u.pathname.startsWith("/c/") ? u.href : "";
+  }catch(e){ return ""; }
+}
 function formLink(links){                    // links = PRE_FORM or POST_FORM
   const raw = (links[lang] || links.en || "").trim();
   if(!raw) return "";
@@ -3481,12 +3968,13 @@ function printSafetyCard(){
    ========================================================================= */
 // One click listener for the whole page; each kind of button says what it does with a data- attribute
 document.addEventListener("click", event => {
-  const el = event.target.closest("[data-set-lang], [data-set-size], [data-set-theme], [data-open-lesson], [data-ask], [data-close-dialog], a[href^='#']");
+  const el = event.target.closest("[data-set-lang], [data-set-size], [data-set-theme], [data-open-lesson], [data-open-prereq], [data-ask], [data-close-dialog], a[href^='#']");
   if(!el) return;
   if(el.dataset.setLang){ setLanguage(el.dataset.setLang); return; }
   if(el.dataset.setSize){ setTextSize(el.dataset.setSize); announce(t("size_" + textSize)); return; }
   if(el.dataset.setTheme){ setTheme(el.dataset.setTheme); announce(t("theme_on_" + theme)); return; }
   if(el.dataset.openLesson){ openLesson(el.dataset.openLesson); return; }
+  if(el.hasAttribute("data-open-prereq")){ event.preventDefault(); openPrereq(); return; }
   if(el.dataset.ask !== undefined){ $("#askInput").value = el.dataset.ask; handleAsk(); return; }
   if(el.hasAttribute("data-close-dialog")){ closeDialog(el.closest("dialog")); return; }
   const target = document.getElementById(el.getAttribute("href").slice(1));
@@ -3505,6 +3993,7 @@ $("#lessonDialog").addEventListener("close", stopSpeaking);
 $("#ldPrev").addEventListener("click", () => stepLesson(-1));
 $("#ldNext").addEventListener("click", () => stepLesson(1));
 $("#ldListen").addEventListener("click", e => {
+  if(currentLesson === "prereq"){ const g = PREREQ[lang]; toggleListen(e.currentTarget, [g.title, g.intro, ...g.points.flatMap(([, skill, intro, steps, tip]) => [skill, intro, ...steps, tip])]); return; }
   const les = LESSONS[lang].find(l => l.id === currentLesson);
   if(les) toggleListen(e.currentTarget, [les.title, ...les.topics.flatMap(([, skill, how]) => [skill, how])]);
 });
