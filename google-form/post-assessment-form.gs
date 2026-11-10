@@ -13,9 +13,10 @@
  *
  * After it runs, open "Execution log": it prints each form's Share link and Edit link.
  *
- * The 14 questions are the SAME as the website's Post-Assessment (POST_QUIZ in
- * index.html): two per topic, each linked to one of the six approved learning steps.
- * They are different from the Pre-Assessment questions but test the same learning steps.
+ * The 20 questions are the SAME as the website's Post-Assessment (POST_QUIZ in
+ * index.html), grouped by the six learning steps (3 + 3 + 3 + 4 + 4 + 3), 4 answer choices each.
+ * Eight of them re-test concepts from the Pre-Assessment in simpler everyday words, so the two
+ * results can be compared; the other twelve are new practical questions on the same steps.
  * Page 1 asks the same "I am…" and "How comfortable…" questions as the Pre-Assessment
  * form, so the two forms' results can be compared (see POST-FORM-GUIDE.md, Part F).
  * ----------------------------------------------------------------------------
@@ -26,7 +27,9 @@ function createPostHindiForm()   { return buildPostAssessmentForm_("hi"); }
 function createPostMarathiForm() { return buildPostAssessmentForm_("mr"); }
 function createPostAllLanguages() { ["en", "hi", "mr"].forEach(buildPostAssessmentForm_); }
 
-const POST_PASS_SHARE = 0.7;   // 70 % of the questions for the certificate — the same rule as the website
+const POST_PASS_SHARE = 0.7;   // 70 % of the questions for the certificate — the same rule as the website (14 of 20)
+// One emoji per learning step, shown in each page title
+const POST_STEP_EMOJI = { phone: "📱", google: "🔍", family: "💬", safety: "🛡️", money: "💳", ai: "✨" };
 
 function buildPostAssessmentForm_(lang) {
   const T = POST_TEXT[lang];
@@ -60,16 +63,15 @@ function buildPostAssessmentForm_(lang) {
       .setRequired(false);
   form.addScaleItem().setTitle(T.confident).setBounds(1, 5).setLabels(T.low, T.high).setRequired(true);
 
-  // Pages 2–8 — one page per topic, 2 questions each, 1 point per question
+  // Pages 2–7 — one page per learning step (the same six steps as the website and the Pre-Assessment), 1 point per question
   let count = 0;
-  POST_TOPICS.forEach(function (topic, ti) {
-    const questions = POST_QUESTIONS[lang].filter(function (q) { return q.topic === topic.id; });
+  POST_MODULES.forEach(function (m) {
+    const questions = POST_QUESTIONS[lang].filter(function (q) { return q.lesson === m.id; });
     if (!questions.length) return;
     form.addPageBreakItem()
-        .setTitle(T.topic.replace("{n}", ti + 1).replace("{of}", POST_TOPICS.length) + " · " + topic.emoji + " " + topic.title[lang])
+        .setTitle(T.topic.replace("{n}", m.step).replace("{of}", POST_MODULES.length) + " · " + POST_STEP_EMOJI[m.id] + " " + m.title[lang])
         .setHelpText(T.pageHelp);
     questions.forEach(function (q) {
-      const m = POST_MODULES.filter(function (x) { return x.id === q.lesson; })[0];
       const item = form.addMultipleChoiceItem();
       const right = T.correct.replace("{tip}", q.tip);
       const wrong = T.wrong.replace("{a}", q.options[q.answer]).replace("{tip}", q.tip)
@@ -121,7 +123,7 @@ const POST_TEXT = {
     "confident": "How comfortable are you using a smartphone today?",
     "low": "Not comfortable",
     "high": "Very comfortable",
-    "topic": "Topic {n} of {of}",
+    "topic": "Step {n} of {of}",
     "pageHelp": "Choose one answer for each question.",
     "correct": "Correct — well done! 💡 {tip}",
     "wrong": "Not quite. The right answer is: “{a}”. 💡 {tip} (Look at Step {n} — {t} again.)",
@@ -152,7 +154,7 @@ const POST_TEXT = {
     "confident": "आज आप स्मार्टफ़ोन इस्तेमाल करने में कितना सहज महसूस करते हैं?",
     "low": "बिल्कुल सहज नहीं",
     "high": "बहुत सहज",
-    "topic": "विषय {n} / {of}",
+    "topic": "चरण {n} / {of}",
     "pageHelp": "हर सवाल का एक जवाब चुनें।",
     "correct": "सही जवाब — शाबाश! 💡 {tip}",
     "wrong": "पूरी तरह सही नहीं। सही जवाब है: “{a}”। 💡 {tip} (चरण {n} — {t} फिर से देखें।)",
@@ -183,7 +185,7 @@ const POST_TEXT = {
     "confident": "आज स्मार्टफोन वापरताना तुम्हाला किती सहज वाटते?",
     "low": "अजिबात सहज नाही",
     "high": "खूप सहज",
-    "topic": "विषय {n} / {of}",
+    "topic": "टप्पा {n} / {of}",
     "pageHelp": "प्रत्येक प्रश्नाचे एक उत्तर निवडा.",
     "correct": "बरोबर — शाब्बास! 💡 {tip}",
     "wrong": "पूर्ण बरोबर नाही. बरोबर उत्तर आहे: “{a}”. 💡 {tip} (टप्पा {n} — {t} पुन्हा पाहा.)",
@@ -252,583 +254,733 @@ const POST_MODULES = [
   }
 ];
 
-// The seven topics of the Post-Assessment (same as the website's POST_TOPICS), one form page each
-const POST_TOPICS = [
-  {
-    "id": "basics",
-    "emoji": "📱",
-    "title": {
-      "en": "Smartphone basics",
-      "hi": "स्मार्टफ़ोन की बुनियादी बातें",
-      "mr": "स्मार्टफोनच्या मूलभूत गोष्टी"
-    }
-  },
-  {
-    "id": "browse",
-    "emoji": "🔍",
-    "title": {
-      "en": "Internet & Google",
-      "hi": "इंटरनेट और Google",
-      "mr": "इंटरनेट आणि Google"
-    }
-  },
-  {
-    "id": "talk",
-    "emoji": "💬",
-    "title": {
-      "en": "Talking with family & friends",
-      "hi": "परिवार और दोस्तों से बातचीत",
-      "mr": "कुटुंब आणि मित्रांशी संवाद"
-    }
-  },
-  {
-    "id": "upi",
-    "emoji": "💳",
-    "title": {
-      "en": "Online payments & UPI safety",
-      "hi": "ऑनलाइन भुगतान और UPI सुरक्षा",
-      "mr": "ऑनलाइन पेमेंट आणि UPI सुरक्षा"
-    }
-  },
-  {
-    "id": "fraud",
-    "emoji": "🛡️",
-    "title": {
-      "en": "Online fraud & safety",
-      "hi": "ऑनलाइन धोखाधड़ी से बचाव",
-      "mr": "ऑनलाइन फसवणुकीपासून बचाव"
-    }
-  },
-  {
-    "id": "gov",
-    "emoji": "🏛️",
-    "title": {
-      "en": "Government services online",
-      "hi": "ऑनलाइन सरकारी सेवाएं",
-      "mr": "ऑनलाइन सरकारी सेवा"
-    }
-  },
-  {
-    "id": "solve",
-    "emoji": "🧩",
-    "title": {
-      "en": "Solving everyday problems",
-      "hi": "रोज़ की समस्याएं सुलझाना",
-      "mr": "रोजच्या अडचणी सोडवणे"
-    }
-  }
-];
-
-// The 14 questions, copied from the website's POST_QUIZ ("answer" = number of the right option, counting from 0)
+// The 20 questions, copied from the website's POST_QUIZ ("answer" = number of the right option, counting from 0).
+// "lesson" is the learning step the question belongs to (it decides the page) and is suggested again when it is missed.
 const POST_QUESTIONS = {
   "en": [
     {
-      "q": "You may need help in an emergency, even when your phone is locked. What can you set up today?",
+      "q": "You feel unsafe and want to call for help fast. Your Android phone has Emergency SOS turned on. What do you do?",
       "options": [
-        "Emergency SOS, so pressing the power button 5 times calls for help",
-        "A new wallpaper",
-        "A louder ringtone"
-      ],
-      "answer": 0,
-      "topic": "basics",
-      "lesson": "phone",
-      "tip": "Settings → Safety & emergency → Emergency SOS. Add emergency contacts too, so they show on the lock screen."
-    },
-    {
-      "q": "Your grandson wants to play a game on your phone. How can you keep him inside that one game?",
-      "options": [
-        "Tell him your phone PIN",
-        "Turn on App pinning and pin the game",
-        "Switch the phone off and on again"
+        "Press the volume button once",
+        "Press the power button 5 times quickly",
+        "Shake the phone twice",
+        "Open the camera app"
       ],
       "answer": 1,
-      "topic": "basics",
       "lesson": "phone",
-      "tip": "With App pinning, he cannot leave the game or open other apps without your PIN."
+      "tip": "With Emergency SOS turned on, pressing the power button 5 times quickly calls for help. Add emergency contacts in Settings → Safety & emergency."
     },
     {
-      "q": "You need a pharmacy near you, quickly. What is the easiest way to find one?",
+      "q": "Your grandson wants to watch one video on your phone. You want him to stay only in that app. What helps?",
       "options": [
-        "Wait for a newspaper advertisement",
-        "Search “pharmacy near me” in Google Maps",
-        "Ask strangers in a WhatsApp group"
-      ],
-      "answer": 1,
-      "topic": "browse",
-      "lesson": "google",
-      "tip": "Google Maps shows the nearest places, how far they are and the way to get there."
-    },
-    {
-      "q": "Your medicine strip has instructions in a language you cannot read. What can help?",
-      "options": [
-        "Guess what it says",
-        "Throw the medicine away",
-        "Point Google Lens at it and choose Translate"
+        "Turn on Airplane mode",
+        "Turn on Battery Saver",
+        "Turn on App pinning and pin the app",
+        "Turn on Dark mode"
       ],
       "answer": 2,
-      "topic": "browse",
-      "lesson": "google",
-      "tip": "Tap the camera icon in the Google search bar, point it at the words and choose Translate."
+      "lesson": "phone",
+      "tip": "App pinning keeps the phone on one app. The child cannot leave it without your PIN. (iPhone: Guided Access.)"
     },
     {
-      "q": "You are coming home alone late in the evening. How can your family see where you are until you reach home?",
+      "q": "You often forget to take your medicine at 9 am. What is an easy way to remember?",
       "options": [
-        "Share your live location on WhatsApp",
-        "Send them a photo every hour",
-        "Call them every five minutes"
+        "Say “Hey Google, remind me to take my medicine every day at 9 am”",
+        "Switch the phone to silent",
+        "Lock the screen with a PIN",
+        "Turn on Battery Saver"
       ],
       "answer": 0,
-      "topic": "talk",
-      "lesson": "family",
-      "tip": "In a chat tap 📎 → Location → Share live location, and choose how long to share."
+      "lesson": "phone",
+      "tip": "You can set a reminder just by speaking. The phone reminds you on time."
     },
     {
-      "q": "On a video call, your son wants to see your screen to guide you through a phone setting. What should you do first?",
+      "q": "A shop board is written in a language you cannot read. How can your phone camera help?",
       "options": [
-        "Open your bank app so he can check it",
-        "Close bank and payment apps, then share your screen",
-        "Switch off the internet"
+        "Take a photo and email it to yourself",
+        "Turn on Restricted Mode",
+        "Open Google Forms",
+        "Point Google Lens at the board and tap Translate"
+      ],
+      "answer": 3,
+      "lesson": "google",
+      "tip": "Tap the camera icon (Google Lens) in the Google search bar, point it at the words and choose Translate."
+    },
+    {
+      "q": "Your 6-year-old granddaughter wants to watch videos on your phone. Which app is made for young children?",
+      "options": [
+        "YouTube Kids",
+        "Gmail",
+        "Google Maps",
+        "Google Meet"
+      ],
+      "answer": 0,
+      "lesson": "google",
+      "tip": "YouTube Kids shows videos made for children. On normal YouTube you can turn on Restricted Mode."
+    },
+    {
+      "q": "You do not want to be locked out of your Google account if you forget the password. What should you add?",
+      "options": [
+        "A new profile photo",
+        "A longer name",
+        "A recovery phone number and a recovery email",
+        "A second Gmail with the same password"
+      ],
+      "answer": 2,
+      "lesson": "google",
+      "tip": "A recovery phone number and email help Google let you back in. Keep your password written down in a safe place at home."
+    },
+    {
+      "q": "You are walking home late and want your family to follow you on the map. What do you do in a WhatsApp chat?",
+      "options": [
+        "Change your Status",
+        "Tap 📎 → Location → Share live location",
+        "Turn off “Last seen”",
+        "Send a voice note every hour"
       ],
       "answer": 1,
-      "topic": "talk",
       "lesson": "family",
-      "tip": "Screen sharing shows everything on your screen, so close bank and payment apps before you share."
+      "tip": "Your family can follow you on the map until you reach home. You choose how long to share, for example 1 hour."
     },
     {
-      "q": "A buyer says: “Scan this QR code and enter your UPI PIN to receive ₹2,000.” What is true?",
+      "q": "Strangers keep adding you to WhatsApp groups. What can you do to stop it?",
       "options": [
+        "Delete your WhatsApp account",
+        "Reply to each stranger",
+        "Mute every group",
+        "Go to Settings → Privacy → Groups and choose “My contacts”"
+      ],
+      "answer": 3,
+      "lesson": "family",
+      "tip": "With “My contacts”, only people in your contacts can add you to a group."
+    },
+    {
+      "q": "You are getting a new phone. You do not want to lose your WhatsApp chats and family photos. What should you do first?",
+      "options": [
+        "Turn on chat backup and photo backup",
+        "Delete WhatsApp",
+        "Remove your SIM card",
+        "Nothing, they always come back on their own"
+      ],
+      "answer": 0,
+      "lesson": "family",
+      "tip": "Turn on WhatsApp chat backup (Google Drive on Android, iCloud on iPhone) and backup in Google Photos."
+    },
+    {
+      "q": "A call sounds exactly like your daughter. She cries and asks for money right now. What is the safest first step?",
+      "options": [
+        "Send the money, then ask questions later",
+        "Believe her because it is her voice",
+        "Hang up and call her back on her own number, or ask for your family code word",
+        "Ask her to send a selfie"
+      ],
+      "answer": 2,
+      "lesson": "safety",
+      "tip": "Scammers can copy a voice using AI. Use a family code word, or call back on the number you know."
+    },
+    {
+      "q": "Someone cheated you online and took your money. Which helpline should you call to report it?",
+      "options": [
+        "108",
+        "1091",
+        "1098",
+        "1930"
+      ],
+      "answer": 3,
+      "lesson": "safety",
+      "tip": "1930 is the National Cyber Crime Helpline. Call in the first hour, and call your bank to block your card or UPI."
+    },
+    {
+      "q": "On a video call, a person in police uniform says you are under “digital arrest” and must pay money. What is true?",
+      "options": [
+        "Police never arrest anyone on a video call. Hang up and call 1930 or your local police",
+        "Pay quickly to avoid jail",
+        "Give your Aadhaar number to prove you are innocent",
+        "Stay on the call until they finish"
+      ],
+      "answer": 0,
+      "lesson": "safety",
+      "tip": "Police, the CBI or courts never arrest anyone on a video call and never ask for money to “settle a case”."
+    },
+    {
+      "q": "You get an SMS: “Your KYC expires today. Tap this link now.” What is the safest thing to do?",
+      "options": [
+        "Tap the link quickly",
+        "Do not tap. Check only in your bank's official app or at the branch",
+        "Call the number in the SMS",
+        "Forward it to your friends"
+      ],
+      "answer": 1,
+      "lesson": "safety",
+      "tip": "Messages that rush you about KYC, bills or parcels are fake. Check only in the official app or at the office."
+    },
+    {
+      "q": "You buy tea and vegetables every day. Which UPI feature lets you pay small amounts with one tap and no PIN?",
+      "options": [
+        "UPI Circle",
+        "AutoPay",
+        "UPI Lite",
+        "Net banking"
+      ],
+      "answer": 2,
+      "lesson": "money",
+      "tip": "Add a small balance to UPI Lite once. Small payments then go through in one tap, without a PIN."
+    },
+    {
+      "q": "A stranger says: “Scan this QR code and enter your UPI PIN to receive ₹2,000.” What is true?",
+      "options": [
+        "You never need your PIN to receive money. It is a scam",
         "You must enter your PIN to get the money",
-        "It is safe because a QR code is used",
-        "You never need a PIN to receive money — it is a scam"
+        "It is safe if the amount is small",
+        "It is safe because it is a QR code"
       ],
-      "answer": 2,
-      "topic": "upi",
+      "answer": 0,
       "lesson": "money",
       "tip": "Your UPI PIN is only for sending money. Anyone who asks for it to “send” you money is a fraud."
     },
     {
-      "q": "You scan a shop's QR code, but the name on the screen is someone you don't know. What do you do?",
+      "q": "Where can you keep official copies of your Aadhaar, PAN and certificates safely on your phone?",
       "options": [
-        "Cancel, and ask the shopkeeper before paying",
-        "Pay anyway — QR codes are always correct",
-        "Pay twice to be sure"
+        "In a family WhatsApp group",
+        "In your photo gallery with no lock",
+        "In an email to a friend",
+        "In DigiLocker"
       ],
-      "answer": 0,
-      "topic": "upi",
+      "answer": 3,
       "lesson": "money",
-      "tip": "Always read the name and the amount on the screen before you enter your PIN."
-    },
-    {
-      "q": "A message says: “Your electricity will be cut tonight. Call this number now.” What is the safe thing to do?",
-      "options": [
-        "Call the number straight away",
-        "Pay whatever amount they ask",
-        "Don't call or tap anything — check in the official app or at the office"
-      ],
-      "answer": 2,
-      "topic": "fraud",
-      "lesson": "safety",
-      "tip": "Messages that rush you about KYC, electricity bills or parcels are a common scam."
-    },
-    {
-      "q": "Someone has cheated you and money has left your bank account. What should you do first?",
-      "options": [
-        "Wait a few days to see if it comes back",
-        "Call 1930 at once, and call your bank to block your card or UPI",
-        "Tell nobody because you feel embarrassed"
-      ],
-      "answer": 1,
-      "topic": "fraud",
-      "lesson": "safety",
-      "tip": "The first hour matters most. Call 1930 or report it at cybercrime.gov.in."
+      "tip": "Sign in to DigiLocker with your Aadhaar-linked mobile number. Official copies kept there are accepted as valid."
     },
     {
       "q": "Your father is a pensioner and finds it hard to go to the bank for his life certificate. What can he do?",
       "options": [
-        "Stop taking his pension",
+        "Send his passbook by courier",
         "Submit it from home with a face scan in the Jeevan Pramaan app",
-        "Send a photo of his Aadhaar to an unknown number"
+        "Ask a neighbour to sign for him",
+        "Wait until the bank calls him"
       ],
       "answer": 1,
-      "topic": "gov",
       "lesson": "money",
-      "tip": "With the Jeevan Pramaan and AadhaarFaceRD apps, pensioners scan their face with the phone camera."
+      "tip": "Pensioners can submit the life certificate from home with the Jeevan Pramaan and AadhaarFaceRD apps. No bank visit is needed."
     },
     {
-      "q": "You are 72 years old. Which card can give you free hospital treatment cover?",
+      "q": "A shocking photo is forwarded to you on WhatsApp. Which sign can show it was made by AI?",
       "options": [
-        "The Ayushman Vay Vandana card",
-        "A shop's loyalty card",
-        "A new SIM card"
-      ],
-      "answer": 0,
-      "topic": "gov",
-      "lesson": "money",
-      "tip": "Everyone aged 70 and above can get it. Apply in the Ayushman app, at beneficiary.nha.gov.in, or at a hospital or CSC."
-    },
-    {
-      "q": "Your phone battery runs out before the evening. What will help it last longer?",
-      "options": [
-        "Keep the screen at full brightness",
-        "Turn on Battery Saver and keep the screen brightness low",
-        "Keep every app open all day"
+        "It is very colourful",
+        "It has strange-looking hands or faces",
+        "A friend sent it",
+        "It was sent in a group"
       ],
       "answer": 1,
-      "topic": "solve",
-      "lesson": "phone",
-      "tip": "Settings → Battery → Battery Saver. Also switch off Location and Bluetooth when you don't need them."
+      "lesson": "ai",
+      "tip": "AI can make fake photos and videos. Look for odd hands or faces, and check trusted news websites before you forward."
     },
     {
-      "q": "You have rice, dal, onion and tomato at home and need a quick dinner idea. What can help?",
+      "q": "Which of these should you NEVER type into an AI chat app?",
       "options": [
-        "Throw the food away and order from outside",
-        "Type your bank details into an AI app",
-        "Tell an AI app what you have and ask for a simple recipe"
+        "A recipe question",
+        "A homework question",
+        "Your OTP, password or bank details",
+        "A question in Marathi"
       ],
       "answer": 2,
-      "topic": "solve",
       "lesson": "ai",
-      "tip": "AI apps like Gemini or ChatGPT can suggest recipes — but never type private details into them."
+      "tip": "Treat an AI chat like a stranger. Never type your OTP, passwords, Aadhaar, bank details or family photos."
+    },
+    {
+      "q": "Your child wears a GPS smartwatch. Which is a safe way to use it?",
+      "options": [
+        "Post the watch's map on social media",
+        "Share the app password with neighbours",
+        "Stop watching over your child, because the watch is enough",
+        "Add only trusted family members as contacts and keep the location private"
+      ],
+      "answer": 3,
+      "lesson": "ai",
+      "tip": "Location is sensitive, so keep it private and use only trusted contacts. A watch never replaces an adult's care."
     }
   ],
   "hi": [
     {
-      "q": "आपातकाल में मदद की ज़रूरत पड़ सकती है, तब भी जब फ़ोन लॉक हो। आप आज क्या सेट कर सकते हैं?",
+      "q": "आपको डर लग रहा है और आप जल्दी मदद के लिए कॉल करना चाहते हैं। आपके Android फ़ोन में Emergency SOS चालू है। आप क्या करेंगे?",
       "options": [
-        "इमरजेंसी SOS, ताकि पावर बटन 5 बार दबाने से मदद के लिए कॉल जाए",
-        "नया वॉलपेपर",
-        "तेज़ आवाज़ वाली रिंगटोन"
-      ],
-      "answer": 0,
-      "topic": "basics",
-      "lesson": "phone",
-      "tip": "Settings → Safety & emergency → Emergency SOS। इमरजेंसी कॉन्टैक्ट भी जोड़ें, ताकि वे लॉक स्क्रीन पर दिखें।"
-    },
-    {
-      "q": "आपका पोता आपके फ़ोन पर गेम खेलना चाहता है। उसे उसी एक गेम में कैसे रखें?",
-      "options": [
-        "उसे अपने फ़ोन का PIN बता दें",
-        "App pinning चालू करके गेम को पिन करें",
-        "फ़ोन बंद करके फिर चालू करें"
+        "वॉल्यूम बटन एक बार दबाएं",
+        "पावर बटन 5 बार जल्दी दबाएं",
+        "फ़ोन को दो बार हिलाएं",
+        "कैमरा ऐप खोलें"
       ],
       "answer": 1,
-      "topic": "basics",
       "lesson": "phone",
-      "tip": "App pinning से वह आपके PIN के बिना गेम से बाहर नहीं निकल सकता और दूसरे ऐप नहीं खोल सकता।"
+      "tip": "Emergency SOS चालू होने पर पावर बटन 5 बार जल्दी दबाने से मदद के लिए कॉल चला जाता है। Settings → Safety & emergency में इमरजेंसी कॉन्टैक्ट जोड़ें।"
     },
     {
-      "q": "आपको जल्दी से पास की दवा की दुकान चाहिए। उसे खोजने का सबसे आसान तरीका क्या है?",
+      "q": "आपका पोता आपके फ़ोन पर एक वीडियो देखना चाहता है। आप चाहते हैं कि वह सिर्फ़ उसी ऐप में रहे। क्या मदद करेगा?",
       "options": [
-        "अख़बार के विज्ञापन का इंतज़ार करें",
-        "Google Maps में “pharmacy near me” खोजें",
-        "WhatsApp ग्रुप में अनजान लोगों से पूछें"
-      ],
-      "answer": 1,
-      "topic": "browse",
-      "lesson": "google",
-      "tip": "Google Maps पास की जगहें, उनकी दूरी और वहां पहुंचने का रास्ता दिखाता है।"
-    },
-    {
-      "q": "आपकी दवा की पट्टी पर निर्देश ऐसी भाषा में हैं जो आप पढ़ नहीं सकते। क्या मदद कर सकता है?",
-      "options": [
-        "अंदाज़ा लगा लें कि क्या लिखा है",
-        "दवा फेंक दें",
-        "उस पर Google Lens रखें और Translate चुनें"
+        "Airplane mode चालू करना",
+        "Battery Saver चालू करना",
+        "App pinning चालू करके ऐप को पिन करना",
+        "Dark mode चालू करना"
       ],
       "answer": 2,
-      "topic": "browse",
-      "lesson": "google",
-      "tip": "Google सर्च बार में कैमरा आइकन दबाएं, उसे शब्दों पर रखें और Translate चुनें।"
+      "lesson": "phone",
+      "tip": "App pinning फ़ोन को एक ही ऐप में रोके रखता है। आपके PIN के बिना बच्चा उससे बाहर नहीं जा सकता। (iPhone: Guided Access)"
     },
     {
-      "q": "आप शाम को देर से अकेले घर लौट रहे हैं। घर पहुंचने तक परिवार कैसे देख सकता है कि आप कहां हैं?",
+      "q": "आप अक्सर सुबह 9 बजे की दवा लेना भूल जाते हैं। याद रखने का आसान तरीका क्या है?",
       "options": [
-        "WhatsApp पर अपनी लाइव लोकेशन शेयर करें",
-        "हर घंटे उन्हें एक फ़ोटो भेजें",
-        "हर पांच मिनट में उन्हें कॉल करें"
+        "बोलें: “Hey Google, रोज़ सुबह 9 बजे दवा लेने की याद दिलाओ”",
+        "फ़ोन को साइलेंट करें",
+        "स्क्रीन को PIN से लॉक करें",
+        "Battery Saver चालू करें"
       ],
       "answer": 0,
-      "topic": "talk",
-      "lesson": "family",
-      "tip": "चैट में 📎 → Location → Share live location दबाएं और समय चुनें।"
+      "lesson": "phone",
+      "tip": "आप सिर्फ़ बोलकर रिमाइंडर लगा सकते हैं। फ़ोन सही समय पर याद दिला देता है।"
     },
     {
-      "q": "वीडियो कॉल पर आपका बेटा आपकी स्क्रीन देखकर फ़ोन की कोई सेटिंग समझाना चाहता है। पहले आप क्या करें?",
+      "q": "दुकान के बोर्ड पर ऐसी भाषा में लिखा है जो आप पढ़ नहीं सकते। फ़ोन का कैमरा कैसे मदद कर सकता है?",
       "options": [
-        "अपना बैंक ऐप खोलें ताकि वह उसे देख ले",
-        "बैंक और पेमेंट ऐप बंद करें, फिर स्क्रीन शेयर करें",
-        "इंटरनेट बंद कर दें"
+        "फ़ोटो खींचकर खुद को ईमेल करें",
+        "Restricted Mode चालू करें",
+        "Google Forms खोलें",
+        "बोर्ड की ओर Google Lens करें और Translate दबाएं"
+      ],
+      "answer": 3,
+      "lesson": "google",
+      "tip": "Google सर्च बार में कैमरा आइकन (Google Lens) दबाएं, शब्दों की ओर कैमरा करें और Translate चुनें।"
+    },
+    {
+      "q": "आपकी 6 साल की पोती आपके फ़ोन पर वीडियो देखना चाहती है। छोटे बच्चों के लिए बना ऐप कौन-सा है?",
+      "options": [
+        "YouTube Kids",
+        "Gmail",
+        "Google Maps",
+        "Google Meet"
+      ],
+      "answer": 0,
+      "lesson": "google",
+      "tip": "YouTube Kids में बच्चों के लिए बने वीडियो दिखते हैं। साधारण YouTube में Restricted Mode चालू कर सकते हैं।"
+    },
+    {
+      "q": "पासवर्ड भूलने पर आप अपने Google खाते से लॉक आउट नहीं होना चाहते। आपको क्या जोड़ना चाहिए?",
+      "options": [
+        "नई प्रोफ़ाइल फ़ोटो",
+        "लंबा नाम",
+        "रिकवरी फ़ोन नंबर और रिकवरी ईमेल",
+        "उसी पासवर्ड वाला दूसरा Gmail"
+      ],
+      "answer": 2,
+      "lesson": "google",
+      "tip": "रिकवरी फ़ोन नंबर और ईमेल से Google आपको वापस अंदर आने में मदद करता है। अपना पासवर्ड लिखकर घर पर सुरक्षित जगह रखें।"
+    },
+    {
+      "q": "आप देर शाम पैदल घर लौट रहे हैं और चाहते हैं कि परिवार आपको मैप पर देखे। WhatsApp चैट में आप क्या करेंगे?",
+      "options": [
+        "अपना Status बदलेंगे",
+        "📎 → Location → Share live location दबाएंगे",
+        "“Last seen” बंद करेंगे",
+        "हर घंटे एक वॉइस नोट भेजेंगे"
       ],
       "answer": 1,
-      "topic": "talk",
       "lesson": "family",
-      "tip": "स्क्रीन शेयर करने पर स्क्रीन की हर चीज़ दिखती है, इसलिए पहले बैंक और पेमेंट ऐप बंद करें।"
+      "tip": "घर पहुंचने तक परिवार आपको मैप पर देख सकता है। कितनी देर शेयर करना है, यह आप तय करते हैं — जैसे 1 घंटा।"
     },
     {
-      "q": "एक खरीदार कहता है: “यह QR कोड स्कैन करें और ₹2,000 पाने के लिए अपना UPI PIN डालें।” सच क्या है?",
+      "q": "अनजान लोग आपको बार-बार WhatsApp ग्रुप में जोड़ रहे हैं। इसे रोकने के लिए आप क्या कर सकते हैं?",
       "options": [
+        "अपना WhatsApp खाता डिलीट करें",
+        "हर अनजान को जवाब दें",
+        "हर ग्रुप म्यूट करें",
+        "Settings → Privacy → Groups में “My contacts” चुनें"
+      ],
+      "answer": 3,
+      "lesson": "family",
+      "tip": "“My contacts” चुनने पर सिर्फ़ आपके कॉन्टैक्ट में मौजूद लोग ही आपको ग्रुप में जोड़ सकते हैं।"
+    },
+    {
+      "q": "आप नया फ़ोन ले रहे हैं। आप अपने WhatsApp चैट और परिवार की फ़ोटो खोना नहीं चाहते। सबसे पहले क्या करना चाहिए?",
+      "options": [
+        "चैट बैकअप और फ़ोटो बैकअप चालू करें",
+        "WhatsApp डिलीट करें",
+        "अपना SIM कार्ड निकाल दें",
+        "कुछ नहीं, वे अपने आप वापस आ जाते हैं"
+      ],
+      "answer": 0,
+      "lesson": "family",
+      "tip": "WhatsApp का चैट बैकअप (Android में Google Drive, iPhone में iCloud) और Google Photos का बैकअप चालू करें।"
+    },
+    {
+      "q": "एक कॉल की आवाज़ बिल्कुल आपकी बेटी जैसी है। वह रोते हुए अभी पैसे मांग रही है। सबसे सुरक्षित पहला कदम क्या है?",
+      "options": [
+        "पहले पैसे भेज दें, सवाल बाद में पूछें",
+        "उसकी आवाज़ है, इसलिए मान लें",
+        "कॉल काटकर उसके अपने नंबर पर फ़ोन करें, या परिवार का कोड वर्ड पूछें",
+        "उससे सेल्फ़ी भेजने को कहें"
+      ],
+      "answer": 2,
+      "lesson": "safety",
+      "tip": "ठग AI से आवाज़ की नकल कर सकते हैं। परिवार का कोड वर्ड पूछें, या अपने जाने-पहचाने नंबर पर वापस कॉल करें।"
+    },
+    {
+      "q": "किसी ने ऑनलाइन आपके साथ धोखा करके आपके पैसे ले लिए। इसकी शिकायत के लिए आपको कौन-सी हेल्पलाइन पर कॉल करना चाहिए?",
+      "options": [
+        "108",
+        "1091",
+        "1098",
+        "1930"
+      ],
+      "answer": 3,
+      "lesson": "safety",
+      "tip": "1930 राष्ट्रीय साइबर अपराध हेल्पलाइन है। पहले घंटे में कॉल करें, और बैंक को भी फ़ोन करके कार्ड या UPI ब्लॉक कराएं।"
+    },
+    {
+      "q": "वीडियो कॉल पर वर्दी में एक व्यक्ति कहता है कि आप “डिजिटल अरेस्ट” में हैं और पैसे देने होंगे। सच क्या है?",
+      "options": [
+        "पुलिस कभी वीडियो कॉल पर गिरफ़्तार नहीं करती। कॉल काटें और 1930 या स्थानीय पुलिस को फ़ोन करें",
+        "जेल से बचने के लिए जल्दी पैसे भरें",
+        "बेगुनाही साबित करने के लिए अपना आधार नंबर बताएं",
+        "वे जब तक चाहें, कॉल पर बने रहें"
+      ],
+      "answer": 0,
+      "lesson": "safety",
+      "tip": "पुलिस, CBI या अदालत कभी वीडियो कॉल पर गिरफ़्तार नहीं करती और “केस निपटाने” के लिए पैसे नहीं मांगती।"
+    },
+    {
+      "q": "आपको SMS आता है: “आपका KYC आज खत्म हो रहा है। अभी यह लिंक दबाएं।” सबसे सुरक्षित क्या करना है?",
+      "options": [
+        "जल्दी से लिंक दबाएं",
+        "लिंक न दबाएं। सिर्फ़ अपने बैंक के आधिकारिक ऐप में या शाखा में जाकर जांचें",
+        "SMS में दिए नंबर पर कॉल करें",
+        "इसे अपने दोस्तों को फॉरवर्ड करें"
+      ],
+      "answer": 1,
+      "lesson": "safety",
+      "tip": "KYC, बिल या पार्सल को लेकर जल्दी मचाने वाले संदेश नकली होते हैं। सिर्फ़ आधिकारिक ऐप में या दफ़्तर जाकर जांचें।"
+    },
+    {
+      "q": "आप रोज़ चाय और सब्ज़ी खरीदते हैं। UPI की कौन-सी सुविधा से छोटे भुगतान एक टैप में, बिना PIN के हो जाते हैं?",
+      "options": [
+        "UPI Circle",
+        "AutoPay",
+        "UPI Lite",
+        "नेट बैंकिंग"
+      ],
+      "answer": 2,
+      "lesson": "money",
+      "tip": "UPI Lite में एक बार थोड़ी राशि डालें। फिर छोटे भुगतान बिना PIN के, एक टैप में हो जाते हैं।"
+    },
+    {
+      "q": "एक अनजान व्यक्ति कहता है: “₹2,000 पाने के लिए यह QR कोड स्कैन करें और अपना UPI PIN डालें।” सच क्या है?",
+      "options": [
+        "पैसे पाने के लिए PIN की कभी ज़रूरत नहीं होती। यह धोखा है",
         "पैसे पाने के लिए PIN डालना ज़रूरी है",
-        "QR कोड है, इसलिए यह सुरक्षित है",
-        "पैसे पाने के लिए कभी PIN नहीं लगता — यह धोखा है"
-      ],
-      "answer": 2,
-      "topic": "upi",
-      "lesson": "money",
-      "tip": "UPI PIN सिर्फ़ पैसे भेजने के लिए है। जो इसे आपको पैसे “भेजने” के लिए मांगे, वह धोखेबाज़ है।"
-    },
-    {
-      "q": "आपने दुकान का QR कोड स्कैन किया, पर स्क्रीन पर किसी अनजान व्यक्ति का नाम है। आप क्या करेंगे?",
-      "options": [
-        "रद्द करें और भुगतान से पहले दुकानदार से पूछें",
-        "फिर भी भुगतान करें — QR कोड हमेशा सही होता है",
-        "पक्का करने के लिए दो बार भुगतान करें"
+        "राशि छोटी हो तो यह सुरक्षित है",
+        "QR कोड है, इसलिए यह सुरक्षित है"
       ],
       "answer": 0,
-      "topic": "upi",
       "lesson": "money",
-      "tip": "PIN डालने से पहले हमेशा स्क्रीन पर नाम और रकम पढ़ें।"
+      "tip": "UPI PIN सिर्फ़ पैसे भेजने के लिए है। जो पैसे “भेजने” के लिए PIN मांगे, वह ठग है।"
     },
     {
-      "q": "संदेश आता है: “आज रात आपकी बिजली कट जाएगी। अभी इस नंबर पर कॉल करें।” सुरक्षित कदम क्या है?",
+      "q": "आधार, PAN और प्रमाणपत्रों की आधिकारिक कॉपी अपने फ़ोन में सुरक्षित कहां रख सकते हैं?",
       "options": [
-        "तुरंत उस नंबर पर कॉल करें",
-        "वे जितने पैसे मांगें, दे दें",
-        "न कॉल करें, न कुछ दबाएं — सिर्फ़ आधिकारिक ऐप या दफ़्तर में जांचें"
+        "परिवार के WhatsApp ग्रुप में",
+        "बिना लॉक वाली फ़ोटो गैलरी में",
+        "किसी दोस्त को भेजे ईमेल में",
+        "DigiLocker में"
       ],
-      "answer": 2,
-      "topic": "fraud",
-      "lesson": "safety",
-      "tip": "KYC, बिजली बिल या पार्सल के नाम पर जल्दबाज़ी करवाने वाले संदेश आम धोखा हैं।"
+      "answer": 3,
+      "lesson": "money",
+      "tip": "आधार से जुड़े मोबाइल नंबर से DigiLocker में साइन इन करें। वहां रखी आधिकारिक कॉपी मान्य होती है।"
     },
     {
-      "q": "किसी ने आपको ठग लिया और आपके बैंक खाते से पैसे निकल गए। सबसे पहले क्या करें?",
+      "q": "आपके पिता पेंशनभोगी हैं और जीवन प्रमाणपत्र के लिए बैंक जाना उन्हें मुश्किल लगता है। वे क्या कर सकते हैं?",
       "options": [
-        "कुछ दिन इंतज़ार करें कि शायद पैसे लौट आएं",
-        "तुरंत 1930 पर कॉल करें, और कार्ड या UPI बंद कराने के लिए बैंक को कॉल करें",
-        "शर्म के कारण किसी को न बताएं"
+        "पासबुक कूरियर से भेजें",
+        "Jeevan Pramaan ऐप में चेहरा स्कैन करके घर से जमा करें",
+        "पड़ोसी से उनके लिए हस्ताक्षर करवाएं",
+        "बैंक के फ़ोन करने का इंतज़ार करें"
       ],
       "answer": 1,
-      "topic": "fraud",
-      "lesson": "safety",
-      "tip": "पहला घंटा सबसे ज़रूरी है। 1930 पर कॉल करें या cybercrime.gov.in पर शिकायत करें।"
+      "lesson": "money",
+      "tip": "पेंशनभोगी Jeevan Pramaan और AadhaarFaceRD ऐप से घर बैठे जीवन प्रमाणपत्र जमा कर सकते हैं — बैंक जाने की ज़रूरत नहीं।"
     },
     {
-      "q": "आपके पिताजी पेंशनभोगी हैं और जीवन प्रमाणपत्र के लिए बैंक जाना उनके लिए मुश्किल है। वे क्या कर सकते हैं?",
+      "q": "WhatsApp पर आपको एक चौंकाने वाली फ़ोटो फॉरवर्ड होकर आई है। कौन-सा संकेत बता सकता है कि वह AI से बनी है?",
       "options": [
-        "पेंशन लेना बंद कर दें",
-        "Jeevan Pramaan ऐप में चेहरे के स्कैन से घर बैठे जमा करें",
-        "अपने आधार की फ़ोटो किसी अनजान नंबर पर भेजें"
+        "वह बहुत रंगीन है",
+        "उसमें अजीब दिखते हाथ या चेहरे हैं",
+        "किसी दोस्त ने भेजी है",
+        "वह किसी ग्रुप में भेजी गई थी"
       ],
       "answer": 1,
-      "topic": "gov",
-      "lesson": "money",
-      "tip": "Jeevan Pramaan और AadhaarFaceRD ऐप से पेंशनभोगी फ़ोन के कैमरे से अपना चेहरा स्कैन करते हैं।"
-    },
-    {
-      "q": "आपकी उम्र 72 साल है। कौन-सा कार्ड आपको अस्पताल में मुफ़्त इलाज का कवर दे सकता है?",
-      "options": [
-        "आयुष्मान वय वंदना कार्ड",
-        "किसी दुकान का लॉयल्टी कार्ड",
-        "नया सिम कार्ड"
-      ],
-      "answer": 0,
-      "topic": "gov",
-      "lesson": "money",
-      "tip": "70 साल और उससे ज़्यादा उम्र का हर व्यक्ति इसे पा सकता है। Ayushman ऐप, beneficiary.nha.gov.in, या किसी अस्पताल या CSC पर आवेदन करें।"
-    },
-    {
-      "q": "आपके फ़ोन की बैटरी शाम से पहले खत्म हो जाती है। उसे ज़्यादा देर चलाने में क्या मदद करेगा?",
-      "options": [
-        "स्क्रीन की रोशनी पूरी रखें",
-        "Battery Saver चालू करें और स्क्रीन की रोशनी कम रखें",
-        "दिनभर हर ऐप खुला रखें"
-      ],
-      "answer": 1,
-      "topic": "solve",
-      "lesson": "phone",
-      "tip": "Settings → Battery → Battery Saver। ज़रूरत न हो तो Location और Bluetooth भी बंद रखें।"
-    },
-    {
-      "q": "घर में चावल, दाल, प्याज़ और टमाटर हैं और आपको रात के खाने का जल्दी कोई आइडिया चाहिए। क्या मदद कर सकता है?",
-      "options": [
-        "खाना फेंककर बाहर से मंगवा लें",
-        "किसी AI ऐप में अपनी बैंक की जानकारी लिखें",
-        "AI ऐप को बताएं कि आपके पास क्या है और आसान रेसिपी पूछें"
-      ],
-      "answer": 2,
-      "topic": "solve",
       "lesson": "ai",
-      "tip": "Gemini या ChatGPT जैसे AI ऐप रेसिपी सुझा सकते हैं — पर उनमें कभी अपनी निजी जानकारी न लिखें।"
+      "tip": "AI नकली फ़ोटो और वीडियो बना सकता है। अजीब हाथ या चेहरे देखें, और फॉरवर्ड करने से पहले भरोसेमंद समाचार वेबसाइटों पर जांचें।"
+    },
+    {
+      "q": "इनमें से कौन-सी चीज़ AI चैट ऐप में आपको कभी नहीं लिखनी चाहिए?",
+      "options": [
+        "रेसिपी का सवाल",
+        "होमवर्क का सवाल",
+        "आपका OTP, पासवर्ड या बैंक की जानकारी",
+        "मराठी में कोई सवाल"
+      ],
+      "answer": 2,
+      "lesson": "ai",
+      "tip": "AI चैट को अनजान व्यक्ति जैसा समझें। उसमें कभी OTP, पासवर्ड, आधार, बैंक की जानकारी या परिवार की फ़ोटो न डालें।"
+    },
+    {
+      "q": "आपका बच्चा GPS स्मार्टवॉच पहनता है। इसे इस्तेमाल करने का सुरक्षित तरीका कौन-सा है?",
+      "options": [
+        "घड़ी का मैप सोशल मीडिया पर डालना",
+        "ऐप का पासवर्ड पड़ोसियों को देना",
+        "बच्चे की देखभाल छोड़ देना, क्योंकि घड़ी ही काफ़ी है",
+        "कॉन्टैक्ट में सिर्फ़ भरोसेमंद परिजन जोड़ना और लोकेशन निजी रखना"
+      ],
+      "answer": 3,
+      "lesson": "ai",
+      "tip": "लोकेशन संवेदनशील जानकारी है, इसलिए इसे निजी रखें और सिर्फ़ भरोसेमंद कॉन्टैक्ट जोड़ें। घड़ी किसी बड़े की देखभाल की जगह नहीं ले सकती।"
     }
   ],
   "mr": [
     {
-      "q": "फोन लॉक असतानाही आपत्कालीन वेळी मदत लागू शकते. तुम्ही आजच काय सेट करू शकता?",
+      "q": "तुम्हाला असुरक्षित वाटते आणि तुम्हाला पटकन मदतीसाठी कॉल करायचा आहे. तुमच्या Android फोनमध्ये Emergency SOS सुरू आहे. तुम्ही काय कराल?",
       "options": [
-        "आपत्कालीन SOS, म्हणजे पॉवर बटण 5 वेळा दाबल्यावर मदतीसाठी कॉल जाईल",
-        "नवीन वॉलपेपर",
-        "मोठ्या आवाजाची रिंगटोन"
-      ],
-      "answer": 0,
-      "topic": "basics",
-      "lesson": "phone",
-      "tip": "Settings → Safety & emergency → Emergency SOS. आपत्कालीन संपर्कही जोडा, म्हणजे ते लॉक स्क्रीनवर दिसतील."
-    },
-    {
-      "q": "तुमच्या नातवाला तुमच्या फोनवर गेम खेळायचा आहे. त्याला त्या एकाच गेममध्ये कसे ठेवाल?",
-      "options": [
-        "त्याला तुमच्या फोनचा PIN सांगा",
-        "App pinning सुरू करून गेम पिन करा",
-        "फोन बंद करून पुन्हा सुरू करा"
+        "व्हॉल्यूम बटण एकदा दाबा",
+        "पॉवर बटण 5 वेळा पटकन दाबा",
+        "फोन दोनदा हलवा",
+        "कॅमेरा ॲप उघडा"
       ],
       "answer": 1,
-      "topic": "basics",
       "lesson": "phone",
-      "tip": "App pinning मुळे तुमच्या PIN शिवाय तो गेममधून बाहेर पडू शकत नाही किंवा दुसरे ॲप उघडू शकत नाही."
+      "tip": "Emergency SOS सुरू असताना पॉवर बटण 5 वेळा पटकन दाबल्यावर मदतीसाठी कॉल जातो. Settings → Safety & emergency मध्ये आपत्कालीन संपर्क जोडा."
     },
     {
-      "q": "तुम्हाला लवकर जवळचे औषधाचे दुकान हवे आहे. ते शोधण्याचा सर्वात सोपा मार्ग कोणता?",
+      "q": "तुमचा नातू तुमच्या फोनवर एक व्हिडिओ पाहू इच्छितो. त्याने फक्त त्याच ॲपमध्ये राहावे असे तुम्हाला वाटते. काय मदत करेल?",
       "options": [
-        "वर्तमानपत्रातील जाहिरातीची वाट पाहा",
-        "Google Maps मध्ये “pharmacy near me” शोधा",
-        "WhatsApp ग्रुपमधील अनोळखी लोकांना विचारा"
-      ],
-      "answer": 1,
-      "topic": "browse",
-      "lesson": "google",
-      "tip": "Google Maps जवळची ठिकाणे, ती किती दूर आहेत आणि तिथे जाण्याचा मार्ग दाखवते."
-    },
-    {
-      "q": "तुमच्या औषधाच्या पट्टीवरच्या सूचना तुम्हाला वाचता न येणाऱ्या भाषेत आहेत. काय मदत करेल?",
-      "options": [
-        "काय लिहिले आहे याचा अंदाज लावा",
-        "औषध फेकून द्या",
-        "त्यावर Google Lens धरा आणि Translate निवडा"
+        "Airplane mode सुरू करणे",
+        "Battery Saver सुरू करणे",
+        "App pinning सुरू करून ॲप पिन करणे",
+        "Dark mode सुरू करणे"
       ],
       "answer": 2,
-      "topic": "browse",
-      "lesson": "google",
-      "tip": "Google सर्च बारमधील कॅमेरा आयकॉन दाबा, तो शब्दांवर धरा आणि Translate निवडा."
+      "lesson": "phone",
+      "tip": "App pinning फोनला एकाच ॲपमध्ये ठेवते. तुमच्या PIN शिवाय मूल त्यातून बाहेर जाऊ शकत नाही. (iPhone: Guided Access)"
     },
     {
-      "q": "तुम्ही संध्याकाळी उशिरा एकटे घरी येत आहात. घरी पोहोचेपर्यंत तुम्ही कुठे आहात ते कुटुंबाला कसे दिसेल?",
+      "q": "तुम्ही सकाळी 9 वाजताचे औषध घ्यायला अनेकदा विसरता. लक्षात ठेवण्याचा सोपा मार्ग कोणता?",
       "options": [
-        "WhatsApp वर तुमचे लाइव्ह लोकेशन शेअर करा",
-        "दर तासाला त्यांना एक फोटो पाठवा",
-        "दर पाच मिनिटांनी त्यांना कॉल करा"
+        "बोला: “Hey Google, रोज सकाळी 9 वाजता औषध घ्यायची आठवण कर”",
+        "फोन सायलेंटवर ठेवा",
+        "स्क्रीन PIN ने लॉक करा",
+        "Battery Saver सुरू करा"
       ],
       "answer": 0,
-      "topic": "talk",
-      "lesson": "family",
-      "tip": "चॅटमध्ये 📎 → Location → Share live location दाबा आणि वेळ निवडा."
+      "lesson": "phone",
+      "tip": "तुम्ही फक्त बोलून रिमाइंडर लावू शकता. फोन वेळेवर आठवण करून देतो."
     },
     {
-      "q": "व्हिडिओ कॉलवर तुमचा मुलगा तुमची स्क्रीन पाहून फोनची एखादी सेटिंग समजावू इच्छितो. आधी काय कराल?",
+      "q": "दुकानाच्या पाटीवर तुम्हाला वाचता न येणाऱ्या भाषेत लिहिले आहे. फोनचा कॅमेरा कशी मदत करू शकतो?",
       "options": [
-        "तुमचे बँक ॲप उघडा म्हणजे तो ते पाहील",
-        "बँक आणि पेमेंट ॲप बंद करा, मग स्क्रीन शेअर करा",
-        "इंटरनेट बंद करा"
+        "फोटो काढून स्वतःला ईमेल करा",
+        "Restricted Mode सुरू करा",
+        "Google Forms उघडा",
+        "पाटीकडे Google Lens धरा आणि Translate दाबा"
+      ],
+      "answer": 3,
+      "lesson": "google",
+      "tip": "Google सर्च बारमधील कॅमेरा आयकॉन (Google Lens) दाबा, शब्दांकडे कॅमेरा धरा आणि Translate निवडा."
+    },
+    {
+      "q": "तुमची 6 वर्षांची नात तुमच्या फोनवर व्हिडिओ पाहू इच्छिते. लहान मुलांसाठी बनवलेले ॲप कोणते?",
+      "options": [
+        "YouTube Kids",
+        "Gmail",
+        "Google Maps",
+        "Google Meet"
+      ],
+      "answer": 0,
+      "lesson": "google",
+      "tip": "YouTube Kids मध्ये मुलांसाठीचे व्हिडिओ दिसतात. नेहमीच्या YouTube मध्ये Restricted Mode सुरू करता येतो."
+    },
+    {
+      "q": "पासवर्ड विसरलात तरी तुम्हाला तुमच्या Google खात्यातून लॉक आउट व्हायचे नाही. तुम्ही काय जोडले पाहिजे?",
+      "options": [
+        "नवीन प्रोफाइल फोटो",
+        "लांब नाव",
+        "रिकव्हरी फोन नंबर आणि रिकव्हरी ईमेल",
+        "त्याच पासवर्डचे दुसरे Gmail"
+      ],
+      "answer": 2,
+      "lesson": "google",
+      "tip": "रिकव्हरी फोन नंबर आणि ईमेलमुळे Google तुम्हाला पुन्हा आत येण्यास मदत करते. तुमचा पासवर्ड लिहून घरी सुरक्षित ठिकाणी ठेवा."
+    },
+    {
+      "q": "तुम्ही उशिरा संध्याकाळी चालत घरी जात आहात आणि कुटुंबाने तुम्हाला नकाशावर पाहावे असे वाटते. WhatsApp चॅटमध्ये तुम्ही काय कराल?",
+      "options": [
+        "तुमचे Status बदलाल",
+        "📎 → Location → Share live location दाबाल",
+        "“Last seen” बंद कराल",
+        "दर तासाला एक व्हॉइस नोट पाठवाल"
       ],
       "answer": 1,
-      "topic": "talk",
       "lesson": "family",
-      "tip": "स्क्रीन शेअर केल्यावर स्क्रीनवरचे सगळे दिसते, म्हणून आधी बँक आणि पेमेंट ॲप बंद करा."
+      "tip": "घरी पोहोचेपर्यंत कुटुंब तुम्हाला नकाशावर पाहू शकते. किती वेळ शेअर करायचे ते तुम्ही ठरवता — जसे 1 तास."
     },
     {
-      "q": "एक खरेदीदार म्हणतो: “हा QR कोड स्कॅन करा आणि ₹2,000 मिळवण्यासाठी तुमचा UPI PIN टाका.” खरे काय आहे?",
+      "q": "अनोळखी लोक तुम्हाला सारखे WhatsApp ग्रुपमध्ये जोडत आहेत. ते थांबवण्यासाठी तुम्ही काय करू शकता?",
       "options": [
+        "तुमचे WhatsApp खाते डिलीट करा",
+        "प्रत्येक अनोळखी व्यक्तीला उत्तर द्या",
+        "प्रत्येक ग्रुप म्यूट करा",
+        "Settings → Privacy → Groups मध्ये “My contacts” निवडा"
+      ],
+      "answer": 3,
+      "lesson": "family",
+      "tip": "“My contacts” निवडल्यावर फक्त तुमच्या कॉन्टॅक्टमधील लोकच तुम्हाला ग्रुपमध्ये जोडू शकतात."
+    },
+    {
+      "q": "तुम्ही नवीन फोन घेत आहात. तुम्हाला तुमचे WhatsApp चॅट आणि कुटुंबाचे फोटो गमावायचे नाहीत. सर्वात आधी काय करावे?",
+      "options": [
+        "चॅट बॅकअप आणि फोटो बॅकअप सुरू करा",
+        "WhatsApp डिलीट करा",
+        "तुमचे SIM कार्ड काढा",
+        "काही नाही, ते आपोआप परत येतात"
+      ],
+      "answer": 0,
+      "lesson": "family",
+      "tip": "WhatsApp चा चॅट बॅकअप (Android मध्ये Google Drive, iPhone मध्ये iCloud) आणि Google Photos चा बॅकअप सुरू करा."
+    },
+    {
+      "q": "एका कॉलवरचा आवाज अगदी तुमच्या मुलीसारखा आहे. ती रडत आत्ताच पैसे मागत आहे. सर्वात सुरक्षित पहिले पाऊल कोणते?",
+      "options": [
+        "आधी पैसे पाठवा, प्रश्न नंतर विचारा",
+        "तिचा आवाज आहे म्हणून विश्वास ठेवा",
+        "कॉल कट करून तिच्या स्वतःच्या नंबरवर फोन करा, किंवा कुटुंबाचा कोड वर्ड विचारा",
+        "तिला सेल्फी पाठवायला सांगा"
+      ],
+      "answer": 2,
+      "lesson": "safety",
+      "tip": "फसवणूक करणारे AI ने आवाजाची नक्कल करू शकतात. कुटुंबाचा कोड वर्ड विचारा, किंवा तुमच्या ओळखीच्या नंबरवर परत कॉल करा."
+    },
+    {
+      "q": "कोणीतरी ऑनलाइन तुमची फसवणूक करून तुमचे पैसे घेतले. त्याची तक्रार करण्यासाठी तुम्ही कोणत्या हेल्पलाइनवर कॉल केला पाहिजे?",
+      "options": [
+        "108",
+        "1091",
+        "1098",
+        "1930"
+      ],
+      "answer": 3,
+      "lesson": "safety",
+      "tip": "1930 ही राष्ट्रीय सायबर गुन्हे हेल्पलाइन आहे. पहिल्या तासात कॉल करा, आणि बँकेलाही फोन करून कार्ड किंवा UPI ब्लॉक करा."
+    },
+    {
+      "q": "व्हिडिओ कॉलवर गणवेशातील एक व्यक्ती सांगते की तुम्ही “डिजिटल अरेस्ट” मध्ये आहात आणि पैसे द्यावे लागतील. खरे काय?",
+      "options": [
+        "पोलीस कधीही व्हिडिओ कॉलवर अटक करत नाहीत. कॉल कट करा आणि 1930 किंवा स्थानिक पोलिसांना फोन करा",
+        "तुरुंग टाळण्यासाठी पटकन पैसे भरा",
+        "निर्दोष असल्याचे सिद्ध करण्यासाठी तुमचा आधार नंबर सांगा",
+        "त्यांचे बोलून होईपर्यंत कॉलवर राहा"
+      ],
+      "answer": 0,
+      "lesson": "safety",
+      "tip": "पोलीस, CBI किंवा न्यायालय कधीही व्हिडिओ कॉलवर कोणाला अटक करत नाही आणि “केस मिटवण्यासाठी” पैसे मागत नाही."
+    },
+    {
+      "q": "तुम्हाला SMS येतो: “तुमचे KYC आज संपत आहे. आत्ता ही लिंक दाबा.” सर्वात सुरक्षित काय करावे?",
+      "options": [
+        "पटकन लिंक दाबा",
+        "लिंक दाबू नका. फक्त तुमच्या बँकेच्या अधिकृत ॲपमध्ये किंवा शाखेत जाऊन तपासा",
+        "SMS मधील नंबरवर कॉल करा",
+        "तुमच्या मित्रांना फॉरवर्ड करा"
+      ],
+      "answer": 1,
+      "lesson": "safety",
+      "tip": "KYC, बिल किंवा पार्सलबद्दल घाई करायला लावणारे संदेश बनावट असतात. फक्त अधिकृत ॲपमध्ये किंवा कार्यालयात जाऊन तपासा."
+    },
+    {
+      "q": "तुम्ही रोज चहा आणि भाजी घेता. UPI ची कोणती सुविधा छोटी पेमेंट्स एका टॅपमध्ये, PIN शिवाय करू देते?",
+      "options": [
+        "UPI Circle",
+        "AutoPay",
+        "UPI Lite",
+        "नेट बँकिंग"
+      ],
+      "answer": 2,
+      "lesson": "money",
+      "tip": "UPI Lite मध्ये एकदा थोडी रक्कम टाका. मग छोटी पेमेंट्स PIN न टाकता, एका टॅपमध्ये होतात."
+    },
+    {
+      "q": "एक अनोळखी व्यक्ती म्हणते: “₹2,000 मिळवण्यासाठी हा QR कोड स्कॅन करा आणि तुमचा UPI PIN टाका.” खरे काय?",
+      "options": [
+        "पैसे घेण्यासाठी PIN कधीही लागत नाही. ही फसवणूक आहे",
         "पैसे मिळवण्यासाठी PIN टाकावाच लागतो",
-        "QR कोड आहे, म्हणून हे सुरक्षित आहे",
-        "पैसे मिळवण्यासाठी कधीही PIN लागत नाही — ही फसवणूक आहे"
-      ],
-      "answer": 2,
-      "topic": "upi",
-      "lesson": "money",
-      "tip": "UPI PIN फक्त पैसे पाठवण्यासाठी असतो. तुम्हाला पैसे “पाठवण्यासाठी” तो मागणारा फसवणूक करणारा असतो."
-    },
-    {
-      "q": "तुम्ही दुकानाचा QR कोड स्कॅन केला, पण स्क्रीनवर अनोळखी व्यक्तीचे नाव आहे. तुम्ही काय कराल?",
-      "options": [
-        "रद्द करा आणि पैसे देण्याआधी दुकानदाराला विचारा",
-        "तरीही पैसे द्या — QR कोड नेहमी बरोबर असतो",
-        "खात्रीसाठी दोनदा पैसे द्या"
+        "रक्कम लहान असेल तर हे सुरक्षित आहे",
+        "QR कोड आहे म्हणून हे सुरक्षित आहे"
       ],
       "answer": 0,
-      "topic": "upi",
       "lesson": "money",
-      "tip": "PIN टाकण्याआधी स्क्रीनवरचे नाव आणि रक्कम नेहमी वाचा."
+      "tip": "UPI PIN फक्त पैसे पाठवण्यासाठी असतो. जो पैसे “पाठवण्यासाठी” PIN मागतो, तो फसवणूक करणारा असतो."
     },
     {
-      "q": "संदेश येतो: “आज रात्री तुमची वीज कापली जाईल. आत्ताच या नंबरवर कॉल करा.” सुरक्षित पाऊल कोणते?",
+      "q": "तुमच्या आधार, PAN आणि प्रमाणपत्रांच्या अधिकृत प्रती फोनवर सुरक्षित कुठे ठेवू शकता?",
       "options": [
-        "लगेच त्या नंबरवर कॉल करा",
-        "ते मागतील तेवढे पैसे द्या",
-        "कॉल करू नका, काहीही दाबू नका — फक्त अधिकृत ॲपमध्ये किंवा कार्यालयात तपासा"
+        "कुटुंबाच्या WhatsApp ग्रुपमध्ये",
+        "लॉक नसलेल्या फोटो गॅलरीत",
+        "मित्राला पाठवलेल्या ईमेलमध्ये",
+        "DigiLocker मध्ये"
       ],
-      "answer": 2,
-      "topic": "fraud",
-      "lesson": "safety",
-      "tip": "KYC, वीज बिल किंवा पार्सलच्या नावाने घाई करायला लावणारे संदेश ही नेहमीची फसवणूक आहे."
+      "answer": 3,
+      "lesson": "money",
+      "tip": "आधारशी जोडलेल्या मोबाइल नंबरने DigiLocker मध्ये साइन इन करा. तिथे ठेवलेल्या अधिकृत प्रती ग्राह्य धरल्या जातात."
     },
     {
-      "q": "कोणीतरी तुम्हाला फसवले आणि तुमच्या बँक खात्यातून पैसे गेले. सर्वात आधी काय कराल?",
+      "q": "तुमचे वडील पेन्शनधारक आहेत आणि हयातीच्या दाखल्यासाठी बँकेत जाणे त्यांना कठीण वाटते. ते काय करू शकतात?",
       "options": [
-        "पैसे परत येतील का ते पाहण्यासाठी काही दिवस थांबा",
-        "लगेच 1930 वर कॉल करा, आणि कार्ड किंवा UPI बंद करण्यासाठी बँकेला कॉल करा",
-        "लाज वाटते म्हणून कोणालाही सांगू नका"
+        "पासबुक कुरिअरने पाठवू शकतात",
+        "Jeevan Pramaan ॲपमध्ये चेहरा स्कॅन करून घरबसल्या जमा करू शकतात",
+        "शेजाऱ्याकडून त्यांच्यासाठी सही करून घेऊ शकतात",
+        "बँकेचा फोन येईपर्यंत थांबू शकतात"
       ],
       "answer": 1,
-      "topic": "fraud",
-      "lesson": "safety",
-      "tip": "पहिला तास सर्वात महत्त्वाचा असतो. 1930 वर कॉल करा किंवा cybercrime.gov.in वर तक्रार करा."
+      "lesson": "money",
+      "tip": "पेन्शनधारक Jeevan Pramaan आणि AadhaarFaceRD ॲपद्वारे घरबसल्या हयातीचा दाखला जमा करू शकतात — बँकेत जायची गरज नाही."
     },
     {
-      "q": "तुमचे वडील पेन्शनधारक आहेत आणि हयातीच्या दाखल्यासाठी बँकेत जाणे त्यांना अवघड आहे. ते काय करू शकतात?",
+      "q": "WhatsApp वर तुम्हाला एक धक्कादायक फोटो फॉरवर्ड होऊन आला आहे. कोणती खूण दाखवू शकते की तो AI ने बनवला आहे?",
       "options": [
-        "पेन्शन घेणे बंद करा",
-        "Jeevan Pramaan ॲपमध्ये चेहरा स्कॅन करून घरबसल्या जमा करा",
-        "त्यांच्या आधारचा फोटो अनोळखी नंबरवर पाठवा"
+        "तो खूप रंगीत आहे",
+        "त्यात विचित्र दिसणारे हात किंवा चेहरे आहेत",
+        "मित्राने पाठवला आहे",
+        "तो ग्रुपमध्ये पाठवला होता"
       ],
       "answer": 1,
-      "topic": "gov",
-      "lesson": "money",
-      "tip": "Jeevan Pramaan आणि AadhaarFaceRD ॲपद्वारे पेन्शनधारक फोनच्या कॅमेऱ्याने चेहरा स्कॅन करतात."
-    },
-    {
-      "q": "तुमचे वय 72 वर्षे आहे. कोणते कार्ड तुम्हाला रुग्णालयातील मोफत उपचारांचे कवच देऊ शकते?",
-      "options": [
-        "आयुष्मान वय वंदना कार्ड",
-        "एखाद्या दुकानाचे लॉयल्टी कार्ड",
-        "नवीन सिम कार्ड"
-      ],
-      "answer": 0,
-      "topic": "gov",
-      "lesson": "money",
-      "tip": "70 वर्षे व त्याहून अधिक वयाची प्रत्येक व्यक्ती ते मिळवू शकते. Ayushman ॲप, beneficiary.nha.gov.in, किंवा जवळच्या रुग्णालयात किंवा CSC मध्ये अर्ज करा."
-    },
-    {
-      "q": "तुमच्या फोनची बॅटरी संध्याकाळपूर्वीच संपते. ती जास्त वेळ टिकण्यासाठी काय मदत करेल?",
-      "options": [
-        "स्क्रीनचा प्रकाश पूर्ण ठेवा",
-        "Battery Saver सुरू करा आणि स्क्रीनचा प्रकाश कमी ठेवा",
-        "दिवसभर सगळी ॲप्स उघडी ठेवा"
-      ],
-      "answer": 1,
-      "topic": "solve",
-      "lesson": "phone",
-      "tip": "Settings → Battery → Battery Saver. गरज नसताना Location आणि Bluetooth ही बंद ठेवा."
-    },
-    {
-      "q": "घरी तांदूळ, डाळ, कांदा आणि टोमॅटो आहेत आणि रात्रीच्या जेवणासाठी पटकन कल्पना हवी आहे. काय मदत करेल?",
-      "options": [
-        "अन्न फेकून बाहेरून मागवा",
-        "एखाद्या AI ॲपमध्ये तुमची बँकेची माहिती लिहा",
-        "AI ॲपला तुमच्याकडे काय आहे ते सांगा आणि सोपी रेसिपी विचारा"
-      ],
-      "answer": 2,
-      "topic": "solve",
       "lesson": "ai",
-      "tip": "Gemini किंवा ChatGPT सारखी AI ॲप्स रेसिपी सुचवू शकतात — पण त्यात कधीही तुमची खासगी माहिती लिहू नका."
+      "tip": "AI बनावट फोटो आणि व्हिडिओ बनवू शकते. विचित्र हात किंवा चेहरे पाहा, आणि फॉरवर्ड करण्याआधी विश्वासार्ह बातम्यांच्या वेबसाइटवर तपासा."
+    },
+    {
+      "q": "यांपैकी कोणती गोष्ट तुम्ही AI चॅट ॲपमध्ये कधीही टाकू नये?",
+      "options": [
+        "रेसिपीचा प्रश्न",
+        "गृहपाठाचा प्रश्न",
+        "तुमचा OTP, पासवर्ड किंवा बँकेची माहिती",
+        "मराठीतील एखादा प्रश्न"
+      ],
+      "answer": 2,
+      "lesson": "ai",
+      "tip": "AI चॅटला अनोळखी व्यक्ती समजा. त्यात कधीही OTP, पासवर्ड, आधार, बँकेची माहिती किंवा कुटुंबाचे फोटो टाकू नका."
+    },
+    {
+      "q": "तुमचे मूल GPS स्मार्टवॉच घालते. ते वापरण्याचा सुरक्षित मार्ग कोणता?",
+      "options": [
+        "घड्याळाचा नकाशा सोशल मीडियावर टाकणे",
+        "ॲपचा पासवर्ड शेजाऱ्यांना देणे",
+        "मुलावर लक्ष ठेवणे सोडून देणे, कारण घड्याळच पुरेसे आहे",
+        "संपर्कांमध्ये फक्त विश्वासू नातेवाईक जोडणे आणि लोकेशन खासगी ठेवणे"
+      ],
+      "answer": 3,
+      "lesson": "ai",
+      "tip": "लोकेशन ही संवेदनशील माहिती आहे, म्हणून ती खासगी ठेवा आणि फक्त विश्वासू संपर्क जोडा. घड्याळ मोठ्या व्यक्तीच्या काळजीची जागा घेत नाही."
     }
   ]
 };

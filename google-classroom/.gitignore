@@ -1,0 +1,8 @@
+# Never commit Google sign-in files. (The Apps Script method in this folder doesn't need any,
+# but if a credentials or token file is ever downloaded here, Git will ignore it.)
+credentials*.json
+client_secret*.json
+token*.json
+*.pem
+*.key
+.clasprc.json

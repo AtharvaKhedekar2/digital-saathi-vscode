@@ -1,0 +1,66 @@
+{
+  "about": "Digital Saathi Google Classrooms — one per learning step. Keys match the website's LESSONS ids. Made by step5_exportClassroomInfo in classroom-setup.gs. No secrets in here.",
+  "exportedAt": "2026-11-10T11:57:54.206Z",
+  "classrooms": {
+    "phone": {
+      "step": 1,
+      "websiteStep": "Smartphone Basics",
+      "name": "Digital Saathi – Smartphone Basics",
+      "courseId": "891049121762",
+      "url": "https://classroom.google.com/c/ODkxMDQ5MTIxNzYy",
+      "enrollmentCode": "g7nudgmr",
+      "state": "ACTIVE",
+      "inviteLink": null
+    },
+    "google": {
+      "step": 2,
+      "websiteStep": "Google, Gmail & YouTube",
+      "name": "Digital Saathi – Google, Gmail & YouTube",
+      "courseId": "891048776896",
+      "url": "https://classroom.google.com/c/ODkxMDQ4Nzc2ODk2",
+      "enrollmentCode": "ub23f6gl",
+      "state": "ACTIVE",
+      "inviteLink": null
+    },
+    "family": {
+      "step": 3,
+      "websiteStep": "Communication with family & friends",
+      "name": "Digital Saathi – Communication with Family & Friends",
+      "courseId": "891049061272",
+      "url": "https://classroom.google.com/c/ODkxMDQ5MDYxMjcy",
+      "enrollmentCode": "g7qixpv5",
+      "state": "ACTIVE",
+      "inviteLink": null
+    },
+    "safety": {
+      "step": 4,
+      "websiteStep": "Stay safe online",
+      "name": "Digital Saathi – Stay Safe Online",
+      "courseId": "891049128310",
+      "url": "https://classroom.google.com/c/ODkxMDQ5MTI4MzEw",
+      "enrollmentCode": "qegsufov",
+      "state": "ACTIVE",
+      "inviteLink": null
+    },
+    "money": {
+      "step": 5,
+      "websiteStep": "Digital payments & government services",
+      "name": "Digital Saathi – Digital Payments & Government Services",
+      "courseId": "891048999780",
+      "url": "https://classroom.google.com/c/ODkxMDQ4OTk5Nzgw",
+      "enrollmentCode": "vwwtm667",
+      "state": "ACTIVE",
+      "inviteLink": null
+    },
+    "ai": {
+      "step": 6,
+      "websiteStep": "AI tools & family digital safety",
+      "name": "Digital Saathi – AI Tools & Family Digital Safety",
+      "courseId": "891049098978",
+      "url": "https://classroom.google.com/c/ODkxMDQ5MDk4OTc4",
+      "enrollmentCode": "7ejybc4t",
+      "state": "ACTIVE",
+      "inviteLink": null
+    }
+  }
+}

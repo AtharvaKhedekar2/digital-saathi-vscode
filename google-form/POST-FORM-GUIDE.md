@@ -12,13 +12,18 @@ This folder builds the **Digital Saathi Post-Assessment Quiz** as a Google Form,
 | | Pre-Assessment form | Post-Assessment form |
 |---|---|---|
 | When | Before learning | After finishing all six learning steps |
-| Questions | 11 questions | **14 new questions**, 2 per topic, everyday situations |
-| Learning steps tested | All six | **The same six** (every question is linked to one step) |
-| Pass mark | No pass or fail | **10 of 14 (70%)** for the certificate |
+| Questions | 11 questions | **20 questions**: 8 re-test Pre-Assessment concepts in simpler everyday words, 12 are new practical questions |
+| Learning steps tested | All six | **The same six**: 3 + 3 + 3 + 4 + 4 + 3 questions, one page per step |
+| Pass mark | No pass or fail | **14 of 20 (70%)** for the certificate |
 | "I am…" and "How comfortable are you…" | Yes | **Yes, word for word the same**, so groups can be compared |
 
 Because the two quizzes have a different number of questions, you compare **percentages** (for example 45% → 79%),
-not raw scores. Part F shows how.
+not raw scores. You can also compare the **8 matched concepts** one by one: they are the same skills asked in
+different words (marked 🔁 in Part C). Part F shows how.
+
+The Pre-Assessment is deliberately harder than common sense (3 options plus “I am not sure”). The Post-Assessment uses
+clear everyday situations with 4 answer options and one clearly right answer, so a learner who has followed the steps
+can answer with confidence.
 
 The questions are exactly the same as the website's own Post-Assessment (`POST_QUIZ` in `index.html`), so the form
 and the website always agree.
@@ -28,16 +33,15 @@ What the form looks like:
 | Page | What is on it | Scored? |
 |---|---|---|
 | 1 · About you | First name (optional) · "I am…" · "Did you take the Pre-Assessment?" · "Which learning steps did you finish?" · "How comfortable are you using a smartphone today?" (1–5) | No |
-| 2 · 📱 Smartphone basics | 2 questions | 1 point each |
-| 3 · 🔍 Internet & Google | 2 questions | 1 point each |
-| 4 · 💬 Talking with family & friends | 2 questions | 1 point each |
-| 5 · 💳 Online payments & UPI safety | 2 questions | 1 point each |
-| 6 · 🛡️ Online fraud & safety | 2 questions | 1 point each |
-| 7 · 🏛️ Government services online | 2 questions | 1 point each |
-| 8 · 🧩 Solving everyday problems | 2 questions | 1 point each |
-| 9 · One last thing | "What would you like to learn next?" (optional) | No |
+| 2 · Step 1 of 6 · 📱 Smartphone Basics | 3 questions | 1 point each |
+| 3 · Step 2 of 6 · 🔍 Google, Gmail & YouTube | 3 questions | 1 point each |
+| 4 · Step 3 of 6 · 💬 Communication with family & friends | 3 questions | 1 point each |
+| 5 · Step 4 of 6 · 🛡️ Stay safe online | 4 questions | 1 point each |
+| 6 · Step 5 of 6 · 💳 Digital payments & government services | 4 questions | 1 point each |
+| 7 · Step 6 of 6 · ✨ AI tools & family digital safety | 3 questions | 1 point each |
+| 8 · One last thing | "What would you like to learn next?" (optional) | No |
 
-**Total: 14 points.** Every scored question has 3 options, exactly one right answer, and is required. After a wrong
+**Total: 20 points.** Every scored question has 4 options, exactly one right answer, and is required. After a wrong
 answer, the learner sees the right answer, a short tip and the learning step to look at again.
 
 ---
@@ -105,21 +109,21 @@ Add the next question with **⊕ Add question** in the small toolbar on the righ
 Questions 2 and 5 must be **exactly** the same as in the Pre-Assessment form; that is what makes the comparison work.
 None of these five questions gets points: in quiz mode, leave their points at **0**.
 
-**B4. Pages 2–8: one page per topic**
+**B4. Pages 2–7: one page per learning step**
 1. In the toolbar on the right, click **Add section** (the icon with two rectangles). A new page starts.
-2. Type the page title, for example `Topic 1 of 7 · 📱 Smartphone basics`, and the description
+2. Type the page title, for example `Step 1 of 6 · 📱 Smartphone Basics`, and the description
    `Choose one answer for each question.`
-3. Add the page's 2 questions. For each one:
+3. Add the page's questions (3 or 4; see Part C). For each one:
    1. Type the question and choose **Multiple choice**.
-   2. Type the 3 options (A, B, C from Part C) in the same order.
+   2. Type the 4 options (A, B, C, D from Part C) in the same order.
    3. Switch **Required** on.
    4. Click **Answer key** (bottom left of the question). Click the **right option** so it gets a green tick ✅.
    5. Top right of the answer key, set the points to **1**.
    6. Click **Add answer feedback**. Paste the *correct* feedback in the first tab and the *incorrect* feedback in the
       second tab (both are in Part C). Click **Save**, then **Done**.
-4. Repeat for all 7 topic pages (14 questions).
+4. Repeat for all 6 step pages (20 questions).
 
-**B5. Page 9: one last thing**
+**B5. Page 8: one last thing**
 1. **Add section** with the title `One last thing`.
 2. Add a **Paragraph** question: `What would you like to learn next? (optional)`, description
    `For example: video calls, filling online forms, using AI safely…`. **Required: No.** Points: 0.
@@ -139,180 +143,229 @@ descriptions, options and feedback are all there, in the same order.
 **Description:**
 > Well done for finishing the Digital Saathi learning steps! 🎉 This quiz shows how much you have learned.
 >
-> • 14 everyday questions · about 7 minutes
-> • Score 10 or more out of 14 (70%) to qualify for the Digital Saathi certificate
+> • 20 everyday questions · about 10 minutes
+> • Score 14 or more out of 20 (70%) to qualify for the Digital Saathi certificate
 > • At the end you will see your score and the right answers
 >
 > 🔒 Never type your OTP, PIN, password or bank details in any form.
 
 **Thank-you (confirmation) message:**
-> Thank you! 🎉 Click “View score” to see your result. If you scored 10 or more out of 14, show it to a Digital Saathi
+> Thank you! 🎉 Click “View score” to see your result. If you scored 14 or more out of 20, show it to a Digital Saathi
 > volunteer for your certificate. Keep practising on your own phone!
 
 Page 1 (about you) is in the table in Part B3. The scored questions:
 
-### Page 2 · Topic 1 of 7 · 📱 Smartphone basics
+### Page 2 · Step 1 of 6 · 📱 Smartphone Basics
 
 Page description: *Choose one answer for each question.*
 
-**Q1. You may need help in an emergency, even when your phone is locked. What can you set up today?**
+**Q1. You feel unsafe and want to call for help fast. Your Android phone has Emergency SOS turned on. What do you do?**  🔁 *re-tests Pre-Assessment Q1*
 
 | Options | Correct answer | Type · Required · Points | Learning step |
 |---|---|---|---|
-| A. Emergency SOS, so pressing the power button 5 times calls for help ✅<br>B. A new wallpaper<br>C. A louder ringtone | **A** | Multiple choice · Yes · 1 | 1 · Smartphone Basics |
+| A. Press the volume button once<br>B. Press the power button 5 times quickly ✅<br>C. Shake the phone twice<br>D. Open the camera app | **B** | Multiple choice · Yes · 1 | 1 · Smartphone Basics |
 
-Feedback for correct answers: *Correct — well done! 💡 Settings → Safety & emergency → Emergency SOS. Add emergency contacts too, so they show on the lock screen.*  
-Feedback for incorrect answers: *Not quite. The right answer is: “Emergency SOS, so pressing the power button 5 times calls for help”. 💡 Settings → Safety & emergency → Emergency SOS. Add emergency contacts too, so they show on the lock screen. (Look at Step 1 — Smartphone Basics again.)*
+Feedback for correct answers: *Correct — well done! 💡 With Emergency SOS turned on, pressing the power button 5 times quickly calls for help. Add emergency contacts in Settings → Safety & emergency.*  
+Feedback for incorrect answers: *Not quite. The right answer is: “Press the power button 5 times quickly”. 💡 With Emergency SOS turned on, pressing the power button 5 times quickly calls for help. Add emergency contacts in Settings → Safety & emergency. (Look at Step 1 — Smartphone Basics again.)*
 
-**Q2. Your grandson wants to play a game on your phone. How can you keep him inside that one game?**
+**Q2. Your grandson wants to watch one video on your phone. You want him to stay only in that app. What helps?**  🔁 *re-tests Pre-Assessment Q2*
 
 | Options | Correct answer | Type · Required · Points | Learning step |
 |---|---|---|---|
-| A. Tell him your phone PIN<br>B. Turn on App pinning and pin the game ✅<br>C. Switch the phone off and on again | **B** | Multiple choice · Yes · 1 | 1 · Smartphone Basics |
+| A. Turn on Airplane mode<br>B. Turn on Battery Saver<br>C. Turn on App pinning and pin the app ✅<br>D. Turn on Dark mode | **C** | Multiple choice · Yes · 1 | 1 · Smartphone Basics |
 
-Feedback for correct answers: *Correct — well done! 💡 With App pinning, he cannot leave the game or open other apps without your PIN.*  
-Feedback for incorrect answers: *Not quite. The right answer is: “Turn on App pinning and pin the game”. 💡 With App pinning, he cannot leave the game or open other apps without your PIN. (Look at Step 1 — Smartphone Basics again.)*
+Feedback for correct answers: *Correct — well done! 💡 App pinning keeps the phone on one app. The child cannot leave it without your PIN. (iPhone: Guided Access.)*  
+Feedback for incorrect answers: *Not quite. The right answer is: “Turn on App pinning and pin the app”. 💡 App pinning keeps the phone on one app. The child cannot leave it without your PIN. (iPhone: Guided Access.) (Look at Step 1 — Smartphone Basics again.)*
+
+**Q3. You often forget to take your medicine at 9 am. What is an easy way to remember?**
+
+| Options | Correct answer | Type · Required · Points | Learning step |
+|---|---|---|---|
+| A. Say “Hey Google, remind me to take my medicine every day at 9 am” ✅<br>B. Switch the phone to silent<br>C. Lock the screen with a PIN<br>D. Turn on Battery Saver | **A** | Multiple choice · Yes · 1 | 1 · Smartphone Basics |
+
+Feedback for correct answers: *Correct — well done! 💡 You can set a reminder just by speaking. The phone reminds you on time.*  
+Feedback for incorrect answers: *Not quite. The right answer is: “Say “Hey Google, remind me to take my medicine every day at 9 am””. 💡 You can set a reminder just by speaking. The phone reminds you on time. (Look at Step 1 — Smartphone Basics again.)*
 
 
-### Page 3 · Topic 2 of 7 · 🔍 Internet & Google
+### Page 3 · Step 2 of 6 · 🔍 Google, Gmail & YouTube
 
 Page description: *Choose one answer for each question.*
 
-**Q3. You need a pharmacy near you, quickly. What is the easiest way to find one?**
+**Q4. A shop board is written in a language you cannot read. How can your phone camera help?**  🔁 *re-tests Pre-Assessment Q3*
 
 | Options | Correct answer | Type · Required · Points | Learning step |
 |---|---|---|---|
-| A. Wait for a newspaper advertisement<br>B. Search “pharmacy near me” in Google Maps ✅<br>C. Ask strangers in a WhatsApp group | **B** | Multiple choice · Yes · 1 | 2 · Google, Gmail & YouTube |
+| A. Take a photo and email it to yourself<br>B. Turn on Restricted Mode<br>C. Open Google Forms<br>D. Point Google Lens at the board and tap Translate ✅ | **D** | Multiple choice · Yes · 1 | 2 · Google, Gmail & YouTube |
 
-Feedback for correct answers: *Correct — well done! 💡 Google Maps shows the nearest places, how far they are and the way to get there.*  
-Feedback for incorrect answers: *Not quite. The right answer is: “Search “pharmacy near me” in Google Maps”. 💡 Google Maps shows the nearest places, how far they are and the way to get there. (Look at Step 2 — Google, Gmail & YouTube again.)*
+Feedback for correct answers: *Correct — well done! 💡 Tap the camera icon (Google Lens) in the Google search bar, point it at the words and choose Translate.*  
+Feedback for incorrect answers: *Not quite. The right answer is: “Point Google Lens at the board and tap Translate”. 💡 Tap the camera icon (Google Lens) in the Google search bar, point it at the words and choose Translate. (Look at Step 2 — Google, Gmail & YouTube again.)*
 
-**Q4. Your medicine strip has instructions in a language you cannot read. What can help?**
+**Q5. Your 6-year-old granddaughter wants to watch videos on your phone. Which app is made for young children?**
 
 | Options | Correct answer | Type · Required · Points | Learning step |
 |---|---|---|---|
-| A. Guess what it says<br>B. Throw the medicine away<br>C. Point Google Lens at it and choose Translate ✅ | **C** | Multiple choice · Yes · 1 | 2 · Google, Gmail & YouTube |
+| A. YouTube Kids ✅<br>B. Gmail<br>C. Google Maps<br>D. Google Meet | **A** | Multiple choice · Yes · 1 | 2 · Google, Gmail & YouTube |
 
-Feedback for correct answers: *Correct — well done! 💡 Tap the camera icon in the Google search bar, point it at the words and choose Translate.*  
-Feedback for incorrect answers: *Not quite. The right answer is: “Point Google Lens at it and choose Translate”. 💡 Tap the camera icon in the Google search bar, point it at the words and choose Translate. (Look at Step 2 — Google, Gmail & YouTube again.)*
+Feedback for correct answers: *Correct — well done! 💡 YouTube Kids shows videos made for children. On normal YouTube you can turn on Restricted Mode.*  
+Feedback for incorrect answers: *Not quite. The right answer is: “YouTube Kids”. 💡 YouTube Kids shows videos made for children. On normal YouTube you can turn on Restricted Mode. (Look at Step 2 — Google, Gmail & YouTube again.)*
+
+**Q6. You do not want to be locked out of your Google account if you forget the password. What should you add?**
+
+| Options | Correct answer | Type · Required · Points | Learning step |
+|---|---|---|---|
+| A. A new profile photo<br>B. A longer name<br>C. A recovery phone number and a recovery email ✅<br>D. A second Gmail with the same password | **C** | Multiple choice · Yes · 1 | 2 · Google, Gmail & YouTube |
+
+Feedback for correct answers: *Correct — well done! 💡 A recovery phone number and email help Google let you back in. Keep your password written down in a safe place at home.*  
+Feedback for incorrect answers: *Not quite. The right answer is: “A recovery phone number and a recovery email”. 💡 A recovery phone number and email help Google let you back in. Keep your password written down in a safe place at home. (Look at Step 2 — Google, Gmail & YouTube again.)*
 
 
-### Page 4 · Topic 3 of 7 · 💬 Talking with family & friends
+### Page 4 · Step 3 of 6 · 💬 Communication with family & friends
 
 Page description: *Choose one answer for each question.*
 
-**Q5. You are coming home alone late in the evening. How can your family see where you are until you reach home?**
+**Q7. You are walking home late and want your family to follow you on the map. What do you do in a WhatsApp chat?**  🔁 *re-tests Pre-Assessment Q5*
 
 | Options | Correct answer | Type · Required · Points | Learning step |
 |---|---|---|---|
-| A. Share your live location on WhatsApp ✅<br>B. Send them a photo every hour<br>C. Call them every five minutes | **A** | Multiple choice · Yes · 1 | 3 · Communication with family & friends |
+| A. Change your Status<br>B. Tap 📎 → Location → Share live location ✅<br>C. Turn off “Last seen”<br>D. Send a voice note every hour | **B** | Multiple choice · Yes · 1 | 3 · Communication with family & friends |
 
-Feedback for correct answers: *Correct — well done! 💡 In a chat tap 📎 → Location → Share live location, and choose how long to share.*  
-Feedback for incorrect answers: *Not quite. The right answer is: “Share your live location on WhatsApp”. 💡 In a chat tap 📎 → Location → Share live location, and choose how long to share. (Look at Step 3 — Communication with family & friends again.)*
+Feedback for correct answers: *Correct — well done! 💡 Your family can follow you on the map until you reach home. You choose how long to share, for example 1 hour.*  
+Feedback for incorrect answers: *Not quite. The right answer is: “Tap 📎 → Location → Share live location”. 💡 Your family can follow you on the map until you reach home. You choose how long to share, for example 1 hour. (Look at Step 3 — Communication with family & friends again.)*
 
-**Q6. On a video call, your son wants to see your screen to guide you through a phone setting. What should you do first?**
+**Q8. Strangers keep adding you to WhatsApp groups. What can you do to stop it?**
 
 | Options | Correct answer | Type · Required · Points | Learning step |
 |---|---|---|---|
-| A. Open your bank app so he can check it<br>B. Close bank and payment apps, then share your screen ✅<br>C. Switch off the internet | **B** | Multiple choice · Yes · 1 | 3 · Communication with family & friends |
+| A. Delete your WhatsApp account<br>B. Reply to each stranger<br>C. Mute every group<br>D. Go to Settings → Privacy → Groups and choose “My contacts” ✅ | **D** | Multiple choice · Yes · 1 | 3 · Communication with family & friends |
 
-Feedback for correct answers: *Correct — well done! 💡 Screen sharing shows everything on your screen, so close bank and payment apps before you share.*  
-Feedback for incorrect answers: *Not quite. The right answer is: “Close bank and payment apps, then share your screen”. 💡 Screen sharing shows everything on your screen, so close bank and payment apps before you share. (Look at Step 3 — Communication with family & friends again.)*
+Feedback for correct answers: *Correct — well done! 💡 With “My contacts”, only people in your contacts can add you to a group.*  
+Feedback for incorrect answers: *Not quite. The right answer is: “Go to Settings → Privacy → Groups and choose “My contacts””. 💡 With “My contacts”, only people in your contacts can add you to a group. (Look at Step 3 — Communication with family & friends again.)*
+
+**Q9. You are getting a new phone. You do not want to lose your WhatsApp chats and family photos. What should you do first?**
+
+| Options | Correct answer | Type · Required · Points | Learning step |
+|---|---|---|---|
+| A. Turn on chat backup and photo backup ✅<br>B. Delete WhatsApp<br>C. Remove your SIM card<br>D. Nothing, they always come back on their own | **A** | Multiple choice · Yes · 1 | 3 · Communication with family & friends |
+
+Feedback for correct answers: *Correct — well done! 💡 Turn on WhatsApp chat backup (Google Drive on Android, iCloud on iPhone) and backup in Google Photos.*  
+Feedback for incorrect answers: *Not quite. The right answer is: “Turn on chat backup and photo backup”. 💡 Turn on WhatsApp chat backup (Google Drive on Android, iCloud on iPhone) and backup in Google Photos. (Look at Step 3 — Communication with family & friends again.)*
 
 
-### Page 5 · Topic 4 of 7 · 💳 Online payments & UPI safety
+### Page 5 · Step 4 of 6 · 🛡️ Stay safe online
 
 Page description: *Choose one answer for each question.*
 
-**Q7. A buyer says: “Scan this QR code and enter your UPI PIN to receive ₹2,000.” What is true?**
+**Q10. A call sounds exactly like your daughter. She cries and asks for money right now. What is the safest first step?**  🔁 *re-tests Pre-Assessment Q7*
 
 | Options | Correct answer | Type · Required · Points | Learning step |
 |---|---|---|---|
-| A. You must enter your PIN to get the money<br>B. It is safe because a QR code is used<br>C. You never need a PIN to receive money — it is a scam ✅ | **C** | Multiple choice · Yes · 1 | 5 · Digital payments & government services |
+| A. Send the money, then ask questions later<br>B. Believe her because it is her voice<br>C. Hang up and call her back on her own number, or ask for your family code word ✅<br>D. Ask her to send a selfie | **C** | Multiple choice · Yes · 1 | 4 · Stay safe online |
+
+Feedback for correct answers: *Correct — well done! 💡 Scammers can copy a voice using AI. Use a family code word, or call back on the number you know.*  
+Feedback for incorrect answers: *Not quite. The right answer is: “Hang up and call her back on her own number, or ask for your family code word”. 💡 Scammers can copy a voice using AI. Use a family code word, or call back on the number you know. (Look at Step 4 — Stay safe online again.)*
+
+**Q11. Someone cheated you online and took your money. Which helpline should you call to report it?**  🔁 *re-tests Pre-Assessment Q8*
+
+| Options | Correct answer | Type · Required · Points | Learning step |
+|---|---|---|---|
+| A. 108<br>B. 1091<br>C. 1098<br>D. 1930 ✅ | **D** | Multiple choice · Yes · 1 | 4 · Stay safe online |
+
+Feedback for correct answers: *Correct — well done! 💡 1930 is the National Cyber Crime Helpline. Call in the first hour, and call your bank to block your card or UPI.*  
+Feedback for incorrect answers: *Not quite. The right answer is: “1930”. 💡 1930 is the National Cyber Crime Helpline. Call in the first hour, and call your bank to block your card or UPI. (Look at Step 4 — Stay safe online again.)*
+
+**Q12. On a video call, a person in police uniform says you are under “digital arrest” and must pay money. What is true?**
+
+| Options | Correct answer | Type · Required · Points | Learning step |
+|---|---|---|---|
+| A. Police never arrest anyone on a video call. Hang up and call 1930 or your local police ✅<br>B. Pay quickly to avoid jail<br>C. Give your Aadhaar number to prove you are innocent<br>D. Stay on the call until they finish | **A** | Multiple choice · Yes · 1 | 4 · Stay safe online |
+
+Feedback for correct answers: *Correct — well done! 💡 Police, the CBI or courts never arrest anyone on a video call and never ask for money to “settle a case”.*  
+Feedback for incorrect answers: *Not quite. The right answer is: “Police never arrest anyone on a video call. Hang up and call 1930 or your local police”. 💡 Police, the CBI or courts never arrest anyone on a video call and never ask for money to “settle a case”. (Look at Step 4 — Stay safe online again.)*
+
+**Q13. You get an SMS: “Your KYC expires today. Tap this link now.” What is the safest thing to do?**
+
+| Options | Correct answer | Type · Required · Points | Learning step |
+|---|---|---|---|
+| A. Tap the link quickly<br>B. Do not tap. Check only in your bank's official app or at the branch ✅<br>C. Call the number in the SMS<br>D. Forward it to your friends | **B** | Multiple choice · Yes · 1 | 4 · Stay safe online |
+
+Feedback for correct answers: *Correct — well done! 💡 Messages that rush you about KYC, bills or parcels are fake. Check only in the official app or at the office.*  
+Feedback for incorrect answers: *Not quite. The right answer is: “Do not tap. Check only in your bank's official app or at the branch”. 💡 Messages that rush you about KYC, bills or parcels are fake. Check only in the official app or at the office. (Look at Step 4 — Stay safe online again.)*
+
+
+### Page 6 · Step 5 of 6 · 💳 Digital payments & government services
+
+Page description: *Choose one answer for each question.*
+
+**Q14. You buy tea and vegetables every day. Which UPI feature lets you pay small amounts with one tap and no PIN?**  🔁 *re-tests Pre-Assessment Q9*
+
+| Options | Correct answer | Type · Required · Points | Learning step |
+|---|---|---|---|
+| A. UPI Circle<br>B. AutoPay<br>C. UPI Lite ✅<br>D. Net banking | **C** | Multiple choice · Yes · 1 | 5 · Digital payments & government services |
+
+Feedback for correct answers: *Correct — well done! 💡 Add a small balance to UPI Lite once. Small payments then go through in one tap, without a PIN.*  
+Feedback for incorrect answers: *Not quite. The right answer is: “UPI Lite”. 💡 Add a small balance to UPI Lite once. Small payments then go through in one tap, without a PIN. (Look at Step 5 — Digital payments & government services again.)*
+
+**Q15. A stranger says: “Scan this QR code and enter your UPI PIN to receive ₹2,000.” What is true?**
+
+| Options | Correct answer | Type · Required · Points | Learning step |
+|---|---|---|---|
+| A. You never need your PIN to receive money. It is a scam ✅<br>B. You must enter your PIN to get the money<br>C. It is safe if the amount is small<br>D. It is safe because it is a QR code | **A** | Multiple choice · Yes · 1 | 5 · Digital payments & government services |
 
 Feedback for correct answers: *Correct — well done! 💡 Your UPI PIN is only for sending money. Anyone who asks for it to “send” you money is a fraud.*  
-Feedback for incorrect answers: *Not quite. The right answer is: “You never need a PIN to receive money — it is a scam”. 💡 Your UPI PIN is only for sending money. Anyone who asks for it to “send” you money is a fraud. (Look at Step 5 — Digital payments & government services again.)*
+Feedback for incorrect answers: *Not quite. The right answer is: “You never need your PIN to receive money. It is a scam”. 💡 Your UPI PIN is only for sending money. Anyone who asks for it to “send” you money is a fraud. (Look at Step 5 — Digital payments & government services again.)*
 
-**Q8. You scan a shop's QR code, but the name on the screen is someone you don't know. What do you do?**
+**Q16. Where can you keep official copies of your Aadhaar, PAN and certificates safely on your phone?**
 
 | Options | Correct answer | Type · Required · Points | Learning step |
 |---|---|---|---|
-| A. Cancel, and ask the shopkeeper before paying ✅<br>B. Pay anyway — QR codes are always correct<br>C. Pay twice to be sure | **A** | Multiple choice · Yes · 1 | 5 · Digital payments & government services |
+| A. In a family WhatsApp group<br>B. In your photo gallery with no lock<br>C. In an email to a friend<br>D. In DigiLocker ✅ | **D** | Multiple choice · Yes · 1 | 5 · Digital payments & government services |
 
-Feedback for correct answers: *Correct — well done! 💡 Always read the name and the amount on the screen before you enter your PIN.*  
-Feedback for incorrect answers: *Not quite. The right answer is: “Cancel, and ask the shopkeeper before paying”. 💡 Always read the name and the amount on the screen before you enter your PIN. (Look at Step 5 — Digital payments & government services again.)*
+Feedback for correct answers: *Correct — well done! 💡 Sign in to DigiLocker with your Aadhaar-linked mobile number. Official copies kept there are accepted as valid.*  
+Feedback for incorrect answers: *Not quite. The right answer is: “In DigiLocker”. 💡 Sign in to DigiLocker with your Aadhaar-linked mobile number. Official copies kept there are accepted as valid. (Look at Step 5 — Digital payments & government services again.)*
+
+**Q17. Your father is a pensioner and finds it hard to go to the bank for his life certificate. What can he do?**
+
+| Options | Correct answer | Type · Required · Points | Learning step |
+|---|---|---|---|
+| A. Send his passbook by courier<br>B. Submit it from home with a face scan in the Jeevan Pramaan app ✅<br>C. Ask a neighbour to sign for him<br>D. Wait until the bank calls him | **B** | Multiple choice · Yes · 1 | 5 · Digital payments & government services |
+
+Feedback for correct answers: *Correct — well done! 💡 Pensioners can submit the life certificate from home with the Jeevan Pramaan and AadhaarFaceRD apps. No bank visit is needed.*  
+Feedback for incorrect answers: *Not quite. The right answer is: “Submit it from home with a face scan in the Jeevan Pramaan app”. 💡 Pensioners can submit the life certificate from home with the Jeevan Pramaan and AadhaarFaceRD apps. No bank visit is needed. (Look at Step 5 — Digital payments & government services again.)*
 
 
-### Page 6 · Topic 5 of 7 · 🛡️ Online fraud & safety
+### Page 7 · Step 6 of 6 · ✨ AI tools & family digital safety
 
 Page description: *Choose one answer for each question.*
 
-**Q9. A message says: “Your electricity will be cut tonight. Call this number now.” What is the safe thing to do?**
+**Q18. A shocking photo is forwarded to you on WhatsApp. Which sign can show it was made by AI?**  🔁 *re-tests Pre-Assessment Q11*
 
 | Options | Correct answer | Type · Required · Points | Learning step |
 |---|---|---|---|
-| A. Call the number straight away<br>B. Pay whatever amount they ask<br>C. Don't call or tap anything — check in the official app or at the office ✅ | **C** | Multiple choice · Yes · 1 | 4 · Stay safe online |
+| A. It is very colourful<br>B. It has strange-looking hands or faces ✅<br>C. A friend sent it<br>D. It was sent in a group | **B** | Multiple choice · Yes · 1 | 6 · AI tools & family digital safety |
 
-Feedback for correct answers: *Correct — well done! 💡 Messages that rush you about KYC, electricity bills or parcels are a common scam.*  
-Feedback for incorrect answers: *Not quite. The right answer is: “Don't call or tap anything — check in the official app or at the office”. 💡 Messages that rush you about KYC, electricity bills or parcels are a common scam. (Look at Step 4 — Stay safe online again.)*
+Feedback for correct answers: *Correct — well done! 💡 AI can make fake photos and videos. Look for odd hands or faces, and check trusted news websites before you forward.*  
+Feedback for incorrect answers: *Not quite. The right answer is: “It has strange-looking hands or faces”. 💡 AI can make fake photos and videos. Look for odd hands or faces, and check trusted news websites before you forward. (Look at Step 6 — AI tools & family digital safety again.)*
 
-**Q10. Someone has cheated you and money has left your bank account. What should you do first?**
-
-| Options | Correct answer | Type · Required · Points | Learning step |
-|---|---|---|---|
-| A. Wait a few days to see if it comes back<br>B. Call 1930 at once, and call your bank to block your card or UPI ✅<br>C. Tell nobody because you feel embarrassed | **B** | Multiple choice · Yes · 1 | 4 · Stay safe online |
-
-Feedback for correct answers: *Correct — well done! 💡 The first hour matters most. Call 1930 or report it at cybercrime.gov.in.*  
-Feedback for incorrect answers: *Not quite. The right answer is: “Call 1930 at once, and call your bank to block your card or UPI”. 💡 The first hour matters most. Call 1930 or report it at cybercrime.gov.in. (Look at Step 4 — Stay safe online again.)*
-
-
-### Page 7 · Topic 6 of 7 · 🏛️ Government services online
-
-Page description: *Choose one answer for each question.*
-
-**Q11. Your father is a pensioner and finds it hard to go to the bank for his life certificate. What can he do?**
+**Q19. Which of these should you NEVER type into an AI chat app?**
 
 | Options | Correct answer | Type · Required · Points | Learning step |
 |---|---|---|---|
-| A. Stop taking his pension<br>B. Submit it from home with a face scan in the Jeevan Pramaan app ✅<br>C. Send a photo of his Aadhaar to an unknown number | **B** | Multiple choice · Yes · 1 | 5 · Digital payments & government services |
+| A. A recipe question<br>B. A homework question<br>C. Your OTP, password or bank details ✅<br>D. A question in Marathi | **C** | Multiple choice · Yes · 1 | 6 · AI tools & family digital safety |
 
-Feedback for correct answers: *Correct — well done! 💡 With the Jeevan Pramaan and AadhaarFaceRD apps, pensioners scan their face with the phone camera.*  
-Feedback for incorrect answers: *Not quite. The right answer is: “Submit it from home with a face scan in the Jeevan Pramaan app”. 💡 With the Jeevan Pramaan and AadhaarFaceRD apps, pensioners scan their face with the phone camera. (Look at Step 5 — Digital payments & government services again.)*
+Feedback for correct answers: *Correct — well done! 💡 Treat an AI chat like a stranger. Never type your OTP, passwords, Aadhaar, bank details or family photos.*  
+Feedback for incorrect answers: *Not quite. The right answer is: “Your OTP, password or bank details”. 💡 Treat an AI chat like a stranger. Never type your OTP, passwords, Aadhaar, bank details or family photos. (Look at Step 6 — AI tools & family digital safety again.)*
 
-**Q12. You are 72 years old. Which card can give you free hospital treatment cover?**
-
-| Options | Correct answer | Type · Required · Points | Learning step |
-|---|---|---|---|
-| A. The Ayushman Vay Vandana card ✅<br>B. A shop's loyalty card<br>C. A new SIM card | **A** | Multiple choice · Yes · 1 | 5 · Digital payments & government services |
-
-Feedback for correct answers: *Correct — well done! 💡 Everyone aged 70 and above can get it. Apply in the Ayushman app, at beneficiary.nha.gov.in, or at a hospital or CSC.*  
-Feedback for incorrect answers: *Not quite. The right answer is: “The Ayushman Vay Vandana card”. 💡 Everyone aged 70 and above can get it. Apply in the Ayushman app, at beneficiary.nha.gov.in, or at a hospital or CSC. (Look at Step 5 — Digital payments & government services again.)*
-
-
-### Page 8 · Topic 7 of 7 · 🧩 Solving everyday problems
-
-Page description: *Choose one answer for each question.*
-
-**Q13. Your phone battery runs out before the evening. What will help it last longer?**
+**Q20. Your child wears a GPS smartwatch. Which is a safe way to use it?**
 
 | Options | Correct answer | Type · Required · Points | Learning step |
 |---|---|---|---|
-| A. Keep the screen at full brightness<br>B. Turn on Battery Saver and keep the screen brightness low ✅<br>C. Keep every app open all day | **B** | Multiple choice · Yes · 1 | 1 · Smartphone Basics |
+| A. Post the watch's map on social media<br>B. Share the app password with neighbours<br>C. Stop watching over your child, because the watch is enough<br>D. Add only trusted family members as contacts and keep the location private ✅ | **D** | Multiple choice · Yes · 1 | 6 · AI tools & family digital safety |
 
-Feedback for correct answers: *Correct — well done! 💡 Settings → Battery → Battery Saver. Also switch off Location and Bluetooth when you don't need them.*  
-Feedback for incorrect answers: *Not quite. The right answer is: “Turn on Battery Saver and keep the screen brightness low”. 💡 Settings → Battery → Battery Saver. Also switch off Location and Bluetooth when you don't need them. (Look at Step 1 — Smartphone Basics again.)*
-
-**Q14. You have rice, dal, onion and tomato at home and need a quick dinner idea. What can help?**
-
-| Options | Correct answer | Type · Required · Points | Learning step |
-|---|---|---|---|
-| A. Throw the food away and order from outside<br>B. Type your bank details into an AI app<br>C. Tell an AI app what you have and ask for a simple recipe ✅ | **C** | Multiple choice · Yes · 1 | 6 · AI tools & family digital safety |
-
-Feedback for correct answers: *Correct — well done! 💡 AI apps like Gemini or ChatGPT can suggest recipes — but never type private details into them.*  
-Feedback for incorrect answers: *Not quite. The right answer is: “Tell an AI app what you have and ask for a simple recipe”. 💡 AI apps like Gemini or ChatGPT can suggest recipes — but never type private details into them. (Look at Step 6 — AI tools & family digital safety again.)*
+Feedback for correct answers: *Correct — well done! 💡 Location is sensitive, so keep it private and use only trusted contacts. A watch never replaces an adult's care.*  
+Feedback for incorrect answers: *Not quite. The right answer is: “Add only trusted family members as contacts and keep the location private”. 💡 Location is sensitive, so keep it private and use only trusted contacts. A watch never replaces an adult's care. (Look at Step 6 — AI tools & family digital safety again.)*
 
 
-### Page 9 · One last thing
+### Page 8 · One last thing
 **What would you like to learn next? (optional)** · Paragraph · Required: No · 0 points
 
 ---
@@ -330,8 +383,8 @@ Open the form with its **Edit link**, click the **Settings** tab, and check each
    - **Allow response editing:** OFF
    - **Limit to 1 response:** **OFF**. If this is on, Google makes everyone sign in first, which stops many seniors.
 3. **Presentation**:
-   - **Show progress bar:** ON ("page 3 of 9")
-   - **Shuffle question order:** OFF (keeps each topic's two questions together)
+   - **Show progress bar:** ON ("page 3 of 8")
+   - **Shuffle question order:** OFF (keeps each step's questions together)
    - **Show link to submit another response:** ON (a volunteer can hand the same phone to the next learner)
    - **View results summary:** OFF (learners should not see other people's answers)
 4. **🎨 Customize theme** (palette icon at the top), the same as the Pre-Assessment form:
@@ -349,7 +402,7 @@ Open the form with its **Edit link**, click the **Settings** tab, and check each
 ## Part E: Test it yourself (10 minutes)
 
 1. Click **Preview** (👁) and take the quiz once, on a phone **and** a computer. Give a mix of right and wrong answers.
-2. Submit, click **View score**, and check: the score is out of **14**, wrong answers show the right answer and a 💡 tip,
+2. Submit, click **View score**, and check: the score is out of **20**, wrong answers show the right answer and a 💡 tip,
    and the thank-you message appears.
 3. Open the **Share link** in a private window (Chrome: **⋮ → New Incognito window**). If it asks you to **sign in**,
    go back to Part D, step 2. Learners must be able to start without signing in.
@@ -374,7 +427,7 @@ Open the form → **Responses** tab:
 3. Rename the tabs (right-click a tab → **Rename**) to `Pre` and `Post`. New answers now appear there automatically.
 
 **F3. Turn scores into percentages**
-Google writes the score as text, like `9 / 14`. On each tab:
+Google writes the score as text, like `13 / 20`. On each tab:
 1. Find the **Score** column (near the left) and note its letter, for example **B**.
 2. In the first empty column, type the heading `Percent` in row 1.
 3. In row 2 of that column, paste (change **B** if your Score column has another letter):
@@ -391,7 +444,7 @@ So, with no email collected, the columns you need are:
 | | "I am…" | "How comfortable…" (1–5) | Percent (the column you added) |
 |---|---|---|---|
 | **Pre** tab (3 about-you questions + 11) | D | E | Q |
-| **Post** tab (5 about-you questions + 14 + 1) | D | G | W |
+| **Post** tab (5 about-you questions + 20 + 1) | D | G | AC |
 
 > If a form collects email addresses, Google adds an *Email address* column after Score and every letter moves one to
 > the right. Always check row 1 of each tab before typing a formula.
@@ -401,9 +454,9 @@ Make a third tab called `Compare` (the **+** at the bottom left) and type:
 | What | Formula |
 |---|---|
 | Average Pre-Assessment % | `=AVERAGE(Pre!Q2:Q)` |
-| Average Post-Assessment % | `=AVERAGE(Post!W2:W)` |
+| Average Post-Assessment % | `=AVERAGE(Post!AC2:AC)` |
 | Senior citizens, before | `=AVERAGEIF(Pre!D2:D,"A senior citizen (60+)",Pre!Q2:Q)` |
-| Senior citizens, after | `=AVERAGEIF(Post!D2:D,"A senior citizen (60+)",Post!W2:W)` |
+| Senior citizens, after | `=AVERAGEIF(Post!D2:D,"A senior citizen (60+)",Post!AC2:AC)` |
 | Average comfort, before | `=AVERAGE(Pre!E2:E)` |
 | Average comfort, after | `=AVERAGE(Post!G2:G)` |
 | How many took each quiz | `=COUNTA(Pre!A2:A)` and `=COUNTA(Post!A2:A)` |
@@ -415,6 +468,26 @@ language to its own pair of tabs, or use the Hindi/Marathi option text in the fo
 
 Example of what to report: *"Senior citizens: 41% before → 78% after; comfort 2.1 → 3.9 out of 5."*
 Only report real numbers from the sheet, never estimates.
+
+**F5. Compare the 8 matched concepts, one by one**
+Eight Post-Assessment questions ask about the same skills as eight Pre-Assessment questions, in simpler words (🔁 in
+Part C). On the `Compare` tab, the share of learners who chose the right answer for each concept is:
+
+| Concept | Pre question | Post question | Pre: % right | Post: % right |
+|---|---|---|---|---|
+| Emergency SOS | Pre Q1 · column F | Post Q1 · column H | `=COUNTIF(Pre!F2:F,"Press the power button 5 times quickly")/COUNTA(Pre!F2:F)` | `=COUNTIF(Post!H2:H,"Press the power button 5 times quickly")/COUNTA(Post!H2:H)` |
+| App pinning (child on one app) | Pre Q2 · column G | Post Q2 · column I | `=COUNTIF(Pre!G2:G,"Turn on App pinning")/COUNTA(Pre!G2:G)` | `=COUNTIF(Post!I2:I,"Turn on App pinning and pin the app")/COUNTA(Post!I2:I)` |
+| Google Lens (translate with the camera) | Pre Q3 · column H | Post Q4 · column K | `=COUNTIF(Pre!H2:H,"Google Lens")/COUNTA(Pre!H2:H)` | `=COUNTIF(Post!K2:K,"Point Google Lens at the board and tap Translate")/COUNTA(Post!K2:K)` |
+| Share live location on WhatsApp | Pre Q5 · column J | Post Q7 · column N | `=COUNTIF(Pre!J2:J,"📎 → Location → Share live location")/COUNTA(Pre!J2:J)` | `=COUNTIF(Post!N2:N,"Tap 📎 → Location → Share live location")/COUNTA(Post!N2:N)` |
+| Family code word (fake voice call) | Pre Q7 · column L | Post Q10 · column Q | `=COUNTIF(Pre!L2:L,"Hang up and call him back on his own number, or ask for your family code word")/COUNTA(Pre!L2:L)` | `=COUNTIF(Post!Q2:Q,"Hang up and call her back on her own number, or ask for your family code word")/COUNTA(Post!Q2:Q)` |
+| 1930 cyber crime helpline | Pre Q8 · column M | Post Q11 · column R | `=COUNTIF(Pre!M2:M,"1930")/COUNTA(Pre!M2:M)` | `=COUNTIF(Post!R2:R,"1930")/COUNTA(Post!R2:R)` |
+| UPI Lite (small payments, no PIN) | Pre Q9 · column N | Post Q14 · column U | `=COUNTIF(Pre!N2:N,"UPI Lite")/COUNTA(Pre!N2:N)` | `=COUNTIF(Post!U2:U,"UPI Lite")/COUNTA(Post!U2:U)` |
+| Signs of an AI photo | Pre Q11 · column P | Post Q18 · column Y | `=COUNTIF(Pre!P2:P,"Strange-looking hands or faces")/COUNTA(Pre!P2:P)` | `=COUNTIF(Post!Y2:Y,"It has strange-looking hands or faces")/COUNTA(Post!Y2:Y)` |
+
+Format those cells as **Percent**. The text inside the quotes must match the answer exactly (copy it from Part C), and
+the column letters assume no email column (see the note above). For the Hindi and Marathi forms, copy the answer text from
+`post-assessment-form.gs` and use each language's own tabs. A concept whose Post percentage is higher than its Pre
+percentage is a skill the learners picked up. Report only real numbers from the sheet.
 
 **Comparing one person:** if a learner gave the same first name in both forms, a volunteer can find both rows with
 **Ctrl + F**. The first name is optional, so many learners can only be compared as a group. That is fine and normal.
@@ -429,5 +502,11 @@ Only report real numbers from the sheet, never estimates.
 - **Changing a question later?** Change it in `POST_QUIZ` in `index.html` **and** in the form (or in
   `post-assessment-form.gs` before you run it), so the website and the form stay the same.
 - **Re-running the script** makes a *new* form each time. Delete extra copies in Google Drive.
+- **Switching from the old 14-question forms to the 20-question forms:** your live Post forms still hold the old
+  questions. In Apps Script replace the old `post-assessment-form.gs` code with the new file, save, and run
+  `createPostAllLanguages` (Part A). Do Parts D and E for each new form, then put the three new Share links in
+  `POST_FORM` in `index.html` (or send them to Claude, who will replace them and test the button). Afterwards move the
+  three old Post forms to the bin in Google Drive. Keep their response Sheets if you want the old answers. Until you
+  switch, the website says “14 of 20” while the old form still has 14 questions.
 - **Children (8–14):** the form only asks for a first name, and that is optional. No email, phone or address is
   collected. Keep it that way.

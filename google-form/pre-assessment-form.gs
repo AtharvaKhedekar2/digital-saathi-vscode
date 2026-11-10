@@ -58,7 +58,8 @@ function buildPreAssessmentForm_(lang) {
       const item = form.addMultipleChoiceItem();
       const wrong = T.wrong.replace("{a}", q.options[q.answer]).replace("{n}", m.step).replace("{t}", m.title[lang]);
       item.setTitle(q.q)
-          .setChoices(q.options.map(function (text, i) { return item.createChoice(text, i === q.answer); }))
+          .setChoices(q.options.map(function (text, i) { return item.createChoice(text, i === q.answer); })
+              .concat([item.createChoice(T.notSure, false)]))   // “I am not sure”: honest, and better than a guess
           .setRequired(true)
           .setPoints(1)
           .setFeedbackForCorrect(FormApp.createFeedback().setText(T.correct).build())
@@ -80,7 +81,7 @@ function buildPreAssessmentForm_(lang) {
 const TEXT = {
   "en": {
     "title": "Digital Saathi — Pre-Assessment Quiz",
-    "description": "Welcome! 🙏 This short quiz shows what you already know about using a smartphone safely.\n\n• 11 easy questions · about 5 minutes\n• There is no pass or fail — just choose the answer you think is right\n• Your score shows which learning steps to start with\n\n🔒 Never type your OTP, PIN, password or bank details in any form.",
+    "description": "Welcome! 🙏 This short quiz shows what you already know about using a smartphone.\n\n• 11 short questions · about 5 minutes\n• Some questions are a little tricky, on purpose. If you do not know many answers, do not worry — that is what Digital Saathi is for\n• Not sure? Choose “I am not sure”. It is better than guessing\n• There is no pass or fail. At the end we show which learning steps to start with\n\n🔒 Never type your OTP, PIN, password or bank details in any form.",
     "name": "Your first name (optional)",
     "nameHelp": "So a Saathi volunteer can help you. You can leave this empty.",
     "who": "I am…",
@@ -95,13 +96,14 @@ const TEXT = {
     "high": "Very comfortable",
     "step": "Step",
     "pageHelp": "Choose one answer for each question.",
+    "notSure": "I am not sure",
     "correct": "Correct — well done!",
     "wrong": "Not quite. The right answer is: “{a}”. You will learn this in Step {n} — {t}.",
     "thanks": "Thank you! 🎉 Click “View score” to see your result. The steps where you missed a question are the best place to start. Keep learning with Digital Saathi!"
   },
   "hi": {
     "title": "डिजिटल साथी — शुरुआती क्विज़ (Pre-Assessment)",
-    "description": "स्वागत है! 🙏 यह छोटा क्विज़ बताता है कि स्मार्टफ़ोन को सुरक्षित तरीके से इस्तेमाल करने के बारे में आप पहले से क्या जानते हैं।\n\n• 11 आसान सवाल · लगभग 5 मिनट\n• इसमें पास या फ़ेल नहीं होता — जो जवाब सही लगे, वह चुनें\n• आपका स्कोर बताएगा कि किन चरणों से शुरू करना है\n\n🔒 किसी भी फ़ॉर्म में कभी भी अपना OTP, PIN, पासवर्ड या बैंक की जानकारी न लिखें।",
+    "description": "स्वागत है! 🙏 यह छोटा क्विज़ बताता है कि स्मार्टफ़ोन के बारे में आप पहले से क्या जानते हैं।\n\n• 11 छोटे सवाल · लगभग 5 मिनट\n• कुछ सवाल जानबूझकर थोड़े मुश्किल हैं। बहुत जवाब न आते हों तो चिंता न करें — डिजिटल साथी इसीलिए है\n• पक्का नहीं पता? “पक्का नहीं पता” चुनें। यह अंदाज़े से बेहतर है\n• इसमें पास या फ़ेल नहीं होता। अंत में हम बताएंगे कि किन चरणों से शुरू करना है\n\n🔒 किसी भी फ़ॉर्म में कभी भी अपना OTP, PIN, पासवर्ड या बैंक की जानकारी न लिखें।",
     "name": "आपका पहला नाम (वैकल्पिक)",
     "nameHelp": "ताकि कोई साथी स्वयंसेवक आपकी मदद कर सके। आप इसे खाली भी छोड़ सकते हैं।",
     "who": "मैं हूँ…",
@@ -116,13 +118,14 @@ const TEXT = {
     "high": "बहुत सहज",
     "step": "चरण",
     "pageHelp": "हर सवाल का एक जवाब चुनें।",
+    "notSure": "पक्का नहीं पता",
     "correct": "सही जवाब — शाबाश!",
     "wrong": "पूरी तरह सही नहीं। सही जवाब है: “{a}”। यह आप चरण {n} — {t} में सीखेंगे।",
     "thanks": "धन्यवाद! 🎉 अपना नतीजा देखने के लिए “View score” दबाएं। जिन चरणों में कोई सवाल छूटा, वहीं से शुरू करना सबसे अच्छा है। डिजिटल साथी के साथ सीखते रहें!"
   },
   "mr": {
     "title": "डिजिटल साथी — सुरुवातीची क्विझ (Pre-Assessment)",
-    "description": "स्वागत आहे! 🙏 स्मार्टफोन सुरक्षितपणे वापरण्याबद्दल तुम्हाला आधीच काय माहिती आहे, ते ही छोटी क्विझ दाखवते.\n\n• 11 सोपे प्रश्न · सुमारे 5 मिनिटे\n• यात पास-नापास नाही — जे उत्तर बरोबर वाटते ते निवडा\n• तुमचे गुण दाखवतील की कोणत्या टप्प्यांपासून सुरुवात करायची\n\n🔒 कोणत्याही फॉर्ममध्ये कधीही तुमचा OTP, PIN, पासवर्ड किंवा बँकेची माहिती लिहू नका.",
+    "description": "स्वागत आहे! 🙏 स्मार्टफोनबद्दल तुम्हाला आधीच काय माहिती आहे, ते ही छोटी क्विझ दाखवते.\n\n• 11 छोटे प्रश्न · सुमारे 5 मिनिटे\n• काही प्रश्न जाणूनबुजून थोडे अवघड आहेत. खूप उत्तरे येत नसतील तरी काळजी करू नका — डिजिटल साथी त्यासाठीच आहे\n• खात्री नाही? “खात्री नाही” निवडा. अंदाजापेक्षा ते चांगले\n• यात पास-नापास नाही. शेवटी कोणत्या टप्प्यांपासून सुरुवात करायची ते आम्ही दाखवू\n\n🔒 कोणत्याही फॉर्ममध्ये कधीही तुमचा OTP, PIN, पासवर्ड किंवा बँकेची माहिती लिहू नका.",
     "name": "तुमचे पहिले नाव (ऐच्छिक)",
     "nameHelp": "म्हणजे साथी स्वयंसेवक तुमची मदत करू शकतील. तुम्ही हे रिकामेही ठेवू शकता.",
     "who": "मी आहे…",
@@ -137,6 +140,7 @@ const TEXT = {
     "high": "खूप सहज",
     "step": "टप्पा",
     "pageHelp": "प्रत्येक प्रश्नाचे एक उत्तर निवडा.",
+    "notSure": "खात्री नाही",
     "correct": "बरोबर — शाब्बास!",
     "wrong": "पूर्ण बरोबर नाही. बरोबर उत्तर आहे: “{a}”. हे तुम्ही टप्पा {n} — {t} मध्ये शिकाल.",
     "thanks": "धन्यवाद! 🎉 तुमचा निकाल पाहण्यासाठी “View score” दाबा. ज्या टप्प्यांमध्ये प्रश्न चुकला, तिथून सुरुवात करणे सर्वात चांगले. डिजिटल साथीसोबत शिकत राहा!"
@@ -201,341 +205,342 @@ const MODULES = [
   }
 ];
 
-// The 11 questions, copied from the website's QUIZ ("answer" = number of the right option, counting from 0)
+// The 11 questions, copied from the website's QUIZ ("answer" = number of the right option, counting from 0).
+// The form adds a 4th choice, TEXT[lang].notSure, to every question; it is always counted as wrong.
 const QUESTIONS = {
   "en": [
     {
-      "q": "The words on your phone screen are too small to read. What can you do?",
+      "q": "Many Android phones have Emergency SOS. How do you start it fast?",
       "options": [
-        "Make the text bigger in Settings → Display",
-        "Buy a new phone",
-        "Nothing — it cannot be changed"
+        "Press the volume-up button 3 times",
+        "Press the power button 5 times quickly",
+        "Shake the phone and say “help”"
       ],
-      "answer": 0,
+      "answer": 1,
       "lesson": "phone"
     },
     {
-      "q": "Strangers keep adding you to WhatsApp groups. What can you do?",
+      "q": "You give your phone to a child to watch one video. You want the child to stay only in that app. What helps?",
       "options": [
-        "Settings → Privacy → Groups → choose “My contacts”",
-        "Delete WhatsApp",
-        "Reply and ask them to stop"
+        "Turn on Airplane mode",
+        "Turn on Battery Saver",
+        "Turn on App pinning"
+      ],
+      "answer": 2,
+      "lesson": "phone"
+    },
+    {
+      "q": "A medicine strip is written in a language you cannot read. Which Google tool translates it when you point your camera?",
+      "options": [
+        "Google Lens",
+        "Google Forms",
+        "Google Meet"
       ],
       "answer": 0,
-      "lesson": "family"
+      "lesson": "google"
     },
     {
-      "q": "Someone messages: “Share your OTP to receive ₹5000.” What do you do?",
+      "q": "On YouTube, which setting helps hide videos made for adults?",
       "options": [
-        "Share the OTP",
-        "Never share it — it is a scam",
-        "Share only the first 3 digits"
-      ],
-      "answer": 1,
-      "lesson": "safety"
-    },
-    {
-      "q": "Do you need a UPI PIN to RECEIVE money?",
-      "options": [
-        "Yes, always",
-        "No, never",
-        "Only for big amounts"
-      ],
-      "answer": 1,
-      "lesson": "money"
-    },
-    {
-      "q": "A video caller in police uniform says you are under “digital arrest” and must pay. What is true?",
-      "options": [
-        "Pay quickly to avoid jail",
-        "Police never arrest anyone on a video call — hang up and call 1930",
-        "Share your Aadhaar to prove you are innocent"
-      ],
-      "answer": 1,
-      "lesson": "safety"
-    },
-    {
-      "q": "Before paying on UPI, you should check…",
-      "options": [
-        "Nothing, just pay fast",
-        "The name and amount on screen",
-        "Only the colour of the app"
-      ],
-      "answer": 1,
-      "lesson": "money"
-    },
-    {
-      "q": "Where can you keep official copies of your Aadhaar and PAN safely?",
-      "options": [
-        "In DigiLocker",
-        "In a family WhatsApp group",
-        "In an email to a stranger"
-      ],
-      "answer": 0,
-      "lesson": "money"
-    },
-    {
-      "q": "What helps you never get locked out of your Google account?",
-      "options": [
-        "Using 1234 as the password",
-        "Adding a recovery phone number and email",
-        "Sharing the password with friends"
+        "Dark mode",
+        "Restricted Mode",
+        "Autoplay"
       ],
       "answer": 1,
       "lesson": "google"
     },
     {
-      "q": "A good password is…",
+      "q": "You are walking home and want your family to see you on the map. In a WhatsApp chat, what do you choose?",
       "options": [
-        "1234",
-        "Your name",
-        "Long and hard to guess"
+        "Status → Add my location",
+        "Settings → Privacy → Last seen",
+        "📎 → Location → Share live location"
       ],
       "answer": 2,
+      "lesson": "family"
+    },
+    {
+      "q": "Unknown numbers keep calling you on WhatsApp. How can you stop them from ringing?",
+      "options": [
+        "Turn on “Silence unknown callers” in Privacy → Calls",
+        "Switch off all WhatsApp notifications",
+        "Show “Last seen” to nobody"
+      ],
+      "answer": 0,
+      "lesson": "family"
+    },
+    {
+      "q": "A call sounds exactly like your son. He asks for money in a hurry. What is the safest step?",
+      "options": [
+        "Send the money — it is clearly his voice",
+        "Hang up and call him back on his own number, or ask for your family code word",
+        "Send a small amount first to test"
+      ],
+      "answer": 1,
       "lesson": "safety"
     },
     {
-      "q": "You read shocking news in a forwarded WhatsApp message. Before believing it, you should…",
+      "q": "Which national helpline number is for reporting online money fraud?",
       "options": [
-        "Forward it to everyone",
-        "Check it on 2–3 trusted websites",
-        "Believe it because a friend sent it"
+        "1930",
+        "1098",
+        "108"
       ],
-      "answer": 1,
-      "lesson": "ai"
+      "answer": 0,
+      "lesson": "safety"
     },
     {
-      "q": "An AI chatbot asks for your Aadhaar number to “help” you. What do you do?",
+      "q": "Which UPI feature lets you pay small amounts, like for tea or vegetables, with one tap and no PIN?",
       "options": [
-        "Type it in",
-        "Never share private details with AI chatbots",
-        "Share only half the number"
+        "AutoPay",
+        "UPI Circle",
+        "UPI Lite"
       ],
-      "answer": 1,
+      "answer": 2,
+      "lesson": "money"
+    },
+    {
+      "q": "From what age can people get the Ayushman Vay Vandana card for free hospital cover?",
+      "options": [
+        "60 years",
+        "65 years",
+        "70 years"
+      ],
+      "answer": 2,
+      "lesson": "money"
+    },
+    {
+      "q": "Which of these can show that a photo or video was made by AI?",
+      "options": [
+        "Strange-looking hands or faces",
+        "The picture is very bright",
+        "A friend sent it to you"
+      ],
+      "answer": 0,
       "lesson": "ai"
     }
   ],
   "hi": [
     {
-      "q": "फ़ोन की स्क्रीन पर अक्षर इतने छोटे हैं कि पढ़े नहीं जाते। आप क्या कर सकते हैं?",
+      "q": "कई Android फ़ोन में Emergency SOS होता है। इसे जल्दी चालू करने के लिए क्या करते हैं?",
       "options": [
-        "Settings → Display में जाकर अक्षर बड़े करें",
-        "नया फ़ोन खरीदें",
-        "कुछ नहीं — यह बदला नहीं जा सकता"
+        "वॉल्यूम-अप बटन 3 बार दबाएं",
+        "पावर बटन 5 बार जल्दी दबाएं",
+        "फ़ोन हिलाएं और “मदद” बोलें"
       ],
-      "answer": 0,
+      "answer": 1,
       "lesson": "phone"
     },
     {
-      "q": "अनजान लोग आपको बार-बार WhatsApp ग्रुप में जोड़ रहे हैं। आप क्या कर सकते हैं?",
+      "q": "आप बच्चे को एक वीडियो देखने के लिए फ़ोन देते हैं। आप चाहते हैं कि वह सिर्फ़ उसी ऐप में रहे। क्या मदद करेगा?",
       "options": [
-        "Settings → Privacy → Groups → “My contacts” चुनें",
-        "WhatsApp हटा दें",
-        "जवाब देकर उन्हें रुकने को कहें"
+        "Airplane mode चालू करना",
+        "Battery Saver चालू करना",
+        "App pinning चालू करना"
+      ],
+      "answer": 2,
+      "lesson": "phone"
+    },
+    {
+      "q": "दवा की पट्टी पर ऐसी भाषा में लिखा है जो आप पढ़ नहीं सकते। कैमरा सामने करने पर कौन-सा Google टूल अनुवाद करता है?",
+      "options": [
+        "Google Lens",
+        "Google Forms",
+        "Google Meet"
       ],
       "answer": 0,
-      "lesson": "family"
+      "lesson": "google"
     },
     {
-      "q": "कोई संदेश भेजता है: “₹5000 पाने के लिए अपना OTP बताएं।” आप क्या करेंगे?",
+      "q": "YouTube पर बड़ों के लिए बने वीडियो छिपाने में कौन-सी सेटिंग मदद करती है?",
       "options": [
-        "OTP बता दें",
-        "कभी न बताएं — यह धोखा है",
-        "सिर्फ़ पहले 3 अंक बताएं"
-      ],
-      "answer": 1,
-      "lesson": "safety"
-    },
-    {
-      "q": "पैसे लेने (RECEIVE) के लिए क्या UPI PIN चाहिए?",
-      "options": [
-        "हाँ, हमेशा",
-        "नहीं, कभी नहीं",
-        "सिर्फ़ बड़ी राशि के लिए"
-      ],
-      "answer": 1,
-      "lesson": "money"
-    },
-    {
-      "q": "वीडियो कॉल पर वर्दी में कोई कहता है कि आप “डिजिटल अरेस्ट” में हैं और पैसे भरने होंगे। सच क्या है?",
-      "options": [
-        "जेल से बचने के लिए जल्दी पैसे भरें",
-        "पुलिस कभी वीडियो कॉल पर गिरफ़्तार नहीं करती — कॉल काटें और 1930 पर कॉल करें",
-        "बेगुनाही साबित करने के लिए आधार बताएं"
-      ],
-      "answer": 1,
-      "lesson": "safety"
-    },
-    {
-      "q": "UPI पर भुगतान से पहले आपको जांचना चाहिए…",
-      "options": [
-        "कुछ नहीं, जल्दी भुगतान करें",
-        "स्क्रीन पर नाम और राशि",
-        "सिर्फ़ ऐप का रंग"
-      ],
-      "answer": 1,
-      "lesson": "money"
-    },
-    {
-      "q": "आधार और PAN की आधिकारिक कॉपी सुरक्षित कहां रख सकते हैं?",
-      "options": [
-        "DigiLocker में",
-        "परिवार के WhatsApp ग्रुप में",
-        "किसी अनजान को ईमेल में"
-      ],
-      "answer": 0,
-      "lesson": "money"
-    },
-    {
-      "q": "Google खाते से कभी लॉक आउट न होने में क्या मदद करता है?",
-      "options": [
-        "पासवर्ड 1234 रखना",
-        "रिकवरी फ़ोन नंबर और ईमेल जोड़ना",
-        "दोस्तों को पासवर्ड बताना"
+        "Dark mode",
+        "Restricted Mode",
+        "Autoplay"
       ],
       "answer": 1,
       "lesson": "google"
     },
     {
-      "q": "अच्छा पासवर्ड होता है…",
+      "q": "आप घर पैदल लौट रहे हैं और चाहते हैं कि परिवार आपको मैप पर देखे। WhatsApp चैट में आप क्या चुनेंगे?",
       "options": [
-        "1234",
-        "आपका नाम",
-        "लंबा और मुश्किल से अंदाज़ा लगने वाला"
+        "Status → Add my location",
+        "Settings → Privacy → Last seen",
+        "📎 → Location → Share live location"
       ],
       "answer": 2,
+      "lesson": "family"
+    },
+    {
+      "q": "अनजान नंबर WhatsApp पर बार-बार कॉल करते हैं। उनकी घंटी बजना कैसे रोकें?",
+      "options": [
+        "Privacy → Calls में “Silence unknown callers” चालू करें",
+        "WhatsApp की सारी notifications बंद करें",
+        "“Last seen” किसी को न दिखाएं"
+      ],
+      "answer": 0,
+      "lesson": "family"
+    },
+    {
+      "q": "एक कॉल की आवाज़ बिल्कुल आपके बेटे जैसी है। वह जल्दी में पैसे मांगता है। सबसे सुरक्षित कदम क्या है?",
+      "options": [
+        "पैसे भेज दें — यह साफ़ उसी की आवाज़ है",
+        "कॉल काटकर उसके अपने नंबर पर फ़ोन करें, या परिवार का कोड वर्ड पूछें",
+        "पहले थोड़े पैसे भेजकर जांचें"
+      ],
+      "answer": 1,
       "lesson": "safety"
     },
     {
-      "q": "किसी फॉरवर्ड किए गए WhatsApp संदेश में चौंकाने वाली खबर पढ़ी। मानने से पहले आपको…",
+      "q": "ऑनलाइन पैसे की धोखाधड़ी बताने के लिए राष्ट्रीय हेल्पलाइन नंबर कौन-सा है?",
       "options": [
-        "सबको फॉरवर्ड कर देना चाहिए",
-        "2–3 भरोसेमंद वेबसाइटों पर जांचना चाहिए",
-        "दोस्त ने भेजा इसलिए मान लेना चाहिए"
+        "1930",
+        "1098",
+        "108"
       ],
-      "answer": 1,
-      "lesson": "ai"
+      "answer": 0,
+      "lesson": "safety"
     },
     {
-      "q": "कोई AI चैटबॉट “मदद” के लिए आपका आधार नंबर मांगता है। आप क्या करेंगे?",
+      "q": "UPI की कौन-सी सुविधा से चाय या सब्ज़ी जैसे छोटे भुगतान एक टैप में, बिना PIN के हो जाते हैं?",
       "options": [
-        "नंबर लिख देंगे",
-        "AI चैटबॉट को निजी जानकारी कभी नहीं देंगे",
-        "आधा नंबर बताएंगे"
+        "AutoPay",
+        "UPI Circle",
+        "UPI Lite"
       ],
-      "answer": 1,
+      "answer": 2,
+      "lesson": "money"
+    },
+    {
+      "q": "आयुष्मान वय वंदना कार्ड से मुफ़्त इलाज का कवर किस उम्र से मिलता है?",
+      "options": [
+        "60 साल से",
+        "65 साल से",
+        "70 साल से"
+      ],
+      "answer": 2,
+      "lesson": "money"
+    },
+    {
+      "q": "इनमें से क्या बता सकता है कि कोई फ़ोटो या वीडियो AI से बना है?",
+      "options": [
+        "अजीब दिखते हाथ या चेहरे",
+        "तस्वीर बहुत चमकीली है",
+        "किसी दोस्त ने भेजी है"
+      ],
+      "answer": 0,
       "lesson": "ai"
     }
   ],
   "mr": [
     {
-      "q": "फोनच्या स्क्रीनवरची अक्षरे वाचता येत नाहीत इतकी लहान आहेत. तुम्ही काय करू शकता?",
+      "q": "अनेक Android फोनमध्ये Emergency SOS असते. ते पटकन सुरू करण्यासाठी काय करता?",
       "options": [
-        "Settings → Display मध्ये जाऊन अक्षरे मोठी करा",
-        "नवीन फोन घ्या",
-        "काहीच नाही — हे बदलता येत नाही"
+        "व्हॉल्यूम-अप बटण 3 वेळा दाबा",
+        "पॉवर बटण 5 वेळा पटकन दाबा",
+        "फोन हलवा आणि “मदत” म्हणा"
       ],
-      "answer": 0,
+      "answer": 1,
       "lesson": "phone"
     },
     {
-      "q": "अनोळखी लोक तुम्हाला सारखे WhatsApp ग्रुपमध्ये जोडत आहेत. तुम्ही काय करू शकता?",
+      "q": "तुम्ही मुलाला एक व्हिडिओ पाहण्यासाठी फोन देता. त्याने फक्त त्याच ॲपमध्ये राहावे असे तुम्हाला वाटते. काय मदत करेल?",
       "options": [
-        "Settings → Privacy → Groups → “My contacts” निवडा",
-        "WhatsApp काढून टाका",
-        "उत्तर देऊन त्यांना थांबायला सांगा"
+        "Airplane mode सुरू करणे",
+        "Battery Saver सुरू करणे",
+        "App pinning सुरू करणे"
+      ],
+      "answer": 2,
+      "lesson": "phone"
+    },
+    {
+      "q": "औषधाच्या पट्टीवर तुम्हाला वाचता न येणाऱ्या भाषेत लिहिले आहे. कॅमेरा समोर धरल्यावर कोणते Google टूल अनुवाद करते?",
+      "options": [
+        "Google Lens",
+        "Google Forms",
+        "Google Meet"
       ],
       "answer": 0,
-      "lesson": "family"
+      "lesson": "google"
     },
     {
-      "q": "कोणी संदेश पाठवतो: “₹5000 मिळवण्यासाठी तुमचा OTP सांगा.” तुम्ही काय कराल?",
+      "q": "YouTube वर मोठ्यांसाठीचे व्हिडिओ लपवण्यासाठी कोणती सेटिंग मदत करते?",
       "options": [
-        "OTP सांगून टाका",
-        "कधीही सांगू नका — ही फसवणूक आहे",
-        "फक्त पहिले 3 अंक सांगा"
-      ],
-      "answer": 1,
-      "lesson": "safety"
-    },
-    {
-      "q": "पैसे घेण्यासाठी (RECEIVE) UPI PIN लागतो का?",
-      "options": [
-        "हो, नेहमी",
-        "नाही, कधीच नाही",
-        "फक्त मोठ्या रकमेसाठी"
-      ],
-      "answer": 1,
-      "lesson": "money"
-    },
-    {
-      "q": "व्हिडिओ कॉलवर गणवेशातील कोणी सांगतो की तुम्ही “डिजिटल अरेस्ट” मध्ये आहात आणि पैसे भरावे लागतील. खरे काय?",
-      "options": [
-        "तुरुंग टाळण्यासाठी पटकन पैसे भरा",
-        "पोलीस कधीही व्हिडिओ कॉलवर अटक करत नाहीत — कॉल कट करा आणि 1930 वर कॉल करा",
-        "निर्दोष असल्याचे सिद्ध करण्यासाठी आधार सांगा"
-      ],
-      "answer": 1,
-      "lesson": "safety"
-    },
-    {
-      "q": "UPI वर पैसे देण्याआधी तुम्ही तपासावे…",
-      "options": [
-        "काहीच नाही, पटकन पैसे द्या",
-        "स्क्रीनवरील नाव आणि रक्कम",
-        "फक्त ॲपचा रंग"
-      ],
-      "answer": 1,
-      "lesson": "money"
-    },
-    {
-      "q": "आधार आणि PAN च्या अधिकृत प्रती सुरक्षित कुठे ठेवता येतात?",
-      "options": [
-        "DigiLocker मध्ये",
-        "कुटुंबाच्या WhatsApp ग्रुपमध्ये",
-        "अनोळखी व्यक्तीला ईमेलमध्ये"
-      ],
-      "answer": 0,
-      "lesson": "money"
-    },
-    {
-      "q": "Google खात्यातून कधीही लॉक आउट न होण्यासाठी काय मदत करते?",
-      "options": [
-        "पासवर्ड 1234 ठेवणे",
-        "रिकव्हरी फोन नंबर आणि ईमेल जोडणे",
-        "मित्रांना पासवर्ड सांगणे"
+        "Dark mode",
+        "Restricted Mode",
+        "Autoplay"
       ],
       "answer": 1,
       "lesson": "google"
     },
     {
-      "q": "चांगला पासवर्ड म्हणजे…",
+      "q": "तुम्ही चालत घरी जात आहात आणि कुटुंबाने तुम्हाला नकाशावर पाहावे असे वाटते. WhatsApp चॅटमध्ये तुम्ही काय निवडाल?",
       "options": [
-        "1234",
-        "तुमचे नाव",
-        "लांब आणि ओळखायला कठीण"
+        "Status → Add my location",
+        "Settings → Privacy → Last seen",
+        "📎 → Location → Share live location"
       ],
       "answer": 2,
+      "lesson": "family"
+    },
+    {
+      "q": "अनोळखी नंबर WhatsApp वर सारखे कॉल करतात. त्यांची रिंग वाजणे कसे थांबवाल?",
+      "options": [
+        "Privacy → Calls मध्ये “Silence unknown callers” सुरू करा",
+        "WhatsApp च्या सर्व notifications बंद करा",
+        "“Last seen” कोणालाही दाखवू नका"
+      ],
+      "answer": 0,
+      "lesson": "family"
+    },
+    {
+      "q": "एका कॉलवरचा आवाज अगदी तुमच्या मुलासारखा आहे. तो घाईत पैसे मागतो. सर्वात सुरक्षित पाऊल कोणते?",
+      "options": [
+        "पैसे पाठवा — हा स्पष्टपणे त्याचाच आवाज आहे",
+        "कॉल कट करून त्याच्या स्वतःच्या नंबरवर फोन करा, किंवा कुटुंबाचा कोड वर्ड विचारा",
+        "आधी थोडे पैसे पाठवून तपासा"
+      ],
+      "answer": 1,
       "lesson": "safety"
     },
     {
-      "q": "फॉरवर्ड केलेल्या WhatsApp संदेशात धक्कादायक बातमी वाचली. विश्वास ठेवण्याआधी तुम्ही…",
+      "q": "ऑनलाइन पैशांच्या फसवणुकीची तक्रार करण्यासाठी राष्ट्रीय हेल्पलाइन क्रमांक कोणता?",
       "options": [
-        "सगळ्यांना फॉरवर्ड करावी",
-        "2–3 विश्वासार्ह वेबसाइटवर तपासावी",
-        "मित्राने पाठवली म्हणून विश्वास ठेवावा"
+        "1930",
+        "1098",
+        "108"
       ],
-      "answer": 1,
-      "lesson": "ai"
+      "answer": 0,
+      "lesson": "safety"
     },
     {
-      "q": "एखादा AI चॅटबॉट “मदत” करण्यासाठी तुमचा आधार नंबर मागतो. तुम्ही काय कराल?",
+      "q": "UPI ची कोणती सुविधा चहा किंवा भाजीसारखी छोटी पेमेंट्स एका टॅपमध्ये, PIN शिवाय करू देते?",
       "options": [
-        "नंबर लिहून टाकाल",
-        "AI चॅटबॉटला खासगी माहिती कधीही देणार नाही",
-        "अर्धा नंबर सांगाल"
+        "AutoPay",
+        "UPI Circle",
+        "UPI Lite"
       ],
-      "answer": 1,
+      "answer": 2,
+      "lesson": "money"
+    },
+    {
+      "q": "आयुष्मान वय वंदना कार्डने मोफत उपचारांचे कवच कोणत्या वयापासून मिळते?",
+      "options": [
+        "60 वर्षांपासून",
+        "65 वर्षांपासून",
+        "70 वर्षांपासून"
+      ],
+      "answer": 2,
+      "lesson": "money"
+    },
+    {
+      "q": "यांपैकी काय दाखवू शकते की एखादा फोटो किंवा व्हिडिओ AI ने बनवला आहे?",
+      "options": [
+        "विचित्र दिसणारे हात किंवा चेहरे",
+        "चित्र खूप चमकदार आहे",
+        "मित्राने पाठवले आहे"
+      ],
+      "answer": 0,
       "lesson": "ai"
     }
   ]
