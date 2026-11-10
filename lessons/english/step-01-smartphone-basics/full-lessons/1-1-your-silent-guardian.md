@@ -10,31 +10,38 @@
 
 ## SECTION 1 · STORY
 
-### 🎭 Story: "The Bench in the Garden"
+### 🎭 Story: "One Button Could Make All the Difference"
 
-👤 **Meet Kamla Devi.** She is 68 and lives in Pune. Every morning she walks in the garden near her home with her phone in her kurta pocket. Her grandson Rohan, who works in Mumbai, calls her every evening.
+👤 **Meet Mr. Sharma.** He is 68 years old and lives alone while his son works in another city.
 
-**The situation.** One morning, halfway through her walk, Kamla Devi feels dizzy. Her legs feel weak and her hands begin to shake. She sits down on a bench. There is nobody near her.
+Every morning, he goes for a walk in the neighbourhood park.
 
-**The problem.** She takes out her phone, but her fingers are trembling. Finding Rohan's name and pressing the right button feels like climbing a hill.
+One day, while returning home, he feels dizzy and nearly falls. He is scared, his hands are shaking, and he cannot think whom to call first.
 
-**How the phone helps.** Last month, Rohan sat with her and turned on **Emergency SOS**. Kamla Devi remembers what he said: *"Amma, if you ever need help, press the power button 5 times, quickly."* She does exactly that. The phone calls for help. A kind lady who is walking by sees the phone lying on the bench. She does not need to unlock it. On the **lock screen** she reads: *Emergency contact: Rohan (grandson)* and *Medicine: sugar tablets*. She calls Rohan from there.
+Luckily, his Android phone has **Emergency SOS** set up. He presses the **power button 5 times, quickly.**
 
-**The happy ending.** Rohan reaches her quickly. The doctor says her sugar was low and gives her some treatment. By afternoon, Kamla Devi is back home, drinking tea. She smiles and tells Rohan: *"That little phone looked after me today."*
+📱 His phone can *(depending on how it was set up)*:
+- Call for help
+- Share his location with the people he chose
+- Alert the family members saved as his emergency contacts
+
+Soon his son Rahul is on the phone, and a neighbour is on the way. Mr. Sharma sits on a bench, safe and calm.
 
 ---
 
 ## SECTION 2 · WHAT IF?
 
-### ❓ What if you cannot use the phone the normal way?
+### 🤔 What If Mr. Sharma Couldn't Unlock His Phone?
 
-**Meet Suresh Patil**, 72, from Nashik. He lives with his wife, but she has gone to the market. He slips in the bathroom, hurts his arm and cannot get up. His phone is in his shirt pocket, but his hand is hurting and he cannot slide the screen, open the contacts and press the call button.
+Imagine his hands are too shaky, or he cannot remember his PIN.
 
-Because he has turned on Emergency SOS, he only needs one easy movement: **press the power button 5 times, quickly.** He does not have to find a name or type anything.
+A passer-by wants to help. They tap **Emergency** on the lock screen. They can see what Mr. Sharma chose to add:
 
-**And if he cannot even do that?** His neighbour hears him and comes in. The neighbour does not know his phone's password, but the **emergency contacts and medical information show on the lock screen**. She can see who to call and what to tell the doctor.
+- 👦 Son: Rahul Sharma, with his phone number
+- 👧 Daughter: Priya Sharma, with her phone number
+- ❤️ Blood group and other medical details
 
-**The lesson:** The feature helps whether you can use your phone properly or not.
+💡 Only what you add is shown. Choose what you are comfortable with people seeing.
 
 ---
 
@@ -42,15 +49,19 @@ Because he has turned on Emergency SOS, he only needs one easy movement: **press
 
 ### 🛠️ How To Set It Up
 
-*(Android phone. Your phone's menu names may be a little different. Use the search box in Settings if you cannot find a name.)*
+*(Android phone. Menu names can differ a little on your phone. Use the search box in Settings if you cannot find a name.)*
 
-**Step 1.** Open **Settings** on your phone.
+**Step 1: Add Emergency Contacts.**
+📱 Open **Settings → Safety & emergency → Emergency contacts**. Add your son or daughter, husband or wife, a close relative, and a trusted neighbour or friend.
 
-**Step 2.** Tap **Safety & emergency**. (The name can be different on your phone. Try searching "emergency" in Settings.)
+**Step 2: Add Medical Information.**
+📱 Open **Settings → Safety & emergency → Medical information**. Add your blood group, allergies, medicines and health conditions, and a short emergency note.
 
-**Step 3.** Tap **Emergency SOS** and turn it on. From now on, pressing the **power button 5 times, quickly,** calls for help.
+**Step 3: Turn On Emergency SOS.**
+📱 Open **Settings → Safety & emergency → Emergency SOS** and turn it ON. Choose what happens when it starts (the choices depend on your phone): emergency call, location sharing, alerts to your emergency contacts.
 
-**Step 4.** In the same place, add your **emergency contacts** (your son, daughter, neighbour) and your **medical information** (for example, medicines or allergies). They will show on your lock screen.
+**Step 4: Know the Shortcut.**
+🚨 In an emergency, press the **power button 5 times, quickly.**
 
 📱 **iPhone:** Open the **Health** app → **Medical ID**.
 
@@ -60,24 +71,26 @@ Because he has turned on Emergency SOS, he only needs one easy movement: **press
 
 ## SECTION 4 · INTERACTIVE ACTIVITY
 
-### 🎮 Interactive Activity: "Gauri's Safety Check"
+### 🎮 Interactive Activity: "Help Mr. Sharma Stay Safe"
 
-**Scenario.** Gauri, 65, lives alone in Indore. Her daughter has just given her a new phone. Gauri wants to make sure she can get help fast, even on a day when she feels unwell.
+**Scenario.** Mr. Sharma walks alone every morning.
 
-**Question.** Which of these things should Gauri do? *(Tick all that are correct.)*
+**Question.** What should he do before he goes out? *(Tick all that are correct.)*
 
+- ☐ Add **emergency contacts**
+- ☐ Add **medical information**
 - ☐ Turn on **Emergency SOS**
-- ☐ Add **emergency contacts** so they show on the lock screen
-- ☐ Add **medical information**, such as medicines or allergies
-- ☐ Switch the phone off every night
-- ☐ Delete all the contacts so nobody can see them
+- ☐ Learn the **5-press shortcut**
+- ☐ Switch the phone off to save battery
+- ☐ Delete his family's numbers so nobody sees them
 
-**✅ Correct answer:** The first three:
-- Turn on Emergency SOS
-- Add emergency contacts so they show on the lock screen
+**✅ Correct answer:** The first four:
+- Add emergency contacts
 - Add medical information
+- Turn on Emergency SOS
+- Learn the 5-press shortcut
 
-*Why the others are wrong:* A switched-off phone cannot call anyone, and deleted contacts cannot help in an emergency.
+*Why the others are wrong:* A switched-off phone cannot call for help, and deleted numbers cannot help anyone.
 
 **🏅 Badge earned:** *Safety Champion*
 
@@ -87,13 +100,15 @@ Because he has turned on Emergency SOS, he only needs one easy movement: **press
 
 ### 🌟 Real-Life Benefits
 
-✅ **Help reaches you faster**, even when your hands shake or you cannot unlock the phone.
+After spending just a few minutes on these settings:
 
-✅ **Neighbours and helpers know who to call**, because the numbers show on the lock screen.
+✅ **Family can be reached faster.**
 
-✅ **Doctors see important medical details quickly**, such as your medicines.
+✅ **Important medical details are ready for helpers.**
 
-✅ **Your family worries less**, and so do you.
+✅ **Help can be called quickly**, even if you cannot unlock your phone.
+
+✅ **Mr. Sharma feels safer** on his daily walks.
 
 ---
 
@@ -101,7 +116,7 @@ Because he has turned on Emergency SOS, he only needs one easy movement: **press
 
 ### 💭 Reflection Question
 
-*If you ever needed help in a hurry, which two people would you want called first? Have you told them, and are their numbers saved on your phone?*
+*If an emergency happened today, who should appear on your lock screen as your emergency contact?*
 
 ---
 
@@ -113,16 +128,16 @@ Because he has turned on Emergency SOS, he only needs one easy movement: **press
 >
 > **Style:** Flat, friendly illustration. Bright, calm colours: forest green (#2C5841), mustard yellow (#F2C14E), cream background (#F8F6F1), a soft brick red (#A8452A) only for the emergency button. Rounded shapes, thick outlines. **Very large, bold, high-contrast text** (nothing smaller than about 36 pt). Plenty of white space. Each section sits in its own rounded panel with a big number.
 >
-> **Top banner:** Title "Your Silent Guardian". Subtitle: "One press for help — and your family's numbers on your lock screen." A smiling grandmother illustration with a phone.
+> **Top banner:** Title "Your Silent Guardian". Subtitle: "One press for help — and your family's numbers on your lock screen." A smiling elderly man with a phone.
 >
-> **Panel 1: The Story.** Three small comic-style pictures in a row, following Kamla Devi (68, grey hair in a bun, green cotton saree, white sneakers):
-> 1. She walks in a garden and puts her hand on her forehead (dizzy). Caption: "Kamla Devi feels dizzy."
-> 2. She sits on a bench, pressing the power button of her phone. A bold red "5 PRESSES" badge appears. Caption: "She presses the power button 5 times."
-> 3. A kind lady reads the lock screen. Caption: "A helper sees who to call."
+> **Panel 1: The Story.** Three small comic-style pictures in a row, following Mr. Sharma (68, white hair, cream kurta, white sneakers):
+> 1. He walks in a park and puts his hand on his forehead (dizzy). Caption: "Mr. Sharma feels dizzy."
+> 2. He sits on a bench, pressing the power button of his phone. A bold red "5 PRESSES" badge appears. Caption: "He presses the power button 5 times."
+> 3. A kind passer-by taps "Emergency" on the lock screen. Caption: "A helper sees who to call."
 >
 > **Panel 2: Phone screenshots.** Two large smartphone mock-ups side by side, drawn clearly (not photos):
 > - Left phone, Settings screen showing "Safety & emergency → Emergency SOS" with a green ON toggle.
-> - Right phone, lock screen showing a card titled "Emergency contacts: Rohan (grandson)" and "Medicine: sugar tablets".
+> - Right phone, lock screen showing a card titled "Emergency contacts: Rahul (son), Priya (daughter)" and "Blood group".
 >
 > **Panel 3: "How To Set It Up".** Four large numbered steps, each with an icon:
 > 1. Open Settings (gear icon)
