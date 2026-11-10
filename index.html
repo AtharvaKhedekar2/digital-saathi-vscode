@@ -17,18 +17,20 @@
   digital skills to people who are new to phones and the internet (elderly relatives,
   first-time users, job seekers). It is one long page:
     Home (hero) → About → Your Saathi Journey → Learn → Outcomes → Contact
-  The "Learn" section holds everything interactive:
+  The "Learn" section holds:
     1. Lessons     — six short lessons, each with a "Listen" (read-aloud) button
-    2. Quiz        — a quick "check your level" test that suggests what to learn next
-    3. Ask Saathi  — type a question, get a simple built-in answer (works offline)
-    4. Safety card — five golden rules that can be printed
+    2. Ask Saathi  — type a question, get a simple built-in answer (works offline)
+    3. Safety card — five golden rules that can be printed
+  A separate Quizzes page has the Pre-Assessment (one big button that opens the team's
+  Google Form in a new tab) and the Post-Assessment (the same, with its own Google Form).
   Every word on the page is available in English, Hindi and Marathi, and the page has
   a light and a dark colour mode (it follows the phone's setting until you choose).
 
   HOW IT RUNS
-  Just open this file in a browser. No installation, no server, no sign-up, no forms
-  that send data anywhere. Everything works offline. (When there is internet, nicer
-  fonts are downloaded from Google Fonts; without it the browser's own fonts are used.)
+  Just open this file in a browser. No installation, no server, no sign-up. Everything
+  on this page works offline; only the two quiz buttons need internet, because they
+  open Google Forms. (When there is internet, nicer fonts are downloaded from Google
+  Fonts; without it the browser's own fonts are used.)
 
   This is one file on purpose, so it is easy to carry, demo and explain in the viva:
     <style>  → the design (colours, fonts, layout), in numbered sections
@@ -208,7 +210,7 @@ html:lang(hi) .h3big,html:lang(mr) .h3big{font-size:clamp(30px,2.9vw,46px)}
 html:lang(hi) .btn,html:lang(mr) .btn{font-family:var(--f-body);font-size:.98rem;font-weight:600;letter-spacing:.01em;text-transform:none}
 .btn .ic{width:1.2em;height:1.2em;transition:transform .3s var(--ease)}
 .btn:hover .ic-ur{transform:translate(3px,-3px)}
-.btn:hover .ic-r,.sug:hover .ic-r{transform:translateX(4px)}
+.btn:hover .ic-r{transform:translateX(4px)}
 .btn:active{transform:translateY(1px)}
 .btn[disabled]{opacity:.45;cursor:not-allowed}
 .btn-dark{--bg:var(--ink);--fg:var(--paper);--bd:var(--ink)}
@@ -539,49 +541,6 @@ html:lang(hi) .ld-title,html:lang(mr) .ld-title{font-size:clamp(28px,3.2vw,42px)
 .panel{padding:clamp(22px,3vw,40px);border:1px solid var(--line-2);background:var(--card);box-shadow:var(--shadow)}
 @media (max-width:899px){.learn-block{grid-template-columns:1fr}}
 
-/* Quiz */
-.qz-top{display:flex;align-items:center;gap:16px;margin-bottom:22px;color:var(--ink-2)}
-.qz-bar{flex:1;height:4px;overflow:hidden;background:var(--line)}
-.qz-bar i{display:block;height:100%;background:var(--sun);transition:width .5s var(--ease)}
-.qz-q{margin-bottom:22px;font-family:var(--f-display);font-size:clamp(26px,2.4vw,36px);font-weight:600;line-height:1.2}
-html:lang(hi) .qz-q,html:lang(mr) .qz-q{font-size:clamp(22px,1.9vw,29px);font-weight:400;line-height:1.45}
-.qz-opts{display:grid;gap:12px}
-.qz-opt{
-  display:flex;align-items:center;gap:16px;width:100%;min-height:64px;padding:12px 18px 12px 12px;
-  border:1px solid var(--line-2);background:var(--paper);color:var(--ink);text-align:left;font-size:1.04rem;font-weight:600;line-height:1.4;
-  transition:border-color .2s,background-color .2s,transform .2s var(--ease);
-}
-.qz-opt:hover:not([disabled]){border-color:var(--ink);transform:translateX(3px)}
-.qz-letter{display:grid;place-items:center;width:40px;height:40px;flex:none;border:1px solid var(--line-2);background:var(--card);font-family:var(--f-mono);font-size:.82rem}
-.qz-opt .ic{margin-left:auto;width:22px;height:22px}
-.qz-opt[disabled]{cursor:default}
-.qz-opt[disabled]:not(.right):not(.wrong){opacity:.55}
-.qz-opt.right{border-color:var(--good);background:var(--good-soft)}
-.qz-opt.right .qz-letter{border-color:var(--good);background:var(--good);color:var(--on-accent)}
-.qz-opt.wrong{border-color:var(--bad);background:var(--bad-soft)}
-.qz-opt.wrong .qz-letter{border-color:var(--bad);background:var(--bad);color:var(--on-accent)}
-.qz-feedback{display:flex;align-items:center;gap:10px;min-height:1.7em;margin:18px 0 0;font-weight:700}
-.qz-feedback.ok{color:var(--good)}
-.qz-feedback.no{color:var(--bad)}
-.qz-actions{display:flex;justify-content:flex-end;margin-top:20px}
-.qz-result{display:flex;flex-wrap:wrap;align-items:center;gap:24px;margin-bottom:24px}
-.qz-result-text{flex:1 1 220px}
-.qz-result h4{margin-top:6px;font-family:var(--f-display);font-size:clamp(26px,2.4vw,36px);font-weight:600;line-height:1.15}
-html:lang(hi) .qz-result h4,html:lang(mr) .qz-result h4{font-size:clamp(22px,1.9vw,29px);font-weight:400;line-height:1.4}
-.ring{position:relative;width:120px;height:120px;flex:none}
-.ring svg{width:100%;height:100%;transform:rotate(-90deg)}
-.ring circle{fill:none;stroke-width:9}
-.ring .trk{stroke:var(--line)}
-.ring .val{stroke:var(--green);stroke-linecap:round;stroke-dasharray:314.16;stroke-dashoffset:calc(314.16 * (1 - var(--p, 0)));transition:stroke-dashoffset 1.1s var(--ease)}
-.ring-n{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:var(--f-display);font-size:2.3rem;line-height:1}
-.ring-n i{font-style:normal}
-.ring-n small{margin-left:1px;font-size:.55em;color:var(--ink-2)}
-.qz-suggest{display:grid;gap:10px;margin:14px 0 24px}
-.sug{display:flex;align-items:center;gap:14px;width:100%;padding:12px 16px;border:1px solid var(--line-2);background:var(--paper);color:var(--ink);text-align:left;font-weight:600;transition:border-color .2s}
-.sug:hover{border-color:var(--ink)}
-.sug .lc-ic{display:grid;place-items:center;flex:none;width:42px;height:42px;border-radius:50%;background:var(--green-soft);color:var(--green)}
-.sug .lc-ic .ic{width:20px;height:20px}
-.sug .ic-r{margin-left:auto;transition:transform .3s var(--ease)}
 
 /* Ask Saathi */
 .ask-label{display:block;margin-bottom:10px;font-weight:700}
@@ -1067,17 +1026,6 @@ html:lang(hi) .qz-choice h3,html:lang(mr) .qz-choice h3{font-weight:400;line-hei
 .qc-meta{font-size:.88rem}
 .qz-choice .btn{align-self:flex-start;margin-top:auto}
 .eb-emo{font-size:1.1rem;line-height:1}
-.qz-compare{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;margin:0 0 16px;padding:14px 18px;border:1px solid var(--line-2);background:var(--paper)}
-.qz-compare span{display:grid}
-.qz-compare small{color:var(--ink-2);font-size:.8rem}
-.qz-compare b{font-family:var(--f-display);font-size:1.8rem;line-height:1.1;font-variant-numeric:lining-nums}
-.qc-arrow{color:var(--sun-2);font-size:1.4rem}
-.qc-gain{margin-left:auto;padding:6px 12px;border-radius:999px;background:var(--good-soft);color:var(--good);font-weight:700}
-.qz-nopre{margin:0 0 14px;color:var(--ink-2)}
-.qz-nopre a{color:var(--green);font-weight:700}
-.qz-verdict{margin:0 0 14px;padding:12px 16px;border-left:3px solid var(--green);background:var(--green-soft);font-weight:600}
-.qz-verdict.retry{border-left-color:var(--sun-2);background:var(--sun-soft)}
-.qz-end{display:flex;flex-wrap:wrap;gap:12px}
 @media (max-width:899px){.qz-choices{grid-template-columns:1fr}}
 
 /* Landing cards preview each quiz's own look: sunny for "before", dark green and gold for "after" */
@@ -1091,87 +1039,138 @@ html:lang(hi) .qz-choice h3,html:lang(mr) .qz-choice h3{font-weight:400;line-hei
 .qz-choice-post .emo{border:1px solid rgba(242,193,78,.5);background:rgba(242,193,78,.16)}
 .qz-choice-post :focus-visible{outline-color:var(--sun)}
 
-/* PRE-ASSESSMENT — a friendly check-up: sunny, rounded, one centred column, dot progress */
-.pre-sec{background:radial-gradient(110% 60% at 50% 0%,var(--sun-soft),transparent 70%),var(--paper-2)}
-.pre-shell{max-width:900px;margin:0 auto}
-.pre-head{display:flex;align-items:center;gap:22px}
-.pre-badge{display:grid;place-items:center;flex:none;width:84px;height:84px;border-radius:50%;background:var(--sun);box-shadow:0 0 0 8px rgba(242,193,78,.28);font-size:2.6rem;line-height:1}
-.pre-kicker{margin:0 0 6px;color:var(--ink-2);font-size:.98rem;font-weight:700}
-.pre-chips{display:flex;flex-wrap:wrap;gap:10px;margin:20px 0 22px;padding:0;list-style:none}
-.pre-chips li{display:inline-flex;align-items:center;gap:8px;padding:8px 16px;border:1px solid var(--line-2);border-radius:999px;background:var(--card);font-size:.95rem;font-weight:600}
-.pre-card{padding:clamp(22px,3vw,40px);border:1px solid var(--line-2);border-top:6px solid var(--sun);border-radius:24px;background:var(--card);box-shadow:var(--shadow)}
-.pre-top{flex-wrap:wrap}
-.pre-dots{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 0 auto;padding:0;list-style:none}
-.pre-dots li{width:14px;height:14px;border-radius:50%;background:var(--line-2);transition:background-color .3s,transform .3s var(--ease)}
-.pre-dots li.ok{background:var(--good)}
-.pre-dots li.no{background:var(--bad)}
-.pre-dots li.now{background:var(--sun-2);transform:scale(1.3);box-shadow:0 0 0 3px rgba(242,193,78,.35)}
-.pre-card .qz-opt{border-radius:16px}
-.pre-card .qz-opt:hover:not([disabled]){border-color:var(--sun-2);box-shadow:0 12px 22px -16px rgba(34,32,28,.5);transform:translateY(-2px)}
-.pre-card .qz-letter{border:0;border-radius:50%;background:var(--sun-soft);font-weight:700}
-.pre-card .qz-feedback.ok,.pre-card .qz-feedback.no{padding:10px 16px;border-radius:14px}
-.pre-card .qz-feedback.ok{background:var(--good-soft)}
-.pre-card .qz-feedback.no{background:var(--bad-soft)}
-.pre-card .btn,.pre-card .sug{border-radius:999px}
-@media (max-width:599px){.pre-head{gap:14px}.pre-badge{width:60px;height:60px;font-size:1.9rem;box-shadow:0 0 0 5px rgba(242,193,78,.28)}.pre-dots{gap:6px;margin-left:0}.pre-dots li{width:12px;height:12px}}
-html.fit-on .pre-badge{width:min(84px,10vh);height:min(84px,10vh);font-size:min(2.6rem,5vh)}
-html.fit-on .pre-chips{margin:clamp(10px,2vh,20px) 0 clamp(12px,2.4vh,22px)}
-/* Pre-Assessment as a Google Form: a pill switch, then the embedded form */
-.pre-modes{display:flex;gap:6px;width:fit-content;max-width:100%;margin:0 0 16px;padding:6px;border:1px solid var(--line-2);border-radius:999px;background:var(--card)}
-.pre-modes[hidden]{display:none}
-.pre-modes button{display:inline-flex;align-items:center;gap:8px;min-height:46px;padding:8px 20px;border:0;border-radius:999px;background:transparent;color:var(--ink-2);font-size:1rem;font-weight:700;cursor:pointer;transition:background-color .2s,color .2s}
-.pre-modes button:hover:not([aria-selected="true"]){background:var(--paper-2);color:var(--ink)}
-.pre-modes button[aria-selected="true"]{background:var(--sun);color:#22201c}
-.pre-form{padding:clamp(16px,2.4vw,28px)}
-.pf-head{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 18px;margin-bottom:16px}
-.pf-note{display:flex;flex:1 1 280px;align-items:flex-start;gap:8px;margin:0;color:var(--ink-2);font-size:.95rem;font-weight:600;line-height:1.45}
-.pf-frame{position:relative;overflow:hidden;border:1px solid var(--line-2);border-radius:16px;background:#fff}
-.pf-frame[hidden]{display:none}
-.pf-frame iframe{position:relative;display:block;width:100%;height:clamp(480px,72vh,880px);border:0;background:transparent}
-.pf-loading{position:absolute;inset:0;display:grid;place-items:center;margin:0;color:#55514a;font-weight:600}
-.pf-frame.loaded .pf-loading{display:none}
-.pf-noembed{display:flex;align-items:center;gap:8px;margin:0;color:var(--ink-2);font-weight:600}
-.pf-noembed[hidden]{display:none}
-/* while the form is showing, the three chips step aside (the form's own intro says the same) so the form gets the room */
-.pre-sec.form-on .pre-chips{display:none}
-.pre-sec.form-on .pre-modes{margin-top:20px}
-html.fit-on .pf-frame iframe{height:max(380px,calc(100vh - 440px))}
-@media (max-width:479px){.pre-modes{width:100%}.pre-modes button{flex:1;justify-content:center;padding:8px 10px;font-size:.95rem}.pf-head .btn{width:100%;justify-content:center}}
+/* PRE-ASSESSMENT · "Discover what you already know." The start of the journey: an open, centred layout on a
+   sunny background. Big title, one big button, then a map of the six learning steps with a "Start here" marker. */
+.pre-sec{background:radial-gradient(55% 45% at 12% 8%,var(--sun-soft),transparent 70%),radial-gradient(45% 40% at 92% 95%,var(--green-soft),transparent 70%),var(--paper-2)}
+.pre-hero{display:flex;flex-direction:column;align-items:center;max-width:920px;margin:0 auto;text-align:center}
+.pre-kicker{display:inline-flex;align-items:center;gap:10px;margin:0;padding:6px 18px 6px 6px;border:1px solid var(--line-2);border-radius:999px;background:var(--card);color:var(--ink);font-size:.98rem;font-weight:700;line-height:1.35;text-align:left}
+.pre-kicker-emo{display:grid;place-items:center;flex:none;width:38px;height:38px;border-radius:50%;background:var(--sun);font-size:1.2rem;line-height:1}
+.pre-title{margin:clamp(14px,2.4vh,26px) 0 0;font-size:clamp(40px,4.8vw,74px);line-height:1.04}
+html:lang(hi) .pre-title,html:lang(mr) .pre-title{font-size:clamp(34px,3.8vw,56px);line-height:1.28}
+.pre-desc{max-width:34em;margin:clamp(10px,1.8vh,18px) 0 0;color:var(--ink);font-size:1.12rem;line-height:1.65}
+.pre-go-row{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:12px 16px;margin-top:clamp(18px,3.2vh,30px)}
+/* the big button: a dark pill with a sun-yellow arrow circle; on hover it lifts a little and turns green */
+.pre-go{display:inline-flex;align-items:center;justify-content:space-between;gap:18px;min-height:72px;padding:10px 12px 10px 30px;border:2px solid var(--ink);border-radius:999px;background:var(--ink);color:var(--paper);font-family:var(--f-body);font-size:1.2rem;font-weight:700;line-height:1.25;text-align:left;text-decoration:none;box-shadow:0 16px 28px -18px rgba(34,32,28,.8);transition:background-color .2s,border-color .2s,transform .2s var(--ease),box-shadow .2s}
+.pre-go:hover{border-color:var(--green);background:var(--green);transform:translateY(-2px);box-shadow:0 22px 34px -18px rgba(34,32,28,.85)}
+.pre-go:active{transform:translateY(0)}
+.pre-go:focus-visible{outline:3px solid var(--green);outline-offset:4px}
+.pre-go-t{text-wrap:balance}   /* if the words need two lines, keep "Pre-Assessment Quiz" together */
+.pre-go-ic{display:grid;place-items:center;flex:none;width:50px;height:50px;border-radius:50%;background:var(--sun);color:var(--on-sun)}
+.pre-go-ic .ic,.post-go-ic .ic{width:26px;height:26px;stroke-width:2.2;transition:transform .25s var(--ease)}
+.pre-go:hover .pre-go-ic .ic,.post-go:hover .post-go-ic .ic{transform:translate(2px,-2px)}
+/* no form link set yet: the button is greyed out and "Coming soon" shows next to it */
+.pre-go[aria-disabled="true"],.pre-go[aria-disabled="true"]:hover{border-color:var(--ink);background:var(--ink);box-shadow:none;transform:none;opacity:.45;cursor:not-allowed}
+.pre-hint,.pre-note{margin:0;color:var(--ink);font-size:.95rem;font-weight:600;line-height:1.5;text-align:center;text-wrap:pretty}
+.pre-note>span[aria-hidden]{margin-right:6px}
+.pre-hint{margin-top:12px}
+.pre-hint .ic{width:1.3em;height:1.3em;margin-right:6px;vertical-align:-.28em;stroke-width:2}
+.post-hint .ic{flex:none;width:1.3em;height:1.3em;margin-top:.1em;stroke-width:2}
+.pre-hint .ic{color:var(--green)}
+.pre-note{max-width:40em;margin-top:clamp(14px,2.2vh,22px);font-size:.92rem;font-weight:500}
+/* the journey map */
+.pre-map{width:100%;margin-top:clamp(20px,3.4vh,40px);padding:clamp(18px,2.6vh,28px) clamp(16px,3vw,36px);border:1px solid var(--line-2);border-radius:24px;background:var(--card);box-shadow:var(--shadow)}
+.pre-stops{position:relative;display:flex;align-items:flex-start;justify-content:space-between;margin:0;padding:0;list-style:none}
+.pre-stops::before{content:"";position:absolute;top:27px;left:7%;right:7%;border-top:3px dashed var(--line-2)}
+.pre-stops li{position:relative;display:flex;flex:1 1 0;flex-direction:column;align-items:center;gap:6px;min-width:0}
+.pre-stop{display:grid;place-items:center;width:44px;height:44px;margin-top:5px;border:2px solid var(--line-2);border-radius:50%;background:var(--card);color:var(--green)}
+.pre-stop .ic{width:22px;height:22px}
+.pre-stops .is-start .pre-stop{width:56px;height:56px;margin-top:-1px;border:0;background:var(--sun);box-shadow:0 0 0 6px rgba(242,193,78,.3);font-size:1.6rem;line-height:1}
+.pre-stop-l{color:var(--ink-3)}
+.is-start .pre-stop-l{color:var(--ink);font-size:.9rem;font-weight:800;line-height:1.2}
+.pre-map-t{max-width:36em;margin:clamp(12px,2vh,18px) auto 0;color:var(--ink);font-weight:600;line-height:1.5}
+.pre-chips{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin:clamp(10px,1.8vh,16px) 0 0;padding:0;list-style:none}
+.pre-chips li{display:inline-flex;align-items:center;gap:8px;padding:clamp(5px,1vh,8px) 16px;border:1px solid var(--line-2);border-radius:999px;background:var(--paper);font-size:.95rem;font-weight:600;line-height:1.35}
+@media (max-width:599px){
+  .pre-sec{padding:20px 0 48px}
+  .pre-kicker{font-size:.9rem}
+  .pre-desc{font-size:1.05rem}
+  .pre-go-row{align-self:stretch}
+  .pre-go{flex:1 1 100%;gap:10px;min-height:68px;padding:8px 8px 8px 20px;font-size:1.05rem}
+  .pre-go-ic{width:42px;height:42px}
+  .pre-map{padding:16px 10px}
+  .pre-stops::before{top:21px}
+  .pre-stop{width:32px;height:32px;margin-top:5px}
+  .pre-stop .ic{width:17px;height:17px}
+  .pre-stops .is-start .pre-stop{width:40px;height:40px;margin-top:1px;box-shadow:0 0 0 4px rgba(242,193,78,.3);font-size:1.2rem}
+  .is-start .pre-stop-l{font-size:.75rem}
+  .pre-chips li{padding:6px 12px;font-size:.92rem}
+}
 
-/* POST-ASSESSMENT — the certificate test: dark green, a framed "paper" card with a gold seal,
-   numbered progress bar, square badges, and the pass mark shown as a gold target */
-.post-sec{background:radial-gradient(80% 60% at 100% 0%,rgba(242,193,78,.13),transparent 60%),var(--green-deep)}
-.post-grid{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);align-items:center;gap:clamp(28px,4vw,64px)}
-.post-card{position:relative;padding:clamp(28px,3.4vw,48px);border:2px solid var(--sun);background:var(--card);color:var(--ink);box-shadow:0 30px 60px -30px rgba(0,0,0,.65)}
-.post-card::before{content:"";position:absolute;inset:7px;border:1px solid rgba(228,170,44,.5);pointer-events:none}
-.post-card::after{content:"🎓";position:absolute;top:-24px;right:28px;display:grid;place-items:center;width:48px;height:48px;border-radius:50%;background:var(--sun);box-shadow:0 0 0 5px var(--green-deep);font-size:1.4rem;line-height:1}
-.post-card :focus-visible{outline-color:var(--green)}
-.post-top{display:grid;grid-template-columns:auto minmax(0,1fr);align-items:center;gap:18px}
-.post-count{font-family:var(--f-display);line-height:1;color:var(--green);font-variant-numeric:lining-nums}
-.post-count b{font-size:3rem;font-weight:600}
-.post-count small{font-size:1.2rem;color:var(--ink-2)}
-.post-segs{display:flex;gap:4px}
-.post-segs i{flex:1;height:8px;background:var(--line)}
-.post-segs i.done{background:var(--sun-2)}
-.post-segs i.now{background:var(--green)}
-.post-card .qz-opt{border-left:5px solid var(--line-2)}
-.post-card .qz-opt:hover:not([disabled]){border-color:var(--sun-2);transform:translateX(4px)}
-.post-card .qz-opt.right{border-left-color:var(--good)}
-.post-card .qz-opt.wrong{border-left-color:var(--bad)}
-.post-card .qz-letter{border-color:var(--green-deep);background:var(--green-deep);color:var(--sun);font-weight:700}
-.post-side .h3big{margin-top:4px}
-.post-goal{display:flex;align-items:center;gap:18px;margin:clamp(16px,3vh,30px) 0 18px;padding:16px 20px;border:1px solid rgba(242,193,78,.5);background:rgba(242,193,78,.1)}
-.post-goal-n{flex:none;font-family:var(--f-display);line-height:1;color:var(--sun);font-variant-numeric:lining-nums}
-.post-goal-n b{font-size:3.4rem;font-weight:600}
-.post-goal-n small{font-size:1.4rem;color:var(--cream-2)}
-.post-goal-t{display:grid;gap:2px}
-.post-goal-t b{color:var(--cream);font-size:1.05rem}
-.post-goal-t span{color:var(--cream-2);font-size:.92rem}
-.post-facts{display:grid;gap:10px;margin:0;padding:0;list-style:none}
-.post-facts li{display:flex;align-items:center;gap:10px;color:var(--cream-2)}
-@media (max-width:899px){.post-grid{grid-template-columns:1fr}.post-side{order:-1}}
-@media (max-width:599px){.post-count b{font-size:2.3rem}.post-card::after{right:18px;width:42px;height:42px;font-size:1.2rem}}
-html.fit-on .post-count b{font-size:min(3rem,6vh)}
+/* POST-ASSESSMENT · "See how much you've learned." A milestone to celebrate: the signature dark-green and gold panel
+   (like the proverb panels), split in two, with a thin gold certificate frame inside. Three gold numbers, one big
+   sun-yellow button, and a medal ringed by the six completed learning steps. It stays dark in both colour modes. */
+.post-sec{background:radial-gradient(55% 45% at 88% 8%,var(--green-soft),transparent 70%),radial-gradient(40% 40% at 6% 96%,var(--sun-soft),transparent 70%),var(--paper-2)}
+.post-hero{position:relative;display:grid;grid-template-columns:minmax(0,1.45fr) minmax(0,.55fr);align-items:center;gap:clamp(20px,3vw,48px);max-width:1180px;margin:0 auto;padding:clamp(28px,4.6vh,58px) clamp(24px,4vw,62px);border-bottom:0;border-radius:28px;background:radial-gradient(70% 80% at 100% 0%,rgba(242,193,78,.2),transparent 60%),radial-gradient(60% 70% at 0% 100%,rgba(143,202,166,.13),transparent 60%),var(--green-deep);color:var(--cream);box-shadow:0 30px 60px -30px rgba(0,0,0,.6)}
+.post-hero::before{content:"";position:absolute;inset:10px;border:1px solid rgba(242,193,78,.32);border-radius:20px;pointer-events:none}
+.post-text{position:relative;display:flex;flex-direction:column;align-items:flex-start}
+.post-kicker{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;margin:0;color:var(--cream-2);font-size:.98rem;font-weight:700;line-height:1.4}
+.post-ribbon{display:inline-flex;align-items:center;gap:6px;padding:5px 14px;border-radius:999px;background:var(--sun);color:var(--on-sun);font-size:.92rem;font-weight:800}
+.post-title{margin:clamp(12px,2vh,22px) 0 0;font-size:clamp(38px,3.6vw,58px);line-height:1.04}
+html:lang(hi) .post-title,html:lang(mr) .post-title{font-size:clamp(34px,3.4vw,52px);line-height:1.28}
+.post-desc{max-width:32em;margin:clamp(10px,1.6vh,16px) 0 0;color:var(--cream-2);font-size:1.1rem;line-height:1.65}
+.post-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;width:100%;margin:clamp(16px,2.8vh,28px) 0 0;padding:0;list-style:none}
+.post-stats li{display:grid;align-content:start;gap:6px;padding:clamp(10px,1.8vh,16px) 16px;border:1px solid rgba(242,193,78,.35);border-radius:18px;background:rgba(243,239,228,.06)}
+.post-stats b{color:var(--sun);font-family:var(--f-display);font-size:clamp(32px,3vw,46px);font-weight:600;line-height:1;font-variant-numeric:lining-nums}
+.post-stats small{color:var(--cream-2);font-size:.55em}
+.post-stats li>span{color:var(--cream-2);font-size:.92rem;font-weight:600;line-height:1.35}
+.post-go-row{display:flex;flex-wrap:wrap;align-items:center;gap:12px 18px;margin-top:clamp(18px,3vh,30px)}
+/* the big button: a sun-yellow pill with a dark-green arrow circle; on hover it lifts a little and glows */
+.post-go{display:inline-flex;align-items:center;justify-content:space-between;gap:18px;min-height:72px;padding:10px 12px 10px 30px;border:2px solid var(--sun);border-radius:999px;background:var(--sun);color:var(--on-sun);font-family:var(--f-body);font-size:1.2rem;font-weight:800;line-height:1.25;text-align:left;text-decoration:none;box-shadow:0 18px 32px -18px rgba(0,0,0,.75);transition:background-color .2s,border-color .2s,transform .2s var(--ease),box-shadow .2s}
+.post-go:hover{border-color:#f8d67f;background:#f8d67f;transform:translateY(-2px);box-shadow:0 0 0 6px rgba(242,193,78,.2),0 24px 36px -18px rgba(0,0,0,.8)}
+.post-go:active{transform:translateY(0)}
+.post-go:focus-visible{outline:3px solid var(--cream);outline-offset:4px}
+.post-go-ic{display:grid;place-items:center;flex:none;width:50px;height:50px;border-radius:50%;background:var(--green-deep);color:var(--sun)}
+.post-go[aria-disabled="true"],.post-go[aria-disabled="true"]:hover{border-color:var(--sun);background:var(--sun);box-shadow:none;transform:none;opacity:.45;cursor:not-allowed}
+.post-retake{display:inline-flex;align-items:center;gap:8px;color:var(--cream);font-weight:700}
+.post-hint{display:flex;align-items:flex-start;gap:8px;max-width:34em;margin:12px 0 0;color:var(--cream-2);font-size:.95rem;font-weight:600;line-height:1.5;text-wrap:pretty}
+.post-hint .ic{color:var(--sun)}
+.post-visual{position:relative;display:flex;flex-direction:column;align-items:center;gap:16px}
+.post-medal{display:block;width:100%;max-width:300px;height:auto}
+.post-note{display:flex;align-items:flex-start;gap:8px;max-width:24em;margin:0;color:var(--cream-2);font-size:.9rem;line-height:1.5;text-wrap:pretty}
+/* the medal picture: fixed colours, because the panel is dark green in both colour modes */
+.pm-glow{fill:rgba(242,193,78,.08)}
+.pm-track{fill:none;stroke:rgba(243,239,228,.12);stroke-width:10}
+.pm-ring{fill:none;stroke:#f2c14e;stroke-width:6}
+.pm-dots{fill:none;stroke:rgba(242,193,78,.45);stroke-width:2.5;stroke-dasharray:2 9;stroke-linecap:round}
+.pm-tail-a{fill:#c66543}
+.pm-tail-b{fill:#a8452a}
+.pm-disc{fill:#f2c14e}
+.pm-inner{fill:none;stroke:#e4aa2c;stroke-width:4}
+.pm-star{fill:#1d3a2b}
+.pm-badge circle{fill:#8fcaa6;stroke:#1d3a2b;stroke-width:4}
+.pm-badge path{fill:none;stroke:#1d3a2b;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.pm-c1{fill:#f2c14e}
+.pm-c2{fill:#8fcaa6}
+.pm-c3{fill:#ef9a7c}
+html.fit-on .post-title{font-size:min(3.6vw,7.2vh,58px)}
+html.fit-on:lang(hi) .post-title,html.fit-on:lang(mr) .post-title{font-size:min(3vw,6vh,50px)}
+html.fit-on .post-medal{max-width:min(300px,40vh)}
+html.fit-on .pre-title{font-size:min(4.8vw,8.6vh,74px)}
+html.fit-on .pre-map{margin-top:clamp(12px,2.4vh,40px);padding:clamp(10px,1.9vh,28px) clamp(16px,3vw,36px)}
+html.fit-on .pre-map-t{margin-top:clamp(8px,1.4vh,18px)}
+html.fit-on .pre-chips{margin-top:clamp(8px,1.3vh,16px)}
+html.fit-on .pre-note{margin-top:clamp(10px,1.8vh,22px)}
+html.fit-on .pre-hint{margin-top:clamp(8px,1.4vh,12px)}
+html.fit-on:lang(hi) .pre-title,html.fit-on:lang(mr) .pre-title{font-size:min(3.8vw,6.8vh,56px)}
+@media (max-width:899px){
+  .post-hero{grid-template-columns:1fr}
+  .post-medal{max-width:230px}
+}
+@media (max-width:599px){
+  .post-sec{padding:20px 0 48px}
+  .post-hero{padding:26px 20px;border-radius:22px}
+  .post-hero::before{inset:7px;border-radius:16px}
+  .post-desc{font-size:1.05rem}
+  /* phones: the button comes straight after the description, so it is on the first screen; the numbers follow */
+  .post-go-row{order:1;align-self:stretch}
+  .post-hint{order:2}
+  .post-stats{order:3;grid-template-columns:1fr}
+  .post-stats li{grid-template-columns:auto minmax(0,1fr);align-items:center;gap:14px;padding:10px 14px}
+  .post-stats b{font-size:32px}
+  .post-go{flex:1 1 100%;gap:10px;min-height:68px;padding:8px 8px 8px 20px;font-size:1.05rem}
+  .post-go-ic{width:42px;height:42px}
+  .post-medal{max-width:200px}
+}
 /* Certificate */
 .cert-grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:clamp(28px,5vw,80px);align-items:center}
 .cert-copy .sec-intro{margin-top:clamp(12px,2.4vh,24px)}
@@ -1200,9 +1199,70 @@ html:lang(hi) .cm-team,html:lang(mr) .cm-team,html:lang(hi) .cm-sample,html:lang
   html.fit-on .cm-paper{padding:20px 22px}
   html.fit-on .cm-seal{width:50px;height:50px;font-size:1.5rem}
 }
+/* LIVE WALLPAPER START ======================================================
+   16. LIVE WALLPAPER — flowing ribbons of green light with sparkles behind every page.
+   One fixed layer behind all content (z-index -1) that never catches a tap. It is drawn once as inline SVG
+   and only transform and opacity are animated, so the graphics card moves it without slowing the page.
+   The few sections that had a solid background let it shine through. Ribbons are kept soft enough that
+   text keeps strong contrast. Light mode = soft daylight; dark mode = deep green glow on near-black.
+   Off for printing, for "more contrast" / forced colours; it stands still for people who ask for less motion.
+   ========================================================================= */
+:root{--lw-base:#f7f4ec;--lw-top:#fbf9f4;--lw-haze1:rgba(242,193,78,.12);--lw-haze2:rgba(143,202,166,.15);--lw-ca:#8fcaa6;--lw-cb:#bfe6cf;--lw-cc:#ffffff;--lw-dot:#4f9a73;--lw-gold:#e4aa2c;--lw-star:#ffffff;--lw-starglow:#fff4c4;--lw-h:0.27;--lw-g:0.4;--lw-c:0.9;--lw-back:1;--lw-sg:0.45;--lw-dotop:0.75;--lw-starop:1;--lw-band:rgba(241,236,226,.55);--lw-strip:rgba(248,246,241,.72);--lw-sun:rgba(242,193,78,.16);--lw-mint:rgba(143,202,166,.18)}
+@media screen{:root[data-theme="dark"]{--lw-base:#121812;--lw-top:#161d17;--lw-haze1:rgba(40,150,90,.12);--lw-haze2:rgba(30,120,75,.1);--lw-ca:#0e9c4e;--lw-cb:#17b85e;--lw-cc:#2fd47c;--lw-dot:#2fae68;--lw-gold:#f2c14e;--lw-star:#9fe3bd;--lw-starglow:#3fbf78;--lw-h:0.12;--lw-g:0.13;--lw-c:0.08;--lw-back:0.7;--lw-sg:0.08;--lw-dotop:0.45;--lw-starop:0.2;--lw-band:rgba(26,31,27,.6);--lw-strip:rgba(20,24,20,.7);--lw-sun:rgba(242,193,78,.07);--lw-mint:rgba(143,202,166,.07)}}
+@media screen and (prefers-color-scheme:dark){:root:not([data-theme]){--lw-base:#121812;--lw-top:#161d17;--lw-haze1:rgba(40,150,90,.12);--lw-haze2:rgba(30,120,75,.1);--lw-ca:#0e9c4e;--lw-cb:#17b85e;--lw-cc:#2fd47c;--lw-dot:#2fae68;--lw-gold:#f2c14e;--lw-star:#9fe3bd;--lw-starglow:#3fbf78;--lw-h:0.12;--lw-g:0.13;--lw-c:0.08;--lw-back:0.7;--lw-sg:0.08;--lw-dotop:0.45;--lw-starop:0.2;--lw-band:rgba(26,31,27,.6);--lw-strip:rgba(20,24,20,.7);--lw-sun:rgba(242,193,78,.07);--lw-mint:rgba(143,202,166,.07)}}
+.live-bg{display:none}
+@media screen and (prefers-contrast:no-preference){
+  .live-bg{position:fixed;top:0;left:0;z-index:-1;display:block;width:100%;height:100vh;height:100lvh;overflow:hidden;pointer-events:none;contain:strict;
+    background:radial-gradient(55% 50% at 76% 42%,var(--lw-haze1),transparent 70%),radial-gradient(45% 45% at 18% 62%,var(--lw-haze2),transparent 72%),linear-gradient(180deg,var(--lw-top),var(--lw-base))}
+  .lw-defs{position:absolute;width:0;height:0;overflow:hidden}
+  .lw-layer{position:absolute;inset:-8%;will-change:transform}
+  .lw-layer svg,.lw-twinkle{position:absolute;inset:0;display:block;width:100%;height:100%}
+  .lw-back{opacity:var(--lw-back);animation:lw-drift-a 34s ease-in-out infinite alternate}
+  .lw-front{animation:lw-drift-b 24s ease-in-out infinite alternate}
+  .lw-twinkle{will-change:opacity;animation:lw-twinkle 5s ease-in-out infinite alternate}
+  .lw-h{fill:none;stroke:url(#lwGA);stroke-width:92;stroke-linecap:round} .lw-halos{opacity:var(--lw-h)}
+  .lw-g{fill:none;stroke:url(#lwGB);stroke-width:20;stroke-linecap:round} .lw-glows{opacity:var(--lw-g)}
+  .lw-c{fill:none;stroke:url(#lwGC);stroke-width:2.4;stroke-linecap:round} .lw-cores{opacity:var(--lw-c)}
+  .lw-a0,.lw-a1,.lw-a2{stop-color:var(--lw-ca)} .lw-a0{stop-opacity:0} .lw-a1{stop-opacity:.5} .lw-a2{stop-opacity:1}
+  .lw-b0,.lw-b1,.lw-b2{stop-color:var(--lw-cb)} .lw-b0{stop-opacity:0} .lw-b1{stop-opacity:.45} .lw-b2{stop-opacity:1}
+  .lw-c0,.lw-c1,.lw-c2{stop-color:var(--lw-cc)} .lw-c0{stop-opacity:0} .lw-c1{stop-opacity:.4} .lw-c2{stop-opacity:1}
+  .lw-s1{stop-color:var(--lw-starglow);stop-opacity:var(--lw-sg)} .lw-s0{stop-color:var(--lw-starglow);stop-opacity:0}
+  .lw-dot{fill:var(--lw-dot)} .lw-gold{fill:var(--lw-gold)} .lw-dots{opacity:var(--lw-dotop)}
+  .lw-star{fill:var(--lw-star);fill-opacity:var(--lw-starop)} .lw-star-glow{fill:url(#lwGS)}
+  /* the solid section backgrounds become see-through, so the wallpaper shows behind them */
+  body{background:var(--lw-base)}
+  .section-alt{background:var(--lw-band)}
+  .facts{background:var(--lw-strip)}
+  .pre-sec{background:radial-gradient(55% 45% at 12% 8%,var(--lw-sun),transparent 70%),radial-gradient(45% 40% at 92% 95%,var(--lw-mint),transparent 70%),var(--lw-band)}
+  .post-sec{background:radial-gradient(55% 45% at 88% 8%,var(--lw-mint),transparent 70%),radial-gradient(40% 40% at 6% 96%,var(--lw-sun),transparent 70%),var(--lw-band)}
+  @media (max-width:599px){
+    .lw-back{display:none}               /* phones: one layer of ribbons is enough, and lighter on the battery */
+    .lw-front{animation-duration:30s}
+    .lw-twinkle{animation:none;will-change:auto}   /* the stars stay, still, inside the ribbon layer: one layer less to keep in memory */
+  }
+}
+@keyframes lw-drift-a{from{transform:translate3d(-3.4%,2.4%,0) rotate(-2deg) scale(1.02)}to{transform:translate3d(3.6%,-2.2%,0) rotate(1.8deg) scale(1.08)}}
+@keyframes lw-drift-b{from{transform:translate3d(3.6%,-2.6%,0) rotate(2.2deg) scale(1.06)}to{transform:translate3d(-3.6%,2.8%,0) rotate(-1.8deg) scale(1.01)}}
+@keyframes lw-twinkle{from{opacity:.3}to{opacity:1}}
+@media (prefers-reduced-motion:reduce){.lw-layer,.lw-twinkle{animation:none}}
+@media (forced-colors:active){.live-bg{display:none!important}}
+/* Two small decorations can only be animated by the main thread (the hero's swaying lamps and the pulsing
+   "Coming soon" dot). They pause while they are off screen, so the page does no needless work behind the wallpaper. */
+html.hero-off .lamp,html.visit-off .vb-dot{animation-play-state:paused}
+/* LIVE WALLPAPER END */
 </style>
 </head>
 <body>
+<!-- LIVE WALLPAPER START · flowing ribbons of green light with sparkles, behind every page (decoration only).
+     Drawn once as inline SVG; only transform and opacity move, so the graphics card animates it (see section 16 of the styles). -->
+<div class="live-bg" aria-hidden="true">
+  <svg class="lw-defs" width="0" height="0" focusable="false"><defs><linearGradient id="lwGA" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="1600" y2="0"><stop offset="0" class="lw-a0"/><stop offset=".2" class="lw-a1"/><stop offset=".66" class="lw-a2"/><stop offset=".86" class="lw-a1"/><stop offset="1" class="lw-a0"/></linearGradient><linearGradient id="lwGB" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="1600" y2="0"><stop offset="0" class="lw-b0"/><stop offset=".2" class="lw-b1"/><stop offset=".68" class="lw-b2"/><stop offset=".86" class="lw-b1"/><stop offset="1" class="lw-b0"/></linearGradient><linearGradient id="lwGC" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="1600" y2="0"><stop offset=".02" class="lw-c0"/><stop offset=".25" class="lw-c1"/><stop offset=".72" class="lw-c2"/><stop offset=".9" class="lw-c1"/><stop offset="1" class="lw-c0"/></linearGradient><radialGradient id="lwGS"><stop offset="0" class="lw-s1"/><stop offset="1" class="lw-s0"/></radialGradient><filter id="lwBlurL" filterUnits="userSpaceOnUse" x="-200" y="-200" width="2000" height="1300"><feGaussianBlur stdDeviation="26"/></filter><filter id="lwBlurS" filterUnits="userSpaceOnUse" x="-200" y="-200" width="2000" height="1300"><feGaussianBlur stdDeviation="6"/></filter><path id="lwF1" d="M-80 715C-27 705 133 676 240 655C347 634 457 614 560 590C663 566 767 534 860 508C953 482 1042 461 1120 432C1198 403 1267 366 1330 334C1393 302 1442 269 1500 238C1558 207 1650 165 1680 150"/><path id="lwF2" d="M40 318C44 335 41 392 66 420C91 448 131 472 190 486C249 500 335 505 420 506C505 507 607 500 700 492C793 484 888 470 980 458C1072 446 1170 432 1250 420C1330 408 1388 396 1460 384C1532 372 1643 356 1680 350"/><path id="lwF3" d="M700 648C738 637 855 604 930 580C1005 556 1087 529 1150 502C1213 475 1262 449 1310 420C1358 391 1398 358 1440 330C1482 302 1520 273 1560 252C1600 231 1660 214 1680 206"/><path id="lwB1" d="M40 318C53 306 72 265 120 246C168 227 247 212 330 204C413 196 522 195 620 198C718 201 820 214 920 222C1020 230 1132 247 1220 248C1308 249 1373 238 1450 228C1527 218 1642 193 1680 186"/><path id="lwB2" d="M150 940C198 924 338 875 440 846C542 817 658 789 760 764C862 739 957 718 1050 694C1143 670 1215 647 1320 622C1425 597 1620 559 1680 546"/><path id="lwB3" d="M-80 862C-3 855 233 821 380 818C527 815 663 846 800 842C937 838 1053 809 1200 792C1347 775 1600 750 1680 742"/></defs></svg>
+  <div class="lw-layer lw-back"><svg viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" focusable="false"><g class="lw-halos" filter="url(#lwBlurL)"><use href="#lwB1" class="lw-h" stroke-opacity="0.75"/><use href="#lwB2" class="lw-h" stroke-opacity="0.8"/><use href="#lwB3" class="lw-h" stroke-opacity="0.55"/></g><g class="lw-glows" filter="url(#lwBlurS)"><use href="#lwB1" class="lw-g" stroke-opacity="0.75"/><use href="#lwB2" class="lw-g" stroke-opacity="0.8"/><use href="#lwB3" class="lw-g" stroke-opacity="0.55"/></g><g class="lw-cores"><use href="#lwB1" class="lw-c" stroke-opacity="0.75"/><use href="#lwB2" class="lw-c" stroke-opacity="0.8"/><use href="#lwB3" class="lw-c" stroke-opacity="0.55"/></g><g class="lw-dots"><circle class="lw-dot lw-gold" cx="1317" cy="636" r="1.8" fill-opacity="0.92"/><circle class="lw-dot" cx="229" cy="840" r="2.1" fill-opacity="0.92"/><circle class="lw-dot" cx="588" cy="164" r="1.6" fill-opacity="0.62"/><circle class="lw-dot" cx="695" cy="234" r="2.7" fill-opacity="0.45"/><circle class="lw-dot" cx="316" cy="218" r="1.6" fill-opacity="0.67"/><circle class="lw-dot" cx="1442" cy="219" r="1.2" fill-opacity="0.62"/><circle class="lw-dot" cx="537" cy="844" r="2.7" fill-opacity="0.80"/><circle class="lw-dot" cx="402" cy="812" r="2.6" fill-opacity="0.86"/><circle class="lw-dot" cx="937" cy="198" r="1.8" fill-opacity="0.61"/><circle class="lw-dot" cx="258" cy="233" r="1.3" fill-opacity="0.39"/><circle class="lw-dot" cx="1024" cy="231" r="1.4" fill-opacity="0.59"/><circle class="lw-dot lw-gold" cx="1139" cy="245" r="2.2" fill-opacity="0.45"/><circle class="lw-dot" cx="925" cy="741" r="1.8" fill-opacity="0.43"/><circle class="lw-dot" cx="1294" cy="201" r="1.9" fill-opacity="0.66"/><circle class="lw-dot" cx="1556" cy="216" r="1.7" fill-opacity="0.52"/><circle class="lw-dot" cx="496" cy="187" r="1.2" fill-opacity="0.97"/><circle class="lw-dot" cx="1564" cy="204" r="2.1" fill-opacity="0.37"/><circle class="lw-dot" cx="638" cy="831" r="2.6" fill-opacity="0.80"/><circle class="lw-dot lw-gold" cx="1028" cy="834" r="1.5" fill-opacity="0.85"/><circle class="lw-dot" cx="899" cy="823" r="1.7" fill-opacity="0.49"/><circle class="lw-dot" cx="402" cy="817" r="2.6" fill-opacity="0.87"/><circle class="lw-dot" cx="920" cy="748" r="1.8" fill-opacity="0.37"/><circle class="lw-dot" cx="1262" cy="644" r="1.6" fill-opacity="0.80"/><circle class="lw-dot" cx="967" cy="716" r="2.7" fill-opacity="0.99"/><circle class="lw-dot lw-gold" cx="384" cy="197" r="1.6" fill-opacity="0.50"/><circle class="lw-dot" cx="458" cy="831" r="2.2" fill-opacity="0.94"/><circle class="lw-dot" cx="1107" cy="666" r="2.2" fill-opacity="0.87"/><circle class="lw-dot" cx="1454" cy="782" r="2.7" fill-opacity="0.86"/><circle class="lw-dot" cx="549" cy="176" r="1.5" fill-opacity="0.86"/><circle class="lw-dot" cx="1117" cy="698" r="2.8" fill-opacity="0.61"/><circle class="lw-dot" cx="1504" cy="597" r="2.4" fill-opacity="0.46"/><circle class="lw-dot lw-gold" cx="838" cy="848" r="2.6" fill-opacity="0.87"/><circle class="lw-dot" cx="633" cy="225" r="2.8" fill-opacity="0.78"/><circle class="lw-dot" cx="1548" cy="772" r="1.4" fill-opacity="0.36"/><circle class="lw-dot" cx="382" cy="198" r="2.0" fill-opacity="0.96"/><circle class="lw-dot" cx="902" cy="733" r="2.5" fill-opacity="0.49"/><circle class="lw-dot" cx="913" cy="848" r="1.6" fill-opacity="0.73"/><circle class="lw-dot" cx="326" cy="839" r="1.4" fill-opacity="0.94"/><circle class="lw-dot lw-gold" cx="1310" cy="636" r="2.1" fill-opacity="0.94"/><circle class="lw-dot" cx="889" cy="849" r="2.0" fill-opacity="0.70"/><circle class="lw-dot" cx="762" cy="207" r="1.9" fill-opacity="0.47"/></g></svg></div>
+  <div class="lw-layer lw-front"><svg viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" focusable="false"><g class="lw-halos" filter="url(#lwBlurL)"><use href="#lwF1" class="lw-h" stroke-opacity="1.0"/><use href="#lwF2" class="lw-h" stroke-opacity="0.85"/><use href="#lwF3" class="lw-h" stroke-opacity="0.5"/></g><g class="lw-glows" filter="url(#lwBlurS)"><use href="#lwF1" class="lw-g" stroke-opacity="1.0"/><use href="#lwF2" class="lw-g" stroke-opacity="0.85"/><use href="#lwF3" class="lw-g" stroke-opacity="0.5"/></g><g class="lw-cores"><use href="#lwF1" class="lw-c" stroke-opacity="1.0"/><use href="#lwF2" class="lw-c" stroke-opacity="0.85"/><use href="#lwF3" class="lw-c" stroke-opacity="0.5"/></g><g class="lw-dots"><circle class="lw-dot lw-gold" cx="1360" cy="321" r="2.3" fill-opacity="0.99"/><circle class="lw-dot" cx="1512" cy="270" r="2.2" fill-opacity="0.78"/><circle class="lw-dot" cx="1144" cy="480" r="2.4" fill-opacity="0.93"/><circle class="lw-dot" cx="1068" cy="537" r="1.7" fill-opacity="0.50"/><circle class="lw-dot" cx="890" cy="624" r="2.8" fill-opacity="0.44"/><circle class="lw-dot" cx="1149" cy="439" r="3.0" fill-opacity="0.36"/><circle class="lw-dot" cx="291" cy="619" r="2.1" fill-opacity="0.39"/><circle class="lw-dot lw-gold" cx="59" cy="412" r="2.3" fill-opacity="0.98"/><circle class="lw-dot" cx="973" cy="458" r="1.3" fill-opacity="0.47"/><circle class="lw-dot" cx="1155" cy="501" r="2.0" fill-opacity="0.56"/><circle class="lw-dot" cx="714" cy="553" r="1.3" fill-opacity="0.92"/><circle class="lw-dot" cx="1559" cy="262" r="1.9" fill-opacity="0.40"/><circle class="lw-dot" cx="1497" cy="307" r="1.7" fill-opacity="0.85"/><circle class="lw-dot" cx="141" cy="469" r="1.5" fill-opacity="0.73"/><circle class="lw-dot lw-gold" cx="1269" cy="444" r="2.6" fill-opacity="0.40"/><circle class="lw-dot" cx="1177" cy="499" r="1.5" fill-opacity="0.93"/><circle class="lw-dot" cx="1131" cy="493" r="2.9" fill-opacity="0.82"/><circle class="lw-dot" cx="160" cy="483" r="2.6" fill-opacity="0.44"/><circle class="lw-dot" cx="1192" cy="391" r="2.7" fill-opacity="0.68"/><circle class="lw-dot" cx="1132" cy="429" r="2.5" fill-opacity="0.88"/><circle class="lw-dot lw-gold" cx="795" cy="537" r="3.0" fill-opacity="0.81"/><circle class="lw-dot" cx="1295" cy="412" r="1.4" fill-opacity="0.38"/><circle class="lw-dot" cx="332" cy="478" r="2.0" fill-opacity="0.64"/><circle class="lw-dot" cx="1322" cy="341" r="2.4" fill-opacity="0.51"/><circle class="lw-dot" cx="1220" cy="423" r="3.2" fill-opacity="0.41"/><circle class="lw-dot" cx="1291" cy="333" r="2.2" fill-opacity="0.88"/><circle class="lw-dot lw-gold" cx="60" cy="386" r="2.9" fill-opacity="0.50"/><circle class="lw-dot" cx="956" cy="466" r="3.1" fill-opacity="0.40"/><circle class="lw-dot" cx="738" cy="635" r="1.3" fill-opacity="0.76"/><circle class="lw-dot" cx="50" cy="347" r="1.9" fill-opacity="0.77"/><circle class="lw-dot" cx="1449" cy="366" r="1.5" fill-opacity="0.66"/><circle class="lw-dot" cx="1021" cy="449" r="1.4" fill-opacity="0.49"/><circle class="lw-dot" cx="1539" cy="204" r="1.8" fill-opacity="0.65"/><circle class="lw-dot lw-gold" cx="787" cy="487" r="2.4" fill-opacity="0.55"/><circle class="lw-dot" cx="24" cy="707" r="1.8" fill-opacity="0.40"/><circle class="lw-dot" cx="1504" cy="365" r="3.4" fill-opacity="0.60"/><circle class="lw-dot" cx="60" cy="680" r="1.4" fill-opacity="0.41"/><circle class="lw-dot" cx="1072" cy="521" r="2.0" fill-opacity="0.74"/><circle class="lw-dot" cx="1132" cy="497" r="1.4" fill-opacity="0.59"/><circle class="lw-dot" cx="1076" cy="434" r="2.1" fill-opacity="0.45"/><circle class="lw-dot lw-gold" cx="93" cy="411" r="2.1" fill-opacity="0.82"/><circle class="lw-dot" cx="867" cy="508" r="1.5" fill-opacity="0.57"/><circle class="lw-dot" cx="61" cy="435" r="2.1" fill-opacity="0.96"/><circle class="lw-dot" cx="1380" cy="310" r="2.8" fill-opacity="0.51"/><circle class="lw-dot" cx="1313" cy="357" r="3.1" fill-opacity="0.40"/><circle class="lw-dot" cx="134" cy="441" r="3.1" fill-opacity="0.53"/><circle class="lw-dot" cx="1326" cy="433" r="2.6" fill-opacity="0.45"/><circle class="lw-dot lw-gold" cx="1398" cy="373" r="1.9" fill-opacity="0.85"/><circle class="lw-dot" cx="448" cy="492" r="1.3" fill-opacity="0.85"/><circle class="lw-dot" cx="464" cy="621" r="2.4" fill-opacity="0.48"/><circle class="lw-dot" cx="1445" cy="308" r="2.1" fill-opacity="0.75"/><circle class="lw-dot" cx="669" cy="591" r="2.3" fill-opacity="0.94"/><circle class="lw-dot" cx="98" cy="677" r="2.1" fill-opacity="0.53"/><circle class="lw-dot" cx="71" cy="450" r="2.6" fill-opacity="0.61"/><circle class="lw-dot lw-gold" cx="42" cy="338" r="2.7" fill-opacity="0.43"/><circle class="lw-dot" cx="979" cy="470" r="2.3" fill-opacity="0.88"/><circle class="lw-dot" cx="678" cy="487" r="1.9" fill-opacity="0.84"/><circle class="lw-dot" cx="1422" cy="394" r="1.7" fill-opacity="0.46"/><circle class="lw-dot" cx="115" cy="462" r="2.0" fill-opacity="0.88"/><circle class="lw-dot" cx="411" cy="625" r="3.1" fill-opacity="0.60"/><circle class="lw-dot" cx="61" cy="405" r="1.8" fill-opacity="0.84"/><circle class="lw-dot lw-gold" cx="1351" cy="309" r="2.0" fill-opacity="0.80"/><circle class="lw-dot" cx="1332" cy="310" r="3.1" fill-opacity="0.41"/><circle class="lw-dot" cx="342" cy="495" r="2.6" fill-opacity="0.63"/><circle class="lw-dot" cx="1088" cy="545" r="3.3" fill-opacity="0.43"/><circle class="lw-dot" cx="252" cy="511" r="3.0" fill-opacity="0.98"/><circle class="lw-dot" cx="1371" cy="308" r="3.2" fill-opacity="0.95"/><circle class="lw-dot" cx="216" cy="653" r="2.2" fill-opacity="0.86"/></g></svg>
+    <div class="lw-twinkle"><svg viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" focusable="false"><circle class="lw-star-glow" cx="1185" cy="470" r="24"/><path class="lw-star" d="M1185 454Q1186.92 468.08 1201 470Q1186.92 471.92 1185 486Q1183.08 471.92 1169 470Q1183.08 468.08 1185 454z"/><circle class="lw-star-glow" cx="1336" cy="330" r="18"/><path class="lw-star" d="M1336 318Q1337.44 328.56 1348 330Q1337.44 331.44 1336 342Q1334.56 331.44 1324 330Q1334.56 328.56 1336 318z"/><circle class="lw-star-glow" cx="238" cy="505" r="16"/><path class="lw-star" d="M238 494Q239.32 503.68 249 505Q239.32 506.32 238 516Q236.68 506.32 227 505Q236.68 503.68 238 494z"/><circle class="lw-star-glow" cx="746" cy="491" r="14"/><path class="lw-star" d="M746 482Q747.08 489.92 755 491Q747.08 492.08 746 500Q744.92 492.08 737 491Q744.92 489.92 746 482z"/><circle class="lw-star-glow" cx="1452" cy="382" r="15"/><path class="lw-star" d="M1452 372Q1453.2 380.8 1462 382Q1453.2 383.2 1452 392Q1450.8 383.2 1442 382Q1450.8 380.8 1452 372z"/><circle class="lw-star-glow" cx="560" cy="590" r="12"/><path class="lw-star" d="M560 582Q560.96 589.04 568 590Q560.96 590.96 560 598Q559.04 590.96 552 590Q559.04 589.04 560 582z"/><circle class="lw-star-glow" cx="96" cy="450" r="14"/><path class="lw-star" d="M96 441Q97.08 448.92 105 450Q97.08 451.08 96 459Q94.92 451.08 87 450Q94.92 448.92 96 441z"/><g class="lw-dots"><circle class="lw-dot" cx="1143" cy="510" r="3.4" fill-opacity="0.51"/><circle class="lw-dot" cx="1094" cy="436" r="2.2" fill-opacity="0.62"/><circle class="lw-dot lw-gold" cx="1486" cy="395" r="3.1" fill-opacity="0.40"/><circle class="lw-dot" cx="242" cy="662" r="2.7" fill-opacity="0.67"/><circle class="lw-dot" cx="1168" cy="400" r="2.7" fill-opacity="0.61"/><circle class="lw-dot" cx="456" cy="615" r="3.4" fill-opacity="0.39"/><circle class="lw-dot lw-gold" cx="404" cy="506" r="3.3" fill-opacity="0.48"/><circle class="lw-dot" cx="878" cy="494" r="3.5" fill-opacity="0.67"/><circle class="lw-dot lw-gold" cx="304" cy="500" r="3.0" fill-opacity="0.95"/><circle class="lw-dot" cx="1339" cy="404" r="3.0" fill-opacity="0.62"/><circle class="lw-dot" cx="83" cy="434" r="2.8" fill-opacity="0.81"/><circle class="lw-dot" cx="1438" cy="333" r="2.3" fill-opacity="0.46"/></g></svg></div>
+  </div>
+</div>
+<!-- LIVE WALLPAPER END -->
 
 <a class="skip" href="#main"><span data-ui="skip">Skip to main content</span></a>
 
@@ -1630,7 +1690,7 @@ html:lang(hi) .cm-team,html:lang(mr) .cm-team,html:lang(hi) .cm-sample,html:lang
         <ol class="cert-steps">
           <li><span class="emo cs-emo" aria-hidden="true">📚</span><span data-ui="cr1">Finish all six learning modules.</span></li>
           <li><span class="emo cs-emo" aria-hidden="true">🙌</span><span data-ui="cr2">Do the hands-on practice on your own phone with a Saathi.</span></li>
-          <li><span class="emo cs-emo" aria-hidden="true">📝</span><span data-ui="cr3">Score 8 out of 11 (70%) or more in the Post-Assessment Quiz — retakes are free.</span></li>
+          <li><span class="emo cs-emo" aria-hidden="true">📝</span><span data-ui="cr3">Score 10 out of 14 (70%) or more in the Post-Assessment Quiz — retakes are free.</span></li>
           <li><span class="emo cs-emo" aria-hidden="true">📩</span><span data-ui="cr4">Show your result to a Digital Saathi volunteer — after checking it, the team sends your certificate to you later.</span></li>
         </ol>
         <div class="cert-actions">
@@ -1670,7 +1730,7 @@ html:lang(hi) .cm-team,html:lang(mr) .cm-team,html:lang(hi) .cm-sample,html:lang
         <li class="reveal"><a class="flow-step" href="#pre-quiz"><span class="flow-num mono" aria-hidden="true">01</span><span class="flow-emo" aria-hidden="true">🧭</span><span class="flow-text"><b class="flow-t" data-ui="f1_t">Pre-Assessment</b><span class="flow-s" data-ui="f1_s">Check what you already know.</span></span></a><span class="flow-arrow" aria-hidden="true"><svg class="ic"><use href="#i-arrow-r"></use></svg></span></li>
         <li class="reveal"><a class="flow-step" href="#lessons"><span class="flow-num mono" aria-hidden="true">02</span><span class="flow-emo" aria-hidden="true">📚</span><span class="flow-text"><b class="flow-t" data-ui="f2_t">Six Learning Modules</b><span class="flow-s" data-ui="f2_s">Learn step by step, at your pace.</span></span></a><span class="flow-arrow" aria-hidden="true"><svg class="ic"><use href="#i-arrow-r"></use></svg></span></li>
         <li class="reveal"><a class="flow-step" href="#workshop"><span class="flow-num mono" aria-hidden="true">03</span><span class="flow-emo" aria-hidden="true">🙌</span><span class="flow-text"><b class="flow-t" data-ui="f3_t">Practical Activities</b><span class="flow-s" data-ui="f3_s">Practise on your own phone.</span></span></a><span class="flow-arrow" aria-hidden="true"><svg class="ic"><use href="#i-arrow-r"></use></svg></span></li>
-        <li class="reveal"><a class="flow-step" href="#post-quiz"><span class="flow-num mono" aria-hidden="true">04</span><span class="flow-emo" aria-hidden="true">📝</span><span class="flow-text"><b class="flow-t" data-ui="f4_t">Post-Assessment</b><span class="flow-s" data-ui="f4_s">Score 8 of 11 to qualify.</span></span></a><span class="flow-arrow" aria-hidden="true"><svg class="ic"><use href="#i-arrow-r"></use></svg></span></li>
+        <li class="reveal"><a class="flow-step" href="#post-quiz"><span class="flow-num mono" aria-hidden="true">04</span><span class="flow-emo" aria-hidden="true">📝</span><span class="flow-text"><b class="flow-t" data-ui="f4_t">Post-Assessment</b><span class="flow-s" data-ui="f4_s">Score 10 of 14 to qualify.</span></span></a><span class="flow-arrow" aria-hidden="true"><svg class="ic"><use href="#i-arrow-r"></use></svg></span></li>
         <li class="reveal"><a class="flow-step" href="#certificate"><span class="flow-num mono" aria-hidden="true">05</span><span class="flow-emo" aria-hidden="true">🎓</span><span class="flow-text"><b class="flow-t" data-ui="f5_t">Certificate</b><span class="flow-s" data-ui="f5_s">Free — sent to you by our team.</span></span></a></li>
       </ol>
       <!-- What learners gain: six short labels -->
@@ -1765,66 +1825,104 @@ html:lang(hi) .cm-team,html:lang(mr) .cm-team,html:lang(hi) .cm-sample,html:lang
             <p class="qc-when mono"><span data-ui="post_when">Take it after finishing all six modules</span></p>
             <h3 data-ui="post_t">Post-Assessment Quiz</h3>
             <p data-ui="post_s"></p>
-            <p class="qc-meta qz-meta"></p>
+            <p class="qc-meta" data-ui="post_meta"></p>
             <a class="btn btn-sun" href="#post-quiz"><span data-ui="post_btn">Start the post-assessment</span><svg class="ic ic-ur" aria-hidden="true"><use href="#i-arrow-ur"></use></svg></a>
           </article>
         </div>
       </div>
     </section>
-    <!-- PRE-ASSESSMENT: a warm, sunny "friendly check-up" — one centred column, dot progress, round tiles -->
+    <!-- PRE-ASSESSMENT · "Discover what you already know." The start of the journey: a bright, open, centred screen.
+         Big title, one big button, then a map of the six learning steps with a "Start here" marker.
+         The button opens the team's Google Form (PRE_FORM, in the visitor's language) in a new tab. -->
     <section id="pre-quiz" class="section fit-screen pre-sec" aria-labelledby="pre-title">
       <div class="wrap">
-        <div class="pre-shell">
-          <header class="pre-head reveal">
-            <span class="pre-badge" aria-hidden="true">🧭</span>
-            <div class="pre-head-text">
-              <p class="pre-kicker"><span data-ui="pre_t">Pre-Assessment Quiz</span> · <span data-ui="pre_step">Step 1 of your journey</span></p>
-              <h3 class="display h3big" id="pre-title" data-ui-html="quiz_title">Discover your <em>skill level.</em></h3>
-            </div>
-          </header>
-          <ul class="pre-chips reveal">
-            <li><span aria-hidden="true">⏱️</span><span class="qz-meta"></span></li>
-            <li><span aria-hidden="true">😊</span><span data-ui="pre_tag1">No pass or fail</span></li>
-            <li><span aria-hidden="true">🗺️</span><span data-ui="pre_tag2">Shows where to start</span></li>
-          </ul>
-          <!-- Two ways to take it, shown only once a Google Form link is set in PRE_FORM (script) -->
-          <div class="pre-modes reveal" id="preModes" role="tablist" aria-label="Choose how to take the quiz" data-ui-aria="pf_modes" hidden>
-            <button type="button" role="tab" id="preTabForm" aria-controls="preFormPanel" data-mode="form"><span aria-hidden="true">📝</span><span data-ui="pf_tab_form">Google Form</span></button>
-            <button type="button" role="tab" id="preTabQuick" aria-controls="preQuizCard" data-mode="quick"><span aria-hidden="true">⚡</span><span data-ui="pf_tab_quick">Quick check here</span></button>
+        <div class="pre-hero">
+          <p class="pre-kicker"><span class="pre-kicker-emo" aria-hidden="true">🧭</span><span><span data-ui="pre_t">Pre-Assessment Quiz</span> · <span data-ui="pre_step">Step 1 of your journey</span></span></p>
+          <h3 class="display pre-title" id="pre-title" data-ui-html="quiz_title">Discover what you <em>already know.</em></h3>
+          <p class="pre-desc" data-ui="pf_desc">Before you start learning, answer a few easy questions. It shows what you already know about using a phone and the internet.</p>
+          <div class="pre-go-row">
+            <a class="pre-go" id="preFormOpen" target="_blank" rel="noopener" aria-describedby="preFormHint">
+              <span class="pre-go-t" data-ui="pf_cta">Start Pre&#8209;Assessment Quiz</span>
+              <span class="pre-go-ic" aria-hidden="true"><svg class="ic"><use href="#i-arrow-ur"></use></svg></span>
+            </a>
+            <span class="is-soon" id="preFormSoon" hidden><span aria-hidden="true">⏳</span><span data-ui="c_soon">Coming soon</span></span>
           </div>
-          <div class="pre-card pre-form reveal" id="preFormPanel" role="tabpanel" aria-labelledby="preTabForm" hidden>
-            <div class="pf-head">
-              <p class="pf-note"><span aria-hidden="true">🔒</span><span data-ui="pf_note">Your answers go to the Digital Saathi team, and you see your score at the end. Never type your OTP, PIN or bank details.</span></p>
-              <a class="btn btn-dark btn-sm" id="preFormOpen" href="#" target="_blank" rel="noopener"><span data-ui="pf_open">Open in a new tab</span><svg class="ic ic-ur" aria-hidden="true"><use href="#i-arrow-ur"></use></svg></a>
-            </div>
-            <div class="pf-frame" id="preFormFrameBox">
-              <p class="pf-loading" data-ui="pf_loading">Loading the form…</p>
-              <iframe id="preFormFrame" title="Pre-Assessment Quiz — Google Form" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-            </div>
-            <p class="pf-noembed" id="preFormNoEmbed" hidden><span aria-hidden="true">↗️</span><span data-ui="pf_noembed">This form opens in a new tab.</span></p>
+          <p class="pre-hint" id="preFormHint"><svg class="ic" aria-hidden="true"><use href="#i-arrow-ur"></use></svg><span data-ui="pf_hint">The quiz opens on a new page. When you finish, come back here to start learning.</span></p>
+          <!-- The journey map: where the learner is now (Start here) and the six learning steps ahead (decoration; the sentence below says it in words) -->
+          <div class="pre-map">
+            <ol class="pre-stops" aria-hidden="true">
+            <li class="is-start"><span class="pre-stop">🧭</span><span class="pre-stop-l" data-ui="pre_here">Start here</span></li>
+            <li><span class="pre-stop"><svg class="ic"><use href="#i-phone"></use></svg></span><span class="pre-stop-l mono">01</span></li>
+            <li><span class="pre-stop"><svg class="ic"><use href="#i-search"></use></svg></span><span class="pre-stop-l mono">02</span></li>
+            <li><span class="pre-stop"><svg class="ic"><use href="#i-chat"></use></svg></span><span class="pre-stop-l mono">03</span></li>
+            <li><span class="pre-stop"><svg class="ic"><use href="#i-shield"></use></svg></span><span class="pre-stop-l mono">04</span></li>
+            <li><span class="pre-stop"><svg class="ic"><use href="#i-scan"></use></svg></span><span class="pre-stop-l mono">05</span></li>
+            <li><span class="pre-stop"><svg class="ic"><use href="#i-sparkle"></use></svg></span><span class="pre-stop-l mono">06</span></li>
+            </ol>
+            <p class="pre-map-t" data-ui="pre_map">Your learning journey has six steps. This quiz shows which one to start with.</p>
+            <ul class="pre-chips">
+              <li><span aria-hidden="true">⏱️</span><span class="qz-meta"></span></li>
+              <li><span aria-hidden="true">😊</span><span data-ui="pre_tag1">No pass or fail</span></li>
+              <li><span aria-hidden="true">🗺️</span><span data-ui="pre_tag2">Shows where to start</span></li>
+            </ul>
           </div>
-          <div class="qz-card pre-card reveal" id="preQuizCard" aria-live="polite"></div>
+          <p class="pre-note"><span aria-hidden="true">🔒</span><span data-ui="pf_note">Your answers go to the Digital Saathi team, and you see your score at the end. Never type your OTP, PIN or bank details.</span></p>
         </div>
       </div>
     </section>
-    <!-- POST-ASSESSMENT: a dark-green "certificate exam" — framed paper card, gold target, numbered progress -->
-    <section id="post-quiz" class="section on-dark fit-screen post-sec" aria-labelledby="post-title">
+    <!-- POST-ASSESSMENT · "See how much you've learned." A milestone to celebrate: the signature dark-green and gold
+         panel, split in two. Words, three gold numbers and one big sun-yellow button on the left; a medal ringed by the
+         six completed learning steps on the right. The button opens the team's Google Form (POST_FORM) in a new tab. -->
+    <section id="post-quiz" class="section fit-screen post-sec" aria-labelledby="post-title">
       <div class="wrap">
-        <div class="post-grid">
-          <div class="qz-card post-card reveal" id="postQuizCard" aria-live="polite"></div>
-          <aside class="post-side reveal">
-            <p class="eyebrow mono"><span class="eb-emo" aria-hidden="true">🎓</span><span data-ui="post_t">Post-Assessment Quiz</span></p>
-            <h3 class="display h3big" id="post-title" data-ui-html="post_title">See how far <em>you’ve come.</em></h3>
-            <div class="post-goal">
-              <span class="post-goal-n"><b id="postGoal">8</b><small>/<span id="postGoalOf">11</span></small></span>
-              <span class="post-goal-t"><b data-ui="post_goal">Certificate goal</b><span data-ui="post_goal_s">70% or more</span></span>
-            </div>
-            <ul class="post-facts">
-              <li><span aria-hidden="true">📝</span><span class="qz-meta"></span></li>
-              <li><span aria-hidden="true">🔁</span><span data-ui="post_retake">Retakes are free</span></li>
-              <li><span aria-hidden="true">📈</span><span data-ui="post_compare">Compared with your first score</span></li>
+        <div class="post-hero on-dark">
+          <div class="post-text">
+            <p class="post-kicker"><span class="post-ribbon"><span aria-hidden="true">🏆</span><span data-ui="post_milestone">Milestone</span></span><span><span data-ui="post_t">Post-Assessment Quiz</span> · <span data-ui="post_step">Step 4 of your journey</span></span></p>
+            <h3 class="display post-title" id="post-title" data-ui-html="post_title">See how much <em>you’ve learned.</em></h3>
+            <p class="post-desc" data-ui="post_desc">You have finished the six learning steps. Now see how much you have learned with 14 everyday questions.</p>
+            <ul class="post-stats">
+              <li><b id="postStatQ">14</b><span data-ui="post_stat_q">everyday questions</span></li>
+              <li><b id="postStatMin">7</b><span data-ui="post_stat_min">minutes (about)</span></li>
+              <li><b><span id="postStatPass">10</span><small>/<span id="postStatOf">14</span></small></b><span data-ui="post_stat_pass">for your certificate (70%)</span></li>
             </ul>
-          </aside>
+            <div class="post-go-row">
+              <a class="post-go" id="postFormOpen" target="_blank" rel="noopener" aria-describedby="postHint">
+                <span class="pre-go-t" data-ui="post_start">Start Post&#8209;Assessment Quiz</span>
+                <span class="post-go-ic" aria-hidden="true"><svg class="ic"><use href="#i-arrow-ur"></use></svg></span>
+              </a>
+              <span class="post-retake"><span aria-hidden="true">🔁</span><span data-ui="post_retake">Retakes are free</span></span>
+              <span class="is-soon" id="postFormSoon" hidden><span aria-hidden="true">⏳</span><span data-ui="c_soon">Coming soon</span></span>
+            </div>
+            <p class="post-hint" id="postHint"><svg class="ic" aria-hidden="true"><use href="#i-arrow-ur"></use></svg><span data-ui="post_hint">The quiz opens on a new page. At the end you see your score — show it to a Digital Saathi volunteer for your certificate.</span></p>
+          </div>
+          <div class="post-visual">
+            <!-- A gold medal inside a full ring, with the six learning steps ticked off around it (decoration only) -->
+            <svg class="post-medal" viewBox="0 0 320 320" aria-hidden="true" focusable="false">
+              <circle class="pm-glow" cx="160" cy="160" r="152"/>
+              <circle class="pm-track" cx="160" cy="160" r="128"/>
+              <circle class="pm-ring" cx="160" cy="160" r="128"/>
+              <circle class="pm-dots" cx="160" cy="160" r="94"/>
+              <path class="pm-tail-a" d="M140 196 122 262l18-9 9 19 13-60z"/>
+              <path class="pm-tail-b" d="M180 196l18 66-18-9-9 19-13-60z"/>
+              <circle class="pm-disc" cx="160" cy="160" r="62"/>
+              <circle class="pm-inner" cx="160" cy="160" r="50"/>
+              <polygon class="pm-star" points="160.0,132.0 167.1,150.3 186.6,151.3 171.4,163.7 176.5,182.7 160.0,172.0 143.5,182.7 148.6,163.7 133.4,151.3 152.9,150.3"/>
+              <g class="pm-badge" transform="translate(224.0 49.1)"><circle r="17"/><path d="M-7 0.5l4.5 4.5 9-9.5"/></g>
+              <g class="pm-badge" transform="translate(288.0 160.0)"><circle r="17"/><path d="M-7 0.5l4.5 4.5 9-9.5"/></g>
+              <g class="pm-badge" transform="translate(224.0 270.9)"><circle r="17"/><path d="M-7 0.5l4.5 4.5 9-9.5"/></g>
+              <g class="pm-badge" transform="translate(96.0 270.9)"><circle r="17"/><path d="M-7 0.5l4.5 4.5 9-9.5"/></g>
+              <g class="pm-badge" transform="translate(32.0 160.0)"><circle r="17"/><path d="M-7 0.5l4.5 4.5 9-9.5"/></g>
+              <g class="pm-badge" transform="translate(96.0 49.1)"><circle r="17"/><path d="M-7 0.5l4.5 4.5 9-9.5"/></g>
+              <rect class="pm-c1" x="36" y="52" width="10" height="5" rx="2" transform="rotate(-25 41 54)"/>
+              <rect class="pm-c2" x="276" y="44" width="10" height="5" rx="2" transform="rotate(30 281 46)"/>
+              <rect class="pm-c3" x="22" y="262" width="10" height="5" rx="2" transform="rotate(40 27 264)"/>
+              <rect class="pm-c1" x="288" y="270" width="10" height="5" rx="2" transform="rotate(-35 293 272)"/>
+              <circle class="pm-c2" cx="112" cy="14" r="3.5"/>
+              <circle class="pm-c3" cx="210" cy="308" r="3.5"/>
+              <circle class="pm-c1" cx="306" cy="150" r="3"/>
+            </svg>
+            <p class="post-note"><span aria-hidden="true">🔒</span><span data-ui="pf_note">Your answers go to the Digital Saathi team, and you see your score at the end. Never type your OTP, PIN or bank details.</span></p>
+          </div>
         </div>
       </div>
     </section>
@@ -1945,7 +2043,7 @@ const UI = {
     vision_t:"Independence", vision_s:"Do it yourself.",
     purpose_t:"Curiosity", purpose_s:"Keep learning.",
     who_1:"Senior citizens", who_2:"Housewives", who_3:"Children",
-    open_lesson:"Start learning", guide_btn:"See how to do each one", contact_us:"Contact us", start_check:"Check my skills",
+    guide_btn:"See how to do each one", contact_us:"Contact us", start_check:"Check my skills",
     // how it works
     how_label:"Your Saathi Journey",
     how_title:"Five simple steps to <em>digital confidence.</em>",
@@ -1971,35 +2069,39 @@ const UI = {
     qp_label:"Quizzes",
     qp_back:"Back to home",
     qp_title:"Test yourself — <em>before and after.</em>",
-    qp_intro:"Two short quizzes with the same 11 questions: one before you start, one after you finish — so you can see how much you have grown.",
+    qp_intro:"Two short quizzes on Google Forms: one before you start, one after you finish — so you can see how much you have grown.",
     pre_t:"Pre-Assessment Quiz",
     pre_when:"Take it before you start learning",
     pre_s:"Find out what you already know. There is no pass or fail — you will see which steps to start with.",
     pre_btn:"Start the pre-assessment",
     post_t:"Post-Assessment Quiz",
     post_when:"Take it after finishing all six modules",
-    post_s:"See how much you have improved. Score 8 out of 11 (70%) or more to qualify for your certificate — retakes are free.",
+    post_s:"See how much you have improved. Score {pass} out of {total} (70%) or more to qualify for your certificate — retakes are free.",
     post_btn:"Start the post-assessment",
-    post_title:"See how far <em>you’ve come.</em>",
+    post_title:"See how much <em>you’ve learned.</em>",
+    post_step:"Step 4 of your journey",
+    post_milestone:"Milestone",
+    post_stat_q:"everyday questions",
+    post_stat_min:"minutes (about)",
+    post_stat_pass:"for your certificate (70%)",
+    post_desc:"You have finished the six learning steps. Now see how much you have learned with {total} everyday questions.",
+    post_meta:"{total} questions · about {min} minutes",
+    post_start:"Start Post\u2011Assessment Quiz",
+    post_hint:"The quiz opens on a new page. At the end you see your score — show it to a Digital Saathi volunteer for your certificate.",
     pre_step:"Step 1 of your journey", pre_tag1:"No pass or fail", pre_tag2:"Shows where to start",
-    pf_modes:"Choose how to take the quiz", pf_tab_form:"Google Form", pf_tab_quick:"Quick check here",
+    pf_desc:"Before you start learning, answer a few easy questions. It shows what you already know about using a phone and the internet.",
+    pf_cta:"Start Pre‑Assessment Quiz",   // ‑ looks like "-" but a line never breaks there, so the button never shows "Pre-" alone
+    pf_hint:"The quiz opens on a new page. When you finish, come back here to start learning.",
     pf_note:"Your answers go to the Digital Saathi team, and you see your score at the end. Never type your OTP, PIN or bank details.",
-    pf_open:"Open in a new tab", pf_loading:"Loading the form…", pf_frame:"Pre-Assessment Quiz — Google Form", pf_noembed:"This form opens in a new tab.",
-    post_goal:"Certificate goal", post_goal_s:"70% or more", post_retake:"Retakes are free", post_compare:"Compared with your first score",
-    post_before:"Before",
-    post_now:"Now",
-    post_gain:"+{d} more right answers",
-    post_nopre:"Take the pre-assessment too, so you can see your improvement.",
-    post_pass:"🎉 You qualify for your certificate!",
-    post_pass_s:"Show this result to a Digital Saathi volunteer. After checking it, the team will send your certificate to you later.",
-    post_fail:"Almost there! You need {p} out of {n} for the certificate.",
-    post_fail_s:"Review these steps and try again — retakes are free.",
+    pre_here:"Start here",
+    pre_map:"Your learning journey has six steps. This quiz shows which one to start with.",
+    post_retake:"Retakes are free", 
     cert_label:"Certificate",
     cert_title:"Earn your <em>certificate.</em>",
     cert_intro:"Your hard work deserves recognition. Complete these four things to earn the Digital Saathi Certificate of Completion.",
     cr1:"Finish all six learning modules.",
     cr2:"Do the hands-on practice on your own phone with a Saathi.",
-    cr3:"Score 8 out of 11 (70%) or more in the Post-Assessment Quiz — retakes are free.",
+    cr3:"Score {pass} out of {total} (70%) or more in the Post-Assessment Quiz — retakes are free.",
     cr4:"Show your result to a Digital Saathi volunteer — after checking it, the team sends your certificate to you later.",
     cert_free:"Certificates are free. We will never ask for money, OTP or bank details for a certificate.",
     cm_sample:"Sample",
@@ -2009,17 +2111,9 @@ const UI = {
     cm_for:"for completing the six-step digital skills programme",
     cm_team:"Digital Saathi team",
     quiz_label:"Check your digital skills",
-    quiz_title:"Discover your <em>skill level.</em>",
+    quiz_title:"Discover what you <em>already know.</em>",
     quiz_intro:"Answer a few simple questions. There is no pass or fail — you will see what you already know and what to learn next.",
     quiz_meta:"{n} questions · about 3 minutes",
-    quiz_q:"Question {i} of {n}", opt_letters:"ABC",
-    quiz_correct:"Correct — well done!", quiz_wrong:"Not quite. The right answer is marked in green.",
-    quiz_next:"Next question", submit:"See my result",
-    your_score:"You got", learn_next:"Learn these next:", restart:"Try again",
-    quiz_all:"Every answer was right! Explore any lesson to keep learning:",
-    quiz_msg_high:"Excellent! You already know a lot — try the next steps to become fully independent.",
-    quiz_msg_mid:"Well done! A little practice will make you even more confident.",
-    quiz_msg_low:"A great start! These steps will take you forward, one at a time.",
     // ask
     ask_label:"Ask Saathi",
     ask_title:"Ask anything, <em>anytime.</em>",
@@ -2050,7 +2144,7 @@ const UI = {
     f1_t:"Pre-Assessment", f1_s:"Check what you already know.",
     f2_t:"Six Learning Modules", f2_s:"Learn step by step, at your pace.",
     f3_t:"Practical Activities", f3_s:"Practise on your own phone.",
-    f4_t:"Post-Assessment", f4_s:"Score 8 of 11 to qualify.",
+    f4_t:"Post-Assessment", f4_s:"Score {pass} of {total} to qualify.",
     f5_t:"Certificate", f5_s:"Free — sent to you by our team.",
     ig1_t:"Safer money", ig1_s:"Spot scams and keep your savings safe.",
     ig2_t:"More independence", ig2_s:"Pay bills and book services yourself.",
@@ -2122,7 +2216,7 @@ const UI = {
     vision_t:"आत्मनिर्भरता", vision_s:"सब कुछ खुद करें।",
     purpose_t:"जिज्ञासा", purpose_s:"सीखते रहें।",
     who_1:"वरिष्ठ नागरिक", who_2:"गृहिणियां", who_3:"बच्चे",
-    open_lesson:"सीखना शुरू करें", guide_btn:"हर एक कैसे करें, देखें", contact_us:"संपर्क करें", start_check:"मेरे कौशल जांचें",
+    guide_btn:"हर एक कैसे करें, देखें", contact_us:"संपर्क करें", start_check:"मेरे कौशल जांचें",
     how_label:"आपकी साथी यात्रा",
     how_title:"डिजिटल आत्मविश्वास के <em>पांच आसान चरण।</em>",
     how_intro:"न परीक्षा, न दबाव — बस ऐसे व्यावहारिक डिजिटल कौशल जो रोज़ की ज़िंदगी आसान बनाते हैं।",
@@ -2145,35 +2239,39 @@ const UI = {
     qp_label:"क्विज़",
     qp_back:"होम पर वापस",
     qp_title:"खुद को परखें — <em>पहले और बाद में।</em>",
-    qp_intro:"एक जैसे 11 सवालों वाले दो छोटे क्विज़: एक सीखना शुरू करने से पहले, एक पूरा करने के बाद — ताकि आप देख सकें कि आप कितना आगे बढ़े।",
+    qp_intro:"Google फ़ॉर्म पर दो छोटे क्विज़: एक सीखना शुरू करने से पहले, एक पूरा करने के बाद — ताकि आप देख सकें कि आप कितना आगे बढ़े।",
     pre_t:"शुरुआती क्विज़ (Pre-Assessment)",
     pre_when:"सीखना शुरू करने से पहले दें",
     pre_s:"जानें कि आपको पहले से क्या आता है। इसमें पास या फ़ेल नहीं होता — आप देखेंगे कि किन चरणों से शुरू करना है।",
     pre_btn:"शुरुआती क्विज़ शुरू करें",
     post_t:"अंतिम क्विज़ (Post-Assessment)",
     post_when:"छहों मॉड्यूल पूरे करने के बाद दें",
-    post_s:"देखें कि आप कितना आगे बढ़े। प्रमाणपत्र के लिए 11 में से 8 (70%) या ज़्यादा अंक लाएं — दोबारा देना मुफ़्त है।",
+    post_s:"देखें कि आप कितना आगे बढ़े। प्रमाणपत्र के लिए {total} में से {pass} (70%) या ज़्यादा अंक लाएं — दोबारा देना मुफ़्त है।",
     post_btn:"अंतिम क्विज़ शुरू करें",
-    post_title:"देखें आप <em>कितना आगे बढ़े।</em>",
+    post_title:"देखें आपने <em>कितना सीखा।</em>",
+    post_step:"आपकी यात्रा का चरण 4",
+    post_milestone:"अहम पड़ाव",
+    post_stat_q:"रोज़मर्रा के सवाल",
+    post_stat_min:"मिनट (लगभग)",
+    post_stat_pass:"प्रमाणपत्र के लिए (70%)",
+    post_desc:"आपने सीखने के छहों चरण पूरे कर लिए हैं। अब रोज़मर्रा के {total} सवालों से देखें कि आपने कितना सीखा।",
+    post_meta:"{total} सवाल · लगभग {min} मिनट",
+    post_start:"अंतिम क्विज़ शुरू करें",
+    post_hint:"क्विज़ एक नए पेज पर खुलेगा। अंत में आपको अपना स्कोर दिखेगा — प्रमाणपत्र के लिए इसे किसी डिजिटल साथी स्वयंसेवक को दिखाएं।",
     pre_step:"आपकी यात्रा का चरण 1", pre_tag1:"पास-फ़ेल नहीं", pre_tag2:"बताता है कहाँ से शुरू करें",
-    pf_modes:"क्विज़ देने का तरीका चुनें", pf_tab_form:"Google फ़ॉर्म", pf_tab_quick:"यहीं तुरंत जांचें",
+    pf_desc:"सीखना शुरू करने से पहले, कुछ आसान सवालों के जवाब दें। इससे पता चलता है कि फ़ोन और इंटरनेट इस्तेमाल करने के बारे में आपको पहले से क्या आता है।",
+    pf_cta:"शुरुआती क्विज़ शुरू करें",
+    pf_hint:"क्विज़ एक नए पेज पर खुलेगा। पूरा होने के बाद, सीखना शुरू करने के लिए यहाँ वापस आएं।",
     pf_note:"आपके जवाब डिजिटल साथी टीम तक पहुंचते हैं, और अंत में आपको अपना स्कोर दिखता है। कभी भी अपना OTP, PIN या बैंक की जानकारी न लिखें।",
-    pf_open:"नए टैब में खोलें", pf_loading:"फ़ॉर्म खुल रहा है…", pf_frame:"शुरुआती क्विज़ — Google फ़ॉर्म", pf_noembed:"यह फ़ॉर्म नए टैब में खुलेगा।",
-    post_goal:"प्रमाणपत्र का लक्ष्य", post_goal_s:"70% या ज़्यादा", post_retake:"दोबारा देना मुफ़्त", post_compare:"आपके पहले स्कोर से तुलना",
-    post_before:"पहले",
-    post_now:"अब",
-    post_gain:"{d} सही जवाब ज़्यादा",
-    post_nopre:"अपनी प्रगति देखने के लिए शुरुआती क्विज़ भी दें।",
-    post_pass:"🎉 आप प्रमाणपत्र के पात्र हैं!",
-    post_pass_s:"यह नतीजा किसी डिजिटल साथी स्वयंसेवक को दिखाएं। जांच के बाद टीम आपको बाद में प्रमाणपत्र भेज देगी।",
-    post_fail:"बस थोड़ा और! प्रमाणपत्र के लिए {n} में से {p} अंक चाहिए।",
-    post_fail_s:"इन चरणों को दोहराएं और फिर से कोशिश करें — दोबारा देना मुफ़्त है।",
+    pre_here:"यहाँ से शुरू",
+    pre_map:"आपकी सीखने की यात्रा में छह चरण हैं। यह क्विज़ बताता है कि किस चरण से शुरू करें।",
+    post_retake:"दोबारा देना मुफ़्त", 
     cert_label:"प्रमाणपत्र",
     cert_title:"अपना <em>प्रमाणपत्र</em> पाएं।",
     cert_intro:"आपकी मेहनत की पहचान होनी चाहिए। डिजिटल साथी पूर्णता प्रमाणपत्र पाने के लिए ये चार काम पूरे करें।",
     cr1:"सीखने के छहों मॉड्यूल पूरे करें।",
     cr2:"साथी के साथ अपने फ़ोन पर प्रैक्टिकल अभ्यास करें।",
-    cr3:"अंतिम क्विज़ में 11 में से 8 (70%) या ज़्यादा अंक लाएं — दोबारा देना मुफ़्त है।",
+    cr3:"अंतिम क्विज़ में {total} में से {pass} (70%) या ज़्यादा अंक लाएं — दोबारा देना मुफ़्त है।",
     cr4:"अपना नतीजा किसी डिजिटल साथी स्वयंसेवक को दिखाएं — जांच के बाद टीम आपको बाद में प्रमाणपत्र भेजती है।",
     cert_free:"प्रमाणपत्र मुफ़्त है। प्रमाणपत्र के लिए हम कभी पैसे, OTP या बैंक विवरण नहीं मांगेंगे।",
     cm_sample:"नमूना",
@@ -2183,17 +2281,9 @@ const UI = {
     cm_for:"छह चरणों का डिजिटल कौशल कार्यक्रम पूरा करने के लिए",
     cm_team:"डिजिटल साथी टीम",
     quiz_label:"अपने डिजिटल कौशल जांचें",
-    quiz_title:"अपना <em>कौशल स्तर</em> जानें।",
+    quiz_title:"जानें आपको <em>पहले से क्या आता है।</em>",
     quiz_intro:"कुछ आसान सवालों के जवाब दें। इसमें पास या फ़ेल नहीं होता — आप देखेंगे कि आपको क्या आता है और आगे क्या सीखना है।",
     quiz_meta:"{n} सवाल · लगभग 3 मिनट",
-    quiz_q:"सवाल {i} / {n}", opt_letters:"कखग",
-    quiz_correct:"सही जवाब — शाबाश!", quiz_wrong:"यह सही नहीं है। सही जवाब हरे रंग में दिखाया गया है।",
-    quiz_next:"अगला सवाल", submit:"मेरा परिणाम देखें",
-    your_score:"आपको मिले", learn_next:"आगे ये सीखें:", restart:"फिर से करें",
-    quiz_all:"आपके सारे जवाब सही हैं! सीखते रहने के लिए कोई भी पाठ देखें:",
-    quiz_msg_high:"शानदार! आपको काफ़ी कुछ आता है — पूरी तरह आत्मनिर्भर बनने के लिए अगले चरण आज़माएं।",
-    quiz_msg_mid:"बहुत बढ़िया! थोड़े अभ्यास से आप और भी आत्मविश्वासी बन जाएंगे।",
-    quiz_msg_low:"अच्छी शुरुआत! ये चरण आपको कदम-दर-कदम आगे ले जाएंगे।",
     ask_label:"साथी से पूछें",
     ask_title:"कुछ भी पूछें, <em>कभी भी।</em>",
     ask_intro:"फ़ोन या इंटरनेट के बारे में कोई भी सवाल लिखें। जैसे: “UPI से सुरक्षित भुगतान कैसे करें?”",
@@ -2221,7 +2311,7 @@ const UI = {
     f1_t:"शुरुआती क्विज़", f1_s:"जानें आपको पहले से क्या आता है।",
     f2_t:"सीखने के छह मॉड्यूल", f2_s:"अपनी रफ़्तार से, कदम-दर-कदम सीखें।",
     f3_t:"अभ्यास गतिविधियाँ", f3_s:"अपने फ़ोन पर खुद अभ्यास करें।",
-    f4_t:"अंतिम क्विज़", f4_s:"11 में से 8 अंक लाएं।",
+    f4_t:"अंतिम क्विज़", f4_s:"{total} में से {pass} अंक लाएं।",
     f5_t:"प्रमाणपत्र", f5_s:"मुफ़्त — हमारी टीम आपको भेजेगी।",
     ig1_t:"सुरक्षित पैसा", ig1_s:"धोखे पहचानें, अपनी बचत सुरक्षित रखें।",
     ig2_t:"ज़्यादा आत्मनिर्भरता", ig2_s:"बिल भरें, सेवाएं खुद बुक करें।",
@@ -2291,7 +2381,7 @@ const UI = {
     vision_t:"स्वावलंबन", vision_s:"सगळे स्वतः करा.",
     purpose_t:"कुतूहल", purpose_s:"शिकत राहा.",
     who_1:"ज्येष्ठ नागरिक", who_2:"गृहिणी", who_3:"मुले",
-    open_lesson:"शिकायला सुरुवात करा", guide_btn:"प्रत्येक कसे करायचे ते पाहा", contact_us:"संपर्क करा", start_check:"माझी कौशल्ये तपासा",
+    guide_btn:"प्रत्येक कसे करायचे ते पाहा", contact_us:"संपर्क करा", start_check:"माझी कौशल्ये तपासा",
     how_label:"तुमचा साथी प्रवास",
     how_title:"डिजिटल आत्मविश्वासाचे <em>पाच सोपे टप्पे.</em>",
     how_intro:"ना परीक्षा, ना दडपण — फक्त रोजचे जीवन सोपे करणारी व्यावहारिक डिजिटल कौशल्ये.",
@@ -2314,35 +2404,39 @@ const UI = {
     qp_label:"क्विझ",
     qp_back:"मुख्य पानावर परत",
     qp_title:"स्वतःला तपासा — <em>आधी आणि नंतर.</em>",
-    qp_intro:"सारख्याच 11 प्रश्नांच्या दोन छोट्या क्विझ: एक शिकायला सुरुवात करण्याआधी, एक पूर्ण केल्यानंतर — म्हणजे तुम्ही किती पुढे गेलात ते दिसेल.",
+    qp_intro:"Google फॉर्मवर दोन छोट्या क्विझ: एक शिकायला सुरुवात करण्याआधी, एक पूर्ण केल्यानंतर — म्हणजे तुम्ही किती पुढे गेलात ते दिसेल.",
     pre_t:"सुरुवातीची क्विझ (Pre-Assessment)",
     pre_when:"शिकायला सुरुवात करण्याआधी द्या",
     pre_s:"तुम्हाला आधीच काय येते ते जाणून घ्या. यात पास-नापास नाही — कोणत्या टप्प्यांपासून सुरुवात करायची ते दिसेल.",
     pre_btn:"सुरुवातीची क्विझ सुरू करा",
     post_t:"अंतिम क्विझ (Post-Assessment)",
     post_when:"सहाही मॉड्यूल पूर्ण केल्यानंतर द्या",
-    post_s:"तुम्ही किती पुढे आलात ते पाहा. प्रमाणपत्रासाठी 11 पैकी 8 (70%) किंवा जास्त गुण मिळवा — पुन्हा देणे मोफत आहे.",
+    post_s:"तुम्ही किती पुढे आलात ते पाहा. प्रमाणपत्रासाठी {total} पैकी {pass} (70%) किंवा जास्त गुण मिळवा — पुन्हा देणे मोफत आहे.",
     post_btn:"अंतिम क्विझ सुरू करा",
-    post_title:"पाहा तुम्ही <em>किती पुढे आलात.</em>",
+    post_title:"पाहा तुम्ही <em>किती शिकलात.</em>",
+    post_step:"तुमच्या प्रवासाचा टप्पा 4",
+    post_milestone:"महत्त्वाचा टप्पा",
+    post_stat_q:"रोजचे प्रश्न",
+    post_stat_min:"मिनिटे (सुमारे)",
+    post_stat_pass:"प्रमाणपत्रासाठी (70%)",
+    post_desc:"तुम्ही शिकण्याचे सहाही टप्पे पूर्ण केले आहेत. आता रोजच्या {total} प्रश्नांतून पाहा की तुम्ही किती शिकलात.",
+    post_meta:"{total} प्रश्न · सुमारे {min} मिनिटे",
+    post_start:"अंतिम क्विझ सुरू करा",
+    post_hint:"क्विझ नवीन पेजवर उघडेल. शेवटी तुम्हाला तुमचे गुण दिसतील — प्रमाणपत्रासाठी ते डिजिटल साथीच्या स्वयंसेवकाला दाखवा.",
     pre_step:"तुमच्या प्रवासाचा टप्पा 1", pre_tag1:"पास-नापास नाही", pre_tag2:"कुठून सुरुवात करायची ते दाखवते",
-    pf_modes:"क्विझ देण्याची पद्धत निवडा", pf_tab_form:"Google फॉर्म", pf_tab_quick:"इथेच पटकन तपासा",
+    pf_desc:"शिकायला सुरुवात करण्याआधी, काही सोप्या प्रश्नांची उत्तरे द्या. त्यातून फोन आणि इंटरनेट वापरण्याबद्दल तुम्हाला आधीच काय येते ते कळते.",
+    pf_cta:"सुरुवातीची क्विझ सुरू करा",
+    pf_hint:"क्विझ नवीन पेजवर उघडेल. पूर्ण झाल्यावर, शिकायला सुरुवात करण्यासाठी इथे परत या.",
     pf_note:"तुमची उत्तरे डिजिटल साथी टीमपर्यंत पोहोचतात, आणि शेवटी तुम्हाला तुमचे गुण दिसतात. कधीही तुमचा OTP, PIN किंवा बँकेची माहिती लिहू नका.",
-    pf_open:"नवीन टॅबमध्ये उघडा", pf_loading:"फॉर्म उघडत आहे…", pf_frame:"सुरुवातीची क्विझ — Google फॉर्म", pf_noembed:"हा फॉर्म नवीन टॅबमध्ये उघडेल.",
-    post_goal:"प्रमाणपत्राचे लक्ष्य", post_goal_s:"70% किंवा जास्त", post_retake:"पुन्हा देणे मोफत", post_compare:"तुमच्या पहिल्या गुणांशी तुलना",
-    post_before:"आधी",
-    post_now:"आता",
-    post_gain:"{d} अधिक बरोबर उत्तरे",
-    post_nopre:"तुमची प्रगती पाहण्यासाठी सुरुवातीची क्विझही द्या.",
-    post_pass:"🎉 तुम्ही प्रमाणपत्रासाठी पात्र आहात!",
-    post_pass_s:"हा निकाल डिजिटल साथीच्या स्वयंसेवकाला दाखवा. तपासल्यानंतर टीम तुम्हाला नंतर प्रमाणपत्र पाठवेल.",
-    post_fail:"थोडेच बाकी! प्रमाणपत्रासाठी {n} पैकी {p} गुण हवेत.",
-    post_fail_s:"हे टप्पे पुन्हा पाहा आणि परत प्रयत्न करा — पुन्हा देणे मोफत आहे.",
+    pre_here:"इथून सुरुवात",
+    pre_map:"तुमच्या शिकण्याच्या प्रवासात सहा टप्पे आहेत. कोणत्या टप्प्यापासून सुरुवात करायची ते ही क्विझ दाखवते.",
+    post_retake:"पुन्हा देणे मोफत", 
     cert_label:"प्रमाणपत्र",
     cert_title:"तुमचे <em>प्रमाणपत्र</em> मिळवा.",
     cert_intro:"तुमच्या मेहनतीची दखल घेतली पाहिजे. डिजिटल साथी पूर्णता प्रमाणपत्र मिळवण्यासाठी या चार गोष्टी पूर्ण करा.",
     cr1:"शिकण्याचे सहाही मॉड्यूल पूर्ण करा.",
     cr2:"साथीसोबत तुमच्या फोनवर प्रत्यक्ष सराव करा.",
-    cr3:"अंतिम क्विझमध्ये 11 पैकी 8 (70%) किंवा जास्त गुण मिळवा — पुन्हा देणे मोफत आहे.",
+    cr3:"अंतिम क्विझमध्ये {total} पैकी {pass} (70%) किंवा जास्त गुण मिळवा — पुन्हा देणे मोफत आहे.",
     cr4:"तुमचा निकाल डिजिटल साथीच्या स्वयंसेवकाला दाखवा — तपासल्यानंतर टीम तुम्हाला नंतर प्रमाणपत्र पाठवते.",
     cert_free:"प्रमाणपत्र मोफत आहे. प्रमाणपत्रासाठी आम्ही कधीही पैसे, OTP किंवा बँक माहिती मागणार नाही.",
     cm_sample:"नमुना",
@@ -2352,17 +2446,9 @@ const UI = {
     cm_for:"सहा टप्प्यांचा डिजिटल कौशल्य कार्यक्रम पूर्ण केल्याबद्दल",
     cm_team:"डिजिटल साथी टीम",
     quiz_label:"तुमची डिजिटल कौशल्ये तपासा",
-    quiz_title:"तुमची <em>कौशल्य पातळी</em> जाणून घ्या.",
+    quiz_title:"तुम्हाला <em>आधीच काय येते</em> ते जाणून घ्या.",
     quiz_intro:"काही सोप्या प्रश्नांची उत्तरे द्या. यात पास-नापास नाही — तुम्हाला काय येते आणि पुढे काय शिकायचे ते दिसेल.",
     quiz_meta:"{n} प्रश्न · सुमारे 3 मिनिटे",
-    quiz_q:"प्रश्न {i} / {n}", opt_letters:"अबक",
-    quiz_correct:"बरोबर — शाब्बास!", quiz_wrong:"हे बरोबर नाही. बरोबर उत्तर हिरव्या रंगात दाखवले आहे.",
-    quiz_next:"पुढचा प्रश्न", submit:"माझा निकाल पाहा",
-    your_score:"तुम्हाला मिळाले", learn_next:"पुढे हे शिका:", restart:"पुन्हा करा",
-    quiz_all:"तुमची सगळी उत्तरे बरोबर आहेत! शिकत राहण्यासाठी कोणताही धडा पाहा:",
-    quiz_msg_high:"उत्तम! तुम्हाला बरेच काही येते — पूर्ण स्वावलंबी होण्यासाठी पुढचे टप्पे करून पाहा.",
-    quiz_msg_mid:"छान! थोड्या सरावाने तुम्ही आणखी आत्मविश्वासी व्हाल.",
-    quiz_msg_low:"छान सुरुवात! हे टप्पे तुम्हाला पायरी-पायरीने पुढे नेतील.",
     ask_label:"साथीला विचारा",
     ask_title:"काहीही विचारा, <em>केव्हाही.</em>",
     ask_intro:"फोन किंवा इंटरनेटबद्दल कोणताही प्रश्न लिहा. उदा.: “UPI ने सुरक्षित पैसे कसे द्यायचे?”",
@@ -2390,7 +2476,7 @@ const UI = {
     f1_t:"सुरुवातीची क्विझ", f1_s:"तुम्हाला आधीच काय येते ते जाणून घ्या.",
     f2_t:"शिकण्याचे सहा मॉड्यूल", f2_s:"तुमच्या वेगाने, टप्प्याटप्प्याने शिका.",
     f3_t:"प्रात्यक्षिक सराव", f3_s:"तुमच्या फोनवर स्वतः सराव करा.",
-    f4_t:"अंतिम क्विझ", f4_s:"11 पैकी 8 गुण मिळवा.",
+    f4_t:"अंतिम क्विझ", f4_s:"{total} पैकी {pass} गुण मिळवा.",
     f5_t:"प्रमाणपत्र", f5_s:"मोफत — आमची टीम तुम्हाला पाठवेल.",
     ig1_t:"सुरक्षित पैसा", ig1_s:"फसवणूक ओळखा, तुमची बचत सुरक्षित ठेवा.",
     ig2_t:"अधिक स्वावलंबन", ig2_s:"बिले भरा, सेवा स्वतः बुक करा.",
@@ -2592,8 +2678,161 @@ const LESSONS = {
   ]
 };
 
-// QUIZ — each question links to a learning step (lesson id), so wrong answers suggest that step.
-// "answer" is the position of the right option (0 = first, 1 = second, 2 = third).
+// POST-ASSESSMENT — the 14 everyday questions of the Post-Assessment Google Form (made from this data by
+// google-form/post-assessment-form.gs), two per topic. On the page they only count {total} and {pass}.
+// POST_QUIZ_KEY is the same in every language: the topic, the learning step that teaches it (suggested when it
+// is missed) and the right answer (0 = first option). POST_QUIZ holds the words: question, 3 options, a short tip.
+const POST_TOPICS = {
+  en:{ basics:["📱","Smartphone basics"], browse:["🔍","Internet & Google"], talk:["💬","Talking with family & friends"], upi:["💳","Online payments & UPI safety"], fraud:["🛡️","Online fraud & safety"], gov:["🏛️","Government services online"], solve:["🧩","Solving everyday problems"] },
+  hi:{ basics:["📱","स्मार्टफ़ोन की बुनियादी बातें"], browse:["🔍","इंटरनेट और Google"], talk:["💬","परिवार और दोस्तों से बातचीत"], upi:["💳","ऑनलाइन भुगतान और UPI सुरक्षा"], fraud:["🛡️","ऑनलाइन धोखाधड़ी से बचाव"], gov:["🏛️","ऑनलाइन सरकारी सेवाएं"], solve:["🧩","रोज़ की समस्याएं सुलझाना"] },
+  mr:{ basics:["📱","स्मार्टफोनच्या मूलभूत गोष्टी"], browse:["🔍","इंटरनेट आणि Google"], talk:["💬","कुटुंब आणि मित्रांशी संवाद"], upi:["💳","ऑनलाइन पेमेंट आणि UPI सुरक्षा"], fraud:["🛡️","ऑनलाइन फसवणुकीपासून बचाव"], gov:["🏛️","ऑनलाइन सरकारी सेवा"], solve:["🧩","रोजच्या अडचणी सोडवणे"] }
+};
+const POST_QUIZ_KEY = [
+  {topic:"basics", lesson:"phone",  answer:0}, {topic:"basics", lesson:"phone",  answer:1},
+  {topic:"browse", lesson:"google", answer:1}, {topic:"browse", lesson:"google", answer:2},
+  {topic:"talk",   lesson:"family", answer:0}, {topic:"talk",   lesson:"family", answer:1},
+  {topic:"upi",    lesson:"money",  answer:2}, {topic:"upi",    lesson:"money",  answer:0},
+  {topic:"fraud",  lesson:"safety", answer:2}, {topic:"fraud",  lesson:"safety", answer:1},
+  {topic:"gov",    lesson:"money",  answer:1}, {topic:"gov",    lesson:"money",  answer:0},
+  {topic:"solve",  lesson:"phone",  answer:1}, {topic:"solve",  lesson:"ai",     answer:2}
+];
+const POST_QUIZ = {
+  en:[
+    {q:"You may need help in an emergency, even when your phone is locked. What can you set up today?",
+     options:["Emergency SOS, so pressing the power button 5 times calls for help","A new wallpaper","A louder ringtone"],
+     tip:"Settings → Safety & emergency → Emergency SOS. Add emergency contacts too, so they show on the lock screen."},
+    {q:"Your grandson wants to play a game on your phone. How can you keep him inside that one game?",
+     options:["Tell him your phone PIN","Turn on App pinning and pin the game","Switch the phone off and on again"],
+     tip:"With App pinning, he cannot leave the game or open other apps without your PIN."},
+    {q:"You need a pharmacy near you, quickly. What is the easiest way to find one?",
+     options:["Wait for a newspaper advertisement","Search “pharmacy near me” in Google Maps","Ask strangers in a WhatsApp group"],
+     tip:"Google Maps shows the nearest places, how far they are and the way to get there."},
+    {q:"Your medicine strip has instructions in a language you cannot read. What can help?",
+     options:["Guess what it says","Throw the medicine away","Point Google Lens at it and choose Translate"],
+     tip:"Tap the camera icon in the Google search bar, point it at the words and choose Translate."},
+    {q:"You are coming home alone late in the evening. How can your family see where you are until you reach home?",
+     options:["Share your live location on WhatsApp","Send them a photo every hour","Call them every five minutes"],
+     tip:"In a chat tap 📎 → Location → Share live location, and choose how long to share."},
+    {q:"On a video call, your son wants to see your screen to guide you through a phone setting. What should you do first?",
+     options:["Open your bank app so he can check it","Close bank and payment apps, then share your screen","Switch off the internet"],
+     tip:"Screen sharing shows everything on your screen, so close bank and payment apps before you share."},
+    {q:"A buyer says: “Scan this QR code and enter your UPI PIN to receive ₹2,000.” What is true?",
+     options:["You must enter your PIN to get the money","It is safe because a QR code is used","You never need a PIN to receive money — it is a scam"],
+     tip:"Your UPI PIN is only for sending money. Anyone who asks for it to “send” you money is a fraud."},
+    {q:"You scan a shop's QR code, but the name on the screen is someone you don't know. What do you do?",
+     options:["Cancel, and ask the shopkeeper before paying","Pay anyway — QR codes are always correct","Pay twice to be sure"],
+     tip:"Always read the name and the amount on the screen before you enter your PIN."},
+    {q:"A message says: “Your electricity will be cut tonight. Call this number now.” What is the safe thing to do?",
+     options:["Call the number straight away","Pay whatever amount they ask","Don't call or tap anything — check in the official app or at the office"],
+     tip:"Messages that rush you about KYC, electricity bills or parcels are a common scam."},
+    {q:"Someone has cheated you and money has left your bank account. What should you do first?",
+     options:["Wait a few days to see if it comes back","Call 1930 at once, and call your bank to block your card or UPI","Tell nobody because you feel embarrassed"],
+     tip:"The first hour matters most. Call 1930 or report it at cybercrime.gov.in."},
+    {q:"Your father is a pensioner and finds it hard to go to the bank for his life certificate. What can he do?",
+     options:["Stop taking his pension","Submit it from home with a face scan in the Jeevan Pramaan app","Send a photo of his Aadhaar to an unknown number"],
+     tip:"With the Jeevan Pramaan and AadhaarFaceRD apps, pensioners scan their face with the phone camera."},
+    {q:"You are 72 years old. Which card can give you free hospital treatment cover?",
+     options:["The Ayushman Vay Vandana card","A shop's loyalty card","A new SIM card"],
+     tip:"Everyone aged 70 and above can get it. Apply in the Ayushman app, at beneficiary.nha.gov.in, or at a hospital or CSC."},
+    {q:"Your phone battery runs out before the evening. What will help it last longer?",
+     options:["Keep the screen at full brightness","Turn on Battery Saver and keep the screen brightness low","Keep every app open all day"],
+     tip:"Settings → Battery → Battery Saver. Also switch off Location and Bluetooth when you don't need them."},
+    {q:"You have rice, dal, onion and tomato at home and need a quick dinner idea. What can help?",
+     options:["Throw the food away and order from outside","Type your bank details into an AI app","Tell an AI app what you have and ask for a simple recipe"],
+     tip:"AI apps like Gemini or ChatGPT can suggest recipes — but never type private details into them."}
+  ],
+  hi:[
+    {q:"आपातकाल में मदद की ज़रूरत पड़ सकती है, तब भी जब फ़ोन लॉक हो। आप आज क्या सेट कर सकते हैं?",
+     options:["इमरजेंसी SOS, ताकि पावर बटन 5 बार दबाने से मदद के लिए कॉल जाए","नया वॉलपेपर","तेज़ आवाज़ वाली रिंगटोन"],
+     tip:"Settings → Safety & emergency → Emergency SOS। इमरजेंसी कॉन्टैक्ट भी जोड़ें, ताकि वे लॉक स्क्रीन पर दिखें।"},
+    {q:"आपका पोता आपके फ़ोन पर गेम खेलना चाहता है। उसे उसी एक गेम में कैसे रखें?",
+     options:["उसे अपने फ़ोन का PIN बता दें","App pinning चालू करके गेम को पिन करें","फ़ोन बंद करके फिर चालू करें"],
+     tip:"App pinning से वह आपके PIN के बिना गेम से बाहर नहीं निकल सकता और दूसरे ऐप नहीं खोल सकता।"},
+    {q:"आपको जल्दी से पास की दवा की दुकान चाहिए। उसे खोजने का सबसे आसान तरीका क्या है?",
+     options:["अख़बार के विज्ञापन का इंतज़ार करें","Google Maps में “pharmacy near me” खोजें","WhatsApp ग्रुप में अनजान लोगों से पूछें"],
+     tip:"Google Maps पास की जगहें, उनकी दूरी और वहां पहुंचने का रास्ता दिखाता है।"},
+    {q:"आपकी दवा की पट्टी पर निर्देश ऐसी भाषा में हैं जो आप पढ़ नहीं सकते। क्या मदद कर सकता है?",
+     options:["अंदाज़ा लगा लें कि क्या लिखा है","दवा फेंक दें","उस पर Google Lens रखें और Translate चुनें"],
+     tip:"Google सर्च बार में कैमरा आइकन दबाएं, उसे शब्दों पर रखें और Translate चुनें।"},
+    {q:"आप शाम को देर से अकेले घर लौट रहे हैं। घर पहुंचने तक परिवार कैसे देख सकता है कि आप कहां हैं?",
+     options:["WhatsApp पर अपनी लाइव लोकेशन शेयर करें","हर घंटे उन्हें एक फ़ोटो भेजें","हर पांच मिनट में उन्हें कॉल करें"],
+     tip:"चैट में 📎 → Location → Share live location दबाएं और समय चुनें।"},
+    {q:"वीडियो कॉल पर आपका बेटा आपकी स्क्रीन देखकर फ़ोन की कोई सेटिंग समझाना चाहता है। पहले आप क्या करें?",
+     options:["अपना बैंक ऐप खोलें ताकि वह उसे देख ले","बैंक और पेमेंट ऐप बंद करें, फिर स्क्रीन शेयर करें","इंटरनेट बंद कर दें"],
+     tip:"स्क्रीन शेयर करने पर स्क्रीन की हर चीज़ दिखती है, इसलिए पहले बैंक और पेमेंट ऐप बंद करें।"},
+    {q:"एक खरीदार कहता है: “यह QR कोड स्कैन करें और ₹2,000 पाने के लिए अपना UPI PIN डालें।” सच क्या है?",
+     options:["पैसे पाने के लिए PIN डालना ज़रूरी है","QR कोड है, इसलिए यह सुरक्षित है","पैसे पाने के लिए कभी PIN नहीं लगता — यह धोखा है"],
+     tip:"UPI PIN सिर्फ़ पैसे भेजने के लिए है। जो इसे आपको पैसे “भेजने” के लिए मांगे, वह धोखेबाज़ है।"},
+    {q:"आपने दुकान का QR कोड स्कैन किया, पर स्क्रीन पर किसी अनजान व्यक्ति का नाम है। आप क्या करेंगे?",
+     options:["रद्द करें और भुगतान से पहले दुकानदार से पूछें","फिर भी भुगतान करें — QR कोड हमेशा सही होता है","पक्का करने के लिए दो बार भुगतान करें"],
+     tip:"PIN डालने से पहले हमेशा स्क्रीन पर नाम और रकम पढ़ें।"},
+    {q:"संदेश आता है: “आज रात आपकी बिजली कट जाएगी। अभी इस नंबर पर कॉल करें।” सुरक्षित कदम क्या है?",
+     options:["तुरंत उस नंबर पर कॉल करें","वे जितने पैसे मांगें, दे दें","न कॉल करें, न कुछ दबाएं — सिर्फ़ आधिकारिक ऐप या दफ़्तर में जांचें"],
+     tip:"KYC, बिजली बिल या पार्सल के नाम पर जल्दबाज़ी करवाने वाले संदेश आम धोखा हैं।"},
+    {q:"किसी ने आपको ठग लिया और आपके बैंक खाते से पैसे निकल गए। सबसे पहले क्या करें?",
+     options:["कुछ दिन इंतज़ार करें कि शायद पैसे लौट आएं","तुरंत 1930 पर कॉल करें, और कार्ड या UPI बंद कराने के लिए बैंक को कॉल करें","शर्म के कारण किसी को न बताएं"],
+     tip:"पहला घंटा सबसे ज़रूरी है। 1930 पर कॉल करें या cybercrime.gov.in पर शिकायत करें।"},
+    {q:"आपके पिताजी पेंशनभोगी हैं और जीवन प्रमाणपत्र के लिए बैंक जाना उनके लिए मुश्किल है। वे क्या कर सकते हैं?",
+     options:["पेंशन लेना बंद कर दें","Jeevan Pramaan ऐप में चेहरे के स्कैन से घर बैठे जमा करें","अपने आधार की फ़ोटो किसी अनजान नंबर पर भेजें"],
+     tip:"Jeevan Pramaan और AadhaarFaceRD ऐप से पेंशनभोगी फ़ोन के कैमरे से अपना चेहरा स्कैन करते हैं।"},
+    {q:"आपकी उम्र 72 साल है। कौन-सा कार्ड आपको अस्पताल में मुफ़्त इलाज का कवर दे सकता है?",
+     options:["आयुष्मान वय वंदना कार्ड","किसी दुकान का लॉयल्टी कार्ड","नया सिम कार्ड"],
+     tip:"70 साल और उससे ज़्यादा उम्र का हर व्यक्ति इसे पा सकता है। Ayushman ऐप, beneficiary.nha.gov.in, या किसी अस्पताल या CSC पर आवेदन करें।"},
+    {q:"आपके फ़ोन की बैटरी शाम से पहले खत्म हो जाती है। उसे ज़्यादा देर चलाने में क्या मदद करेगा?",
+     options:["स्क्रीन की रोशनी पूरी रखें","Battery Saver चालू करें और स्क्रीन की रोशनी कम रखें","दिनभर हर ऐप खुला रखें"],
+     tip:"Settings → Battery → Battery Saver। ज़रूरत न हो तो Location और Bluetooth भी बंद रखें।"},
+    {q:"घर में चावल, दाल, प्याज़ और टमाटर हैं और आपको रात के खाने का जल्दी कोई आइडिया चाहिए। क्या मदद कर सकता है?",
+     options:["खाना फेंककर बाहर से मंगवा लें","किसी AI ऐप में अपनी बैंक की जानकारी लिखें","AI ऐप को बताएं कि आपके पास क्या है और आसान रेसिपी पूछें"],
+     tip:"Gemini या ChatGPT जैसे AI ऐप रेसिपी सुझा सकते हैं — पर उनमें कभी अपनी निजी जानकारी न लिखें।"}
+  ],
+  mr:[
+    {q:"फोन लॉक असतानाही आपत्कालीन वेळी मदत लागू शकते. तुम्ही आजच काय सेट करू शकता?",
+     options:["आपत्कालीन SOS, म्हणजे पॉवर बटण 5 वेळा दाबल्यावर मदतीसाठी कॉल जाईल","नवीन वॉलपेपर","मोठ्या आवाजाची रिंगटोन"],
+     tip:"Settings → Safety & emergency → Emergency SOS. आपत्कालीन संपर्कही जोडा, म्हणजे ते लॉक स्क्रीनवर दिसतील."},
+    {q:"तुमच्या नातवाला तुमच्या फोनवर गेम खेळायचा आहे. त्याला त्या एकाच गेममध्ये कसे ठेवाल?",
+     options:["त्याला तुमच्या फोनचा PIN सांगा","App pinning सुरू करून गेम पिन करा","फोन बंद करून पुन्हा सुरू करा"],
+     tip:"App pinning मुळे तुमच्या PIN शिवाय तो गेममधून बाहेर पडू शकत नाही किंवा दुसरे ॲप उघडू शकत नाही."},
+    {q:"तुम्हाला लवकर जवळचे औषधाचे दुकान हवे आहे. ते शोधण्याचा सर्वात सोपा मार्ग कोणता?",
+     options:["वर्तमानपत्रातील जाहिरातीची वाट पाहा","Google Maps मध्ये “pharmacy near me” शोधा","WhatsApp ग्रुपमधील अनोळखी लोकांना विचारा"],
+     tip:"Google Maps जवळची ठिकाणे, ती किती दूर आहेत आणि तिथे जाण्याचा मार्ग दाखवते."},
+    {q:"तुमच्या औषधाच्या पट्टीवरच्या सूचना तुम्हाला वाचता न येणाऱ्या भाषेत आहेत. काय मदत करेल?",
+     options:["काय लिहिले आहे याचा अंदाज लावा","औषध फेकून द्या","त्यावर Google Lens धरा आणि Translate निवडा"],
+     tip:"Google सर्च बारमधील कॅमेरा आयकॉन दाबा, तो शब्दांवर धरा आणि Translate निवडा."},
+    {q:"तुम्ही संध्याकाळी उशिरा एकटे घरी येत आहात. घरी पोहोचेपर्यंत तुम्ही कुठे आहात ते कुटुंबाला कसे दिसेल?",
+     options:["WhatsApp वर तुमचे लाइव्ह लोकेशन शेअर करा","दर तासाला त्यांना एक फोटो पाठवा","दर पाच मिनिटांनी त्यांना कॉल करा"],
+     tip:"चॅटमध्ये 📎 → Location → Share live location दाबा आणि वेळ निवडा."},
+    {q:"व्हिडिओ कॉलवर तुमचा मुलगा तुमची स्क्रीन पाहून फोनची एखादी सेटिंग समजावू इच्छितो. आधी काय कराल?",
+     options:["तुमचे बँक ॲप उघडा म्हणजे तो ते पाहील","बँक आणि पेमेंट ॲप बंद करा, मग स्क्रीन शेअर करा","इंटरनेट बंद करा"],
+     tip:"स्क्रीन शेअर केल्यावर स्क्रीनवरचे सगळे दिसते, म्हणून आधी बँक आणि पेमेंट ॲप बंद करा."},
+    {q:"एक खरेदीदार म्हणतो: “हा QR कोड स्कॅन करा आणि ₹2,000 मिळवण्यासाठी तुमचा UPI PIN टाका.” खरे काय आहे?",
+     options:["पैसे मिळवण्यासाठी PIN टाकावाच लागतो","QR कोड आहे, म्हणून हे सुरक्षित आहे","पैसे मिळवण्यासाठी कधीही PIN लागत नाही — ही फसवणूक आहे"],
+     tip:"UPI PIN फक्त पैसे पाठवण्यासाठी असतो. तुम्हाला पैसे “पाठवण्यासाठी” तो मागणारा फसवणूक करणारा असतो."},
+    {q:"तुम्ही दुकानाचा QR कोड स्कॅन केला, पण स्क्रीनवर अनोळखी व्यक्तीचे नाव आहे. तुम्ही काय कराल?",
+     options:["रद्द करा आणि पैसे देण्याआधी दुकानदाराला विचारा","तरीही पैसे द्या — QR कोड नेहमी बरोबर असतो","खात्रीसाठी दोनदा पैसे द्या"],
+     tip:"PIN टाकण्याआधी स्क्रीनवरचे नाव आणि रक्कम नेहमी वाचा."},
+    {q:"संदेश येतो: “आज रात्री तुमची वीज कापली जाईल. आत्ताच या नंबरवर कॉल करा.” सुरक्षित पाऊल कोणते?",
+     options:["लगेच त्या नंबरवर कॉल करा","ते मागतील तेवढे पैसे द्या","कॉल करू नका, काहीही दाबू नका — फक्त अधिकृत ॲपमध्ये किंवा कार्यालयात तपासा"],
+     tip:"KYC, वीज बिल किंवा पार्सलच्या नावाने घाई करायला लावणारे संदेश ही नेहमीची फसवणूक आहे."},
+    {q:"कोणीतरी तुम्हाला फसवले आणि तुमच्या बँक खात्यातून पैसे गेले. सर्वात आधी काय कराल?",
+     options:["पैसे परत येतील का ते पाहण्यासाठी काही दिवस थांबा","लगेच 1930 वर कॉल करा, आणि कार्ड किंवा UPI बंद करण्यासाठी बँकेला कॉल करा","लाज वाटते म्हणून कोणालाही सांगू नका"],
+     tip:"पहिला तास सर्वात महत्त्वाचा असतो. 1930 वर कॉल करा किंवा cybercrime.gov.in वर तक्रार करा."},
+    {q:"तुमचे वडील पेन्शनधारक आहेत आणि हयातीच्या दाखल्यासाठी बँकेत जाणे त्यांना अवघड आहे. ते काय करू शकतात?",
+     options:["पेन्शन घेणे बंद करा","Jeevan Pramaan ॲपमध्ये चेहरा स्कॅन करून घरबसल्या जमा करा","त्यांच्या आधारचा फोटो अनोळखी नंबरवर पाठवा"],
+     tip:"Jeevan Pramaan आणि AadhaarFaceRD ॲपद्वारे पेन्शनधारक फोनच्या कॅमेऱ्याने चेहरा स्कॅन करतात."},
+    {q:"तुमचे वय 72 वर्षे आहे. कोणते कार्ड तुम्हाला रुग्णालयातील मोफत उपचारांचे कवच देऊ शकते?",
+     options:["आयुष्मान वय वंदना कार्ड","एखाद्या दुकानाचे लॉयल्टी कार्ड","नवीन सिम कार्ड"],
+     tip:"70 वर्षे व त्याहून अधिक वयाची प्रत्येक व्यक्ती ते मिळवू शकते. Ayushman ॲप, beneficiary.nha.gov.in, किंवा जवळच्या रुग्णालयात किंवा CSC मध्ये अर्ज करा."},
+    {q:"तुमच्या फोनची बॅटरी संध्याकाळपूर्वीच संपते. ती जास्त वेळ टिकण्यासाठी काय मदत करेल?",
+     options:["स्क्रीनचा प्रकाश पूर्ण ठेवा","Battery Saver सुरू करा आणि स्क्रीनचा प्रकाश कमी ठेवा","दिवसभर सगळी ॲप्स उघडी ठेवा"],
+     tip:"Settings → Battery → Battery Saver. गरज नसताना Location आणि Bluetooth ही बंद ठेवा."},
+    {q:"घरी तांदूळ, डाळ, कांदा आणि टोमॅटो आहेत आणि रात्रीच्या जेवणासाठी पटकन कल्पना हवी आहे. काय मदत करेल?",
+     options:["अन्न फेकून बाहेरून मागवा","एखाद्या AI ॲपमध्ये तुमची बँकेची माहिती लिहा","AI ॲपला तुमच्याकडे काय आहे ते सांगा आणि सोपी रेसिपी विचारा"],
+     tip:"Gemini किंवा ChatGPT सारखी AI ॲप्स रेसिपी सुचवू शकतात — पण त्यात कधीही तुमची खासगी माहिती लिहू नका."}
+  ]
+};
+
+// QUIZ — the Pre-Assessment's 11 questions, the same ones as in the Google Form (counted on the page).
+// Each question links to a learning step (lesson id). "answer" is the position of the right option (0 = first).
 const QUIZ = {
   en:[
     {q:"The words on your phone screen are too small to read. What can you do?",
@@ -2735,11 +2974,19 @@ const CONTACT = {
 
 // ✏️ PRE-ASSESSMENT GOOGLE FORM — paste each form's "Share link" here (see google-form/GOOGLE-FORM-GUIDE.md).
 // It looks like https://docs.google.com/forms/d/e/XXXX/viewform. A language left empty uses the English form.
-// While all three are empty, the Pre-Assessment shows only the built-in quiz.
+// The "Start Pre-Assessment Quiz" button opens it in a new tab. While all three are empty, the button says "Coming soon".
 const PRE_FORM = {
   en: "https://docs.google.com/forms/d/e/1FAIpQLSdocsEfuB_h-XO116uvcRj4lnS2OoryQj6EqfqGONQowt5dnw/viewform",
   hi: "https://docs.google.com/forms/d/e/1FAIpQLSdYEFX5Avw7e5pHIz8VWk_5sL5pK2bFxA7PdAYT6Saph8bkbA/viewform",
   mr: "https://docs.google.com/forms/d/e/1FAIpQLScb_kVgxiU6rA7fI24jQ2eJuzgErKibuk2t3FmRZWK-glIyLA/viewform"
+};
+
+// ✏️ POST-ASSESSMENT GOOGLE FORM — each form's link (see google-form/POST-FORM-GUIDE.md). The "Start Post-Assessment
+// Quiz" button opens it in a new tab. A language left empty uses the English form; all empty → "Coming soon".
+const POST_FORM = {
+  en: "https://docs.google.com/forms/d/e/1FAIpQLScWfLVbSx-4Vkavag9tFLPWCN_ablKvLnZXlSwIzS_yFeer-w/viewform",
+  hi: "https://docs.google.com/forms/d/e/1FAIpQLSfD5-iAUMOHzqE4NbBveZH5Nx3RgNhiv-9RBDtHpHdmPRSR5w/viewform",
+  mr: "https://docs.google.com/forms/d/e/1FAIpQLSc0puO91d4cShitNvH9BED6JZpxoqDG0oQBk3vHb7B-cZVP2Q/viewform"
 };
 
 /* =========================================================================
@@ -2755,8 +3002,11 @@ const $  = (selector, root = document) => root.querySelector(selector);
 const $$ = (selector, root = document) => root.querySelectorAll(selector);
 
 // Find a label in the current language (English if missing). {name} is filled from vars.
+// {total}, {pass} and {min} are always filled in from the Post-Assessment questions, so the
+// certificate numbers shown anywhere on the page are counted from the quiz itself.
 function t(key, vars){
   let text = (UI[lang] && UI[lang][key]) || UI.en[key] || key;
+  if(text.includes("{")) vars = Object.assign(postNumbers(), vars);
   if(vars){ for(const name in vars) text = text.split("{" + name + "}").join(vars[name]); }
   return text;
 }
@@ -2852,11 +3102,11 @@ function applyLanguage(){
   $$(".qp-proverb").forEach(el => { el.lang = lang === "mr" ? "mr" : "hi"; });
   stopSpeaking();
   renderLessons();
-  renderQuizzes();
+  renderPostForm();
   renderExamples();
   renderCounts();
   renderContact();
-  setPreMode(preMode);
+  renderPreForm();
   applyTheme();                         // the colour button's label is translated too
   $("#askAnswer").hidden = true;       // an old answer would be in the old language
   if(typeof fitScreens === "function" && textSize) requestAnimationFrame(fitScreens);
@@ -2988,6 +3238,15 @@ function revealOnScroll(){
   }, { rootMargin: "0px 0px -6% 0px", threshold: 0.06 });
   items.forEach(el => io.observe(el));
 }
+// The hero's swaying lamps and the pulsing "Coming soon" dot pause while they are off screen (section 16 of the
+// styles): they need the main thread on every frame, and nobody can see them move when they are scrolled away.
+function pauseOffscreenDecor(){
+  if(!("IntersectionObserver" in window)) return;
+  const flags = new Map([[$(".hero-art"), "hero-off"], [$(".visit"), "visit-off"]]);
+  const io = new IntersectionObserver(entries => entries.forEach(e =>
+    document.documentElement.classList.toggle(flags.get(e.target), !e.isIntersecting)));
+  flags.forEach((flag, el) => { if(el) io.observe(el); });
+}
 // ---- Lessons ----
 let currentLesson = null;
 
@@ -3060,134 +3319,21 @@ function stepLesson(direction){
   if(next){ openLesson(next.id); $("#ldTitle").focus(); }
 }
 
-// ---- Quizzes: Pre-Assessment and Post-Assessment ----
-// Both use the same QUIZ questions; the post-assessment asks them in a new order, compares the
-// result with the pre-assessment score saved on this device, and checks the certificate pass mark.
-const PASS_SHARE = 0.7;                       // 70 % — 8 of 11 questions — for the certificate
-const quizzes = {};
-
-function shuffledOrder(n){
-  const a = [...Array(n).keys()];
-  for(let i = n - 1; i > 0; i--){ const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; }
-  return a;
+// ---- Post-Assessment: like the Pre-Assessment, one big button that opens the team's Google Form (POST_FORM) ----
+const PASS_SHARE = 0.7;                       // 70 % of the questions (10 of 14) for the certificate
+// The numbers used in texts such as "Score {pass} out of {total}", counted from the form's questions (POST_QUIZ_KEY)
+function postNumbers(){
+  const total = POST_QUIZ_KEY.length;
+  return { total, pass: Math.ceil(PASS_SHARE * total), min: Math.ceil(total / 2) };
 }
-function savedScore(kind){
-  try{ const v = JSON.parse(store.get("ds_" + kind, "null")); return v && typeof v.score === "number" ? v : null; }catch(e){ return null; }
+// Point the button at the form in the current language. With no link yet, it is greyed out and says "Coming soon".
+function renderPostForm(){
+  const link = formLink(POST_FORM), btn = $("#postFormOpen");
+  if(link){ btn.href = link; btn.removeAttribute("aria-disabled"); }
+  else { btn.removeAttribute("href"); btn.setAttribute("aria-disabled", "true"); }
+  $("#postHint").hidden = !link;
+  $("#postFormSoon").hidden = !!link;
 }
-function suggestionButtons(ids){
-  return ids.slice(0, 3).map(id => {
-    const les = LESSONS[lang].find(l => l.id === id);
-    return `<button type="button" class="sug" data-open-lesson="${id}"><span class="lc-ic">${icon(LESSON_ICON[id])}</span><span>${esc(les.title)}</span>${icon("i-arrow-r", "ic-r")}</button>`;
-  }).join("");
-}
-function makeQuiz(kind){
-  const card = document.getElementById(kind + "QuizCard");
-  const q = { kind, card, index: 0, answers: [], order: [] };
-  const item = k => QUIZ[lang][q.order[k]];
-  q.start = () => {
-    const n = QUIZ[lang].length;
-    q.order = kind === "post" ? shuffledOrder(n) : [...Array(n).keys()];
-    q.index = 0; q.answers = [];
-    q.show();
-  };
-  q.show = () => {
-    const n = q.order.length, it = item(q.index), letters = [...t("opt_letters")];
-    const label = esc(t("quiz_q", { i: q.index + 1, n }));
-    // Each quiz has its own progress: coloured dots (pre) or a numbered gold bar (post)
-    const top = kind === "pre"
-      ? `<div class="qz-top pre-top"><span class="mono">${label}</span>
-          <ol class="pre-dots" aria-hidden="true">${q.order.map((_, k) => `<li class="${k < q.index ? (q.answers[k] === item(k).answer ? "ok" : "no") : k === q.index ? "now" : ""}"></li>`).join("")}</ol></div>`
-      : `<div class="qz-top post-top"><span class="post-count"><span class="sr-only">${label}</span><b aria-hidden="true">${String(q.index + 1).padStart(2, "0")}</b><small aria-hidden="true">/${n}</small></span>
-          <span class="post-segs" aria-hidden="true">${q.order.map((_, k) => `<i class="${k < q.index ? "done" : k === q.index ? "now" : ""}"></i>`).join("")}</span></div>`;
-    card.innerHTML = `
-      ${top}
-      <h4 class="qz-q" id="${kind}Question" tabindex="-1">${esc(it.q)}</h4>
-      <div class="qz-opts" role="group" aria-labelledby="${kind}Question">
-        ${it.options.map((option, j) => `<button type="button" class="qz-opt" data-o="${j}"><span class="qz-letter">${letters[j]}</span><span>${esc(option)}</span></button>`).join("")}
-      </div>
-      <p class="qz-feedback"></p>
-      <div class="qz-actions"></div>`;
-    refit(card);
-  };
-  // Mark the chosen option right or wrong straight away, then offer the next question
-  q.choose = choice => {
-    const it = item(q.index);
-    q.answers[q.index] = choice;
-    $$(".qz-opt", card).forEach(btn => {
-      const o = Number(btn.dataset.o);
-      btn.disabled = true;
-      if(o === it.answer){ btn.classList.add("right"); btn.insertAdjacentHTML("beforeend", icon("i-check")); }
-      else if(o === choice){ btn.classList.add("wrong"); btn.insertAdjacentHTML("beforeend", icon("i-x")); }
-    });
-    const ok = choice === it.answer, fb = $(".qz-feedback", card);
-    fb.className = "qz-feedback " + (ok ? "ok" : "no");
-    fb.innerHTML = icon(ok ? "i-check" : "i-alert") + `<span>${esc(t(ok ? "quiz_correct" : "quiz_wrong"))}</span>`;
-    const dot = $(".pre-dots li.now", card);
-    if(dot) dot.className = ok ? "ok" : "no";
-    const last = q.index === q.order.length - 1;
-    $(".qz-actions", card).innerHTML = `<button type="button" class="btn btn-dark" data-act="${last ? "submit" : "next"}"><span>${esc(t(last ? "submit" : "quiz_next"))}</span>${icon("i-arrow-r", "ic-r")}</button>`;
-    $(".qz-actions .btn", card).focus({ preventScroll: true });
-  };
-  // Count correct answers and collect the steps behind the wrong ones (the "learn next" part)
-  q.grade = () => {
-    let score = 0; const wrong = [];
-    q.order.forEach((qi, k) => {
-      const it = QUIZ[lang][qi];
-      if(q.answers[k] === it.answer) score++;
-      else if(!wrong.includes(it.lesson)) wrong.push(it.lesson);
-    });
-    return { score, wrong, total: q.order.length };
-  };
-  q.result = () => {
-    const { score, wrong, total } = q.grade(), share = score / total;
-    const ring = `<div class="ring" style="--p:0" aria-hidden="true">
-        <svg viewBox="0 0 120 120"><circle class="trk" cx="60" cy="60" r="50"/><circle class="val" cx="60" cy="60" r="50"/></svg>
-        <span class="ring-n"><i>${score}<small>/${total}</small></i></span></div>`;
-    let html;
-    if(kind === "pre"){
-      store.set("ds_pre", JSON.stringify({ score, total }));
-      const message = share >= 0.8 ? t("quiz_msg_high") : share >= 0.5 ? t("quiz_msg_mid") : t("quiz_msg_low");
-      html = `<div class="qz-result">${ring}<div class="qz-result-text"><p class="mono" style="margin:0">${esc(t("your_score"))} ${score} / ${total}</p><h4 class="qz-result-title" tabindex="-1">${esc(message)}</h4></div></div>
-        <p><b>${esc(wrong.length ? t("learn_next") : t("quiz_all"))}</b></p>
-        <div class="qz-suggest">${suggestionButtons(wrong.length ? wrong : LESSONS[lang].map(l => l.id))}</div>
-        <div class="qz-end"><a class="btn btn-dark" href="#lessons"><span>${esc(t("open_lesson"))}</span>${icon("i-arrow-ur", "ic-ur")}</a>
-          <button type="button" class="btn btn-outline" data-act="retry"><span>${esc(t("restart"))}</span></button></div>`;
-    }else{
-      const pass = Math.ceil(PASS_SHARE * total), passed = score >= pass, pre = savedScore("pre");
-      const best = savedScore("post");
-      if(!best || score > best.score) store.set("ds_post", JSON.stringify({ score, total }));
-      const compare = pre
-        ? `<div class="qz-compare"><span><small>${esc(t("post_before"))}</small><b>${pre.score}/${pre.total}</b></span><span class="qc-arrow" aria-hidden="true">→</span><span><small>${esc(t("post_now"))}</small><b>${score}/${total}</b></span>${score > pre.score ? `<span class="qc-gain">${esc(t("post_gain", { d: score - pre.score }))}</span>` : ""}</div>`
-        : `<p class="qz-nopre">${esc(t("post_nopre"))} <a href="#pre-quiz">${esc(t("pre_btn"))}</a></p>`;
-      html = `<div class="qz-result">${ring}<div class="qz-result-text"><p class="mono" style="margin:0">${esc(t("your_score"))} ${score} / ${total}</p>
-          <h4 class="qz-result-title" tabindex="-1">${esc(passed ? t("post_pass") : t("post_fail", { p: pass, n: total }))}</h4></div></div>
-        ${compare}
-        <p class="qz-verdict ${passed ? "pass" : "retry"}">${esc(passed ? t("post_pass_s") : t("post_fail_s"))}</p>
-        ${passed ? "" : `<div class="qz-suggest">${suggestionButtons(wrong)}</div>`}
-        <div class="qz-end">${passed ? `<a class="btn btn-dark" href="#certificate"><span>${esc(t("sa5"))}</span>${icon("i-arrow-ur", "ic-ur")}</a>` : ""}
-          <button type="button" class="btn btn-outline" data-act="retry"><span>${esc(t("restart"))}</span></button></div>`;
-    }
-    card.innerHTML = html;
-    refit(card);
-    requestAnimationFrame(() => requestAnimationFrame(() => { $(".ring", card).style.setProperty("--p", share); }));
-    $(".qz-result-title", card).focus({ preventScroll: true });
-    card.scrollIntoView({ behavior: reducedMotion() ? "auto" : "smooth", block: "nearest" });
-  };
-  // the quiz is redrawn for every question, so listen on the card
-  card.addEventListener("click", e => {
-    const option = e.target.closest(".qz-opt");
-    if(option && !option.disabled){ q.choose(Number(option.dataset.o)); return; }
-    const act = e.target.closest("[data-act]");
-    if(!act) return;
-    if(act.dataset.act === "next"){ q.index++; q.show(); $(".qz-q", card).focus({ preventScroll: true }); }
-    else if(act.dataset.act === "submit") q.result();
-    else if(act.dataset.act === "retry"){ q.start(); $(".qz-q", card).focus({ preventScroll: true }); }
-  });
-  return q;
-}
-quizzes.pre = makeQuiz("pre");
-quizzes.post = makeQuiz("post");
-function renderQuizzes(){ quizzes.pre.start(); quizzes.post.start(); }
 
 // ---- Ask Saathi ----
 function renderExamples(){
@@ -3214,56 +3360,29 @@ function handleAsk(){
   refit($("#askAnswer"));
 }
 
-// ---- Pre-Assessment: Google Form (if set in PRE_FORM) or the built-in quick check ----
-let preMode = "form";
-// Only real Google Forms links are used. Full links can be shown inside the page; short forms.gle links only open in a new tab.
-function preFormLinks(){
-  const raw = (PRE_FORM[lang] || PRE_FORM.en || "").trim();
-  if(!raw) return null;
+// ---- Pre- and Post-Assessment: each is one big button that opens the team's Google Form in a new tab ----
+// Only real Google Forms links are used (https, docs.google.com/forms or forms.gle).
+// A form's "edit" link is turned into the link for answering, so learners never land on the editor.
+function formLink(links){                    // links = PRE_FORM or POST_FORM
+  const raw = (links[lang] || links.en || "").trim();
+  if(!raw) return "";
   try{
     const u = new URL(raw);
-    if(u.protocol !== "https:") return null;
-    if(u.hostname === "forms.gle") return { open: u.href, embed: "" };
-    if(u.hostname !== "docs.google.com" || !u.pathname.startsWith("/forms/")) return null;
+    if(u.protocol !== "https:") return "";
+    if(u.hostname === "forms.gle") return u.href;
+    if(u.hostname !== "docs.google.com" || !u.pathname.startsWith("/forms/")) return "";
     u.pathname = u.pathname.replace(/\/(edit|viewform|formResponse)?\/?$/, "/viewform");
-    const open = u.href;
-    u.searchParams.set("embedded", "true");
-    return { open, embed: u.href };
-  }catch(e){ return null; }
+    return u.href;
+  }catch(e){ return ""; }
 }
-function setPreMode(mode){
-  const links = preFormLinks();
-  preMode = links ? mode : "quick";
-  const form = preMode === "form";
-  $("#preModes").hidden = !links;
-  $$("#preModes [role=tab]").forEach(tab => {
-    const on = tab.dataset.mode === preMode;
-    tab.setAttribute("aria-selected", on); tab.tabIndex = on ? 0 : -1;
-  });
-  const card = $("#preQuizCard");
-  if(links){ card.setAttribute("role", "tabpanel"); card.setAttribute("aria-labelledby", "preTabQuick"); }
-  else { card.removeAttribute("role"); card.removeAttribute("aria-labelledby"); }
-  card.hidden = form;
-  $("#preFormPanel").hidden = !form;
-  $("#pre-quiz").classList.toggle("form-on", form);
-  if(form){
-    $("#preFormOpen").href = links.open;
-    const frame = $("#preFormFrame"), box = $("#preFormFrameBox");
-    frame.title = t("pf_frame");
-    box.hidden = !links.embed; $("#preFormNoEmbed").hidden = !!links.embed;
-    if(links.embed && frame.getAttribute("src") !== links.embed){ box.classList.remove("loaded"); frame.src = links.embed; }
-  }
-  refit($("#pre-quiz .pre-shell"));
+// Point the button at the form in the current language. With no link yet, it is greyed out and says "Coming soon".
+function renderPreForm(){
+  const link = formLink(PRE_FORM), btn = $("#preFormOpen");
+  if(link){ btn.href = link; btn.removeAttribute("aria-disabled"); }
+  else { btn.removeAttribute("href"); btn.setAttribute("aria-disabled", "true"); }
+  $("#preFormHint").hidden = !link;
+  $("#preFormSoon").hidden = !!link;
 }
-$("#preFormFrame").addEventListener("load", () => { if($("#preFormFrame").getAttribute("src")) $("#preFormFrameBox").classList.add("loaded"); });
-$("#preModes").addEventListener("click", e => { const tab = e.target.closest("[role=tab]"); if(tab) setPreMode(tab.dataset.mode); });
-// Arrow keys move between the two tabs (standard tab behaviour)
-$("#preModes").addEventListener("keydown", e => {
-  if(!["ArrowLeft", "ArrowRight", "Home", "End"].includes(e.key)) return;
-  e.preventDefault();
-  setPreMode(preMode === "form" ? "quick" : "form");
-  $(`#preModes [data-mode="${preMode}"]`).focus();
-});
 
 // ---- Contact details (shown as "Coming soon" until filled in above) ----
 function renderContact(){
@@ -3276,12 +3395,13 @@ function renderContact(){
 
 // ---- Numbers shown on the page are counted from the content, so they are always true ----
 function renderCounts(){
+  const pn = postNumbers();                                    // the Post-Assessment's three gold numbers
+  $("#postStatQ").textContent = pn.total; $("#postStatMin").textContent = pn.min;
+  $("#postStatPass").textContent = pn.pass; $("#postStatOf").textContent = pn.total;
   $("#readyLessons").textContent = LESSONS[lang].length;
   $("#readyQuiz").textContent = QUIZ[lang].length;
   $("#readyLangs").textContent = Object.keys(UI).length;
   $$(".qz-meta").forEach(el => { el.textContent = t("quiz_meta", { n: QUIZ[lang].length }); });
-  $("#postGoal").textContent = Math.ceil(PASS_SHARE * QUIZ[lang].length);
-  $("#postGoalOf").textContent = QUIZ[lang].length;
 }
 
 // ---- Print only the safety card ----
@@ -3376,6 +3496,7 @@ applyLanguage();
 followSystemTheme();
 watchSections();
 revealOnScroll();
+pauseOffscreenDecor();
 fitScreens();
 // Opened with a link to the Quizzes page (or the Back button pressed): show the right page
 function followHash(){

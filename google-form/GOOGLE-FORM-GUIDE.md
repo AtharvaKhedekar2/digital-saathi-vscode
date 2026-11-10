@@ -3,8 +3,9 @@
 This folder builds the **Digital Saathi Pre-Assessment Quiz** as a Google Form and connects it to the website.
 
 - `pre-assessment-form.gs`: a script that creates the whole form for you (questions, answer key, points, feedback).
-- The questions are the **same 11 questions** as the website quiz, grouped by the **six approved learning modules**.
-  So the Pre-Assessment (Google Form) and the website's Post-Assessment ask the same things and the scores can be compared.
+- The questions are the 11 questions in `QUIZ` in `index.html`, grouped by the **six approved learning modules**.
+  The Post-Assessment form (`post-assessment-form.gs`, guide `POST-FORM-GUIDE.md`) asks 14 different, scenario-style
+  questions on the same learning steps, so learners can compare their two percentages, not question by question.
 
 What the form looks like:
 
@@ -67,7 +68,7 @@ Open the form with its **Edit link**, then:
 1. In the form, click **Send** (or **Publish** on newer accounts, then **Copy responder link**).
 2. Choose the 🔗 **link** tab. **Leave "Shorten URL" unticked**, so the link looks like
    `https://docs.google.com/forms/d/e/1FAIpQ…/viewform`, and click **Copy**.
-   (A short `forms.gle` link also works, but then the form can only open in a new tab, not inside the website.)
+   (A short `forms.gle` link also works.)
 
 ## Part D: Put it on the website
 
@@ -81,11 +82,11 @@ Open the form with its **Edit link**, then:
      mr: ""    // Marathi form link — if left empty, the English form is used
    };
    ```
-3. Save and open the website → **Quizzes** → **Pre-Assessment Quiz**. You will now see two tabs:
-   - **📝 Google Form**: the form shown inside the page, plus an **Open in a new tab** button (best on phones)
-   - **⚡ Quick check here**: the website's own quiz (works offline; the Post-Assessment compares with it)
+3. Save and open the website → **Quizzes** → **Pre-Assessment Quiz**. The big **Start Pre-Assessment Quiz**
+   button now opens your form in a new tab (each language opens its own form). The form is not shown inside the
+   website: a separate tab is easier to use on phones, and learners can come back to the website afterwards.
 
-   While `PRE_FORM` is empty, the website simply shows the quick check as before.
+   While `PRE_FORM` is empty, the button is greyed out and says **Coming soon**.
 
 ## Good to know
 
@@ -95,5 +96,9 @@ Open the form with its **Edit link**, then:
   collected. Keep it that way.
 - **Re-running the script** makes a *new* form each time. Delete extra copies in Google Drive, and update `PRE_FORM` if
   you switch to a new form.
-- **Form not showing inside the page?** Check that the form is published/accepting responses and that you used the long
-  `docs.google.com/forms/…/viewform` link. The "Open in a new tab" button always works.
+- **Button says "Coming soon"?** The link in `PRE_FORM` is empty or is not a Google Forms link (it must start with
+  `https://docs.google.com/forms/` or `https://forms.gle/`).
+- **Learners are asked to sign in, or to type an email?** Open the form → ⚙️ **Settings → Responses** and set
+  **Limit to 1 response** to OFF (it makes Google ask everyone to sign in) and **Collect email addresses** to
+  *Do not collect* (it adds a required Email question, and its *Verified* option also needs a sign-in). See Part B.
+  Signing in is hard for many seniors, and children should not have to give an email.
