@@ -25,6 +25,76 @@ function createHindiForm()   { return buildPreAssessmentForm_("hi"); }
 function createMarathiForm() { return buildPreAssessmentForm_("mr"); }
 function createAllLanguages() { ["en", "hi", "mr"].forEach(buildPreAssessmentForm_); }
 
+// ---------------------------------------------------------------------------
+// SCORE AND LEVEL — after submitting, learners tap "View score" to see their points, and the thank-you
+// message shows which level that score is: Best, Better, Good, Average or Getting started.
+//
+// updatePreFormsScoreLevels()  → updates the three forms that are ALREADY live (their IDs are below):
+//   sets the thank-you message with the levels, keeps quiz mode on, and checks every question is worth 1 point.
+// Google does not let a script change "Release grades". Do this once by hand in each form (the log reminds you):
+//   Settings → Quizzes → Release grades: "Immediately after each submission"
+//   Respondent can see: ✓ Missed questions  ✓ Correct answers  ✓ Point values  → Save
+// ---------------------------------------------------------------------------
+const PRE_FORM_IDS = {   // from the forms' edit links (docs.google.com/forms/d/<ID>/edit)
+  en: "1ExwjS4V9JWlV2AGoA4LUhAmcdPPJBCc4tCs3B1Gyp8s",
+  hi: "1VN0Dm7uhp67UVINVWdq7Z5b3DTVgw9Ld2Gsq52mrYMw",
+  mr: "1AiKVXjnqBZ9tA_hQI0I2RSbgGrzq0chZyLimhFNPdcQ"
+};
+// Levels by share of the questions answered correctly (the same bands as the Post-Assessment)
+const PRE_SCORE_LEVELS = [
+  { min: 0.9, en: "🏆 Best",            hi: "🏆 सर्वश्रेष्ठ", mr: "🏆 सर्वोत्तम" },
+  { min: 0.8, en: "🌟 Better",          hi: "🌟 बहुत अच्छा",  mr: "🌟 खूप छान" },
+  { min: 0.7, en: "👍 Good",            hi: "👍 अच्छा",       mr: "👍 चांगले" },
+  { min: 0.5, en: "🙂 Average",         hi: "🙂 औसत",         mr: "🙂 सरासरी" },
+  { min: 0,   en: "🌱 Getting started", hi: "🌱 शुरुआत",      mr: "🌱 सुरुवात" }
+];
+const PRE_POINTS_WORD = { en: "points", hi: "अंक", mr: "गुण" };
+
+// "🏆 Best: 10–11 points" … one line per level, highest first, for a quiz of `total` questions
+function preLevelLines_(lang, total) {
+  const out = []; let top = total;
+  PRE_SCORE_LEVELS.forEach(function (l) {
+    const low = Math.ceil(l.min * total - 1e-9);
+    if (low > top) return;
+    out.push(l[lang] + ": " + (low === top ? low : low + "–" + top) + " " + PRE_POINTS_WORD[lang]);
+    top = low - 1;
+  });
+  return out.join("\n");
+}
+function preThanks_(lang) {
+  const total = QUESTIONS[lang].length;
+  return TEXT[lang].thanks.replace("{total}", total).replace("{levels}", preLevelLines_(lang, total));
+}
+
+function updatePreFormsScoreLevels() {
+  ["en", "hi", "mr"].forEach(function (lang) {
+    try {
+      const form = FormApp.openById(PRE_FORM_IDS[lang]);
+      // Use the language the form's title says, in case the IDs were pasted in a different order
+      const title = form.getTitle();
+      const actual = ["en", "hi", "mr"].filter(function (l) { return TEXT[l].title === title; })[0];
+      if (!actual) { Logger.log("⚠️ " + lang + ": the form's title (" + title + ") is not a Pre-Assessment title — skipped."); return; }
+      if (actual !== lang) Logger.log("ℹ️ The form listed as " + lang + " is the " + actual + " form — using " + actual + ".");
+      form.setIsQuiz(true).setConfirmationMessage(preThanks_(actual));
+      let scored = 0, fixed = 0;
+      form.getItems(FormApp.ItemType.MULTIPLE_CHOICE).forEach(function (it) {
+        const mc = it.asMultipleChoiceItem();
+        if (!mc.getChoices().some(function (c) { return c.isCorrectAnswer(); })) return;   // "I am…" is not scored
+        if (mc.getPoints() < 1) { mc.setPoints(1); fixed++; }
+        scored++;
+      });
+      Logger.log("✅ " + title + " — thank-you message with score levels set; " + scored + " scored questions" +
+                 (fixed ? " (" + fixed + " had 0 points, now 1)" : ", each worth 1 point") + ".");
+      Logger.log("   Edit: " + form.getEditUrl());
+    } catch (e) {
+      Logger.log("❌ " + lang + ": could not open or update the form (" + e.message + "). Is this account its owner or editor?");
+    }
+  });
+  Logger.log("NEXT, by hand in each form (Google does not let a script change it):");
+  Logger.log("   Settings → Quizzes → Release grades: “Immediately after each submission”");
+  Logger.log("   Respondent can see: ✓ Missed questions  ✓ Correct answers  ✓ Point values → Save");
+}
+
 function buildPreAssessmentForm_(lang) {
   const T = TEXT[lang];
   const form = FormApp.create(T.title);
@@ -36,7 +106,7 @@ function buildPreAssessmentForm_(lang) {
       .setCollectEmail(false)          // no email needed — easier for seniors and safer for children
       .setAllowResponseEdits(false)
       .setShowLinkToRespondAgain(true)
-      .setConfirmationMessage(T.thanks);
+      .setConfirmationMessage(preThanks_(lang));   // score levels included; see updatePreFormsScoreLevels
   // Newer Google accounts create forms unpublished; publish it if this option exists
   if (typeof form.setPublished === "function") form.setPublished(true);
   form.setAcceptingResponses(true);
@@ -99,7 +169,7 @@ const TEXT = {
     "notSure": "I am not sure",
     "correct": "Correct — well done!",
     "wrong": "Not quite. The right answer is: “{a}”. You will learn this in Step {n} — {t}.",
-    "thanks": "Thank you! 🎉 Click “View score” to see your result. The steps where you missed a question are the best place to start. Keep learning with Digital Saathi!"
+    "thanks": "Thank you! 🎉 Tap “View score” to see how many points you got out of {total}.\n\nYour level:\n{levels}\n\nThere is no pass or fail. The steps where you missed a question are the best place to start. Keep learning with Digital Saathi!"
   },
   "hi": {
     "title": "डिजिटल साथी — शुरुआती क्विज़ (Pre-Assessment)",
@@ -121,7 +191,7 @@ const TEXT = {
     "notSure": "पक्का नहीं पता",
     "correct": "सही जवाब — शाबाश!",
     "wrong": "पूरी तरह सही नहीं। सही जवाब है: “{a}”। यह आप चरण {n} — {t} में सीखेंगे।",
-    "thanks": "धन्यवाद! 🎉 अपना नतीजा देखने के लिए “View score” दबाएं। जिन चरणों में कोई सवाल छूटा, वहीं से शुरू करना सबसे अच्छा है। डिजिटल साथी के साथ सीखते रहें!"
+    "thanks": "धन्यवाद! 🎉 “View score” दबाकर देखें कि आपको {total} में से कितने अंक मिले।\n\nआपका स्तर:\n{levels}\n\nइसमें पास-फ़ेल नहीं है। जिन चरणों में कोई सवाल छूटा, वहीं से शुरू करना सबसे अच्छा है। डिजिटल साथी के साथ सीखते रहें!"
   },
   "mr": {
     "title": "डिजिटल साथी — सुरुवातीची क्विझ (Pre-Assessment)",
@@ -143,7 +213,7 @@ const TEXT = {
     "notSure": "खात्री नाही",
     "correct": "बरोबर — शाब्बास!",
     "wrong": "पूर्ण बरोबर नाही. बरोबर उत्तर आहे: “{a}”. हे तुम्ही टप्पा {n} — {t} मध्ये शिकाल.",
-    "thanks": "धन्यवाद! 🎉 तुमचा निकाल पाहण्यासाठी “View score” दाबा. ज्या टप्प्यांमध्ये प्रश्न चुकला, तिथून सुरुवात करणे सर्वात चांगले. डिजिटल साथीसोबत शिकत राहा!"
+    "thanks": "धन्यवाद! 🎉 “View score” दाबून पाहा की तुम्हाला {total} पैकी किती गुण मिळाले.\n\nतुमची पातळी:\n{levels}\n\nयात पास-नापास नाही. ज्या टप्प्यांमध्ये प्रश्न चुकला, तिथून सुरुवात करणे सर्वात चांगले. डिजिटल साथीसोबत शिकत राहा!"
   }
 };
 

@@ -150,8 +150,13 @@ descriptions, options and feedback are all there, in the same order.
 > 🔒 Never type your OTP, PIN, password or bank details in any form.
 
 **Thank-you (confirmation) message:**
-> Thank you! 🎉 Click “View score” to see your result. If you scored 14 or more out of 20, show it to a Digital Saathi
-> volunteer for your certificate. Keep practising on your own phone!
+> Thank you! 🎉 Tap “View score” to see how many points you got out of 20.
+>
+> Your level:
+> 🏆 Best: 18–20 points · 🌟 Better: 16–17 points · 👍 Good: 14–15 points · 🙂 Average: 10–13 points · 🌱 Getting started: 0–9 points
+>
+> Good, Better or Best (14 or more out of 20) earns the Digital Saathi certificate: show your score to a Digital Saathi
+> volunteer. Keep practising on your own phone!
 
 Page 1 (about you) is in the table in Part B3. The scored questions:
 
@@ -491,6 +496,27 @@ percentage is a skill the learners picked up. Report only real numbers from the 
 
 **Comparing one person:** if a learner gave the same first name in both forms, a volunteer can find both rows with
 **Ctrl + F**. The first name is optional, so many learners can only be compared as a group. That is fine and normal.
+
+---
+
+## Part G: Show each learner's score and level after the quiz
+
+After **Submit**, learners tap **View score** to see their points out of 20. The thank-you message shows the level:
+
+| Level | Points (out of 20) | Certificate |
+|---|---|---|
+| 🏆 Best | 18–20 | ✅ |
+| 🌟 Better | 16–17 | ✅ |
+| 👍 Good | 14–15 | ✅ (14 = the 70 % pass mark) |
+| 🙂 Average | 10–13 | not yet |
+| 🌱 Getting started | 0–9 | not yet |
+
+**To switch it on for the three forms that are already live:**
+1. In the Apps Script project with `post-assessment-form.gs`, paste the latest version and run **`updatePostFormsScoreLevels`**.
+   It sets the thank-you message with the levels, keeps quiz mode on and checks every question is worth 1 point.
+2. **By hand, in each form:** Settings → **Make this a quiz** → **Release grades: Immediately after each submission**, and
+   **Respondent can see: Missed questions, Correct answers, Point values** all ON. A script can't change this setting.
+3. Test it once: submit the form, tap **View score**, and check the score is out of 20.
 
 ---
 

@@ -112,6 +112,33 @@ by the website, so make new forms and switch the links:
 4. In Google Drive, move the old Pre forms to the bin once the new ones work (their results stay in their own Sheets
    until you delete them; keep the Sheets if you want the old answers).
 
+## Part F: Show each learner's score and level after the quiz
+
+After a learner taps **Submit**, they should see a **View score** button. It shows how many points they got out of 11,
+and the thank-you message shows which **level** that is:
+
+| Level | Points (out of 11) |
+|---|---|
+| 🏆 Best | 10–11 |
+| 🌟 Better | 9 |
+| 👍 Good | 8 |
+| 🙂 Average | 6–7 |
+| 🌱 Getting started | 0–5 |
+
+The Pre-Assessment is deliberately hard and has no pass or fail, so most learners will be at *Getting started* or *Average*. That's expected.
+
+**To switch it on for the three forms that are already live:**
+1. In the Apps Script project with `pre-assessment-form.gs`, paste the latest version of the file and run
+   **`updatePreFormsScoreLevels`**. It sets the new thank-you message in all three forms, keeps quiz mode on and makes sure every
+   question is worth 1 point. It finds the right language from each form's title.
+2. **By hand, in each form (Google doesn't let a script change this):** Settings → **Make this a quiz** →
+   **Release grades: Immediately after each submission**, and **Respondent can see: Missed questions, Correct answers,
+   Point values** all ON. If *Release grades* is set to *Later, after manual review*, learners never see their score. This is
+   the usual reason the score doesn't appear.
+3. Test it: open the form's link, answer every question, tap **Submit**, then tap **View score**.
+
+---
+
 ## The 11 questions (English; the right answer is marked ✅)
 
 | # | Step | Question | Options |

@@ -31,10 +31,84 @@ const POST_PASS_SHARE = 0.7;   // 70 % of the questions for the certificate — 
 // One emoji per learning step, shown in each page title
 const POST_STEP_EMOJI = { phone: "📱", google: "🔍", family: "💬", safety: "🛡️", money: "💳", ai: "✨" };
 
+// ---------------------------------------------------------------------------
+// SCORE AND LEVEL — after submitting, learners tap "View score" to see their points, and the thank-you
+// message shows which level that score is: Best, Better, Good, Average or Getting started.
+// Good starts at 70 % (14 of 20), the certificate mark, so Good, Better and Best all earn the certificate.
+//
+// updatePostFormsScoreLevels()  → updates the three forms that are ALREADY live (their IDs are below):
+//   sets the thank-you message with the levels, keeps quiz mode on, and checks every question is worth 1 point.
+// Google does not let a script change "Release grades". Do this once by hand in each form (the log reminds you):
+//   Settings → Quizzes → Release grades: "Immediately after each submission"
+//   Respondent can see: ✓ Missed questions  ✓ Correct answers  ✓ Point values  → Save
+// ---------------------------------------------------------------------------
+const POST_FORM_IDS = {   // from the forms' edit links (docs.google.com/forms/d/<ID>/edit)
+  en: "1tziL-DkOlwqlhJvSNtvW74NHt9FpJIRYeWxzy2JrJC0",
+  hi: "1_Ki0QTQv8tYyYUZlDGE4Q7NF5hBkcY2BZ8pWQsusDw4",
+  mr: "1YjWoeffzmKaeS3seQEouuAGev-KsIqh_LDF2yUHJDFo"
+};
+const POST_SCORE_LEVELS = [
+  { min: 0.9, en: "🏆 Best",            hi: "🏆 सर्वश्रेष्ठ", mr: "🏆 सर्वोत्तम" },
+  { min: 0.8, en: "🌟 Better",          hi: "🌟 बहुत अच्छा",  mr: "🌟 खूप छान" },
+  { min: POST_PASS_SHARE, en: "👍 Good", hi: "👍 अच्छा",       mr: "👍 चांगले" },
+  { min: 0.5, en: "🙂 Average",         hi: "🙂 औसत",         mr: "🙂 सरासरी" },
+  { min: 0,   en: "🌱 Getting started", hi: "🌱 शुरुआत",      mr: "🌱 सुरुवात" }
+];
+const POST_POINTS_WORD = { en: "points", hi: "अंक", mr: "गुण" };
+
+function postNums_(lang) {
+  const total = POST_QUESTIONS[lang].length;
+  return { total: total, pass: Math.ceil(POST_PASS_SHARE * total - 1e-9), min: Math.ceil(total / 2) };
+}
+// "🏆 Best: 18–20 points" … one line per level, highest first
+function postLevelLines_(lang, total) {
+  const out = []; let top = total;
+  POST_SCORE_LEVELS.forEach(function (l) {
+    const low = Math.ceil(l.min * total - 1e-9);
+    if (low > top) return;
+    out.push(l[lang] + ": " + (low === top ? low : low + "–" + top) + " " + POST_POINTS_WORD[lang]);
+    top = low - 1;
+  });
+  return out.join("\n");
+}
+function postThanks_(lang) {
+  const nums = postNums_(lang);
+  return POST_TEXT[lang].thanks.replace("{levels}", postLevelLines_(lang, nums.total))
+                               .replace(/\{(total|pass|min)\}/g, function (_, k) { return nums[k]; });
+}
+
+function updatePostFormsScoreLevels() {
+  ["en", "hi", "mr"].forEach(function (lang) {
+    try {
+      const form = FormApp.openById(POST_FORM_IDS[lang]);
+      const title = form.getTitle();
+      const actual = ["en", "hi", "mr"].filter(function (l) { return POST_TEXT[l].title === title; })[0];
+      if (!actual) { Logger.log("⚠️ " + lang + ": the form's title (" + title + ") is not a Post-Assessment title — skipped."); return; }
+      if (actual !== lang) Logger.log("ℹ️ The form listed as " + lang + " is the " + actual + " form — using " + actual + ".");
+      form.setIsQuiz(true).setConfirmationMessage(postThanks_(actual));
+      let scored = 0, fixed = 0;
+      form.getItems(FormApp.ItemType.MULTIPLE_CHOICE).forEach(function (it) {
+        const mc = it.asMultipleChoiceItem();
+        if (!mc.getChoices().some(function (c) { return c.isCorrectAnswer(); })) return;   // "I am…" etc. are not scored
+        if (mc.getPoints() < 1) { mc.setPoints(1); fixed++; }
+        scored++;
+      });
+      Logger.log("✅ " + title + " — thank-you message with score levels set; " + scored + " scored questions" +
+                 (fixed ? " (" + fixed + " had 0 points, now 1)" : ", each worth 1 point") + ".");
+      Logger.log("   Edit: " + form.getEditUrl());
+    } catch (e) {
+      Logger.log("❌ " + lang + ": could not open or update the form (" + e.message + "). Is this account its owner or editor?");
+    }
+  });
+  Logger.log("NEXT, by hand in each form (Google does not let a script change it):");
+  Logger.log("   Settings → Quizzes → Release grades: “Immediately after each submission”");
+  Logger.log("   Respondent can see: ✓ Missed questions  ✓ Correct answers  ✓ Point values → Save");
+}
+
 function buildPostAssessmentForm_(lang) {
   const T = POST_TEXT[lang];
   const total = POST_QUESTIONS[lang].length;
-  const nums = { total: total, pass: Math.ceil(POST_PASS_SHARE * total), min: Math.ceil(total / 2) };
+  const nums = postNums_(lang);
   const fill = function (text) { return text.replace(/\{(total|pass|min)\}/g, function (_, k) { return nums[k]; }); };
 
   const form = FormApp.create(T.title);
@@ -48,7 +122,7 @@ function buildPostAssessmentForm_(lang) {
       .setAllowResponseEdits(false)
       .setPublishingSummary(false)     // learners never see other people's answers
       .setShowLinkToRespondAgain(true) // a volunteer can hand the same phone to the next learner
-      .setConfirmationMessage(fill(T.thanks));
+      .setConfirmationMessage(postThanks_(lang));   // score levels included; see updatePostFormsScoreLevels
   // Newer Google accounts create forms unpublished; publish it if this option exists
   if (typeof form.setPublished === "function") form.setPublished(true);
   form.setAcceptingResponses(true);
@@ -130,7 +204,7 @@ const POST_TEXT = {
     "lastPage": "One last thing",
     "next": "What would you like to learn next? (optional)",
     "nextHelp": "For example: video calls, filling online forms, using AI safely…",
-    "thanks": "Thank you! 🎉 Click “View score” to see your result. If you scored {pass} or more out of {total}, show it to a Digital Saathi volunteer for your certificate. Keep practising on your own phone!"
+    "thanks": "Thank you! 🎉 Tap “View score” to see how many points you got out of {total}.\n\nYour level:\n{levels}\n\nGood, Better or Best ({pass} or more out of {total}) earns the Digital Saathi certificate: show your score to a Digital Saathi volunteer. Keep practising on your own phone!"
   },
   "hi": {
     "title": "डिजिटल साथी — अंतिम क्विज़ (Post-Assessment)",
@@ -161,7 +235,7 @@ const POST_TEXT = {
     "lastPage": "आख़िरी बात",
     "next": "आगे आप क्या सीखना चाहेंगे? (वैकल्पिक)",
     "nextHelp": "जैसे: वीडियो कॉल, ऑनलाइन फ़ॉर्म भरना, AI का सुरक्षित इस्तेमाल…",
-    "thanks": "धन्यवाद! 🎉 अपना नतीजा देखने के लिए “View score” दबाएं। अगर आपके {total} में से {pass} या ज़्यादा अंक हैं, तो प्रमाणपत्र के लिए इसे किसी डिजिटल साथी स्वयंसेवक को दिखाएं। अपने फ़ोन पर अभ्यास करते रहें!"
+    "thanks": "धन्यवाद! 🎉 “View score” दबाकर देखें कि आपको {total} में से कितने अंक मिले।\n\nआपका स्तर:\n{levels}\n\nअच्छा, बहुत अच्छा या सर्वश्रेष्ठ ({total} में से {pass} या ज़्यादा अंक) पर डिजिटल साथी प्रमाणपत्र मिलता है: अपना स्कोर किसी डिजिटल साथी स्वयंसेवक को दिखाएं। अपने फ़ोन पर अभ्यास करते रहें!"
   },
   "mr": {
     "title": "डिजिटल साथी — अंतिम क्विझ (Post-Assessment)",
@@ -192,7 +266,7 @@ const POST_TEXT = {
     "lastPage": "शेवटची गोष्ट",
     "next": "पुढे तुम्हाला काय शिकायला आवडेल? (ऐच्छिक)",
     "nextHelp": "उदा.: व्हिडिओ कॉल, ऑनलाइन फॉर्म भरणे, AI सुरक्षितपणे वापरणे…",
-    "thanks": "धन्यवाद! 🎉 तुमचा निकाल पाहण्यासाठी “View score” दाबा. तुम्हाला {total} पैकी {pass} किंवा जास्त गुण मिळाले असतील, तर प्रमाणपत्रासाठी ते डिजिटल साथीच्या स्वयंसेवकाला दाखवा. तुमच्या फोनवर सराव करत राहा!"
+    "thanks": "धन्यवाद! 🎉 “View score” दाबून पाहा की तुम्हाला {total} पैकी किती गुण मिळाले.\n\nतुमची पातळी:\n{levels}\n\nचांगले, खूप छान किंवा सर्वोत्तम ({total} पैकी {pass} किंवा जास्त गुण) असल्यास डिजिटल साथी प्रमाणपत्र मिळते: तुमचा स्कोअर डिजिटल साथीच्या स्वयंसेवकाला दाखवा. तुमच्या फोनवर सराव करत राहा!"
   }
 };
 
