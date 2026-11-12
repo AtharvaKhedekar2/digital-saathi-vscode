@@ -7,10 +7,10 @@
 digital-saathi-certificate-*.html
 
 # Private settings (the admin password)
-.streamlit/secrets.toml
+streamlit-app/.streamlit/secrets.toml
 
 # Local-only setting; the hosted version shouldn't be limited to localhost
-.streamlit/config.toml
+streamlit-app/.streamlit/config.toml
 
 # Python
 .venv/

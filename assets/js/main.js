@@ -1,0 +1,1936 @@
+/* =========================================================================
+   1) CONTENT & TEXT — all in three languages: English (en), Hindi (hi), Marathi (mr)
+   ========================================================================= */
+
+// UI labels: every word on the page. In the HTML, data-ui="key" shows UI[lang][key].
+const UI = {
+  en:{
+    doc_title:"Digital Saathi — learn everyday digital skills",
+    skip:"Skip to main content",
+    // brand & menu
+    logo_1:"Digital", logo_2:"Saathi", brand_tag:"Learn · Stay safe · Belong",
+    nav_label:"Main menu", nav_about:"About", nav_how:"Your journey",
+    nav_learn:"Learn", nav_impact:"Saathi Wins", nav_contact:"Contact",
+    cta_workshop:"Join a free workshop",
+    lang_label:"Language", size_label:"Text size",
+    size_1:"Normal text", size_2:"Large text", size_3:"Extra large text",
+    menu:"Menu", close:"Close",
+    theme_label:"Screen colour", theme_light:"Light", theme_dark:"Dark",
+    theme_to_dark:"Switch to dark mode", theme_to_light:"Switch to light mode", theme_on_dark:"Dark mode on", theme_on_light:"Light mode on",
+    // hero
+    hero_eyebrow:"Free digital skills for everyday life",
+    hero_l1:"Go digital.", hero_l2:"Stay safe.", hero_l3:"With a Saathi.",
+    hero_lead:"Learn at your own pace. Grow in confidence.",
+    hero_text:"Learn to video-call your family, search Google, pay with UPI, stay safe from scams and even use AI — in simple steps, in Marathi, Hindi or English.",
+    hero_cta1:"Start learning",
+    hero_side:"Digital Saathi — your digital companion",
+    badge:"LEARN FREE ✦ AT YOUR OWN PACE ✦ FOR EVERYONE ✦", badge_word:"Free",
+    ph_lesson:"Today's lesson", ph_title:"Pay with UPI safely",
+    ph_s1:"Scan the QR code", ph_s2:"Check name & amount", ph_s3:"Enter PIN — never share it", ph_listen:"Listen",
+    ph_next_k:"Next", ph_next:"Spot a scam message",
+    fc_scam_t:"Scam spotted", fc_scam_s:"“Share OTP to get ₹5000” — ignore it.",
+    fc_pay_t:"₹250 paid", fc_pay_s:"Name & amount checked",
+    fact_free:"Always free", fact_lang:"3 languages", fact_offline:"Works offline",
+    fact_listen:"Read-aloud lessons", fact_noapp:"No app to install",
+    // about
+    about_label:"About Digital Saathi",
+    ab_proverb:"जब जागो<br />तभी सवेरा।", ab_trans:"“Whenever you wake up, it's morning.”", ab_src:"An old saying · it is never too late to learn",
+    pa_from:"Before", pa_to:"Now",
+    pa1_t:"Age is no barrier.", pa1_from:"waiting for someone to help", pa1_to:"doing it yourself",
+    pa2_t:"Your home, now online.", pa2_from:"queues for every bill", pa2_to:"paying from home in a minute",
+    pa3_t:"Screens that teach.", pa3_from:"endless scrolling", pa3_to:"learning something new every day",
+    how_proverb:"बूंद-बूंद से सागर भरता है।", how_trans:"“Drop by drop, the ocean fills.” Small steps every day add up.",
+    about_title:"Saathi means <em>companion.</em>",
+    about_lead:"We walk beside you — patiently, in your language — until you don't need us.",
+    mission_t:"Confidence", mission_s:"No fear of the phone.",
+    vision_t:"Independence", vision_s:"Do it yourself.",
+    purpose_t:"Curiosity", purpose_s:"Keep learning.",
+    who_1:"Senior citizens", who_2:"Housewives", who_3:"Children",
+    guide_btn:"See how to do each one", class_btn:"Open class in Google Classroom", contact_us:"Contact us",
+    // how it works
+    how_label:"Your Saathi Journey",
+    how_title:"Five simple steps to <em>digital confidence.</em>",
+    how_intro:"No exams, no pressure — just practical digital skills that make everyday life easier.",
+    pr_t:"Get Saathi-ready", pr_tag:"Before you begin", pr_go:"Unlock your journey",
+    pr_s:"Set up Gmail and learn to sign in safely, join your Google Classroom, and open forms and assignments. Do it once, before Step 01.",
+    st1_t:"Check where you stand", st1_s:"Take a short, friendly quiz so we know what you already know and where you should begin.",
+    st2_t:"Learn step by step", st2_s:"Go through the six modules in order, one small skill at a time, in your own language.",
+    st3_t:"Practise on your own phone", st3_s:"Try every skill hands-on with a Saathi beside you: make a real video call, scan a document, or send ₹1 to a family member.",
+    st4_t:"See how far you've come", st4_s:"Once all six modules are done, take the final quiz and compare it with your first one.",
+    st5_t:"Earn your certificate", st5_s:"Complete the course and the final quiz to receive your Digital Saathi Certificate of Completion.",
+    sa1:"Start the quiz", sa2:"Open the lessons", sa3:"Find a free workshop", sa4:"Take the final quiz", sa5:"How certificates work",
+    // learn
+    learn_label:"Learning resources",
+    learn_title:"Learn at your <em>own pace.</em>",
+    learn_intro:"Six steps, from your very first tap to using AI with confidence. Open a step to see what you will be able to do — or press Listen to hear it.",
+    jump_lessons:"Lessons", jump_quiz:"Check your skills", jump_card:"Safety card",
+    step_word:"Step", skills_word:"skills", read_aloud:"Read-aloud", path_label:"Your learning path",
+    prev:"Previous", next_lesson:"Next lesson", to_quiz:"Check your skills",
+    listen:"Listen", stop:"Stop",
+    // quiz
+    // quizzes page and certificate
+    nav_quizzes:"Quizzes",
+    nav_cert:"Certificate",
+    qp_label:"Quizzes",
+    qp_back:"Back to home",
+    qp_title:"Test yourself — <em>before and after.</em>",
+    qp_intro:"Two short quizzes on Google Forms: one before you start, one after you finish — so you can see how much you have grown.",
+    pre_t:"Pre-Assessment Quiz",
+    pre_when:"Take it before you start learning",
+    pre_s:"Find out what you already know. There is no pass or fail — you will see which steps to start with.",
+    pre_btn:"Start the pre-assessment",
+    post_t:"Post-Assessment Quiz",
+    post_when:"Take it after finishing all six modules",
+    post_s:"See how much you have improved. Score {pass} out of {total} (70%) or more to qualify for your certificate — retakes are free.",
+    post_btn:"Start the post-assessment",
+    post_title:"See how much <em>you’ve learned.</em>",
+    post_step:"Step 4 of your journey",
+    post_milestone:"Milestone",
+    post_stat_q:"everyday questions",
+    post_stat_min:"minutes (about)",
+    post_stat_pass:"for your certificate (70%)",
+    post_desc:"You have finished the six learning steps. Now see how much you have learned with {total} everyday questions.",
+    post_meta:"{total} questions · about {min} minutes",
+    post_start:"Start Post\u2011Assessment Quiz",
+    post_hint:"The quiz opens on a new page. At the end you see your score — show it to a Digital Saathi volunteer for your certificate.",
+    pre_step:"Step 1 of your journey", pre_tag1:"No pass or fail", pre_tag2:"Shows where to start",
+    pf_desc:"Before you start learning, answer 11 short questions. Some are a little tricky, and it is fine not to know — that is what you will learn here. It shows where to begin.",
+    pf_cta:"Start Pre‑Assessment Quiz",   // ‑ looks like "-" but a line never breaks there, so the button never shows "Pre-" alone
+    pf_hint:"The quiz opens on a new page. When you finish, come back here to start learning.",
+    pf_note:"Your answers go to the Digital Saathi team, and you see your score at the end. Never type your OTP, PIN or bank details.",
+    pre_here:"Start here",
+    pre_map:"Your learning journey has six steps. This quiz shows which one to start with.",
+    post_retake:"Retakes are free",
+    cert_label:"Certificate",
+    cert_title:"Earn your <em>certificate.</em>",
+    cert_intro:"Your hard work deserves recognition. Complete these four things to earn the Digital Saathi Certificate of Completion.",
+    cr1:"Finish all six learning modules.",
+    cr2:"Do the hands-on practice on your own phone with a Saathi.",
+    cr3:"Score {pass} out of {total} (70%) or more in the Post-Assessment Quiz — retakes are free.",
+    cr4:"Show your result to a Digital Saathi volunteer — after checking it, the team sends your certificate to you later.",
+    cert_free:"Certificates are free. We will never ask for money, OTP or bank details for a certificate.",
+    cm_sample:"Sample",
+    cm_title:"Certificate of Completion",
+    cm_to:"This certificate is awarded to",
+    cm_name:"Your name here",
+    cm_for:"for completing the six-step digital skills programme",
+    cm_team:"Digital Saathi team",
+    quiz_label:"Check your digital skills",
+    quiz_title:"Discover what you <em>already know.</em>",
+    quiz_intro:"Answer 11 short questions. Some are tricky, and it is fine not to know. There is no pass or fail — you will see what you already know and what to learn next.",
+    quiz_meta:"{n} questions · about 3 minutes",
+    // ask
+
+
+
+
+
+
+
+
+
+
+
+    // safety card
+    card_label:"Pocket safety card",
+    card_title:"Five golden <em>rules.</em>",
+    card_intro:"Print it, keep it near the phone, share it with family.",
+    rule1:"Never share your OTP, PIN or password — with anyone.",
+    rule2:"You never need a PIN to receive money.",
+    rule3:"Check the name and amount before you pay.",
+    rule4:"If a message rushes or scares you, stop and ask someone you trust.",
+    rule5:"Cheated online? Call 1930 or report at cybercrime.gov.in.",
+    print:"Print this card",
+    // impact
+    impact_label:"Saathi Wins",
+    impact_title:"Small wins, big <em>confidence.</em>",
+    impact_intro:"Five clear stages — from your first quiz to your certificate.",
+    fl_label:"Your learning journey: get ready, then 5 stages", f0_t:"Get Saathi-ready", f0_s:"Set up Gmail and Classroom.", gain_t:"What you gain",
+    f1_t:"Pre-Assessment", f1_s:"Check what you already know.",
+    f2_t:"Six Learning Modules", f2_s:"Learn step by step, at your pace.",
+    f3_t:"Practical Activities", f3_s:"Practise on your own phone.",
+    f4_t:"Post-Assessment", f4_s:"Score {pass} of {total} to qualify.",
+    f5_t:"Certificate", f5_s:"Free — sent to you by our team.",
+    ig1_t:"Safer money", ig1_s:"Spot scams and keep your savings safe.",
+    ig2_t:"More independence", ig2_s:"Pay bills and book services yourself.",
+    ig3_t:"Benefits, directly", ig3_s:"Use government services — no agents.",
+    ig4_t:"Closer families", ig4_s:"Video-call children and grandchildren.",
+    ig5_t:"Curiosity that grows", ig5_s:"Learn something new every day.",
+    ig6_t:"Learning in your language", ig6_s:"Marathi, Hindi or English.",
+    ready_t:"Ready for you today",
+    ready_lessons:"learning steps", ready_quiz:"quiz questions", ready_lang:"languages", ready_cost:"cost",
+    honest:"Our promise: only real numbers from real workshops.",
+    // contact
+    contact_label:"Contact us",
+    contact_title:"Say <em>namaste.</em>",
+    contact_intro:"Have a question? Reach us in any of these ways — we're happy to help.",
+    c_wa_t:"WhatsApp help", c_wa_s:"Send your question any time.",
+    c_mail_t:"Email", c_mail_s:"For questions about learning sessions.",
+    c_soon:"Coming soon",
+    c_safety:"We will never ask for your OTP, PIN, password or bank details.",
+    wk_badge:"Coming soon",
+    wk_label:"Online · Join from home", wk_title:"Coming to a virtual workshop?", wk_intro:"Learn live with a Saathi from your own home. Just keep these ready:",
+    wk_1:"Your own phone, fully charged.", wk_2:"Internet — Wi-Fi or mobile data.",
+    wk_3:"Your reading glasses, if you use them.", wk_4:"Your questions, written down. No question is too small.",
+    wk_free:"Virtual workshops are always free of cost.", wk_soon:"Dates and joining links will be shared here soon.",
+    // footer
+    foot_tag:"Learn everyday digital skills — with confidence, at your own pace.",
+    foot_explore:"Explore", foot_lessons:"Lessons", foot_help:"Need help now?",
+    foot_1930:"Cyber fraud helpline: 1930", foot_portal:"Report online: cybercrime.gov.in",
+    foot_never:"Digital Saathi will never ask for your OTP or PIN.",
+    foot_project:"Nirman Lab-I project · Community Digital Literacy & Skills",
+    foot_college:"First Year Computer Engineering · Terna",
+    foot_top:"Back to top"
+  },
+  hi:{
+    doc_title:"डिजिटल साथी — रोज़मर्रा के डिजिटल कौशल सीखें",
+    skip:"मुख्य सामग्री पर जाएं",
+    logo_1:"डिजिटल", logo_2:"साथी", brand_tag:"सीखें · सुरक्षित रहें · जुड़ें",
+    nav_label:"मुख्य मेन्यू", nav_about:"हमारे बारे में", nav_how:"आपकी यात्रा",
+    nav_learn:"सीखें", nav_impact:"साथी की जीत", nav_contact:"संपर्क",
+    cta_workshop:"मुफ़्त कार्यशाला से जुड़ें",
+    lang_label:"भाषा", size_label:"अक्षरों का आकार",
+    size_1:"सामान्य अक्षर", size_2:"बड़े अक्षर", size_3:"और बड़े अक्षर",
+    menu:"मेन्यू", close:"बंद करें",
+    theme_label:"स्क्रीन का रंग", theme_light:"हल्का", theme_dark:"गहरा",
+    theme_to_dark:"गहरा रंग चालू करें", theme_to_light:"हल्का रंग चालू करें", theme_on_dark:"गहरा रंग चालू", theme_on_light:"हल्का रंग चालू",
+    hero_eyebrow:"रोज़मर्रा की ज़िंदगी के लिए मुफ़्त डिजिटल कौशल",
+    hero_l1:"डिजिटल बनें।", hero_l2:"सुरक्षित रहें।", hero_l3:"साथी के साथ।",
+    hero_lead:"अपनी रफ़्तार से सीखें। आत्मविश्वास बढ़ाएं।",
+    hero_text:"परिवार से वीडियो कॉल, Google पर खोज, UPI से भुगतान, धोखे से बचाव और AI का इस्तेमाल भी सीखें — आसान चरणों में, मराठी, हिंदी या अंग्रेज़ी में।",
+    hero_cta1:"सीखना शुरू करें",
+    hero_side:"डिजिटल साथी — आपका डिजिटल हमसफ़र",
+    badge:"मुफ़्त ✦ अपनी रफ़्तार से सीखें ✦ सबके लिए ✦", badge_word:"मुफ़्त",
+    ph_lesson:"आज का पाठ", ph_title:"UPI से सुरक्षित भुगतान",
+    ph_s1:"QR कोड स्कैन करें", ph_s2:"नाम और राशि जांचें", ph_s3:"PIN डालें — कभी न बताएं", ph_listen:"सुनें",
+    ph_next_k:"अगला", ph_next:"धोखे वाला संदेश पहचानें",
+    fc_scam_t:"धोखा पकड़ा गया", fc_scam_s:"“₹5000 के लिए OTP बताएं” — ध्यान न दें।",
+    fc_pay_t:"₹250 का भुगतान हुआ", fc_pay_s:"नाम और राशि जांची",
+    fact_free:"हमेशा मुफ़्त", fact_lang:"3 भाषाएं", fact_offline:"बिना इंटरनेट भी चलता है",
+    fact_listen:"सुनकर सीखें", fact_noapp:"कोई ऐप इंस्टॉल नहीं करना",
+    about_label:"डिजिटल साथी के बारे में",
+    ab_proverb:"जब जागो<br />तभी सवेरा।", ab_trans:"सीखने की कोई उम्र नहीं होती।", ab_src:"एक पुरानी कहावत",
+    pa_from:"पहले", pa_to:"अब",
+    pa1_t:"उम्र कोई रुकावट नहीं।", pa1_from:"किसी की मदद का इंतज़ार", pa1_to:"सब कुछ खुद करना",
+    pa2_t:"आपका घर, अब ऑनलाइन।", pa2_from:"हर बिल के लिए लाइन", pa2_to:"घर बैठे एक मिनट में भुगतान",
+    pa3_t:"स्क्रीन जो सिखाए।", pa3_from:"बेमतलब स्क्रॉल करना", pa3_to:"रोज़ कुछ नया सीखना",
+    how_proverb:"बूंद-बूंद से सागर भरता है।", how_trans:"रोज़ थोड़ा-थोड़ा सीखें — बड़ा बदलाव आएगा।",
+    about_title:"साथी यानी <em>साथ चलने वाला।</em>",
+    about_lead:"हम आपके साथ चलते हैं — धैर्य से, आपकी भाषा में — जब तक आपको हमारी ज़रूरत न रहे।",
+    mission_t:"आत्मविश्वास", mission_s:"फ़ोन से कोई डर नहीं।",
+    vision_t:"आत्मनिर्भरता", vision_s:"सब कुछ खुद करें।",
+    purpose_t:"जिज्ञासा", purpose_s:"सीखते रहें।",
+    who_1:"वरिष्ठ नागरिक", who_2:"गृहिणियां", who_3:"बच्चे",
+    guide_btn:"हर एक कैसे करें, देखें", class_btn:"Google Classroom में कक्षा खोलें", contact_us:"संपर्क करें",
+    how_label:"आपकी साथी यात्रा",
+    how_title:"डिजिटल आत्मविश्वास के <em>पांच आसान चरण।</em>",
+    how_intro:"न परीक्षा, न दबाव — बस ऐसे व्यावहारिक डिजिटल कौशल जो रोज़ की ज़िंदगी आसान बनाते हैं।",
+    pr_t:"साथी के लिए तैयार हों", pr_tag:"शुरू करने से पहले", pr_go:"अपना सफ़र शुरू करें",
+    pr_s:"Gmail खाता बनाएं, सुरक्षित साइन-इन करना, अपनी Google Classroom में जुड़ना, और फ़ॉर्म व असाइनमेंट खोलना सीखें। यह एक बार करें, चरण 01 से पहले।",
+    st1_t:"जानें आप कहां हैं", st1_s:"एक छोटा, आसान क्विज़ दें, ताकि पता चले कि आपको पहले से क्या आता है और कहां से शुरू करना है।",
+    st2_t:"कदम-दर-कदम सीखें", st2_s:"छह मॉड्यूल क्रम से पूरे करें — एक बार में एक छोटा कौशल, अपनी भाषा में।",
+    st3_t:"अपने फ़ोन पर अभ्यास करें", st3_s:"हर कौशल को साथी के साथ खुद करके देखें: असली वीडियो कॉल करें, कागज़ स्कैन करें या परिवार के किसी सदस्य को ₹1 भेजें।",
+    st4_t:"देखें आप कितना आगे बढ़े", st4_s:"छहों मॉड्यूल पूरे होने पर अंतिम क्विज़ दें और उसे अपने पहले क्विज़ से मिलाएं।",
+    st5_t:"अपना प्रमाणपत्र पाएं", st5_s:"कोर्स और अंतिम क्विज़ पूरा करके डिजिटल साथी का पूर्णता प्रमाणपत्र (Certificate of Completion) पाएं।",
+    sa1:"क्विज़ शुरू करें", sa2:"पाठ खोलें", sa3:"मुफ़्त कार्यशाला खोजें", sa4:"अंतिम क्विज़ दें", sa5:"प्रमाणपत्र कैसे मिलता है",
+    learn_label:"सीखने की सामग्री",
+    learn_title:"<em>अपनी रफ़्तार</em> से सीखें।",
+    learn_intro:"छह चरण — पहली बार स्क्रीन छूने से लेकर आत्मविश्वास से AI इस्तेमाल करने तक। कोई चरण खोलकर देखें कि आप क्या-क्या कर पाएंगे — या सुनने के लिए “सुनें” दबाएं।",
+    jump_lessons:"पाठ", jump_quiz:"अपने कौशल जांचें", jump_card:"सुरक्षा कार्ड",
+    step_word:"चरण", skills_word:"कौशल", read_aloud:"सुनने की सुविधा", path_label:"आपका सीखने का रास्ता",
+    prev:"पिछला", next_lesson:"अगला पाठ", to_quiz:"अपने कौशल जांचें",
+    listen:"सुनें", stop:"रोकें",
+    // quizzes page and certificate
+    nav_quizzes:"क्विज़",
+    nav_cert:"प्रमाणपत्र",
+    qp_label:"क्विज़",
+    qp_back:"होम पर वापस",
+    qp_title:"खुद को परखें — <em>पहले और बाद में।</em>",
+    qp_intro:"Google फ़ॉर्म पर दो छोटे क्विज़: एक सीखना शुरू करने से पहले, एक पूरा करने के बाद — ताकि आप देख सकें कि आप कितना आगे बढ़े।",
+    pre_t:"शुरुआती क्विज़ (Pre-Assessment)",
+    pre_when:"सीखना शुरू करने से पहले दें",
+    pre_s:"जानें कि आपको पहले से क्या आता है। इसमें पास या फ़ेल नहीं होता — आप देखेंगे कि किन चरणों से शुरू करना है।",
+    pre_btn:"शुरुआती क्विज़ शुरू करें",
+    post_t:"अंतिम क्विज़ (Post-Assessment)",
+    post_when:"छहों मॉड्यूल पूरे करने के बाद दें",
+    post_s:"देखें कि आप कितना आगे बढ़े। प्रमाणपत्र के लिए {total} में से {pass} (70%) या ज़्यादा अंक लाएं — दोबारा देना मुफ़्त है।",
+    post_btn:"अंतिम क्विज़ शुरू करें",
+    post_title:"देखें आपने <em>कितना सीखा।</em>",
+    post_step:"आपकी यात्रा का चरण 4",
+    post_milestone:"अहम पड़ाव",
+    post_stat_q:"रोज़मर्रा के सवाल",
+    post_stat_min:"मिनट (लगभग)",
+    post_stat_pass:"प्रमाणपत्र के लिए (70%)",
+    post_desc:"आपने सीखने के छहों चरण पूरे कर लिए हैं। अब रोज़मर्रा के {total} सवालों से देखें कि आपने कितना सीखा।",
+    post_meta:"{total} सवाल · लगभग {min} मिनट",
+    post_start:"अंतिम क्विज़ शुरू करें",
+    post_hint:"क्विज़ एक नए पेज पर खुलेगा। अंत में आपको अपना स्कोर दिखेगा — प्रमाणपत्र के लिए इसे किसी डिजिटल साथी स्वयंसेवक को दिखाएं।",
+    pre_step:"आपकी यात्रा का चरण 1", pre_tag1:"पास-फ़ेल नहीं", pre_tag2:"बताता है कहाँ से शुरू करें",
+    pf_desc:"सीखना शुरू करने से पहले, 11 छोटे सवालों के जवाब दें। कुछ सवाल थोड़े मुश्किल हैं, और न आते हों तो कोई बात नहीं — यही तो आप यहां सीखेंगे। इससे पता चलता है कि कहां से शुरू करें।",
+    pf_cta:"शुरुआती क्विज़ शुरू करें",
+    pf_hint:"क्विज़ एक नए पेज पर खुलेगा। पूरा होने के बाद, सीखना शुरू करने के लिए यहाँ वापस आएं।",
+    pf_note:"आपके जवाब डिजिटल साथी टीम तक पहुंचते हैं, और अंत में आपको अपना स्कोर दिखता है। कभी भी अपना OTP, PIN या बैंक की जानकारी न लिखें।",
+    pre_here:"यहाँ से शुरू",
+    pre_map:"आपकी सीखने की यात्रा में छह चरण हैं। यह क्विज़ बताता है कि किस चरण से शुरू करें।",
+    post_retake:"दोबारा देना मुफ़्त",
+    cert_label:"प्रमाणपत्र",
+    cert_title:"अपना <em>प्रमाणपत्र</em> पाएं।",
+    cert_intro:"आपकी मेहनत की पहचान होनी चाहिए। डिजिटल साथी पूर्णता प्रमाणपत्र पाने के लिए ये चार काम पूरे करें।",
+    cr1:"सीखने के छहों मॉड्यूल पूरे करें।",
+    cr2:"साथी के साथ अपने फ़ोन पर प्रैक्टिकल अभ्यास करें।",
+    cr3:"अंतिम क्विज़ में {total} में से {pass} (70%) या ज़्यादा अंक लाएं — दोबारा देना मुफ़्त है।",
+    cr4:"अपना नतीजा किसी डिजिटल साथी स्वयंसेवक को दिखाएं — जांच के बाद टीम आपको बाद में प्रमाणपत्र भेजती है।",
+    cert_free:"प्रमाणपत्र मुफ़्त है। प्रमाणपत्र के लिए हम कभी पैसे, OTP या बैंक विवरण नहीं मांगेंगे।",
+    cm_sample:"नमूना",
+    cm_title:"पूर्णता प्रमाणपत्र",
+    cm_to:"यह प्रमाणपत्र दिया जाता है",
+    cm_name:"आपका नाम",
+    cm_for:"छह चरणों का डिजिटल कौशल कार्यक्रम पूरा करने के लिए",
+    cm_team:"डिजिटल साथी टीम",
+    quiz_label:"अपने डिजिटल कौशल जांचें",
+    quiz_title:"जानें आपको <em>पहले से क्या आता है।</em>",
+    quiz_intro:"11 छोटे सवालों के जवाब दें। कुछ मुश्किल हैं, और न आते हों तो कोई बात नहीं। इसमें पास या फ़ेल नहीं होता — आप देखेंगे कि आपको क्या आता है और आगे क्या सीखना है।",
+    quiz_meta:"{n} सवाल · लगभग 3 मिनट",
+
+
+
+
+
+
+
+
+
+
+
+    card_label:"जेब में रखने वाला सुरक्षा कार्ड",
+    card_title:"पांच सुनहरे <em>नियम।</em>",
+    card_intro:"इसे प्रिंट करें, फ़ोन के पास रखें, परिवार के साथ साझा करें।",
+    rule1:"अपना OTP, PIN या पासवर्ड कभी किसी को न बताएं।",
+    rule2:"पैसे लेने के लिए कभी PIN की ज़रूरत नहीं होती।",
+    rule3:"भुगतान से पहले नाम और राशि जांचें।",
+    rule4:"कोई संदेश जल्दबाज़ी कराए या डराए, तो रुकें और किसी भरोसेमंद व्यक्ति से पूछें।",
+    rule5:"ऑनलाइन ठगी हुई? 1930 पर कॉल करें या cybercrime.gov.in पर शिकायत करें।",
+    print:"यह कार्ड प्रिंट करें",
+    impact_label:"साथी की जीत",
+    impact_title:"छोटी जीत, बड़ा <em>आत्मविश्वास।</em>",
+    impact_intro:"पाँच आसान चरण — पहले क्विज़ से प्रमाणपत्र तक।",
+    fl_label:"आपकी सीखने की यात्रा: तैयारी, फिर 5 चरण", f0_t:"साथी के लिए तैयार हों", f0_s:"Gmail और Classroom तैयार करें।", gain_t:"आपको क्या मिलेगा",
+    f1_t:"शुरुआती क्विज़", f1_s:"जानें आपको पहले से क्या आता है।",
+    f2_t:"सीखने के छह मॉड्यूल", f2_s:"अपनी रफ़्तार से, कदम-दर-कदम सीखें।",
+    f3_t:"अभ्यास गतिविधियाँ", f3_s:"अपने फ़ोन पर खुद अभ्यास करें।",
+    f4_t:"अंतिम क्विज़", f4_s:"{total} में से {pass} अंक लाएं।",
+    f5_t:"प्रमाणपत्र", f5_s:"मुफ़्त — हमारी टीम आपको भेजेगी।",
+    ig1_t:"सुरक्षित पैसा", ig1_s:"धोखे पहचानें, अपनी बचत सुरक्षित रखें।",
+    ig2_t:"ज़्यादा आत्मनिर्भरता", ig2_s:"बिल भरें, सेवाएं खुद बुक करें।",
+    ig3_t:"लाभ सीधे आप तक", ig3_s:"सरकारी सेवाएं — बिना एजेंट के।",
+    ig4_t:"परिवार और करीब", ig4_s:"बच्चों और पोते-पोतियों से वीडियो कॉल।",
+    ig5_t:"बढ़ती जिज्ञासा", ig5_s:"हर दिन कुछ नया सीखें।",
+    ig6_t:"अपनी भाषा में सीखना", ig6_s:"मराठी, हिंदी या अंग्रेज़ी में।",
+    ready_t:"आज ही आपके लिए तैयार",
+    ready_lessons:"सीखने के चरण", ready_quiz:"क्विज़ सवाल", ready_lang:"भाषाएं", ready_cost:"खर्च",
+    honest:"हमारा वादा: सिर्फ़ असली कार्यशालाओं के असली आंकड़े।",
+    contact_label:"संपर्क करें",
+    contact_title:"<em>नमस्ते</em> कहिए।",
+    contact_intro:"कोई सवाल है? इनमें से किसी भी तरीके से हमसे संपर्क करें — हमें मदद करके खुशी होगी।",
+    c_wa_t:"WhatsApp मदद", c_wa_s:"कभी भी अपना सवाल भेजें।",
+    c_mail_t:"ईमेल", c_mail_s:"सीखने के सत्रों से जुड़े सवालों के लिए।",
+    c_soon:"जल्द आ रहा है",
+    c_safety:"हम आपसे कभी भी OTP, PIN, पासवर्ड या बैंक की जानकारी नहीं मांगेंगे।",
+    wk_badge:"जल्द आ रहा है",
+    wk_label:"ऑनलाइन · घर से जुड़ें", wk_title:"वर्चुअल कार्यशाला में आ रहे हैं?", wk_intro:"अपने घर से ही साथी के साथ लाइव सीखें। बस ये चीज़ें तैयार रखें:",
+    wk_1:"अपना फ़ोन, पूरा चार्ज करके।", wk_2:"इंटरनेट — Wi-Fi या मोबाइल डेटा।",
+    wk_3:"पढ़ने का चश्मा, अगर आप लगाते हैं।", wk_4:"अपने सवाल, लिखकर। कोई भी सवाल छोटा नहीं होता।",
+    wk_free:"वर्चुअल कार्यशालाएं हमेशा मुफ़्त होती हैं।", wk_soon:"तारीख़ें और जुड़ने के लिंक जल्द ही यहां दिए जाएंगे।",
+    foot_tag:"रोज़मर्रा के डिजिटल कौशल सीखें — आत्मविश्वास से, अपनी रफ़्तार से।",
+    foot_explore:"देखें", foot_lessons:"पाठ", foot_help:"अभी मदद चाहिए?",
+    foot_1930:"साइबर ठगी हेल्पलाइन: 1930", foot_portal:"ऑनलाइन शिकायत: cybercrime.gov.in",
+    foot_never:"डिजिटल साथी कभी भी आपका OTP या PIN नहीं मांगेगा।",
+    foot_project:"Nirman Lab-I प्रोजेक्ट · सामुदायिक डिजिटल साक्षरता और कौशल",
+    foot_college:"प्रथम वर्ष कंप्यूटर इंजीनियरिंग · Terna",
+    foot_top:"ऊपर जाएं"
+  },
+  mr:{
+    doc_title:"डिजिटल साथी — रोजचे डिजिटल कौशल्य शिका",
+    skip:"मुख्य मजकुराकडे जा",
+    logo_1:"डिजिटल", logo_2:"साथी", brand_tag:"शिका · सुरक्षित राहा · जोडले जा",
+    nav_label:"मुख्य मेन्यू", nav_about:"आमच्याविषयी", nav_how:"तुमचा प्रवास",
+    nav_learn:"शिका", nav_impact:"साथीचे यश", nav_contact:"संपर्क",
+    cta_workshop:"मोफत कार्यशाळेत सहभागी व्हा",
+    lang_label:"भाषा", size_label:"अक्षरांचा आकार",
+    size_1:"नेहमीची अक्षरे", size_2:"मोठी अक्षरे", size_3:"आणखी मोठी अक्षरे",
+    menu:"मेन्यू", close:"बंद करा",
+    theme_label:"स्क्रीनचा रंग", theme_light:"फिकट", theme_dark:"गडद",
+    theme_to_dark:"गडद रंग सुरू करा", theme_to_light:"फिकट रंग सुरू करा", theme_on_dark:"गडद रंग सुरू", theme_on_light:"फिकट रंग सुरू",
+    hero_eyebrow:"रोजच्या जीवनासाठी मोफत डिजिटल कौशल्ये",
+    hero_l1:"डिजिटल व्हा.", hero_l2:"सुरक्षित राहा.", hero_l3:"साथीसोबत.",
+    hero_lead:"तुमच्या गतीने शिका. आत्मविश्वास वाढवा.",
+    hero_text:"कुटुंबाला व्हिडिओ कॉल, Google वर शोध, UPI ने पैसे देणे, फसवणुकीपासून बचाव आणि AI वापरणेही शिका — सोप्या टप्प्यांत, मराठी, हिंदी किंवा इंग्रजीत.",
+    hero_cta1:"शिकायला सुरुवात करा",
+    hero_side:"डिजिटल साथी — तुमचा डिजिटल सोबती",
+    badge:"मोफत ✦ तुमच्या गतीने शिका ✦ सर्वांसाठी ✦", badge_word:"मोफत",
+    ph_lesson:"आजचा धडा", ph_title:"UPI ने सुरक्षित पैसे द्या",
+    ph_s1:"QR कोड स्कॅन करा", ph_s2:"नाव आणि रक्कम तपासा", ph_s3:"PIN टाका — कधीही सांगू नका", ph_listen:"ऐका",
+    ph_next_k:"पुढे", ph_next:"फसवा संदेश ओळखा",
+    fc_scam_t:"फसवणूक ओळखली", fc_scam_s:"“₹5000 साठी OTP सांगा” — दुर्लक्ष करा.",
+    fc_pay_t:"₹250 दिले", fc_pay_s:"नाव आणि रक्कम तपासली",
+    fact_free:"नेहमी मोफत", fact_lang:"3 भाषा", fact_offline:"इंटरनेटशिवायही चालते",
+    fact_listen:"ऐकून शिका", fact_noapp:"कोणतेही ॲप इन्स्टॉल करायची गरज नाही",
+    about_label:"डिजिटल साथीबद्दल",
+    ab_proverb:"शिकायला<br />वय नसतं.", ab_trans:"शिकायला कधीच उशीर होत नाही.", ab_src:"एक जुनी म्हण",
+    pa_from:"आधी", pa_to:"आता",
+    pa1_t:"वय हा अडथळा नाही.", pa1_from:"कोणाच्या तरी मदतीची वाट पाहणे", pa1_to:"सगळे स्वतः करणे",
+    pa2_t:"तुमचे घर, आता ऑनलाइन.", pa2_from:"प्रत्येक बिलासाठी रांग", pa2_to:"घरबसल्या एका मिनिटात पेमेंट",
+    pa3_t:"शिकवणारी स्क्रीन.", pa3_from:"उगाच स्क्रोल करत राहणे", pa3_to:"रोज काहीतरी नवीन शिकणे",
+    how_proverb:"थेंबे थेंबे तळे साचे.", how_trans:"रोज थोडे थोडे शिका — मोठा बदल घडेल.",
+    about_title:"साथी म्हणजे <em>सोबत चालणारा.</em>",
+    about_lead:"आम्ही तुमच्यासोबत चालतो — संयमाने, तुमच्या भाषेत — जोपर्यंत तुम्हाला आमची गरज उरत नाही.",
+    mission_t:"आत्मविश्वास", mission_s:"फोनची भीती नाही.",
+    vision_t:"स्वावलंबन", vision_s:"सगळे स्वतः करा.",
+    purpose_t:"कुतूहल", purpose_s:"शिकत राहा.",
+    who_1:"ज्येष्ठ नागरिक", who_2:"गृहिणी", who_3:"मुले",
+    guide_btn:"प्रत्येक कसे करायचे ते पाहा", class_btn:"Google Classroom मध्ये वर्ग उघडा", contact_us:"संपर्क करा",
+    how_label:"तुमचा साथी प्रवास",
+    how_title:"डिजिटल आत्मविश्वासाचे <em>पाच सोपे टप्पे.</em>",
+    how_intro:"ना परीक्षा, ना दडपण — फक्त रोजचे जीवन सोपे करणारी व्यावहारिक डिजिटल कौशल्ये.",
+    pr_t:"साथीसाठी तयार व्हा", pr_tag:"सुरू करण्यापूर्वी", pr_go:"तुमचा प्रवास सुरू करा",
+    pr_s:"Gmail खाते तयार करा, सुरक्षित साइन-इन करणे, तुमच्या Google Classroom मध्ये सामील होणे, आणि फॉर्म व असाइनमेंट उघडणे शिका. हे एकदाच करा, टप्पा 01 च्या आधी.",
+    st1_t:"तुम्ही कुठे आहात ते जाणून घ्या", st1_s:"एक छोटी, सोपी क्विझ द्या, म्हणजे तुम्हाला आधीच काय येते आणि कुठून सुरुवात करायची ते कळेल.",
+    st2_t:"टप्प्याटप्प्याने शिका", st2_s:"सहा मॉड्यूल क्रमाने पूर्ण करा — एका वेळी एक छोटे कौशल्य, तुमच्या भाषेत.",
+    st3_t:"तुमच्या फोनवर सराव करा", st3_s:"प्रत्येक कौशल्य साथीसोबत स्वतः करून पाहा: खरा व्हिडिओ कॉल करा, कागद स्कॅन करा किंवा घरातील व्यक्तीला ₹1 पाठवा.",
+    st4_t:"तुम्ही किती पुढे आलात ते पाहा", st4_s:"सहाही मॉड्यूल पूर्ण झाल्यावर अंतिम क्विझ द्या आणि तिची तुमच्या पहिल्या क्विझशी तुलना करा.",
+    st5_t:"तुमचे प्रमाणपत्र मिळवा", st5_s:"कोर्स आणि अंतिम क्विझ पूर्ण करून डिजिटल साथीचे पूर्णता प्रमाणपत्र (Certificate of Completion) मिळवा.",
+    sa1:"क्विझ सुरू करा", sa2:"धडे उघडा", sa3:"मोफत कार्यशाळा शोधा", sa4:"अंतिम क्विझ द्या", sa5:"प्रमाणपत्र कसे मिळते",
+    learn_label:"शिकण्याचे साहित्य",
+    learn_title:"<em>तुमच्या वेगाने</em> शिका.",
+    learn_intro:"सहा टप्पे — पहिल्यांदा स्क्रीनला स्पर्श करण्यापासून आत्मविश्वासाने AI वापरण्यापर्यंत. एखादा टप्पा उघडून पाहा तुम्ही काय काय करू शकाल — किंवा ऐकण्यासाठी “ऐका” दाबा.",
+    jump_lessons:"धडे", jump_quiz:"तुमची कौशल्ये तपासा", jump_card:"सुरक्षा कार्ड",
+    step_word:"टप्पा", skills_word:"कौशल्ये", read_aloud:"ऐकण्याची सोय", path_label:"तुमचा शिकण्याचा मार्ग",
+    prev:"मागील", next_lesson:"पुढचा धडा", to_quiz:"तुमची कौशल्ये तपासा",
+    listen:"ऐका", stop:"थांबवा",
+    // quizzes page and certificate
+    nav_quizzes:"क्विझ",
+    nav_cert:"प्रमाणपत्र",
+    qp_label:"क्विझ",
+    qp_back:"मुख्य पानावर परत",
+    qp_title:"स्वतःला तपासा — <em>आधी आणि नंतर.</em>",
+    qp_intro:"Google फॉर्मवर दोन छोट्या क्विझ: एक शिकायला सुरुवात करण्याआधी, एक पूर्ण केल्यानंतर — म्हणजे तुम्ही किती पुढे गेलात ते दिसेल.",
+    pre_t:"सुरुवातीची क्विझ (Pre-Assessment)",
+    pre_when:"शिकायला सुरुवात करण्याआधी द्या",
+    pre_s:"तुम्हाला आधीच काय येते ते जाणून घ्या. यात पास-नापास नाही — कोणत्या टप्प्यांपासून सुरुवात करायची ते दिसेल.",
+    pre_btn:"सुरुवातीची क्विझ सुरू करा",
+    post_t:"अंतिम क्विझ (Post-Assessment)",
+    post_when:"सहाही मॉड्यूल पूर्ण केल्यानंतर द्या",
+    post_s:"तुम्ही किती पुढे आलात ते पाहा. प्रमाणपत्रासाठी {total} पैकी {pass} (70%) किंवा जास्त गुण मिळवा — पुन्हा देणे मोफत आहे.",
+    post_btn:"अंतिम क्विझ सुरू करा",
+    post_title:"पाहा तुम्ही <em>किती शिकलात.</em>",
+    post_step:"तुमच्या प्रवासाचा टप्पा 4",
+    post_milestone:"महत्त्वाचा टप्पा",
+    post_stat_q:"रोजचे प्रश्न",
+    post_stat_min:"मिनिटे (सुमारे)",
+    post_stat_pass:"प्रमाणपत्रासाठी (70%)",
+    post_desc:"तुम्ही शिकण्याचे सहाही टप्पे पूर्ण केले आहेत. आता रोजच्या {total} प्रश्नांतून पाहा की तुम्ही किती शिकलात.",
+    post_meta:"{total} प्रश्न · सुमारे {min} मिनिटे",
+    post_start:"अंतिम क्विझ सुरू करा",
+    post_hint:"क्विझ नवीन पेजवर उघडेल. शेवटी तुम्हाला तुमचे गुण दिसतील — प्रमाणपत्रासाठी ते डिजिटल साथीच्या स्वयंसेवकाला दाखवा.",
+    pre_step:"तुमच्या प्रवासाचा टप्पा 1", pre_tag1:"पास-नापास नाही", pre_tag2:"कुठून सुरुवात करायची ते दाखवते",
+    pf_desc:"शिकायला सुरुवात करण्याआधी, 11 छोट्या प्रश्नांची उत्तरे द्या. काही प्रश्न थोडे अवघड आहेत, आणि येत नसतील तरी हरकत नाही — तेच तुम्ही इथे शिकाल. कुठून सुरुवात करायची ते त्यातून कळते.",
+    pf_cta:"सुरुवातीची क्विझ सुरू करा",
+    pf_hint:"क्विझ नवीन पेजवर उघडेल. पूर्ण झाल्यावर, शिकायला सुरुवात करण्यासाठी इथे परत या.",
+    pf_note:"तुमची उत्तरे डिजिटल साथी टीमपर्यंत पोहोचतात, आणि शेवटी तुम्हाला तुमचे गुण दिसतात. कधीही तुमचा OTP, PIN किंवा बँकेची माहिती लिहू नका.",
+    pre_here:"इथून सुरुवात",
+    pre_map:"तुमच्या शिकण्याच्या प्रवासात सहा टप्पे आहेत. कोणत्या टप्प्यापासून सुरुवात करायची ते ही क्विझ दाखवते.",
+    post_retake:"पुन्हा देणे मोफत",
+    cert_label:"प्रमाणपत्र",
+    cert_title:"तुमचे <em>प्रमाणपत्र</em> मिळवा.",
+    cert_intro:"तुमच्या मेहनतीची दखल घेतली पाहिजे. डिजिटल साथी पूर्णता प्रमाणपत्र मिळवण्यासाठी या चार गोष्टी पूर्ण करा.",
+    cr1:"शिकण्याचे सहाही मॉड्यूल पूर्ण करा.",
+    cr2:"साथीसोबत तुमच्या फोनवर प्रत्यक्ष सराव करा.",
+    cr3:"अंतिम क्विझमध्ये {total} पैकी {pass} (70%) किंवा जास्त गुण मिळवा — पुन्हा देणे मोफत आहे.",
+    cr4:"तुमचा निकाल डिजिटल साथीच्या स्वयंसेवकाला दाखवा — तपासल्यानंतर टीम तुम्हाला नंतर प्रमाणपत्र पाठवते.",
+    cert_free:"प्रमाणपत्र मोफत आहे. प्रमाणपत्रासाठी आम्ही कधीही पैसे, OTP किंवा बँक माहिती मागणार नाही.",
+    cm_sample:"नमुना",
+    cm_title:"पूर्णता प्रमाणपत्र",
+    cm_to:"हे प्रमाणपत्र प्रदान केले जाते",
+    cm_name:"तुमचे नाव",
+    cm_for:"सहा टप्प्यांचा डिजिटल कौशल्य कार्यक्रम पूर्ण केल्याबद्दल",
+    cm_team:"डिजिटल साथी टीम",
+    quiz_label:"तुमची डिजिटल कौशल्ये तपासा",
+    quiz_title:"तुम्हाला <em>आधीच काय येते</em> ते जाणून घ्या.",
+    quiz_intro:"11 छोट्या प्रश्नांची उत्तरे द्या. काही अवघड आहेत, आणि येत नसतील तरी हरकत नाही. यात पास-नापास नाही — तुम्हाला काय येते आणि पुढे काय शिकायचे ते दिसेल.",
+    quiz_meta:"{n} प्रश्न · सुमारे 3 मिनिटे",
+
+
+
+
+
+
+
+
+
+
+
+    card_label:"खिशात ठेवायचे सुरक्षा कार्ड",
+    card_title:"पाच सोनेरी <em>नियम.</em>",
+    card_intro:"हे प्रिंट करा, फोनजवळ ठेवा, घरच्यांसोबत शेअर करा.",
+    rule1:"तुमचा OTP, PIN किंवा पासवर्ड कधीही कोणालाही सांगू नका.",
+    rule2:"पैसे घेण्यासाठी कधीही PIN लागत नाही.",
+    rule3:"पैसे देण्याआधी नाव आणि रक्कम तपासा.",
+    rule4:"एखादा संदेश घाई करायला लावत असेल किंवा घाबरवत असेल, तर थांबा आणि विश्वासातल्या व्यक्तीला विचारा.",
+    rule5:"ऑनलाइन फसवणूक झाली? 1930 वर कॉल करा किंवा cybercrime.gov.in वर तक्रार करा.",
+    print:"हे कार्ड प्रिंट करा",
+    impact_label:"साथीचे यश",
+    impact_title:"छोटे यश, मोठा <em>आत्मविश्वास.</em>",
+    impact_intro:"पाच सोपे टप्पे — पहिल्या क्विझपासून प्रमाणपत्रापर्यंत.",
+    fl_label:"तुमचा शिकण्याचा प्रवास: तयारी, मग 5 टप्पे", f0_t:"साथीसाठी तयार व्हा", f0_s:"Gmail आणि Classroom तयार करा.", gain_t:"तुम्हाला काय मिळेल",
+    f1_t:"सुरुवातीची क्विझ", f1_s:"तुम्हाला आधीच काय येते ते जाणून घ्या.",
+    f2_t:"शिकण्याचे सहा मॉड्यूल", f2_s:"तुमच्या वेगाने, टप्प्याटप्प्याने शिका.",
+    f3_t:"प्रात्यक्षिक सराव", f3_s:"तुमच्या फोनवर स्वतः सराव करा.",
+    f4_t:"अंतिम क्विझ", f4_s:"{total} पैकी {pass} गुण मिळवा.",
+    f5_t:"प्रमाणपत्र", f5_s:"मोफत — आमची टीम तुम्हाला पाठवेल.",
+    ig1_t:"सुरक्षित पैसा", ig1_s:"फसवणूक ओळखा, तुमची बचत सुरक्षित ठेवा.",
+    ig2_t:"अधिक स्वावलंबन", ig2_s:"बिले भरा, सेवा स्वतः बुक करा.",
+    ig3_t:"लाभ थेट तुमच्यापर्यंत", ig3_s:"सरकारी सेवा — एजंटशिवाय.",
+    ig4_t:"कुटुंब आणखी जवळ", ig4_s:"मुले आणि नातवंडांशी व्हिडिओ कॉल.",
+    ig5_t:"वाढते कुतूहल", ig5_s:"रोज काहीतरी नवीन शिका.",
+    ig6_t:"तुमच्या भाषेत शिकणे", ig6_s:"मराठी, हिंदी किंवा इंग्रजीत.",
+    ready_t:"आजच तुमच्यासाठी तयार",
+    ready_lessons:"शिकण्याचे टप्पे", ready_quiz:"क्विझ प्रश्न", ready_lang:"भाषा", ready_cost:"खर्च",
+    honest:"आमचे वचन: फक्त खऱ्या कार्यशाळांचे खरे आकडे.",
+    contact_label:"संपर्क करा",
+    contact_title:"<em>नमस्कार</em> म्हणा.",
+    contact_intro:"काही प्रश्न आहे? यापैकी कोणत्याही मार्गाने आमच्याशी संपर्क साधा — मदत करायला आम्हाला आनंद होईल.",
+    c_wa_t:"WhatsApp मदत", c_wa_s:"केव्हाही तुमचा प्रश्न पाठवा.",
+    c_mail_t:"ईमेल", c_mail_s:"शिकण्याच्या सत्रांबद्दलच्या प्रश्नांसाठी.",
+    c_soon:"लवकरच येत आहे",
+    c_safety:"आम्ही तुमच्याकडे कधीही OTP, PIN, पासवर्ड किंवा बँकेची माहिती मागणार नाही.",
+    wk_badge:"लवकरच येत आहे",
+    wk_label:"ऑनलाइन · घरूनच सहभागी व्हा", wk_title:"व्हर्च्युअल कार्यशाळेला येताय?", wk_intro:"घरबसल्या साथीसोबत थेट शिका. फक्त या गोष्टी तयार ठेवा:",
+    wk_1:"तुमचा स्वतःचा फोन, पूर्ण चार्ज करून.", wk_2:"इंटरनेट — Wi-Fi किंवा मोबाइल डेटा.",
+    wk_3:"वाचनाचा चष्मा, तुम्ही वापरत असाल तर.", wk_4:"तुमचे प्रश्न, लिहून ठेवलेले. कोणताही प्रश्न लहान नसतो.",
+    wk_free:"व्हर्च्युअल कार्यशाळा नेहमी मोफत असतात.", wk_soon:"तारखा आणि सहभागी होण्याच्या लिंक लवकरच इथे दिल्या जातील.",
+    foot_tag:"रोजची डिजिटल कौशल्ये शिका — आत्मविश्वासाने, तुमच्या गतीने.",
+    foot_explore:"पाहा", foot_lessons:"धडे", foot_help:"आत्ता मदत हवी आहे?",
+    foot_1930:"सायबर फसवणूक हेल्पलाइन: 1930", foot_portal:"ऑनलाइन तक्रार: cybercrime.gov.in",
+    foot_never:"डिजिटल साथी कधीही तुमचा OTP किंवा PIN मागणार नाही.",
+    foot_project:"Nirman Lab-I प्रकल्प · सामुदायिक डिजिटल साक्षरता आणि कौशल्ये",
+    foot_college:"प्रथम वर्ष कॉम्प्युटर इंजिनिअरिंग · Terna",
+    foot_top:"वर जा"
+  }
+};
+
+// LEARNING PATH — the final approved Steps 01–06 ("Steps Digital Saathi", 8 Nov 2026).
+// Every point is [emoji, the approved point (word for word), a short how-to].
+// Hindi and Marathi are faithful translations of the approved English points.
+// The step cards show each step's emojis; the lesson window shows every point with its how-to.
+const LESSONS = {
+  en:[
+    {id:"phone", title:"Smartphone Basics", topics:[
+      ["🆘", "Send an SOS in one press and show emergency contacts on your lock screen", "On Android open Settings → Safety & emergency (the name varies by phone) → Emergency SOS. Pressing the power button 5 times quickly then calls for help. Add emergency contacts and medical information there so they show on your lock screen. On iPhone, use the Health app → Medical ID."],
+      ["🔠", "Make text bigger and let your phone read it aloud", "Settings → Display → Font size makes the letters bigger. Turn on Select to Speak in Settings → Accessibility, then tap any text to hear it read aloud. (iPhone: Spoken Content.)"],
+      ["📷", "Turn your camera into a document scanner", "In the Google Drive app tap + → Scan and point the camera at the paper. It becomes a clear PDF you can send on WhatsApp. On iPhone, use Notes → Scan Documents."],
+      ["📌", "Lock your phone to one app before handing it to a child", "Turn on App pinning in Settings → Security (search for “pin”). Open the app, go to Recent apps, tap its icon and choose Pin. The child cannot leave that app without your PIN. (iPhone: Guided Access.)"],
+      ["💊", "Set medicine and bill reminders just by speaking", "Say “Hey Google, remind me to take my medicine every day at 9 am” or “Remind me to pay the electricity bill on the 5th”. Your phone will remind you on time."],
+      ["🔋", "Make your battery last the whole day", "Turn on Battery Saver in Settings → Battery, keep the screen brightness low and close apps you are not using. Switch off Location and Bluetooth when you don't need them."]
+    ]},
+    {id:"google", title:"Google, Gmail & YouTube", topics:[
+      ["🔍", "Point your camera to translate, identify or copy anything", "Tap the camera icon (Google Lens) in the Google search bar and point it at a sign, a medicine strip or a plant. Choose Translate, Search or Text to translate it, find out what it is, or copy the words."],
+      ["🗺️", "Find the nearest hospital, pharmacy or bus route in seconds", "Open Google Maps and type “hospital near me” or “pharmacy near me”. For buses, type where you want to go and tap the bus icon to see routes and timings, where available."],
+      ["🧒", "Make YouTube safe for children", "For young children, use the YouTube Kids app. On regular YouTube, turn on Restricted Mode in Settings → General to hide videos meant for adults."],
+      ["🔐", "Never get locked out of your Google account", "In Settings → Google → Manage your Google Account → Security, add a recovery phone number and a recovery email. Write your password down and keep it somewhere safe at home."],
+      ["📧", "Create your Gmail account and use Google Forms and Classroom", "In the Gmail app tap Create account. With the same account you can fill in Google Forms sent by a school or office, and join a Google Classroom with the class code your teacher gives you."],
+      ["🗣️", "Ask Google questions in your own language by voice", "Tap the microphone in the Google app and speak in Hindi, Marathi or English. To get results in your language, choose it in the Google app's Settings."]
+    ]},
+    {id:"family", title:"Communication with family & friends", topics:[
+      ["📍", "Share your live location until you reach home", "In a WhatsApp chat tap 📎 → Location → Share live location and choose how long (for example 1 hour). Your family can follow you on the map until you reach home."],
+      ["💾", "Never lose your WhatsApp chats and family photos", "In WhatsApp go to Settings → Chats → Chat backup and turn on a daily backup to Google Drive (iPhone: iCloud). Turn on backup in Google Photos too, so your photos stay safe even if the phone is lost."],
+      ["🔕", "Mute noisy groups and stop strangers adding you to groups", "Tap a group's name → Mute notifications → Always. Then in WhatsApp Settings → Privacy → Groups choose “My contacts”, so strangers cannot add you."],
+      ["📵", "Silence calls from unknown numbers on WhatsApp", "Turn on Silence unknown callers in WhatsApp Settings → Privacy → Calls. Calls from numbers not in your contacts won't ring, but they still show in your call list."],
+      ["🖥️", "Share your screen on a video call to get help", "During a WhatsApp video call tap the share-screen button, so a family member can see your screen and guide you. Close bank and payment apps before you share."],
+      ["🔗", "Join a class or family meeting with just a link", "When someone sends a Google Meet or Zoom link, tap it at the meeting time. Allow the camera and microphone, check your name and tap Join."]
+    ]},
+    {id:"safety", title:"Stay safe online", topics:[
+      ["🚨", "Don’t fall for the “digital arrest” scam", "Police, the CBI or courts never arrest anyone on a video call or ask for money to “settle a case”. If someone in uniform threatens you on a call, hang up and call 1930 or your local police."],
+      ["🚩", "Spot fake KYC, electricity bill and parcel messages", "Messages like “your KYC is expiring”, “your electricity will be cut tonight” or “your parcel is stuck” with a link or a number are fake. Check only in the official app or at the office."],
+      ["🎭", "Set a family code word against fake voice calls", "Scammers can copy a voice using AI. Agree on a secret family code word. If a “relative” calls asking for money urgently, ask for the word — or hang up and call them back on the number you know."],
+      ["📲", "Never install an app from a link someone sends you", "Install apps only from the Play Store or App Store. An .apk file sent on WhatsApp or SMS can take over your phone and your bank account — never open one."],
+      ["🔑", "Create strong passwords you can actually remember", "Join three or four unrelated words with numbers, like “Mango-River-Lamp-47”. It is long, strong and easy to remember. Use a different password for every account."],
+      ["🔐", "Lock your WhatsApp and Gmail with two-step verification", "WhatsApp: Settings → Account → Two-step verification → Turn on, and set a 6-digit PIN. Gmail: Google Account → Security → 2-Step Verification."],
+      ["🎮", "Say no to strangers in games and chats", "Children: never tell people you meet in games or chats your name, school, photos or address, and tell a parent if someone asks. Parents: keep chat settings to friends only."],
+      ["📢", "Lost money? Call 1930 within the first hour", "The first hour after a fraud matters most. Call 1930 (the National Cyber Crime Helpline) or report at cybercrime.gov.in, and call your bank to block your card or UPI."]
+    ]},
+    {id:"money", title:"Digital payments & government services", topics:[
+      ["💳", "Check the receiver’s name before you pay by QR", "After scanning a QR code, read the name that appears on the screen. If it is not the shop or person you expect, cancel. Check the amount too before you enter your PIN."],
+      ["🔴", "You never need a PIN to receive money", "Your UPI PIN is only for sending money. If anyone asks you to enter your PIN or scan a code to “receive” money, it is a scam."],
+      ["⚡", "Make small payments without a PIN using UPI Lite", "Turn on UPI Lite in your UPI app and add a small balance. Small payments, like tea or vegetables, then go through with one tap, without entering your PIN."],
+      ["🔄", "Pay electricity, gas and mobile bills on time with autopay", "In your UPI app open Bills & recharges, choose the bill and turn on AutoPay. You get a message before each payment, and you can stop it any time."],
+      ["👪", "Let family members pay from your UPI with a limit", "With UPI Circle, add a trusted family member and set a monthly limit. They can pay from your account up to that limit, and you can remove them any time."],
+      ["👴", "Submit your pension life certificate from home with a face scan", "Pensioners can submit the life certificate with the Jeevan Pramaan and AadhaarFaceRD apps by scanning their face with the phone camera — no bank visit needed."],
+      ["🏥", "Get free treatment cover with the Ayushman card", "Under Ayushman Bharat, everyone aged 70 and above can get the Ayushman Vay Vandana card for free hospital treatment cover. Apply in the Ayushman app or at beneficiary.nha.gov.in, or at a nearby hospital or CSC."],
+      ["📁", "Keep Aadhaar, PAN and certificates safe in DigiLocker", "Sign in to DigiLocker (the app or digilocker.gov.in) with your Aadhaar-linked mobile number. Official copies of your Aadhaar, PAN, driving licence and certificates are kept there and accepted as valid."]
+    ]},
+    {id:"ai", title:"AI tools & family digital safety", topics:[
+      ["🗣️", "Talk to AI in Hindi or Marathi, just by speaking", "Open the Gemini or ChatGPT app, tap the microphone and speak in Hindi or Marathi. Ask it to reply in the same language, and listen to the answer."],
+      ["👪", "Set up Family Link to guide your child’s phone", "Install Google Family Link on your phone and link your child's phone. You can set screen-time limits, approve the apps they download and see where the phone is."],
+      ["📚", "Use AI as a tutor, not a cheat sheet", "Instead of asking AI to write homework, ask it to explain a topic step by step or to test you. For example: “Explain fractions with a simple example, then give me 3 questions to try.”"],
+      ["🙅", "Never share private details with AI chatbots", "Never type your OTP, passwords, Aadhaar, bank details or family photos into an AI chat. Treat it like talking to a stranger."],
+      ["🕵️", "Spot fake AI photos, videos and news forwards", "AI can make fake photos, videos and voices. Before forwarding, look for odd hands or faces, check trusted news websites, and don't share if you are not sure."],
+      ["🍲", "Plan meals with whatever is in your kitchen", "Tell AI what you have — “I have rice, dal, onion and tomato, suggest a quick dinner” — and it will suggest simple recipes and steps."],
+      ["⌚", "Smartwatches for Child Safety & Location Tracking", "Choose a GPS smartwatch made for children and set it up with the watch maker’s official app. Your child can call you with one tap or hold SOS in an emergency, and you can see their location in the app. Add only trusted family members as contacts, never share the location publicly, charge it every night — and remember it never replaces an adult’s care."]
+    ]}
+  ],
+  hi:[
+    {id:"phone", title:"स्मार्टफ़ोन की बुनियादी बातें", topics:[
+      ["🆘", "एक बटन से SOS भेजें और लॉक स्क्रीन पर इमरजेंसी कॉन्टैक्ट दिखाएं", "Android में Settings → Safety & emergency (नाम फ़ोन के हिसाब से बदल सकता है) → Emergency SOS खोलें। फिर पावर बटन 5 बार जल्दी दबाने पर मदद के लिए कॉल चला जाता है। यहीं इमरजेंसी कॉन्टैक्ट और मेडिकल जानकारी जोड़ें, ताकि वे लॉक स्क्रीन पर दिखें। iPhone में Health ऐप → Medical ID इस्तेमाल करें।"],
+      ["🔠", "अक्षर बड़े करें और फ़ोन से पढ़कर सुनें", "Settings → Display → Font size से अक्षर बड़े करें। Settings → Accessibility में Select to Speak चालू करें, फिर किसी भी लिखे हुए पर टैप करके उसे सुनें। (iPhone: Spoken Content)"],
+      ["📷", "अपने कैमरे को डॉक्यूमेंट स्कैनर बनाएं", "Google Drive ऐप में + → Scan दबाएं और कागज़ की ओर कैमरा करें। वह साफ़ PDF बन जाता है, जिसे WhatsApp पर भेज सकते हैं। iPhone में Notes → Scan Documents इस्तेमाल करें।"],
+      ["📌", "बच्चे को फ़ोन देने से पहले उसे एक ही ऐप में लॉक करें", "Settings → Security में App pinning चालू करें (सर्च में “pin” लिखें)। ऐप खोलें, Recent apps में उसके आइकन पर टैप करें और Pin चुनें। आपके PIN के बिना बच्चा उस ऐप से बाहर नहीं जा पाएगा। (iPhone: Guided Access)"],
+      ["💊", "सिर्फ़ बोलकर दवा और बिल के रिमाइंडर लगाएं", "बोलें: “Hey Google, रोज़ सुबह 9 बजे दवा लेने की याद दिलाओ” या “5 तारीख को बिजली का बिल भरने की याद दिलाओ”। फ़ोन सही समय पर याद दिला देगा।"],
+      ["🔋", "बैटरी पूरे दिन चलाएं", "Settings → Battery में Battery Saver चालू करें, स्क्रीन की रोशनी कम रखें और जो ऐप इस्तेमाल नहीं कर रहे उन्हें बंद करें। ज़रूरत न हो तो Location और Bluetooth बंद रखें।"]
+    ]},
+    {id:"google", title:"Google, Gmail और YouTube", topics:[
+      ["🔍", "कैमरे से किसी भी चीज़ का अनुवाद करें, उसे पहचानें या कॉपी करें", "Google सर्च बार में कैमरा आइकन (Google Lens) दबाएं और किसी बोर्ड, दवा की पट्टी या पौधे की ओर करें। Translate, Search या Text चुनकर अनुवाद करें, जानें कि वह क्या है, या शब्द कॉपी करें।"],
+      ["🗺️", "पास का अस्पताल, दवा की दुकान या बस का रास्ता पलों में खोजें", "Google Maps खोलें और “hospital near me” या “pharmacy near me” लिखें। बस के लिए जहां जाना है वह लिखें और बस आइकन पर टैप करें — जहां उपलब्ध हो, रास्ते और समय दिखेंगे।"],
+      ["🧒", "YouTube को बच्चों के लिए सुरक्षित बनाएं", "छोटे बच्चों के लिए YouTube Kids ऐप इस्तेमाल करें। साधारण YouTube में Settings → General → Restricted Mode चालू करें, ताकि बड़ों के लिए बने वीडियो छिप जाएं।"],
+      ["🔐", "अपने Google खाते से कभी लॉक आउट न हों", "Settings → Google → Manage your Google Account → Security में रिकवरी फ़ोन नंबर और रिकवरी ईमेल जोड़ें। अपना पासवर्ड लिखकर घर पर किसी सुरक्षित जगह रखें।"],
+      ["📧", "अपना Gmail खाता बनाएं और Google Forms व Classroom इस्तेमाल करें", "Gmail ऐप में Create account दबाएं। इसी खाते से आप स्कूल या दफ़्तर के भेजे Google Forms भर सकते हैं, और शिक्षक के दिए class code से Google Classroom से जुड़ सकते हैं।"],
+      ["🗣️", "अपनी भाषा में बोलकर Google से सवाल पूछें", "Google ऐप में माइक दबाएं और हिंदी, मराठी या अंग्रेज़ी में बोलें। नतीजे अपनी भाषा में पाने के लिए Google ऐप की Settings में भाषा चुनें।"]
+    ]},
+    {id:"family", title:"परिवार और दोस्तों से बातचीत", topics:[
+      ["📍", "घर पहुंचने तक अपनी लाइव लोकेशन शेयर करें", "WhatsApp चैट में 📎 → Location → Share live location चुनें और समय तय करें (जैसे 1 घंटा)। घर पहुंचने तक परिवार आपको मैप पर देख सकेगा।"],
+      ["💾", "WhatsApp चैट और परिवार की फ़ोटो कभी न खोएं", "WhatsApp में Settings → Chats → Chat backup खोलें और Google Drive पर रोज़ का बैकअप चालू करें (iPhone: iCloud)। Google Photos में भी बैकअप चालू करें, ताकि फ़ोन खो जाए तब भी फ़ोटो सुरक्षित रहें।"],
+      ["🔕", "शोर करने वाले ग्रुप म्यूट करें और अनजान लोगों को आपको ग्रुप में जोड़ने से रोकें", "ग्रुप के नाम पर टैप करें → Mute notifications → Always। फिर WhatsApp Settings → Privacy → Groups में “My contacts” चुनें, ताकि अनजान लोग आपको जोड़ न सकें।"],
+      ["📵", "WhatsApp पर अनजान नंबरों की कॉल साइलेंट करें", "WhatsApp Settings → Privacy → Calls में Silence unknown callers चालू करें। जो नंबर आपके कॉन्टैक्ट में नहीं हैं, उनकी कॉल बजेगी नहीं, पर कॉल लिस्ट में दिखेगी।"],
+      ["🖥️", "मदद पाने के लिए वीडियो कॉल पर अपनी स्क्रीन शेयर करें", "WhatsApp वीडियो कॉल के दौरान स्क्रीन-शेयर बटन दबाएं, ताकि परिवार का कोई सदस्य आपकी स्क्रीन देखकर समझा सके। शेयर करने से पहले बैंक और पेमेंट ऐप बंद कर दें।"],
+      ["🔗", "सिर्फ़ एक लिंक से क्लास या परिवार की मीटिंग से जुड़ें", "कोई Google Meet या Zoom का लिंक भेजे, तो मीटिंग के समय उस पर टैप करें। कैमरा और माइक की अनुमति दें, अपना नाम जांचें और Join दबाएं।"]
+    ]},
+    {id:"safety", title:"ऑनलाइन सुरक्षित रहें", topics:[
+      ["🚨", "“डिजिटल अरेस्ट” वाले धोखे में न फंसें", "पुलिस, CBI या अदालत कभी वीडियो कॉल पर किसी को गिरफ़्तार नहीं करती और “केस निपटाने” के लिए पैसे नहीं मांगती। कॉल पर वर्दी में कोई धमकाए, तो कॉल काटें और 1930 या स्थानीय पुलिस को फ़ोन करें।"],
+      ["🚩", "नकली KYC, बिजली बिल और पार्सल वाले संदेश पहचानें", "“आपका KYC खत्म हो रहा है”, “आज रात बिजली कट जाएगी” या “आपका पार्सल अटका है” — लिंक या नंबर वाले ऐसे संदेश नकली होते हैं। सिर्फ़ आधिकारिक ऐप में या दफ़्तर जाकर ही जांचें।"],
+      ["🎭", "नकली आवाज़ वाली कॉल से बचने के लिए परिवार का कोड वर्ड तय करें", "ठग AI से किसी की आवाज़ की नकल कर सकते हैं। परिवार में एक गुप्त कोड वर्ड तय करें। कोई “रिश्तेदार” जल्दी में पैसे मांगे, तो कोड वर्ड पूछें — या कॉल काटकर उनके जाने-पहचाने नंबर पर वापस कॉल करें।"],
+      ["📲", "किसी के भेजे लिंक से कभी कोई ऐप इंस्टॉल न करें", "ऐप सिर्फ़ Play Store या App Store से इंस्टॉल करें। WhatsApp या SMS पर आई .apk फ़ाइल आपके फ़ोन और बैंक खाते पर कब्ज़ा कर सकती है — उसे कभी न खोलें।"],
+      ["🔑", "ऐसे मज़बूत पासवर्ड बनाएं जो सच में याद रहें", "3–4 अलग-अलग शब्दों को अंकों के साथ जोड़ें, जैसे “Mango-River-Lamp-47”। यह लंबा, मज़बूत और याद रखने में आसान है। हर खाते का पासवर्ड अलग रखें।"],
+      ["🔐", "WhatsApp और Gmail को टू-स्टेप वेरिफ़िकेशन से लॉक करें", "WhatsApp: Settings → Account → Two-step verification → Turn on, और 6 अंकों का PIN रखें। Gmail: Google Account → Security → 2-Step Verification चालू करें।"],
+      ["🎮", "गेम और चैट में अनजान लोगों को ना कहें", "बच्चे: गेम या चैट में मिले लोगों को अपना नाम, स्कूल, फ़ोटो या पता कभी न बताएं, और कोई पूछे तो माता-पिता को बताएं। माता-पिता: चैट की सेटिंग सिर्फ़ दोस्तों तक रखें।"],
+      ["📢", "पैसे गए? पहले घंटे के अंदर 1930 पर कॉल करें", "धोखे के बाद का पहला घंटा सबसे ज़रूरी है। 1930 (राष्ट्रीय साइबर अपराध हेल्पलाइन) पर कॉल करें या cybercrime.gov.in पर शिकायत करें, और बैंक को फ़ोन करके कार्ड या UPI ब्लॉक कराएं।"]
+    ]},
+    {id:"money", title:"डिजिटल भुगतान और सरकारी सेवाएं", topics:[
+      ["💳", "QR से भुगतान करने से पहले पाने वाले का नाम जांचें", "QR कोड स्कैन करने के बाद स्क्रीन पर आया नाम पढ़ें। अगर वह वही दुकान या व्यक्ति नहीं है जिसकी आपको उम्मीद थी, तो रद्द करें। PIN डालने से पहले राशि भी जांचें।"],
+      ["🔴", "पैसे लेने के लिए कभी PIN की ज़रूरत नहीं होती", "UPI PIN सिर्फ़ पैसे भेजने के लिए है। अगर कोई पैसे “पाने” के लिए PIN डालने या कोड स्कैन करने को कहे, तो वह धोखा है।"],
+      ["⚡", "UPI Lite से छोटे भुगतान बिना PIN के करें", "अपने UPI ऐप में UPI Lite चालू करें और उसमें थोड़ी राशि डालें। फिर चाय या सब्ज़ी जैसे छोटे भुगतान बिना PIN डाले, एक टैप में हो जाते हैं।"],
+      ["🔄", "ऑटोपे से बिजली, गैस और मोबाइल के बिल समय पर भरें", "UPI ऐप में Bills & recharges खोलें, बिल चुनें और AutoPay चालू करें। हर भुगतान से पहले संदेश आएगा, और आप इसे कभी भी बंद कर सकते हैं।"],
+      ["👪", "परिवार के सदस्यों को सीमा के साथ अपने UPI से भुगतान करने दें", "UPI Circle में किसी भरोसेमंद परिजन को जोड़ें और महीने की सीमा तय करें। वे उस सीमा तक आपके खाते से भुगतान कर सकेंगे, और आप उन्हें कभी भी हटा सकते हैं।"],
+      ["👴", "चेहरे के स्कैन से घर बैठे पेंशन का जीवन प्रमाणपत्र जमा करें", "पेंशनभोगी Jeevan Pramaan और AadhaarFaceRD ऐप से फ़ोन के कैमरे के सामने चेहरा स्कैन करके जीवन प्रमाणपत्र जमा कर सकते हैं — बैंक जाने की ज़रूरत नहीं।"],
+      ["🏥", "आयुष्मान कार्ड से मुफ़्त इलाज का कवर पाएं", "आयुष्मान भारत के तहत 70 साल और उससे ज़्यादा उम्र के सभी लोग मुफ़्त इलाज के कवर के लिए आयुष्मान वय वंदना कार्ड पा सकते हैं। Ayushman ऐप या beneficiary.nha.gov.in पर, या पास के अस्पताल या CSC पर आवेदन करें।"],
+      ["📁", "आधार, PAN और प्रमाणपत्र DigiLocker में सुरक्षित रखें", "आधार से जुड़े मोबाइल नंबर से DigiLocker (ऐप या digilocker.gov.in) में साइन इन करें। आपके आधार, PAN, ड्राइविंग लाइसेंस और प्रमाणपत्रों की आधिकारिक कॉपी वहां रहती है और मान्य होती है।"]
+    ]},
+    {id:"ai", title:"AI टूल और परिवार की डिजिटल सुरक्षा", topics:[
+      ["🗣️", "बस बोलकर AI से हिंदी या मराठी में बात करें", "Gemini या ChatGPT ऐप खोलें, माइक दबाएं और हिंदी या मराठी में बोलें। उसी भाषा में जवाब देने को कहें और जवाब सुनें।"],
+      ["👪", "बच्चे के फ़ोन के मार्गदर्शन के लिए Family Link सेट करें", "अपने फ़ोन में Google Family Link लगाएं और बच्चे का फ़ोन जोड़ें। आप स्क्रीन टाइम की सीमा तय कर सकते हैं, बच्चे के डाउनलोड किए जाने वाले ऐप मंज़ूर कर सकते हैं और देख सकते हैं कि फ़ोन कहां है।"],
+      ["📚", "AI को ट्यूटर की तरह इस्तेमाल करें, नकल के लिए नहीं", "AI से होमवर्क लिखवाने की बजाय विषय को कदम-दर-कदम समझाने या आपकी परीक्षा लेने को कहें। जैसे: “भिन्न (fractions) को आसान उदाहरण से समझाओ, फिर मुझे 3 सवाल दो।”"],
+      ["🙅", "AI चैटबॉट के साथ निजी जानकारी कभी साझा न करें", "AI चैट में कभी अपना OTP, पासवर्ड, आधार, बैंक विवरण या परिवार की फ़ोटो न डालें। इसे किसी अनजान व्यक्ति से बात करने जैसा समझें।"],
+      ["🕵️", "नकली AI फ़ोटो, वीडियो और फॉरवर्ड की गई खबरें पहचानें", "AI नकली फ़ोटो, वीडियो और आवाज़ बना सकता है। फॉरवर्ड करने से पहले अजीब हाथ या चेहरे देखें, भरोसेमंद समाचार वेबसाइटों पर जांचें, और पक्का न हो तो शेयर न करें।"],
+      ["🍲", "रसोई में जो है उसी से खाने की योजना बनाएं", "AI को बताएं कि आपके पास क्या है — “मेरे पास चावल, दाल, प्याज़ और टमाटर हैं, जल्दी बनने वाला खाना बताओ” — वह आसान रेसिपी और तरीका बता देगा।"],
+      ["⌚", "बच्चों की सुरक्षा और लोकेशन ट्रैकिंग के लिए स्मार्टवॉच", "बच्चों के लिए बनी GPS स्मार्टवॉच चुनें और उसे घड़ी बनाने वाली कंपनी के आधिकारिक ऐप से सेट करें। बच्चा एक टैप में आपको कॉल कर सकता है या मुसीबत में SOS दबाकर रख सकता है, और आप ऐप में उसकी लोकेशन देख सकते हैं। कॉन्टैक्ट में सिर्फ़ भरोसेमंद परिजन जोड़ें, लोकेशन कभी सबके साथ शेयर न करें, हर रात घड़ी चार्ज करें — और याद रखें, यह किसी बड़े की देखभाल की जगह नहीं ले सकती।"]
+    ]}
+  ],
+  mr:[
+    {id:"phone", title:"स्मार्टफोनच्या मूलभूत गोष्टी", topics:[
+      ["🆘", "एका बटणाने SOS पाठवा आणि लॉक स्क्रीनवर आपत्कालीन संपर्क दाखवा", "Android मध्ये Settings → Safety & emergency (नाव फोननुसार बदलू शकते) → Emergency SOS उघडा. मग पॉवर बटण 5 वेळा पटापट दाबल्यावर मदतीसाठी कॉल जातो. इथेच आपत्कालीन संपर्क आणि वैद्यकीय माहिती जोडा, म्हणजे ती लॉक स्क्रीनवर दिसेल. iPhone मध्ये Health ॲप → Medical ID वापरा."],
+      ["🔠", "अक्षरे मोठी करा आणि फोनकडून वाचून ऐका", "Settings → Display → Font size ने अक्षरे मोठी करा. Settings → Accessibility मध्ये Select to Speak सुरू करा, मग कोणत्याही मजकुरावर टॅप करून तो ऐका. (iPhone: Spoken Content)"],
+      ["📷", "तुमच्या कॅमेऱ्याला डॉक्युमेंट स्कॅनर बनवा", "Google Drive ॲपमध्ये + → Scan दाबा आणि कागदाकडे कॅमेरा धरा. त्याची स्पष्ट PDF तयार होते, जी WhatsApp वर पाठवता येते. iPhone मध्ये Notes → Scan Documents वापरा."],
+      ["📌", "मुलाच्या हातात फोन देण्याआधी तो एकाच ॲपमध्ये लॉक करा", "Settings → Security मध्ये App pinning सुरू करा (शोधात “pin” लिहा). ॲप उघडा, Recent apps मध्ये त्याच्या आयकॉनवर टॅप करा आणि Pin निवडा. तुमच्या PIN शिवाय मूल त्या ॲपमधून बाहेर जाऊ शकणार नाही. (iPhone: Guided Access)"],
+      ["💊", "फक्त बोलून औषध आणि बिलांचे रिमाइंडर लावा", "बोला: “Hey Google, रोज सकाळी 9 वाजता औषध घ्यायची आठवण कर” किंवा “5 तारखेला वीज बिल भरायची आठवण कर”. फोन वेळेवर आठवण करून देईल."],
+      ["🔋", "बॅटरी दिवसभर टिकवा", "Settings → Battery मध्ये Battery Saver सुरू करा, स्क्रीनचा प्रकाश कमी ठेवा आणि वापरत नसलेली ॲप्स बंद करा. गरज नसेल तेव्हा Location आणि Bluetooth बंद ठेवा."]
+    ]},
+    {id:"google", title:"Google, Gmail आणि YouTube", topics:[
+      ["🔍", "कॅमेऱ्याने कशाचाही अनुवाद करा, ते ओळखा किंवा कॉपी करा", "Google सर्च बारमधील कॅमेरा आयकॉन (Google Lens) दाबा आणि एखादा फलक, औषधाची पट्टी किंवा झाडाकडे धरा. Translate, Search किंवा Text निवडून अनुवाद करा, ते काय आहे ते जाणून घ्या, किंवा शब्द कॉपी करा."],
+      ["🗺️", "जवळचे रुग्णालय, औषधाचे दुकान किंवा बसचा मार्ग क्षणात शोधा", "Google Maps उघडा आणि “hospital near me” किंवा “pharmacy near me” लिहा. बससाठी जिथे जायचे ते लिहा आणि बस आयकॉनवर टॅप करा — उपलब्ध असेल तिथे मार्ग आणि वेळा दिसतील."],
+      ["🧒", "YouTube मुलांसाठी सुरक्षित करा", "लहान मुलांसाठी YouTube Kids ॲप वापरा. नेहमीच्या YouTube मध्ये Settings → General → Restricted Mode सुरू करा, म्हणजे मोठ्यांसाठीचे व्हिडिओ लपतील."],
+      ["🔐", "तुमच्या Google खात्यातून कधीही लॉक आउट होऊ नका", "Settings → Google → Manage your Google Account → Security मध्ये रिकव्हरी फोन नंबर आणि रिकव्हरी ईमेल जोडा. तुमचा पासवर्ड लिहून घरी सुरक्षित ठिकाणी ठेवा."],
+      ["📧", "तुमचे Gmail खाते तयार करा आणि Google Forms व Classroom वापरा", "Gmail ॲपमध्ये Create account दाबा. याच खात्याने शाळा किंवा कार्यालयाने पाठवलेले Google Forms भरता येतात, आणि शिक्षकांनी दिलेल्या class code ने Google Classroom मध्ये सामील होता येते."],
+      ["🗣️", "तुमच्या भाषेत बोलून Google ला प्रश्न विचारा", "Google ॲपमध्ये माइक दाबा आणि मराठी, हिंदी किंवा इंग्रजीत बोला. निकाल तुमच्या भाषेत मिळवण्यासाठी Google ॲपच्या Settings मध्ये भाषा निवडा."]
+    ]},
+    {id:"family", title:"कुटुंब आणि मित्रांशी संवाद", topics:[
+      ["📍", "घरी पोहोचेपर्यंत तुमचे लाइव्ह लोकेशन शेअर करा", "WhatsApp चॅटमध्ये 📎 → Location → Share live location निवडा आणि वेळ ठरवा (जसे 1 तास). घरी पोहोचेपर्यंत कुटुंब तुम्हाला नकाशावर पाहू शकेल."],
+      ["💾", "WhatsApp चॅट आणि कुटुंबाचे फोटो कधीही गमावू नका", "WhatsApp मध्ये Settings → Chats → Chat backup उघडा आणि Google Drive वर रोजचा बॅकअप सुरू करा (iPhone: iCloud). Google Photos मध्येही बॅकअप सुरू करा, म्हणजे फोन हरवला तरी फोटो सुरक्षित राहतील."],
+      ["🔕", "गोंगाट करणारे ग्रुप म्यूट करा आणि अनोळखी लोकांना तुम्हाला ग्रुपमध्ये जोडण्यापासून थांबवा", "ग्रुपच्या नावावर टॅप करा → Mute notifications → Always. मग WhatsApp Settings → Privacy → Groups मध्ये “My contacts” निवडा, म्हणजे अनोळखी लोक तुम्हाला जोडू शकणार नाहीत."],
+      ["📵", "WhatsApp वर अनोळखी नंबरचे कॉल सायलेंट करा", "WhatsApp Settings → Privacy → Calls मध्ये Silence unknown callers सुरू करा. तुमच्या कॉन्टॅक्टमध्ये नसलेल्या नंबरचे कॉल वाजणार नाहीत, पण कॉल लिस्टमध्ये दिसतील."],
+      ["🖥️", "मदत मिळवण्यासाठी व्हिडिओ कॉलवर तुमची स्क्रीन शेअर करा", "WhatsApp व्हिडिओ कॉल सुरू असताना स्क्रीन-शेअर बटण दाबा, म्हणजे घरातील कोणी तुमची स्क्रीन पाहून समजावून सांगू शकेल. शेअर करण्याआधी बँक आणि पेमेंट ॲप्स बंद करा."],
+      ["🔗", "फक्त एका लिंकने वर्ग किंवा कुटुंबाच्या मीटिंगमध्ये सामील व्हा", "कोणी Google Meet किंवा Zoom ची लिंक पाठवली, तर मीटिंगच्या वेळी तिच्यावर टॅप करा. कॅमेरा आणि माइकला परवानगी द्या, तुमचे नाव तपासा आणि Join दाबा."]
+    ]},
+    {id:"safety", title:"ऑनलाइन सुरक्षित राहा", topics:[
+      ["🚨", "“डिजिटल अरेस्ट” फसवणुकीला बळी पडू नका", "पोलीस, CBI किंवा न्यायालय कधीही व्हिडिओ कॉलवर कोणाला अटक करत नाही आणि “केस मिटवण्यासाठी” पैसे मागत नाही. कॉलवर गणवेशातील कोणी धमकावले, तर कॉल कट करा आणि 1930 किंवा स्थानिक पोलिसांना फोन करा."],
+      ["🚩", "बनावट KYC, वीज बिल आणि पार्सलचे संदेश ओळखा", "“तुमचे KYC संपत आहे”, “आज रात्री वीज कापली जाईल” किंवा “तुमचे पार्सल अडकले आहे” — लिंक किंवा नंबर असलेले असे संदेश बनावट असतात. फक्त अधिकृत ॲपमध्ये किंवा कार्यालयात जाऊनच तपासा."],
+      ["🎭", "बनावट आवाजातील कॉलपासून वाचण्यासाठी कुटुंबाचा कोड वर्ड ठरवा", "फसवणूक करणारे AI ने एखाद्याच्या आवाजाची नक्कल करू शकतात. कुटुंबात एक गुप्त कोड वर्ड ठरवा. कोणी “नातेवाईक” तातडीने पैसे मागत असेल, तर कोड वर्ड विचारा — किंवा कॉल कट करून त्यांच्या ओळखीच्या नंबरवर परत कॉल करा."],
+      ["📲", "कोणी पाठवलेल्या लिंकवरून कधीही ॲप इन्स्टॉल करू नका", "ॲप्स फक्त Play Store किंवा App Store मधूनच इन्स्टॉल करा. WhatsApp किंवा SMS वर आलेली .apk फाइल तुमच्या फोनचा आणि बँक खात्याचा ताबा घेऊ शकते — ती कधीही उघडू नका."],
+      ["🔑", "खरोखर लक्षात राहतील असे मजबूत पासवर्ड तयार करा", "3–4 वेगवेगळे शब्द अंकांसोबत जोडा, जसे “Mango-River-Lamp-47”. तो लांब, मजबूत आणि लक्षात ठेवायला सोपा असतो. प्रत्येक खात्याचा पासवर्ड वेगळा ठेवा."],
+      ["🔐", "WhatsApp आणि Gmail ला टू-स्टेप व्हेरिफिकेशनने लॉक करा", "WhatsApp: Settings → Account → Two-step verification → Turn on, आणि 6 अंकी PIN ठेवा. Gmail: Google Account → Security → 2-Step Verification सुरू करा."],
+      ["🎮", "गेम आणि चॅटमधील अनोळखी लोकांना नाही म्हणा", "मुलांनो: गेम किंवा चॅटमध्ये भेटलेल्या लोकांना तुमचे नाव, शाळा, फोटो किंवा पत्ता कधीही सांगू नका, आणि कोणी विचारले तर आई-वडिलांना सांगा. पालकांनो: चॅटची सेटिंग फक्त मित्रांपुरती ठेवा."],
+      ["📢", "पैसे गेले? पहिल्या तासाच्या आत 1930 वर कॉल करा", "फसवणुकीनंतरचा पहिला तास सर्वात महत्त्वाचा असतो. 1930 (राष्ट्रीय सायबर गुन्हे हेल्पलाइन) वर कॉल करा किंवा cybercrime.gov.in वर तक्रार करा, आणि बँकेला फोन करून कार्ड किंवा UPI ब्लॉक करा."]
+    ]},
+    {id:"money", title:"डिजिटल पेमेंट आणि सरकारी सेवा", topics:[
+      ["💳", "QR ने पैसे देण्याआधी घेणाऱ्याचे नाव तपासा", "QR कोड स्कॅन केल्यावर स्क्रीनवर आलेले नाव वाचा. ते अपेक्षित दुकान किंवा व्यक्ती नसेल, तर रद्द करा. PIN टाकण्याआधी रक्कमही तपासा."],
+      ["🔴", "पैसे घेण्यासाठी कधीही PIN लागत नाही", "UPI PIN फक्त पैसे पाठवण्यासाठी असतो. कोणी पैसे “मिळवण्यासाठी” PIN टाकायला किंवा कोड स्कॅन करायला सांगत असेल, तर ती फसवणूक आहे."],
+      ["⚡", "UPI Lite ने छोटी पेमेंट्स PIN शिवाय करा", "तुमच्या UPI ॲपमध्ये UPI Lite सुरू करा आणि त्यात थोडी रक्कम टाका. मग चहा किंवा भाजीसारखी छोटी पेमेंट्स PIN न टाकता, एका टॅपमध्ये होतात."],
+      ["🔄", "ऑटोपेने वीज, गॅस आणि मोबाइलची बिले वेळेवर भरा", "UPI ॲपमध्ये Bills & recharges उघडा, बिल निवडा आणि AutoPay सुरू करा. प्रत्येक पेमेंटआधी संदेश येईल, आणि तुम्ही ते कधीही बंद करू शकता."],
+      ["👪", "कुटुंबातील सदस्यांना मर्यादेसह तुमच्या UPI मधून पैसे देऊ द्या", "UPI Circle मध्ये एखाद्या विश्वासू नातेवाइकाला जोडा आणि महिन्याची मर्यादा ठरवा. ते त्या मर्यादेपर्यंत तुमच्या खात्यातून पैसे देऊ शकतील, आणि तुम्ही त्यांना कधीही काढून टाकू शकता."],
+      ["👴", "चेहरा स्कॅन करून घरबसल्या पेन्शनचा हयातीचा दाखला जमा करा", "पेन्शनधारक Jeevan Pramaan आणि AadhaarFaceRD ॲपद्वारे फोनच्या कॅमेऱ्यासमोर चेहरा स्कॅन करून हयातीचा दाखला जमा करू शकतात — बँकेत जायची गरज नाही."],
+      ["🏥", "आयुष्मान कार्डने मोफत उपचारांचे कवच मिळवा", "आयुष्मान भारत अंतर्गत 70 वर्षे व त्याहून अधिक वयाच्या सर्वांना मोफत उपचारांच्या कवचासाठी आयुष्मान वय वंदना कार्ड मिळू शकते. Ayushman ॲप किंवा beneficiary.nha.gov.in वर, किंवा जवळच्या रुग्णालयात किंवा CSC वर अर्ज करा."],
+      ["📁", "आधार, PAN आणि प्रमाणपत्रे DigiLocker मध्ये सुरक्षित ठेवा", "आधारशी जोडलेल्या मोबाइल नंबरने DigiLocker (ॲप किंवा digilocker.gov.in) मध्ये साइन इन करा. तुमच्या आधार, PAN, ड्रायव्हिंग लायसन्स आणि प्रमाणपत्रांच्या अधिकृत प्रती तिथे राहतात आणि त्या ग्राह्य धरल्या जातात."]
+    ]},
+    {id:"ai", title:"AI टूल्स आणि कुटुंबाची डिजिटल सुरक्षा", topics:[
+      ["🗣️", "फक्त बोलून AI शी हिंदी किंवा मराठीत संवाद साधा", "Gemini किंवा ChatGPT ॲप उघडा, माइक दाबा आणि मराठी किंवा हिंदीत बोला. त्याच भाषेत उत्तर द्यायला सांगा आणि उत्तर ऐका."],
+      ["👪", "मुलाच्या फोनवर मार्गदर्शनासाठी Family Link सेट करा", "तुमच्या फोनवर Google Family Link लावा आणि मुलाचा फोन जोडा. तुम्ही स्क्रीन टाइमची मर्यादा ठरवू शकता, मूल डाउनलोड करणारी ॲप्स मंजूर करू शकता आणि फोन कुठे आहे ते पाहू शकता."],
+      ["📚", "AI चा वापर शिक्षकासारखा करा, कॉपीसाठी नाही", "AI कडून गृहपाठ लिहून घेण्याऐवजी विषय टप्प्याटप्प्याने समजावून सांगायला किंवा तुमची परीक्षा घ्यायला सांगा. जसे: “अपूर्णांक (fractions) सोप्या उदाहरणाने समजावून सांग, मग मला 3 प्रश्न दे.”"],
+      ["🙅", "AI चॅटबॉटला खासगी माहिती कधीही देऊ नका", "AI चॅटमध्ये कधीही तुमचा OTP, पासवर्ड, आधार, बँक माहिती किंवा कुटुंबाचे फोटो टाकू नका. अनोळखी व्यक्तीशी बोलत आहात असे समजा."],
+      ["🕵️", "बनावट AI फोटो, व्हिडिओ आणि फॉरवर्ड केलेल्या बातम्या ओळखा", "AI बनावट फोटो, व्हिडिओ आणि आवाज तयार करू शकते. फॉरवर्ड करण्याआधी विचित्र हात किंवा चेहरे पाहा, विश्वासार्ह बातम्यांच्या वेबसाइटवर तपासा, आणि खात्री नसेल तर शेअर करू नका."],
+      ["🍲", "स्वयंपाकघरात जे आहे त्यातूनच जेवणाचे नियोजन करा", "AI ला सांगा तुमच्याकडे काय आहे — “माझ्याकडे तांदूळ, डाळ, कांदा आणि टोमॅटो आहेत, पटकन होणारे जेवण सुचव” — ते सोप्या रेसिपी आणि कृती सांगेल."],
+      ["⌚", "मुलांच्या सुरक्षिततेसाठी आणि लोकेशन ट्रॅकिंगसाठी स्मार्टवॉच", "मुलांसाठी बनवलेले GPS स्मार्टवॉच निवडा आणि ते घड्याळ बनवणाऱ्या कंपनीच्या अधिकृत ॲपने सेट करा. मूल एका टॅपमध्ये तुम्हाला कॉल करू शकते किंवा संकटात SOS दाबून ठेवू शकते, आणि तुम्ही ॲपमध्ये त्याचे लोकेशन पाहू शकता. संपर्कांमध्ये फक्त विश्वासू नातेवाईक जोडा, लोकेशन कधीही सर्वांसोबत शेअर करू नका, रोज रात्री घड्याळ चार्ज करा — आणि लक्षात ठेवा, ते मोठ्या व्यक्तीच्या काळजीची जागा घेत नाही."]
+    ]}
+  ]
+};
+
+// POST-ASSESSMENT — the 20 everyday questions of the Post-Assessment Google Form (made from this data by
+// google-form/post-assessment-form.gs), grouped by the six learning steps (3 + 3 + 3 + 4 + 4 + 3). On the page they
+// only count {total} and {pass}. Eight of them (marked “anchor” in the guide) re-test concepts from the Pre-Assessment
+// in simpler everyday words, so learning can be compared; the other twelve are new.
+// POST_QUIZ_KEY is the same in every language: the learning step that teaches the question (suggested when it is
+// missed) and the right answer (0 = first option). POST_QUIZ holds the words: question, 4 options, a short tip.
+const POST_QUIZ_KEY = [
+  {lesson:"phone", answer:1}, {lesson:"phone", answer:2}, {lesson:"phone", answer:0}, {lesson:"google", answer:3},
+  {lesson:"google", answer:0}, {lesson:"google", answer:2}, {lesson:"family", answer:1}, {lesson:"family", answer:3},
+  {lesson:"family", answer:0}, {lesson:"safety", answer:2}, {lesson:"safety", answer:3}, {lesson:"safety", answer:0},
+  {lesson:"safety", answer:1}, {lesson:"money", answer:2}, {lesson:"money", answer:0}, {lesson:"money", answer:3},
+  {lesson:"money", answer:1}, {lesson:"ai", answer:1}, {lesson:"ai", answer:2}, {lesson:"ai", answer:3}
+];
+const POST_QUIZ = {
+  en:[
+    {q:"You feel unsafe and want to call for help fast. Your Android phone has Emergency SOS turned on. What do you do?",
+     options:["Press the volume button once", "Press the power button 5 times quickly", "Shake the phone twice", "Open the camera app"],
+     tip:"With Emergency SOS turned on, pressing the power button 5 times quickly calls for help. Add emergency contacts in Settings → Safety & emergency."},
+    {q:"Your grandson wants to watch one video on your phone. You want him to stay only in that app. What helps?",
+     options:["Turn on Airplane mode", "Turn on Battery Saver", "Turn on App pinning and pin the app", "Turn on Dark mode"],
+     tip:"App pinning keeps the phone on one app. The child cannot leave it without your PIN. (iPhone: Guided Access.)"},
+    {q:"You often forget to take your medicine at 9 am. What is an easy way to remember?",
+     options:["Say “Hey Google, remind me to take my medicine every day at 9 am”", "Switch the phone to silent", "Lock the screen with a PIN", "Turn on Battery Saver"],
+     tip:"You can set a reminder just by speaking. The phone reminds you on time."},
+    {q:"A shop board is written in a language you cannot read. How can your phone camera help?",
+     options:["Take a photo and email it to yourself", "Turn on Restricted Mode", "Open Google Forms", "Point Google Lens at the board and tap Translate"],
+     tip:"Tap the camera icon (Google Lens) in the Google search bar, point it at the words and choose Translate."},
+    {q:"Your 6-year-old granddaughter wants to watch videos on your phone. Which app is made for young children?",
+     options:["YouTube Kids", "Gmail", "Google Maps", "Google Meet"],
+     tip:"YouTube Kids shows videos made for children. On normal YouTube you can turn on Restricted Mode."},
+    {q:"You do not want to be locked out of your Google account if you forget the password. What should you add?",
+     options:["A new profile photo", "A longer name", "A recovery phone number and a recovery email", "A second Gmail with the same password"],
+     tip:"A recovery phone number and email help Google let you back in. Keep your password written down in a safe place at home."},
+    {q:"You are walking home late and want your family to follow you on the map. What do you do in a WhatsApp chat?",
+     options:["Change your Status", "Tap 📎 → Location → Share live location", "Turn off “Last seen”", "Send a voice note every hour"],
+     tip:"Your family can follow you on the map until you reach home. You choose how long to share, for example 1 hour."},
+    {q:"Strangers keep adding you to WhatsApp groups. What can you do to stop it?",
+     options:["Delete your WhatsApp account", "Reply to each stranger", "Mute every group", "Go to Settings → Privacy → Groups and choose “My contacts”"],
+     tip:"With “My contacts”, only people in your contacts can add you to a group."},
+    {q:"You are getting a new phone. You do not want to lose your WhatsApp chats and family photos. What should you do first?",
+     options:["Turn on chat backup and photo backup", "Delete WhatsApp", "Remove your SIM card", "Nothing, they always come back on their own"],
+     tip:"Turn on WhatsApp chat backup (Google Drive on Android, iCloud on iPhone) and backup in Google Photos."},
+    {q:"A call sounds exactly like your daughter. She cries and asks for money right now. What is the safest first step?",
+     options:["Send the money, then ask questions later", "Believe her because it is her voice", "Hang up and call her back on her own number, or ask for your family code word", "Ask her to send a selfie"],
+     tip:"Scammers can copy a voice using AI. Use a family code word, or call back on the number you know."},
+    {q:"Someone cheated you online and took your money. Which helpline should you call to report it?",
+     options:["108", "1091", "1098", "1930"],
+     tip:"1930 is the National Cyber Crime Helpline. Call in the first hour, and call your bank to block your card or UPI."},
+    {q:"On a video call, a person in police uniform says you are under “digital arrest” and must pay money. What is true?",
+     options:["Police never arrest anyone on a video call. Hang up and call 1930 or your local police", "Pay quickly to avoid jail", "Give your Aadhaar number to prove you are innocent", "Stay on the call until they finish"],
+     tip:"Police, the CBI or courts never arrest anyone on a video call and never ask for money to “settle a case”."},
+    {q:"You get an SMS: “Your KYC expires today. Tap this link now.” What is the safest thing to do?",
+     options:["Tap the link quickly", "Do not tap. Check only in your bank's official app or at the branch", "Call the number in the SMS", "Forward it to your friends"],
+     tip:"Messages that rush you about KYC, bills or parcels are fake. Check only in the official app or at the office."},
+    {q:"You buy tea and vegetables every day. Which UPI feature lets you pay small amounts with one tap and no PIN?",
+     options:["UPI Circle", "AutoPay", "UPI Lite", "Net banking"],
+     tip:"Add a small balance to UPI Lite once. Small payments then go through in one tap, without a PIN."},
+    {q:"A stranger says: “Scan this QR code and enter your UPI PIN to receive ₹2,000.” What is true?",
+     options:["You never need your PIN to receive money. It is a scam", "You must enter your PIN to get the money", "It is safe if the amount is small", "It is safe because it is a QR code"],
+     tip:"Your UPI PIN is only for sending money. Anyone who asks for it to “send” you money is a fraud."},
+    {q:"Where can you keep official copies of your Aadhaar, PAN and certificates safely on your phone?",
+     options:["In a family WhatsApp group", "In your photo gallery with no lock", "In an email to a friend", "In DigiLocker"],
+     tip:"Sign in to DigiLocker with your Aadhaar-linked mobile number. Official copies kept there are accepted as valid."},
+    {q:"Your father is a pensioner and finds it hard to go to the bank for his life certificate. What can he do?",
+     options:["Send his passbook by courier", "Submit it from home with a face scan in the Jeevan Pramaan app", "Ask a neighbour to sign for him", "Wait until the bank calls him"],
+     tip:"Pensioners can submit the life certificate from home with the Jeevan Pramaan and AadhaarFaceRD apps. No bank visit is needed."},
+    {q:"A shocking photo is forwarded to you on WhatsApp. Which sign can show it was made by AI?",
+     options:["It is very colourful", "It has strange-looking hands or faces", "A friend sent it", "It was sent in a group"],
+     tip:"AI can make fake photos and videos. Look for odd hands or faces, and check trusted news websites before you forward."},
+    {q:"Which of these should you NEVER type into an AI chat app?",
+     options:["A recipe question", "A homework question", "Your OTP, password or bank details", "A question in Marathi"],
+     tip:"Treat an AI chat like a stranger. Never type your OTP, passwords, Aadhaar, bank details or family photos."},
+    {q:"Your child wears a GPS smartwatch. Which is a safe way to use it?",
+     options:["Post the watch's map on social media", "Share the app password with neighbours", "Stop watching over your child, because the watch is enough", "Add only trusted family members as contacts and keep the location private"],
+     tip:"Location is sensitive, so keep it private and use only trusted contacts. A watch never replaces an adult's care."}
+  ],
+  hi:[
+    {q:"आपको डर लग रहा है और आप जल्दी मदद के लिए कॉल करना चाहते हैं। आपके Android फ़ोन में Emergency SOS चालू है। आप क्या करेंगे?",
+     options:["वॉल्यूम बटन एक बार दबाएं", "पावर बटन 5 बार जल्दी दबाएं", "फ़ोन को दो बार हिलाएं", "कैमरा ऐप खोलें"],
+     tip:"Emergency SOS चालू होने पर पावर बटन 5 बार जल्दी दबाने से मदद के लिए कॉल चला जाता है। Settings → Safety & emergency में इमरजेंसी कॉन्टैक्ट जोड़ें।"},
+    {q:"आपका पोता आपके फ़ोन पर एक वीडियो देखना चाहता है। आप चाहते हैं कि वह सिर्फ़ उसी ऐप में रहे। क्या मदद करेगा?",
+     options:["Airplane mode चालू करना", "Battery Saver चालू करना", "App pinning चालू करके ऐप को पिन करना", "Dark mode चालू करना"],
+     tip:"App pinning फ़ोन को एक ही ऐप में रोके रखता है। आपके PIN के बिना बच्चा उससे बाहर नहीं जा सकता। (iPhone: Guided Access)"},
+    {q:"आप अक्सर सुबह 9 बजे की दवा लेना भूल जाते हैं। याद रखने का आसान तरीका क्या है?",
+     options:["बोलें: “Hey Google, रोज़ सुबह 9 बजे दवा लेने की याद दिलाओ”", "फ़ोन को साइलेंट करें", "स्क्रीन को PIN से लॉक करें", "Battery Saver चालू करें"],
+     tip:"आप सिर्फ़ बोलकर रिमाइंडर लगा सकते हैं। फ़ोन सही समय पर याद दिला देता है।"},
+    {q:"दुकान के बोर्ड पर ऐसी भाषा में लिखा है जो आप पढ़ नहीं सकते। फ़ोन का कैमरा कैसे मदद कर सकता है?",
+     options:["फ़ोटो खींचकर खुद को ईमेल करें", "Restricted Mode चालू करें", "Google Forms खोलें", "बोर्ड की ओर Google Lens करें और Translate दबाएं"],
+     tip:"Google सर्च बार में कैमरा आइकन (Google Lens) दबाएं, शब्दों की ओर कैमरा करें और Translate चुनें।"},
+    {q:"आपकी 6 साल की पोती आपके फ़ोन पर वीडियो देखना चाहती है। छोटे बच्चों के लिए बना ऐप कौन-सा है?",
+     options:["YouTube Kids", "Gmail", "Google Maps", "Google Meet"],
+     tip:"YouTube Kids में बच्चों के लिए बने वीडियो दिखते हैं। साधारण YouTube में Restricted Mode चालू कर सकते हैं।"},
+    {q:"पासवर्ड भूलने पर आप अपने Google खाते से लॉक आउट नहीं होना चाहते। आपको क्या जोड़ना चाहिए?",
+     options:["नई प्रोफ़ाइल फ़ोटो", "लंबा नाम", "रिकवरी फ़ोन नंबर और रिकवरी ईमेल", "उसी पासवर्ड वाला दूसरा Gmail"],
+     tip:"रिकवरी फ़ोन नंबर और ईमेल से Google आपको वापस अंदर आने में मदद करता है। अपना पासवर्ड लिखकर घर पर सुरक्षित जगह रखें।"},
+    {q:"आप देर शाम पैदल घर लौट रहे हैं और चाहते हैं कि परिवार आपको मैप पर देखे। WhatsApp चैट में आप क्या करेंगे?",
+     options:["अपना Status बदलेंगे", "📎 → Location → Share live location दबाएंगे", "“Last seen” बंद करेंगे", "हर घंटे एक वॉइस नोट भेजेंगे"],
+     tip:"घर पहुंचने तक परिवार आपको मैप पर देख सकता है। कितनी देर शेयर करना है, यह आप तय करते हैं — जैसे 1 घंटा।"},
+    {q:"अनजान लोग आपको बार-बार WhatsApp ग्रुप में जोड़ रहे हैं। इसे रोकने के लिए आप क्या कर सकते हैं?",
+     options:["अपना WhatsApp खाता डिलीट करें", "हर अनजान को जवाब दें", "हर ग्रुप म्यूट करें", "Settings → Privacy → Groups में “My contacts” चुनें"],
+     tip:"“My contacts” चुनने पर सिर्फ़ आपके कॉन्टैक्ट में मौजूद लोग ही आपको ग्रुप में जोड़ सकते हैं।"},
+    {q:"आप नया फ़ोन ले रहे हैं। आप अपने WhatsApp चैट और परिवार की फ़ोटो खोना नहीं चाहते। सबसे पहले क्या करना चाहिए?",
+     options:["चैट बैकअप और फ़ोटो बैकअप चालू करें", "WhatsApp डिलीट करें", "अपना SIM कार्ड निकाल दें", "कुछ नहीं, वे अपने आप वापस आ जाते हैं"],
+     tip:"WhatsApp का चैट बैकअप (Android में Google Drive, iPhone में iCloud) और Google Photos का बैकअप चालू करें।"},
+    {q:"एक कॉल की आवाज़ बिल्कुल आपकी बेटी जैसी है। वह रोते हुए अभी पैसे मांग रही है। सबसे सुरक्षित पहला कदम क्या है?",
+     options:["पहले पैसे भेज दें, सवाल बाद में पूछें", "उसकी आवाज़ है, इसलिए मान लें", "कॉल काटकर उसके अपने नंबर पर फ़ोन करें, या परिवार का कोड वर्ड पूछें", "उससे सेल्फ़ी भेजने को कहें"],
+     tip:"ठग AI से आवाज़ की नकल कर सकते हैं। परिवार का कोड वर्ड पूछें, या अपने जाने-पहचाने नंबर पर वापस कॉल करें।"},
+    {q:"किसी ने ऑनलाइन आपके साथ धोखा करके आपके पैसे ले लिए। इसकी शिकायत के लिए आपको कौन-सी हेल्पलाइन पर कॉल करना चाहिए?",
+     options:["108", "1091", "1098", "1930"],
+     tip:"1930 राष्ट्रीय साइबर अपराध हेल्पलाइन है। पहले घंटे में कॉल करें, और बैंक को भी फ़ोन करके कार्ड या UPI ब्लॉक कराएं।"},
+    {q:"वीडियो कॉल पर वर्दी में एक व्यक्ति कहता है कि आप “डिजिटल अरेस्ट” में हैं और पैसे देने होंगे। सच क्या है?",
+     options:["पुलिस कभी वीडियो कॉल पर गिरफ़्तार नहीं करती। कॉल काटें और 1930 या स्थानीय पुलिस को फ़ोन करें", "जेल से बचने के लिए जल्दी पैसे भरें", "बेगुनाही साबित करने के लिए अपना आधार नंबर बताएं", "वे जब तक चाहें, कॉल पर बने रहें"],
+     tip:"पुलिस, CBI या अदालत कभी वीडियो कॉल पर गिरफ़्तार नहीं करती और “केस निपटाने” के लिए पैसे नहीं मांगती।"},
+    {q:"आपको SMS आता है: “आपका KYC आज खत्म हो रहा है। अभी यह लिंक दबाएं।” सबसे सुरक्षित क्या करना है?",
+     options:["जल्दी से लिंक दबाएं", "लिंक न दबाएं। सिर्फ़ अपने बैंक के आधिकारिक ऐप में या शाखा में जाकर जांचें", "SMS में दिए नंबर पर कॉल करें", "इसे अपने दोस्तों को फॉरवर्ड करें"],
+     tip:"KYC, बिल या पार्सल को लेकर जल्दी मचाने वाले संदेश नकली होते हैं। सिर्फ़ आधिकारिक ऐप में या दफ़्तर जाकर जांचें।"},
+    {q:"आप रोज़ चाय और सब्ज़ी खरीदते हैं। UPI की कौन-सी सुविधा से छोटे भुगतान एक टैप में, बिना PIN के हो जाते हैं?",
+     options:["UPI Circle", "AutoPay", "UPI Lite", "नेट बैंकिंग"],
+     tip:"UPI Lite में एक बार थोड़ी राशि डालें। फिर छोटे भुगतान बिना PIN के, एक टैप में हो जाते हैं।"},
+    {q:"एक अनजान व्यक्ति कहता है: “₹2,000 पाने के लिए यह QR कोड स्कैन करें और अपना UPI PIN डालें।” सच क्या है?",
+     options:["पैसे पाने के लिए PIN की कभी ज़रूरत नहीं होती। यह धोखा है", "पैसे पाने के लिए PIN डालना ज़रूरी है", "राशि छोटी हो तो यह सुरक्षित है", "QR कोड है, इसलिए यह सुरक्षित है"],
+     tip:"UPI PIN सिर्फ़ पैसे भेजने के लिए है। जो पैसे “भेजने” के लिए PIN मांगे, वह ठग है।"},
+    {q:"आधार, PAN और प्रमाणपत्रों की आधिकारिक कॉपी अपने फ़ोन में सुरक्षित कहां रख सकते हैं?",
+     options:["परिवार के WhatsApp ग्रुप में", "बिना लॉक वाली फ़ोटो गैलरी में", "किसी दोस्त को भेजे ईमेल में", "DigiLocker में"],
+     tip:"आधार से जुड़े मोबाइल नंबर से DigiLocker में साइन इन करें। वहां रखी आधिकारिक कॉपी मान्य होती है।"},
+    {q:"आपके पिता पेंशनभोगी हैं और जीवन प्रमाणपत्र के लिए बैंक जाना उन्हें मुश्किल लगता है। वे क्या कर सकते हैं?",
+     options:["पासबुक कूरियर से भेजें", "Jeevan Pramaan ऐप में चेहरा स्कैन करके घर से जमा करें", "पड़ोसी से उनके लिए हस्ताक्षर करवाएं", "बैंक के फ़ोन करने का इंतज़ार करें"],
+     tip:"पेंशनभोगी Jeevan Pramaan और AadhaarFaceRD ऐप से घर बैठे जीवन प्रमाणपत्र जमा कर सकते हैं — बैंक जाने की ज़रूरत नहीं।"},
+    {q:"WhatsApp पर आपको एक चौंकाने वाली फ़ोटो फॉरवर्ड होकर आई है। कौन-सा संकेत बता सकता है कि वह AI से बनी है?",
+     options:["वह बहुत रंगीन है", "उसमें अजीब दिखते हाथ या चेहरे हैं", "किसी दोस्त ने भेजी है", "वह किसी ग्रुप में भेजी गई थी"],
+     tip:"AI नकली फ़ोटो और वीडियो बना सकता है। अजीब हाथ या चेहरे देखें, और फॉरवर्ड करने से पहले भरोसेमंद समाचार वेबसाइटों पर जांचें।"},
+    {q:"इनमें से कौन-सी चीज़ AI चैट ऐप में आपको कभी नहीं लिखनी चाहिए?",
+     options:["रेसिपी का सवाल", "होमवर्क का सवाल", "आपका OTP, पासवर्ड या बैंक की जानकारी", "मराठी में कोई सवाल"],
+     tip:"AI चैट को अनजान व्यक्ति जैसा समझें। उसमें कभी OTP, पासवर्ड, आधार, बैंक की जानकारी या परिवार की फ़ोटो न डालें।"},
+    {q:"आपका बच्चा GPS स्मार्टवॉच पहनता है। इसे इस्तेमाल करने का सुरक्षित तरीका कौन-सा है?",
+     options:["घड़ी का मैप सोशल मीडिया पर डालना", "ऐप का पासवर्ड पड़ोसियों को देना", "बच्चे की देखभाल छोड़ देना, क्योंकि घड़ी ही काफ़ी है", "कॉन्टैक्ट में सिर्फ़ भरोसेमंद परिजन जोड़ना और लोकेशन निजी रखना"],
+     tip:"लोकेशन संवेदनशील जानकारी है, इसलिए इसे निजी रखें और सिर्फ़ भरोसेमंद कॉन्टैक्ट जोड़ें। घड़ी किसी बड़े की देखभाल की जगह नहीं ले सकती।"}
+  ],
+  mr:[
+    {q:"तुम्हाला असुरक्षित वाटते आणि तुम्हाला पटकन मदतीसाठी कॉल करायचा आहे. तुमच्या Android फोनमध्ये Emergency SOS सुरू आहे. तुम्ही काय कराल?",
+     options:["व्हॉल्यूम बटण एकदा दाबा", "पॉवर बटण 5 वेळा पटकन दाबा", "फोन दोनदा हलवा", "कॅमेरा ॲप उघडा"],
+     tip:"Emergency SOS सुरू असताना पॉवर बटण 5 वेळा पटकन दाबल्यावर मदतीसाठी कॉल जातो. Settings → Safety & emergency मध्ये आपत्कालीन संपर्क जोडा."},
+    {q:"तुमचा नातू तुमच्या फोनवर एक व्हिडिओ पाहू इच्छितो. त्याने फक्त त्याच ॲपमध्ये राहावे असे तुम्हाला वाटते. काय मदत करेल?",
+     options:["Airplane mode सुरू करणे", "Battery Saver सुरू करणे", "App pinning सुरू करून ॲप पिन करणे", "Dark mode सुरू करणे"],
+     tip:"App pinning फोनला एकाच ॲपमध्ये ठेवते. तुमच्या PIN शिवाय मूल त्यातून बाहेर जाऊ शकत नाही. (iPhone: Guided Access)"},
+    {q:"तुम्ही सकाळी 9 वाजताचे औषध घ्यायला अनेकदा विसरता. लक्षात ठेवण्याचा सोपा मार्ग कोणता?",
+     options:["बोला: “Hey Google, रोज सकाळी 9 वाजता औषध घ्यायची आठवण कर”", "फोन सायलेंटवर ठेवा", "स्क्रीन PIN ने लॉक करा", "Battery Saver सुरू करा"],
+     tip:"तुम्ही फक्त बोलून रिमाइंडर लावू शकता. फोन वेळेवर आठवण करून देतो."},
+    {q:"दुकानाच्या पाटीवर तुम्हाला वाचता न येणाऱ्या भाषेत लिहिले आहे. फोनचा कॅमेरा कशी मदत करू शकतो?",
+     options:["फोटो काढून स्वतःला ईमेल करा", "Restricted Mode सुरू करा", "Google Forms उघडा", "पाटीकडे Google Lens धरा आणि Translate दाबा"],
+     tip:"Google सर्च बारमधील कॅमेरा आयकॉन (Google Lens) दाबा, शब्दांकडे कॅमेरा धरा आणि Translate निवडा."},
+    {q:"तुमची 6 वर्षांची नात तुमच्या फोनवर व्हिडिओ पाहू इच्छिते. लहान मुलांसाठी बनवलेले ॲप कोणते?",
+     options:["YouTube Kids", "Gmail", "Google Maps", "Google Meet"],
+     tip:"YouTube Kids मध्ये मुलांसाठीचे व्हिडिओ दिसतात. नेहमीच्या YouTube मध्ये Restricted Mode सुरू करता येतो."},
+    {q:"पासवर्ड विसरलात तरी तुम्हाला तुमच्या Google खात्यातून लॉक आउट व्हायचे नाही. तुम्ही काय जोडले पाहिजे?",
+     options:["नवीन प्रोफाइल फोटो", "लांब नाव", "रिकव्हरी फोन नंबर आणि रिकव्हरी ईमेल", "त्याच पासवर्डचे दुसरे Gmail"],
+     tip:"रिकव्हरी फोन नंबर आणि ईमेलमुळे Google तुम्हाला पुन्हा आत येण्यास मदत करते. तुमचा पासवर्ड लिहून घरी सुरक्षित ठिकाणी ठेवा."},
+    {q:"तुम्ही उशिरा संध्याकाळी चालत घरी जात आहात आणि कुटुंबाने तुम्हाला नकाशावर पाहावे असे वाटते. WhatsApp चॅटमध्ये तुम्ही काय कराल?",
+     options:["तुमचे Status बदलाल", "📎 → Location → Share live location दाबाल", "“Last seen” बंद कराल", "दर तासाला एक व्हॉइस नोट पाठवाल"],
+     tip:"घरी पोहोचेपर्यंत कुटुंब तुम्हाला नकाशावर पाहू शकते. किती वेळ शेअर करायचे ते तुम्ही ठरवता — जसे 1 तास."},
+    {q:"अनोळखी लोक तुम्हाला सारखे WhatsApp ग्रुपमध्ये जोडत आहेत. ते थांबवण्यासाठी तुम्ही काय करू शकता?",
+     options:["तुमचे WhatsApp खाते डिलीट करा", "प्रत्येक अनोळखी व्यक्तीला उत्तर द्या", "प्रत्येक ग्रुप म्यूट करा", "Settings → Privacy → Groups मध्ये “My contacts” निवडा"],
+     tip:"“My contacts” निवडल्यावर फक्त तुमच्या कॉन्टॅक्टमधील लोकच तुम्हाला ग्रुपमध्ये जोडू शकतात."},
+    {q:"तुम्ही नवीन फोन घेत आहात. तुम्हाला तुमचे WhatsApp चॅट आणि कुटुंबाचे फोटो गमावायचे नाहीत. सर्वात आधी काय करावे?",
+     options:["चॅट बॅकअप आणि फोटो बॅकअप सुरू करा", "WhatsApp डिलीट करा", "तुमचे SIM कार्ड काढा", "काही नाही, ते आपोआप परत येतात"],
+     tip:"WhatsApp चा चॅट बॅकअप (Android मध्ये Google Drive, iPhone मध्ये iCloud) आणि Google Photos चा बॅकअप सुरू करा."},
+    {q:"एका कॉलवरचा आवाज अगदी तुमच्या मुलीसारखा आहे. ती रडत आत्ताच पैसे मागत आहे. सर्वात सुरक्षित पहिले पाऊल कोणते?",
+     options:["आधी पैसे पाठवा, प्रश्न नंतर विचारा", "तिचा आवाज आहे म्हणून विश्वास ठेवा", "कॉल कट करून तिच्या स्वतःच्या नंबरवर फोन करा, किंवा कुटुंबाचा कोड वर्ड विचारा", "तिला सेल्फी पाठवायला सांगा"],
+     tip:"फसवणूक करणारे AI ने आवाजाची नक्कल करू शकतात. कुटुंबाचा कोड वर्ड विचारा, किंवा तुमच्या ओळखीच्या नंबरवर परत कॉल करा."},
+    {q:"कोणीतरी ऑनलाइन तुमची फसवणूक करून तुमचे पैसे घेतले. त्याची तक्रार करण्यासाठी तुम्ही कोणत्या हेल्पलाइनवर कॉल केला पाहिजे?",
+     options:["108", "1091", "1098", "1930"],
+     tip:"1930 ही राष्ट्रीय सायबर गुन्हे हेल्पलाइन आहे. पहिल्या तासात कॉल करा, आणि बँकेलाही फोन करून कार्ड किंवा UPI ब्लॉक करा."},
+    {q:"व्हिडिओ कॉलवर गणवेशातील एक व्यक्ती सांगते की तुम्ही “डिजिटल अरेस्ट” मध्ये आहात आणि पैसे द्यावे लागतील. खरे काय?",
+     options:["पोलीस कधीही व्हिडिओ कॉलवर अटक करत नाहीत. कॉल कट करा आणि 1930 किंवा स्थानिक पोलिसांना फोन करा", "तुरुंग टाळण्यासाठी पटकन पैसे भरा", "निर्दोष असल्याचे सिद्ध करण्यासाठी तुमचा आधार नंबर सांगा", "त्यांचे बोलून होईपर्यंत कॉलवर राहा"],
+     tip:"पोलीस, CBI किंवा न्यायालय कधीही व्हिडिओ कॉलवर कोणाला अटक करत नाही आणि “केस मिटवण्यासाठी” पैसे मागत नाही."},
+    {q:"तुम्हाला SMS येतो: “तुमचे KYC आज संपत आहे. आत्ता ही लिंक दाबा.” सर्वात सुरक्षित काय करावे?",
+     options:["पटकन लिंक दाबा", "लिंक दाबू नका. फक्त तुमच्या बँकेच्या अधिकृत ॲपमध्ये किंवा शाखेत जाऊन तपासा", "SMS मधील नंबरवर कॉल करा", "तुमच्या मित्रांना फॉरवर्ड करा"],
+     tip:"KYC, बिल किंवा पार्सलबद्दल घाई करायला लावणारे संदेश बनावट असतात. फक्त अधिकृत ॲपमध्ये किंवा कार्यालयात जाऊन तपासा."},
+    {q:"तुम्ही रोज चहा आणि भाजी घेता. UPI ची कोणती सुविधा छोटी पेमेंट्स एका टॅपमध्ये, PIN शिवाय करू देते?",
+     options:["UPI Circle", "AutoPay", "UPI Lite", "नेट बँकिंग"],
+     tip:"UPI Lite मध्ये एकदा थोडी रक्कम टाका. मग छोटी पेमेंट्स PIN न टाकता, एका टॅपमध्ये होतात."},
+    {q:"एक अनोळखी व्यक्ती म्हणते: “₹2,000 मिळवण्यासाठी हा QR कोड स्कॅन करा आणि तुमचा UPI PIN टाका.” खरे काय?",
+     options:["पैसे घेण्यासाठी PIN कधीही लागत नाही. ही फसवणूक आहे", "पैसे मिळवण्यासाठी PIN टाकावाच लागतो", "रक्कम लहान असेल तर हे सुरक्षित आहे", "QR कोड आहे म्हणून हे सुरक्षित आहे"],
+     tip:"UPI PIN फक्त पैसे पाठवण्यासाठी असतो. जो पैसे “पाठवण्यासाठी” PIN मागतो, तो फसवणूक करणारा असतो."},
+    {q:"तुमच्या आधार, PAN आणि प्रमाणपत्रांच्या अधिकृत प्रती फोनवर सुरक्षित कुठे ठेवू शकता?",
+     options:["कुटुंबाच्या WhatsApp ग्रुपमध्ये", "लॉक नसलेल्या फोटो गॅलरीत", "मित्राला पाठवलेल्या ईमेलमध्ये", "DigiLocker मध्ये"],
+     tip:"आधारशी जोडलेल्या मोबाइल नंबरने DigiLocker मध्ये साइन इन करा. तिथे ठेवलेल्या अधिकृत प्रती ग्राह्य धरल्या जातात."},
+    {q:"तुमचे वडील पेन्शनधारक आहेत आणि हयातीच्या दाखल्यासाठी बँकेत जाणे त्यांना कठीण वाटते. ते काय करू शकतात?",
+     options:["पासबुक कुरिअरने पाठवू शकतात", "Jeevan Pramaan ॲपमध्ये चेहरा स्कॅन करून घरबसल्या जमा करू शकतात", "शेजाऱ्याकडून त्यांच्यासाठी सही करून घेऊ शकतात", "बँकेचा फोन येईपर्यंत थांबू शकतात"],
+     tip:"पेन्शनधारक Jeevan Pramaan आणि AadhaarFaceRD ॲपद्वारे घरबसल्या हयातीचा दाखला जमा करू शकतात — बँकेत जायची गरज नाही."},
+    {q:"WhatsApp वर तुम्हाला एक धक्कादायक फोटो फॉरवर्ड होऊन आला आहे. कोणती खूण दाखवू शकते की तो AI ने बनवला आहे?",
+     options:["तो खूप रंगीत आहे", "त्यात विचित्र दिसणारे हात किंवा चेहरे आहेत", "मित्राने पाठवला आहे", "तो ग्रुपमध्ये पाठवला होता"],
+     tip:"AI बनावट फोटो आणि व्हिडिओ बनवू शकते. विचित्र हात किंवा चेहरे पाहा, आणि फॉरवर्ड करण्याआधी विश्वासार्ह बातम्यांच्या वेबसाइटवर तपासा."},
+    {q:"यांपैकी कोणती गोष्ट तुम्ही AI चॅट ॲपमध्ये कधीही टाकू नये?",
+     options:["रेसिपीचा प्रश्न", "गृहपाठाचा प्रश्न", "तुमचा OTP, पासवर्ड किंवा बँकेची माहिती", "मराठीतील एखादा प्रश्न"],
+     tip:"AI चॅटला अनोळखी व्यक्ती समजा. त्यात कधीही OTP, पासवर्ड, आधार, बँकेची माहिती किंवा कुटुंबाचे फोटो टाकू नका."},
+    {q:"तुमचे मूल GPS स्मार्टवॉच घालते. ते वापरण्याचा सुरक्षित मार्ग कोणता?",
+     options:["घड्याळाचा नकाशा सोशल मीडियावर टाकणे", "ॲपचा पासवर्ड शेजाऱ्यांना देणे", "मुलावर लक्ष ठेवणे सोडून देणे, कारण घड्याळच पुरेसे आहे", "संपर्कांमध्ये फक्त विश्वासू नातेवाईक जोडणे आणि लोकेशन खासगी ठेवणे"],
+     tip:"लोकेशन ही संवेदनशील माहिती आहे, म्हणून ती खासगी ठेवा आणि फक्त विश्वासू संपर्क जोडा. घड्याळ मोठ्या व्यक्तीच्या काळजीची जागा घेत नाही."}
+  ]
+};
+
+// QUIZ — the Pre-Assessment's 11 questions, the same ones as in the Google Form (counted on the page).
+// They are deliberately harder than common sense: each asks about one specific skill from the six learning steps,
+// in short everyday words. The form adds a 4th choice, “I am not sure” (always wrong), so nobody has to guess.
+// Each question links to a learning step (lesson id). "answer" is the position of the right option (0 = first).
+const QUIZ = {
+  en:[
+    {q:"Many Android phones have Emergency SOS. How do you start it fast?",
+     options:["Press the volume-up button 3 times", "Press the power button 5 times quickly", "Shake the phone and say “help”"], answer:1, lesson:"phone"},
+    {q:"You give your phone to a child to watch one video. You want the child to stay only in that app. What helps?",
+     options:["Turn on Airplane mode", "Turn on Battery Saver", "Turn on App pinning"], answer:2, lesson:"phone"},
+    {q:"A medicine strip is written in a language you cannot read. Which Google tool translates it when you point your camera?",
+     options:["Google Lens", "Google Forms", "Google Meet"], answer:0, lesson:"google"},
+    {q:"On YouTube, which setting helps hide videos made for adults?",
+     options:["Dark mode", "Restricted Mode", "Autoplay"], answer:1, lesson:"google"},
+    {q:"You are walking home and want your family to see you on the map. In a WhatsApp chat, what do you choose?",
+     options:["Status → Add my location", "Settings → Privacy → Last seen", "📎 → Location → Share live location"], answer:2, lesson:"family"},
+    {q:"Unknown numbers keep calling you on WhatsApp. How can you stop them from ringing?",
+     options:["Turn on “Silence unknown callers” in Privacy → Calls", "Switch off all WhatsApp notifications", "Show “Last seen” to nobody"], answer:0, lesson:"family"},
+    {q:"A call sounds exactly like your son. He asks for money in a hurry. What is the safest step?",
+     options:["Send the money — it is clearly his voice", "Hang up and call him back on his own number, or ask for your family code word", "Send a small amount first to test"], answer:1, lesson:"safety"},
+    {q:"Which national helpline number is for reporting online money fraud?",
+     options:["1930", "1098", "108"], answer:0, lesson:"safety"},
+    {q:"Which UPI feature lets you pay small amounts, like for tea or vegetables, with one tap and no PIN?",
+     options:["AutoPay", "UPI Circle", "UPI Lite"], answer:2, lesson:"money"},
+    {q:"From what age can people get the Ayushman Vay Vandana card for free hospital cover?",
+     options:["60 years", "65 years", "70 years"], answer:2, lesson:"money"},
+    {q:"Which of these can show that a photo or video was made by AI?",
+     options:["Strange-looking hands or faces", "The picture is very bright", "A friend sent it to you"], answer:0, lesson:"ai"}
+  ],
+  hi:[
+    {q:"कई Android फ़ोन में Emergency SOS होता है। इसे जल्दी चालू करने के लिए क्या करते हैं?",
+     options:["वॉल्यूम-अप बटन 3 बार दबाएं", "पावर बटन 5 बार जल्दी दबाएं", "फ़ोन हिलाएं और “मदद” बोलें"], answer:1, lesson:"phone"},
+    {q:"आप बच्चे को एक वीडियो देखने के लिए फ़ोन देते हैं। आप चाहते हैं कि वह सिर्फ़ उसी ऐप में रहे। क्या मदद करेगा?",
+     options:["Airplane mode चालू करना", "Battery Saver चालू करना", "App pinning चालू करना"], answer:2, lesson:"phone"},
+    {q:"दवा की पट्टी पर ऐसी भाषा में लिखा है जो आप पढ़ नहीं सकते। कैमरा सामने करने पर कौन-सा Google टूल अनुवाद करता है?",
+     options:["Google Lens", "Google Forms", "Google Meet"], answer:0, lesson:"google"},
+    {q:"YouTube पर बड़ों के लिए बने वीडियो छिपाने में कौन-सी सेटिंग मदद करती है?",
+     options:["Dark mode", "Restricted Mode", "Autoplay"], answer:1, lesson:"google"},
+    {q:"आप घर पैदल लौट रहे हैं और चाहते हैं कि परिवार आपको मैप पर देखे। WhatsApp चैट में आप क्या चुनेंगे?",
+     options:["Status → Add my location", "Settings → Privacy → Last seen", "📎 → Location → Share live location"], answer:2, lesson:"family"},
+    {q:"अनजान नंबर WhatsApp पर बार-बार कॉल करते हैं। उनकी घंटी बजना कैसे रोकें?",
+     options:["Privacy → Calls में “Silence unknown callers” चालू करें", "WhatsApp की सारी notifications बंद करें", "“Last seen” किसी को न दिखाएं"], answer:0, lesson:"family"},
+    {q:"एक कॉल की आवाज़ बिल्कुल आपके बेटे जैसी है। वह जल्दी में पैसे मांगता है। सबसे सुरक्षित कदम क्या है?",
+     options:["पैसे भेज दें — यह साफ़ उसी की आवाज़ है", "कॉल काटकर उसके अपने नंबर पर फ़ोन करें, या परिवार का कोड वर्ड पूछें", "पहले थोड़े पैसे भेजकर जांचें"], answer:1, lesson:"safety"},
+    {q:"ऑनलाइन पैसे की धोखाधड़ी बताने के लिए राष्ट्रीय हेल्पलाइन नंबर कौन-सा है?",
+     options:["1930", "1098", "108"], answer:0, lesson:"safety"},
+    {q:"UPI की कौन-सी सुविधा से चाय या सब्ज़ी जैसे छोटे भुगतान एक टैप में, बिना PIN के हो जाते हैं?",
+     options:["AutoPay", "UPI Circle", "UPI Lite"], answer:2, lesson:"money"},
+    {q:"आयुष्मान वय वंदना कार्ड से मुफ़्त इलाज का कवर किस उम्र से मिलता है?",
+     options:["60 साल से", "65 साल से", "70 साल से"], answer:2, lesson:"money"},
+    {q:"इनमें से क्या बता सकता है कि कोई फ़ोटो या वीडियो AI से बना है?",
+     options:["अजीब दिखते हाथ या चेहरे", "तस्वीर बहुत चमकीली है", "किसी दोस्त ने भेजी है"], answer:0, lesson:"ai"}
+  ],
+  mr:[
+    {q:"अनेक Android फोनमध्ये Emergency SOS असते. ते पटकन सुरू करण्यासाठी काय करता?",
+     options:["व्हॉल्यूम-अप बटण 3 वेळा दाबा", "पॉवर बटण 5 वेळा पटकन दाबा", "फोन हलवा आणि “मदत” म्हणा"], answer:1, lesson:"phone"},
+    {q:"तुम्ही मुलाला एक व्हिडिओ पाहण्यासाठी फोन देता. त्याने फक्त त्याच ॲपमध्ये राहावे असे तुम्हाला वाटते. काय मदत करेल?",
+     options:["Airplane mode सुरू करणे", "Battery Saver सुरू करणे", "App pinning सुरू करणे"], answer:2, lesson:"phone"},
+    {q:"औषधाच्या पट्टीवर तुम्हाला वाचता न येणाऱ्या भाषेत लिहिले आहे. कॅमेरा समोर धरल्यावर कोणते Google टूल अनुवाद करते?",
+     options:["Google Lens", "Google Forms", "Google Meet"], answer:0, lesson:"google"},
+    {q:"YouTube वर मोठ्यांसाठीचे व्हिडिओ लपवण्यासाठी कोणती सेटिंग मदत करते?",
+     options:["Dark mode", "Restricted Mode", "Autoplay"], answer:1, lesson:"google"},
+    {q:"तुम्ही चालत घरी जात आहात आणि कुटुंबाने तुम्हाला नकाशावर पाहावे असे वाटते. WhatsApp चॅटमध्ये तुम्ही काय निवडाल?",
+     options:["Status → Add my location", "Settings → Privacy → Last seen", "📎 → Location → Share live location"], answer:2, lesson:"family"},
+    {q:"अनोळखी नंबर WhatsApp वर सारखे कॉल करतात. त्यांची रिंग वाजणे कसे थांबवाल?",
+     options:["Privacy → Calls मध्ये “Silence unknown callers” सुरू करा", "WhatsApp च्या सर्व notifications बंद करा", "“Last seen” कोणालाही दाखवू नका"], answer:0, lesson:"family"},
+    {q:"एका कॉलवरचा आवाज अगदी तुमच्या मुलासारखा आहे. तो घाईत पैसे मागतो. सर्वात सुरक्षित पाऊल कोणते?",
+     options:["पैसे पाठवा — हा स्पष्टपणे त्याचाच आवाज आहे", "कॉल कट करून त्याच्या स्वतःच्या नंबरवर फोन करा, किंवा कुटुंबाचा कोड वर्ड विचारा", "आधी थोडे पैसे पाठवून तपासा"], answer:1, lesson:"safety"},
+    {q:"ऑनलाइन पैशांच्या फसवणुकीची तक्रार करण्यासाठी राष्ट्रीय हेल्पलाइन क्रमांक कोणता?",
+     options:["1930", "1098", "108"], answer:0, lesson:"safety"},
+    {q:"UPI ची कोणती सुविधा चहा किंवा भाजीसारखी छोटी पेमेंट्स एका टॅपमध्ये, PIN शिवाय करू देते?",
+     options:["AutoPay", "UPI Circle", "UPI Lite"], answer:2, lesson:"money"},
+    {q:"आयुष्मान वय वंदना कार्डने मोफत उपचारांचे कवच कोणत्या वयापासून मिळते?",
+     options:["60 वर्षांपासून", "65 वर्षांपासून", "70 वर्षांपासून"], answer:2, lesson:"money"},
+    {q:"यांपैकी काय दाखवू शकते की एखादा फोटो किंवा व्हिडिओ AI ने बनवला आहे?",
+     options:["विचित्र दिसणारे हात किंवा चेहरे", "चित्र खूप चमकदार आहे", "मित्राने पाठवले आहे"], answer:0, lesson:"ai"}
+  ]
+};
+
+
+// ✏️ CONTACT DETAILS — fill these in before sharing the website.
+// While a value is empty, the page shows "Coming soon" instead of a made-up number.
+const CONTACT = {
+  whatsapp: "919833078529",                    // WhatsApp number with country code (91 = India), digits only
+  email: "khedekaratharvawork2008@gmail.com"   // the team's email address
+};
+
+// ✏️ GOOGLE CLASSROOM CLASSES — one class per learning step, per language (see google-classroom/classrooms.json).
+// The "Open class in Google Classroom" buttons use these. A language with no link yet shows no button
+// (learners are not sent to a class in a different language). All three languages now have their six classes.
+const CLASSROOM = {
+  en: {
+    phone:  "https://classroom.google.com/c/ODkxMDQ5MTIxNzYy",
+    google: "https://classroom.google.com/c/ODkxMDQ4Nzc2ODk2",
+    family: "https://classroom.google.com/c/ODkxMDQ5MDYxMjcy",
+    safety: "https://classroom.google.com/c/ODkxMDQ5MTI4MzEw",
+    money:  "https://classroom.google.com/c/ODkxMDQ4OTk5Nzgw",
+    ai:     "https://classroom.google.com/c/ODkxMDQ5MDk4OTc4"
+  },
+  hi: {
+    phone:  "https://classroom.google.com/c/ODkxMDYzMTMwNjU5",
+    google: "https://classroom.google.com/c/ODkxMDYyNTczMzAz",
+    family: "https://classroom.google.com/c/ODkxMDYyNDAzODE4",
+    safety: "https://classroom.google.com/c/ODkxMDYxNjA2MzMz",
+    money:  "https://classroom.google.com/c/ODkxMDYzMDY5OTM0",
+    ai:     "https://classroom.google.com/c/ODkxMDYyNjczOTYy"
+  },
+  mr: {
+    phone:  "https://classroom.google.com/c/ODkxMDYyNzg3OTIy",
+    google: "https://classroom.google.com/c/ODkxMDYyNzY3NDU2",
+    family: "https://classroom.google.com/c/ODkxMDYyMjg4MTk1",
+    safety: "https://classroom.google.com/c/ODkxMDYyOTcyMzQw",
+    money:  "https://classroom.google.com/c/ODkxMDYyMDY3NzMy",
+    ai:     "https://classroom.google.com/c/ODkxMDYzMTYxNzYw"
+  }
+};
+
+// ✏️ PRE-ASSESSMENT GOOGLE FORM — paste each form's "Share link" here (see google-form/GOOGLE-FORM-GUIDE.md).
+// It looks like https://docs.google.com/forms/d/e/XXXX/viewform. A language left empty uses the English form.
+// The "Start Pre-Assessment Quiz" button opens it in a new tab. While all three are empty, the button says "Coming soon".
+const PRE_FORM = {
+  en: "https://docs.google.com/forms/d/e/1FAIpQLSfHfY4z_r-fAxj1REjDyZNdBzlLxIazPjKyQFM6NQCaQEfXfQ/viewform",
+  hi: "https://docs.google.com/forms/d/e/1FAIpQLSeAjdGWkCUBztaB7AzApmxuxRQrz1DgsI5SrY0HhuWNKyzfKg/viewform",
+  mr: "https://docs.google.com/forms/d/e/1FAIpQLScnGhLFj71rdn1-eZccxkHmMYrWTVVXKoMM7wPuq3vIoqAEmQ/viewform"
+};
+
+// ✏️ POST-ASSESSMENT GOOGLE FORM — each form's link (see google-form/POST-FORM-GUIDE.md). The "Start Post-Assessment
+// Quiz" button opens it in a new tab. A language left empty uses the English form; all empty → "Coming soon".
+const POST_FORM = {
+  en: "https://docs.google.com/forms/d/e/1FAIpQLScMXcxDLqj9ukFTiKrYounSp44ukVv9IIBMUcti6-RtlfF-Sg/viewform",
+  hi: "https://docs.google.com/forms/d/e/1FAIpQLSdpz4bu2SdGTou02njvQoN1V-InaBbqR_fiLIvZU1aCsBlu8w/viewform",
+  mr: "https://docs.google.com/forms/d/e/1FAIpQLSdvDSLZO8A47-su2tZkxrGFhFkFeW4o3Fkufn--LOHCEBp4Bw/viewform"
+};
+
+/* =========================================================================
+   2) APP LOGIC
+   ========================================================================= */
+const LANG_NAMES = { en:"English", hi:"हिंदी", mr:"मराठी" };
+const LANG_SHORT = { en:"EN", hi:"हिं", mr:"मरा" };
+// ✏️ "GET SAATHI-READY" — the guide behind the Step 00 card: six points with tap-by-tap steps, the words used in Classroom,
+// and a list of the learner's classes. Each point is [emoji, title, one-line intro, [steps], tip].
+const PREREQ = {
+  "en": {
+    "title": "Get Saathi-ready",
+    "intro": "Do these six things once, before Step 01. Go slowly, and ask a family member to sit with you if you like.",
+    "tipLabel": "Tip",
+    "points": [
+      [
+        "📧",
+        "Create your Gmail account",
+        "You need one Gmail account for Classroom and Google Forms. If you already have one, skip to the next point.",
+        [
+          "Open the Gmail app, or go to gmail.com on your phone or computer.",
+          "Tap Create account and choose For myself.",
+          "Type your first and last name, then choose a username. This becomes your address, like name@gmail.com.",
+          "Type a strong password: at least 8 characters, with letters and numbers. Type it again to confirm.",
+          "Add your phone number when asked, so you can get back in if you forget the password. Google may send you a code to check it.",
+          "Read the terms and tap I agree."
+        ],
+        "Write your password on paper and keep it at home. Never share it, or an OTP, with anyone, not even a Saathi."
+      ],
+      [
+        "🔐",
+        "Sign in and sign out safely",
+        "Sign in only on Google's own pages.",
+        [
+          "Go to gmail.com or open the Gmail app.",
+          "Type your Gmail address and tap Next. Then type your password and tap Next.",
+          "If Google sends a code to your phone, type it on the screen only. Never read it out to anyone on a call.",
+          "On a shared or public computer, when you finish, tap your round picture at the top right and then tap Sign out."
+        ],
+        "On your own phone you can stay signed in. On someone else's computer, always sign out and never save the password. Google never asks for your password or OTP by call or message."
+      ],
+      [
+        "✉️",
+        "Know the Gmail basics",
+        "Gmail is your post box.",
+        [
+          "Inbox: the emails sent to you. Tap one to read it.",
+          "Compose: tap it to write a new email. Type the address, a subject and your message, then tap Send.",
+          "Sent: the emails you have sent.",
+          "Spam: suspicious emails go here. Do not open them."
+        ],
+        "Do not tap links or open attachments from people you do not know."
+      ],
+      [
+        "🏫",
+        "Join a Google Classroom",
+        "A class code is a short code of letters and numbers. Your Saathi gives it to you.",
+        [
+          "Open classroom.google.com or the Classroom app, and sign in with your Gmail account.",
+          "Tap the + sign at the top, then tap Join class.",
+          "Type the class code and tap Join.",
+          "Your class now appears on your home screen. Tap it to open.",
+          "If you have an invite link instead, just tap the link and then tap Join."
+        ],
+        "Join the class in your own language."
+      ],
+      [
+        "📝",
+        "Open and fill a Google Form",
+        "Digital Saathi uses forms for the Pre-Assessment and Post-Assessment quizzes.",
+        [
+          "Tap the form's link. It opens in your browser.",
+          "Read each question slowly. Tap an answer, or type your own.",
+          "Scroll to the bottom and tap Submit.",
+          "You will see a message that your answer has been recorded."
+        ],
+        "Some forms ask you to sign in with Gmail first. Never type an OTP, PIN or password into a form."
+      ],
+      [
+        "✅",
+        "See and submit assignments in Classroom",
+        "Your class has lessons to read and short tasks to do.",
+        [
+          "Open your class and tap Classwork at the top.",
+          "Tap a topic or a task to open it. A Material is only for reading.",
+          "For a task (an Assignment), read it and do what it says.",
+          "Tap Mark as done. If you see Turn in instead, tap that.",
+          "Your Saathi can now see that you finished."
+        ],
+        "Stream shows announcements, and People shows your teacher and the other learners."
+      ]
+    ],
+    "wordsTitle": "Words you will see in Classroom",
+    "words": [
+      [
+        "Stream",
+        "Where your class announcements and updates appear."
+      ],
+      [
+        "Classwork",
+        "The lessons to read and the tasks to do."
+      ],
+      [
+        "People",
+        "Your teacher and the other learners in the class."
+      ],
+      [
+        "Class code",
+        "The short code that lets you join a class."
+      ],
+      [
+        "Mark as done",
+        "The button you tap to show a task is finished. Some tasks say Turn in instead."
+      ],
+      [
+        "Material",
+        "Something to read or look at. There is nothing to submit."
+      ]
+    ],
+    "joinTitle": "Your Digital Saathi classes",
+    "joinNote": "Joining for the first time? Ask your Saathi for the class code, then follow point 4. Already joined? Tap Open to go straight to your class.",
+    "joinBtn": "Open"
+  },
+  "hi": {
+    "title": "साथी के लिए तैयार हों",
+    "intro": "ये छह काम एक बार करें, चरण 01 से पहले। धीरे-धीरे करें, और चाहें तो परिवार के किसी सदस्य को अपने साथ बैठा लें।",
+    "tipLabel": "सुझाव",
+    "points": [
+      [
+        "📧",
+        "अपना Gmail खाता बनाएं",
+        "Classroom और Google Forms के लिए आपको एक Gmail खाता चाहिए। अगर आपके पास पहले से है, तो अगले बिंदु पर जाएं।",
+        [
+          "Gmail ऐप खोलें, या फ़ोन या कंप्यूटर पर gmail.com पर जाएं।",
+          "Create account दबाएं और For myself चुनें।",
+          "अपना पहला और आख़िरी नाम लिखें, फिर एक यूज़रनेम चुनें। यही आपका पता बनेगा, जैसे name@gmail.com।",
+          "एक मज़बूत पासवर्ड लिखें: कम से कम 8 अक्षर, जिनमें अक्षर और अंक हों। पुष्टि के लिए उसे दोबारा लिखें।",
+          "पूछे जाने पर अपना फ़ोन नंबर जोड़ें, ताकि पासवर्ड भूलने पर आप वापस जा सकें। Google जांच के लिए एक कोड भेज सकता है।",
+          "शर्तें पढ़कर I agree दबाएं।"
+        ],
+        "पासवर्ड काग़ज़ पर लिखकर घर में रखें। उसे या OTP को किसी के साथ साझा न करें, अपने साथी के साथ भी नहीं।"
+      ],
+      [
+        "🔐",
+        "सुरक्षित तरीक़े से साइन-इन और साइन-आउट करें",
+        "साइन-इन सिर्फ़ Google के अपने पेजों पर करें।",
+        [
+          "gmail.com पर जाएं या Gmail ऐप खोलें।",
+          "अपना Gmail पता लिखकर Next दबाएं, फिर पासवर्ड लिखकर Next दबाएं।",
+          "अगर Google आपके फ़ोन पर कोड भेजे, तो उसे सिर्फ़ स्क्रीन पर लिखें। उसे कॉल पर किसी को न बताएं।",
+          "साझा या सार्वजनिक कंप्यूटर पर काम ख़त्म होने पर ऊपर दाईं ओर अपनी गोल फ़ोटो दबाएं, फिर Sign out दबाएं।"
+        ],
+        "अपने फ़ोन में आप साइन-इन रख सकते हैं। किसी और के कंप्यूटर पर हमेशा साइन-आउट करें और पासवर्ड सेव न करें। Google कभी कॉल या मैसेज पर पासवर्ड या OTP नहीं मांगता।"
+      ],
+      [
+        "✉️",
+        "Gmail की बुनियादी बातें जानें",
+        "Gmail आपका डाकघर है।",
+        [
+          "Inbox: आपके पास आए ईमेल। पढ़ने के लिए किसी ईमेल को दबाएं।",
+          "Compose: नया ईमेल लिखने के लिए इसे दबाएं। पता, विषय और संदेश लिखकर Send दबाएं।",
+          "Sent: आपके भेजे हुए ईमेल।",
+          "Spam: संदिग्ध ईमेल यहां जाते हैं। उन्हें न खोलें।"
+        ],
+        "अनजान लोगों के लिंक न दबाएं और उनके अटैचमेंट न खोलें।"
+      ],
+      [
+        "🏫",
+        "Google Classroom में जुड़ें",
+        "क्लास कोड अक्षरों और अंकों का एक छोटा कोड होता है। वह आपका साथी आपको देता है।",
+        [
+          "अपने Gmail खाते से classroom.google.com या Classroom ऐप खोलें और साइन-इन करें।",
+          "ऊपर + का निशान दबाएं, फिर Join class दबाएं।",
+          "क्लास कोड लिखें और Join दबाएं।",
+          "अब आपकी कक्षा होम स्क्रीन पर दिखेगी। उसे खोलने के लिए दबाएं।",
+          "अगर आपके पास इन्वाइट लिंक है, तो बस उस लिंक को दबाएं और फिर Join दबाएं।"
+        ],
+        "अपनी भाषा वाली कक्षा में ही जुड़ें।"
+      ],
+      [
+        "📝",
+        "Google Form खोलें और भरें",
+        "डिजिटल साथी प्री-असेसमेंट और पोस्ट-असेसमेंट क्विज़ के लिए फ़ॉर्म इस्तेमाल करता है।",
+        [
+          "फ़ॉर्म का लिंक दबाएं। वह आपके ब्राउज़र में खुलेगा।",
+          "हर सवाल धीरे-धीरे पढ़ें। कोई जवाब दबाएं, या अपना जवाब लिखें।",
+          "सबसे नीचे जाकर Submit दबाएं।",
+          "आपको एक संदेश दिखेगा कि आपका जवाब दर्ज हो गया है।"
+        ],
+        "कुछ फ़ॉर्म पहले Gmail से साइन-इन मांगते हैं। फ़ॉर्म में कभी OTP, PIN या पासवर्ड न लिखें।"
+      ],
+      [
+        "✅",
+        "Classroom में असाइनमेंट देखें और जमा करें",
+        "आपकी कक्षा में पढ़ने के लिए पाठ और करने के लिए छोटे काम हैं।",
+        [
+          "अपनी कक्षा खोलें और ऊपर Classwork दबाएं।",
+          "किसी विषय या काम को खोलने के लिए दबाएं। Material सिर्फ़ पढ़ने के लिए होता है।",
+          "किसी काम (Assignment) को पढ़ें और उसमें लिखा काम करें।",
+          "Mark as done दबाएं। अगर Turn in दिखे, तो वह दबाएं।",
+          "अब आपके साथी को दिखेगा कि आपने काम पूरा कर लिया है।"
+        ],
+        "Stream में घोषणाएं दिखती हैं और People में आपके शिक्षक और दूसरे सीखने वाले।"
+      ]
+    ],
+    "wordsTitle": "Classroom में दिखने वाले शब्द",
+    "words": [
+      [
+        "Stream",
+        "जहां कक्षा की घोषणाएं और ताज़ा जानकारी दिखती है।"
+      ],
+      [
+        "Classwork",
+        "पढ़ने के पाठ और करने के काम।"
+      ],
+      [
+        "People",
+        "आपके शिक्षक और कक्षा के दूसरे सीखने वाले।"
+      ],
+      [
+        "Class code",
+        "वह छोटा कोड जिससे आप कक्षा में जुड़ते हैं।"
+      ],
+      [
+        "Mark as done",
+        "काम पूरा होने पर दबाया जाने वाला बटन। कुछ कामों में Turn in लिखा होता है।"
+      ],
+      [
+        "Material",
+        "पढ़ने या देखने की चीज़। इसमें कुछ जमा नहीं करना होता।"
+      ]
+    ],
+    "joinTitle": "आपकी डिजिटल साथी कक्षाएं",
+    "joinNote": "पहली बार जुड़ रहे हैं? अपने साथी से क्लास कोड मांगें, फिर बिंदु 4 के अनुसार करें। पहले से जुड़े हैं? सीधे अपनी कक्षा में जाने के लिए खोलें दबाएं।",
+    "joinBtn": "खोलें"
+  },
+  "mr": {
+    "title": "साथीसाठी तयार व्हा",
+    "intro": "हे सहा काम एकदाच करा, टप्पा 01 च्या आधी. सावकाश करा, आणि हवे असल्यास घरातील कोणाला सोबत बसवा.",
+    "tipLabel": "सूचना",
+    "points": [
+      [
+        "📧",
+        "तुमचे Gmail खाते तयार करा",
+        "Classroom आणि Google Forms साठी तुम्हाला एक Gmail खाते लागेल. तुमच्याकडे आधीच असेल, तर पुढच्या मुद्द्यावर जा.",
+        [
+          "Gmail ॲप उघडा, किंवा फोन अथवा संगणकावर gmail.com वर जा.",
+          "Create account दाबा आणि For myself निवडा.",
+          "तुमचे पहिले आणि आडनाव लिहा, मग एक युजरनेम निवडा. हाच तुमचा पत्ता होईल, उदा. name@gmail.com.",
+          "एक मजबूत पासवर्ड लिहा: किमान 8 अक्षरे, ज्यात अक्षरे आणि अंक असावेत. खात्रीसाठी तो पुन्हा लिहा.",
+          "विचारल्यावर तुमचा फोन नंबर जोडा, म्हणजे पासवर्ड विसरल्यास तुम्ही परत जाऊ शकता. तपासणीसाठी Google एक कोड पाठवू शकतो.",
+          "अटी वाचून I agree दाबा."
+        ],
+        "पासवर्ड कागदावर लिहून घरात ठेवा. तो किंवा OTP कोणालाही सांगू नका, तुमच्या साथीलाही नाही."
+      ],
+      [
+        "🔐",
+        "सुरक्षितपणे साइन-इन आणि साइन-आउट करा",
+        "साइन-इन फक्त Google च्या स्वतःच्या पानांवर करा.",
+        [
+          "gmail.com वर जा किंवा Gmail ॲप उघडा.",
+          "तुमचा Gmail पत्ता लिहून Next दाबा, मग पासवर्ड लिहून Next दाबा.",
+          "Google ने तुमच्या फोनवर कोड पाठवला, तर तो फक्त स्क्रीनवर लिहा. कॉलवर कोणालाही सांगू नका.",
+          "सामायिक किंवा सार्वजनिक संगणकावर काम संपल्यावर वर उजवीकडे तुमचा गोल फोटो दाबा, मग Sign out दाबा."
+        ],
+        "तुमच्या फोनमध्ये तुम्ही साइन-इन ठेवू शकता. दुसऱ्याच्या संगणकावर नेहमी साइन-आउट करा आणि पासवर्ड सेव्ह करू नका. Google कधीही कॉल किंवा मेसेजवर पासवर्ड किंवा OTP मागत नाही."
+      ],
+      [
+        "✉️",
+        "Gmail ची मूलतत्त्वे जाणून घ्या",
+        "Gmail म्हणजे तुमची पोस्टपेटी.",
+        [
+          "Inbox: तुम्हाला आलेले ईमेल. वाचण्यासाठी एखाद्या ईमेलवर दाबा.",
+          "Compose: नवीन ईमेल लिहिण्यासाठी हे दाबा. पत्ता, विषय आणि संदेश लिहून Send दाबा.",
+          "Sent: तुम्ही पाठवलेले ईमेल.",
+          "Spam: संशयास्पद ईमेल इथे जातात. ते उघडू नका."
+        ],
+        "अनोळखी लोकांच्या लिंक दाबू नका आणि त्यांचे अटॅचमेंट उघडू नका."
+      ],
+      [
+        "🏫",
+        "Google Classroom मध्ये सामील व्हा",
+        "क्लास कोड म्हणजे अक्षरे आणि अंकांचा एक छोटा कोड. तो तुमचा साथी तुम्हाला देतो.",
+        [
+          "तुमच्या Gmail खात्याने classroom.google.com किंवा Classroom ॲप उघडा आणि साइन-इन करा.",
+          "वर + चे चिन्ह दाबा, मग Join class दाबा.",
+          "क्लास कोड लिहा आणि Join दाबा.",
+          "आता तुमचा वर्ग होम स्क्रीनवर दिसेल. उघडण्यासाठी त्यावर दाबा.",
+          "तुमच्याकडे इन्व्हाइट लिंक असेल, तर फक्त ती लिंक दाबा आणि मग Join दाबा."
+        ],
+        "तुमच्या भाषेतील वर्गातच सामील व्हा."
+      ],
+      [
+        "📝",
+        "Google Form उघडा आणि भरा",
+        "डिजिटल साथी प्री-असेसमेंट आणि पोस्ट-असेसमेंट क्विझसाठी फॉर्म वापरतो.",
+        [
+          "फॉर्मची लिंक दाबा. ती तुमच्या ब्राउझरमध्ये उघडेल.",
+          "प्रत्येक प्रश्न सावकाश वाचा. एखादे उत्तर दाबा, किंवा तुमचे उत्तर लिहा.",
+          "सर्वात खाली जाऊन Submit दाबा.",
+          "तुमचे उत्तर नोंदवले गेले असा संदेश तुम्हाला दिसेल."
+        ],
+        "काही फॉर्म आधी Gmail ने साइन-इन मागतात. फॉर्ममध्ये कधीही OTP, PIN किंवा पासवर्ड लिहू नका."
+      ],
+      [
+        "✅",
+        "Classroom मध्ये असाइनमेंट पाहा आणि जमा करा",
+        "तुमच्या वर्गात वाचण्यासाठी धडे आणि करण्यासाठी छोटी कामे आहेत.",
+        [
+          "तुमचा वर्ग उघडा आणि वर Classwork दाबा.",
+          "एखादा विषय किंवा काम उघडण्यासाठी त्यावर दाबा. Material फक्त वाचण्यासाठी असते.",
+          "एखादे काम (Assignment) वाचा आणि त्यात सांगितलेले करा.",
+          "Mark as done दाबा. Turn in दिसले, तर ते दाबा.",
+          "आता तुमच्या साथीला दिसेल की तुम्ही काम पूर्ण केले आहे."
+        ],
+        "Stream मध्ये घोषणा दिसतात आणि People मध्ये तुमचे शिक्षक आणि इतर शिकणारे."
+      ]
+    ],
+    "wordsTitle": "Classroom मध्ये दिसणारे शब्द",
+    "words": [
+      [
+        "Stream",
+        "जिथे वर्गाच्या घोषणा आणि ताज्या सूचना दिसतात."
+      ],
+      [
+        "Classwork",
+        "वाचायचे धडे आणि करायची कामे."
+      ],
+      [
+        "People",
+        "तुमचे शिक्षक आणि वर्गातील इतर शिकणारे."
+      ],
+      [
+        "Class code",
+        "वर्गात सामील होण्यासाठीचा छोटा कोड."
+      ],
+      [
+        "Mark as done",
+        "काम पूर्ण झाल्यावर दाबायचे बटण. काही कामांवर Turn in असे लिहिलेले असते."
+      ],
+      [
+        "Material",
+        "वाचण्याची किंवा पाहण्याची गोष्ट. यात काही जमा करायचे नसते."
+      ]
+    ],
+    "joinTitle": "तुमचे डिजिटल साथी वर्ग",
+    "joinNote": "पहिल्यांदा सामील होत आहात? तुमच्या साथीकडून क्लास कोड मागा, मग मुद्दा 4 प्रमाणे करा. आधीच सामील आहात? थेट तुमच्या वर्गात जाण्यासाठी उघडा दाबा.",
+    "joinBtn": "उघडा"
+  }
+};
+const LESSON_ICON = { phone:"i-phone", google:"i-search", family:"i-chat", safety:"i-shield", money:"i-scan", ai:"i-sparkle" };
+let lang = "en";
+let textSize = 1;
+
+const $  = (selector, root = document) => root.querySelector(selector);
+const $$ = (selector, root = document) => root.querySelectorAll(selector);
+
+// Find a label in the current language (English if missing). {name} is filled from vars.
+// {total}, {pass} and {min} are always filled in from the Post-Assessment questions, so the
+// certificate numbers shown anywhere on the page are counted from the quiz itself.
+function t(key, vars){
+  let text = (UI[lang] && UI[lang][key]) || UI.en[key] || key;
+  if(text.includes("{")) vars = Object.assign(postNumbers(), vars);
+  if(vars){ for(const name in vars) text = text.split("{" + name + "}").join(vars[name]); }
+  return text;
+}
+// Make text safe to put inside HTML, so it always shows as text and never runs as code
+function esc(text){
+  return String(text).replace(/[&<>"']/g, ch => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#39;" }[ch]));
+}
+function icon(id, cls = ""){ return `<svg class="ic ${cls}" aria-hidden="true" focusable="false"><use href="#${id}"></use></svg>`; }
+const pad2 = n => String(n).padStart(2, "0");
+const reducedMotion = () => window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+// Saved choices live in localStorage. Some browsers block it, so every use is wrapped.
+const store = {
+  get(key, fallback = ""){ try{ const v = localStorage.getItem(key); return v === null ? fallback : v; }catch(e){ return fallback; } },
+  set(key, value){ try{ localStorage.setItem(key, value); }catch(e){ /* not saved — that's fine */ } }
+};
+// Tell screen-reader users about changes they can't see (e.g. "Large text")
+function announce(message){
+  const box = $("#announcer");
+  box.textContent = "";
+  setTimeout(() => { box.textContent = message; }, 60);
+}
+function openDialog(d){ if(typeof d.showModal === "function"){ if(!d.open) d.showModal(); } else d.setAttribute("open", ""); }
+function closeDialog(d){ if(!d) return; if(typeof d.close === "function"){ if(d.open) d.close(); } else d.removeAttribute("open"); }
+
+// ---- Read aloud (the browser's built-in text-to-speech) ----
+const SPEECH = { en:"en-IN", hi:"hi-IN", mr:"mr-IN" };
+let speechRun = 0;          // goes up every time speech starts or stops
+let speakingBtn = null;     // the Listen button that is currently playing
+
+function pickVoice(){
+  const voices = window.speechSynthesis.getVoices();
+  const code = SPEECH[lang], base = code.slice(0, 2);
+  return voices.find(v => v.lang === code)
+      || voices.find(v => v.lang.replace("_", "-").startsWith(base))
+      || (lang === "mr" ? voices.find(v => v.lang.startsWith("hi")) : null);   // a Hindi voice can read Marathi script
+}
+// Speak a list of sentences one after another (short pieces read more reliably than one long text)
+function speak(parts, btn){
+  if(!("speechSynthesis" in window)) return;
+  stopSpeaking();
+  const run = speechRun;
+  const voice = pickVoice();
+  const pieces = parts.map(p => String(p).trim()).filter(Boolean);
+  pieces.forEach((text, i) => {
+    const u = new SpeechSynthesisUtterance(text);
+    u.lang = voice ? voice.lang : SPEECH[lang];
+    if(voice) u.voice = voice;
+    u.rate = 0.95;
+    if(i === pieces.length - 1){ u.onend = u.onerror = () => { if(run === speechRun) setSpeakingButton(null); }; }
+    try{ window.speechSynthesis.speak(u); }catch(e){ /* some browsers block speech until a click */ }
+  });
+  if(pieces.length) setSpeakingButton(btn);
+}
+function stopSpeaking(){
+  speechRun++;
+  try{ if("speechSynthesis" in window) window.speechSynthesis.cancel(); }catch(e){}
+  setSpeakingButton(null);
+}
+function setSpeakingButton(btn){
+  if(speakingBtn && speakingBtn !== btn) drawListenButton(speakingBtn, false);
+  speakingBtn = btn || null;
+  if(speakingBtn) drawListenButton(speakingBtn, true);
+}
+function drawListenButton(btn, playing){
+  btn.classList.toggle("is-speaking", playing);
+  btn.setAttribute("aria-pressed", String(playing));
+  btn.innerHTML = icon(playing ? "i-stop" : "i-volume") + `<span data-ui="${playing ? "stop" : "listen"}">${esc(t(playing ? "stop" : "listen"))}</span>`;
+}
+// A Listen button: press once to hear, press again to stop
+function toggleListen(btn, parts){
+  if(speakingBtn === btn) stopSpeaking();
+  else speak(parts, btn);
+}
+
+// ---- Language ----
+function setLanguage(code){
+  lang = UI[code] ? code : "en";
+  store.set("ds_lang", lang);
+  applyLanguage();
+  announce(LANG_NAMES[lang]);
+}
+// Put every label on the page into the current language
+function applyLanguage(){
+  document.documentElement.lang = lang;
+  document.title = t("doc_title");
+  $$("[data-ui]").forEach(el => { el.textContent = t(el.dataset.ui); });
+  $$("[data-ui-html]").forEach(el => { el.innerHTML = t(el.dataset.uiHtml); });   // only our own text, which may contain <em>
+  $$("[data-ui-ph]").forEach(el => el.setAttribute("placeholder", t(el.dataset.uiPh)));
+  $$("[data-ui-aria]").forEach(el => el.setAttribute("aria-label", t(el.dataset.uiAria)));
+  $$("[data-set-lang]").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.setLang === lang)));
+  $$(".ps-lang").forEach(el => { el.textContent = LANG_SHORT[lang]; });
+  $$(".qp-proverb").forEach(el => { el.lang = lang === "mr" ? "mr" : "hi"; });
+  stopSpeaking();
+  renderLessons();
+  renderPostForm();
+  renderCounts();
+  renderContact();
+  renderPreForm();
+  applyTheme();                         // the colour button's label is translated too
+  if(typeof fitScreens === "function" && textSize) requestAnimationFrame(fitScreens);
+}
+
+// ---- Text size (for anyone who finds the screen hard to read) ----
+function setTextSize(n){
+  textSize = [1, 2, 3].includes(Number(n)) ? Number(n) : 1;
+  if(textSize === 1) document.documentElement.removeAttribute("data-size");
+  else document.documentElement.setAttribute("data-size", textSize);
+  store.set("ds_size", textSize);
+  $$("[data-set-size]").forEach(b => b.setAttribute("aria-pressed", String(Number(b.dataset.setSize) === textSize)));
+  requestAnimationFrame(fitScreens);
+}
+
+// ---- Colour mode: light or dark ----
+// The head script already chose one (saved choice, or the phone's setting) before the page was drawn.
+const THEME_COLOR = { light:"#f8f6f1", dark:"#141814" };   // colour of the phone's browser bar
+let theme = document.documentElement.getAttribute("data-theme") === "dark" ? "dark" : "light";
+let themeTimer = 0;
+
+function applyTheme(){
+  document.documentElement.setAttribute("data-theme", theme);
+  $('meta[name="theme-color"]').setAttribute("content", THEME_COLOR[theme]);
+  $$("[data-set-theme]").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.setTheme === theme)));
+  // The one-tap button shows what it will switch TO: a moon in light mode, a sun in dark mode
+  const next = theme === "dark" ? "light" : "dark", btn = $("#themeBtn");
+  btn.innerHTML = icon(next === "dark" ? "i-moon" : "i-sun");
+  btn.setAttribute("aria-label", t("theme_to_" + next));
+  btn.title = t("theme_to_" + next);
+}
+function setTheme(next, save = true){
+  if(next !== "light" && next !== "dark") return;
+  if(save) store.set("ds_theme", next);
+  if(next === theme) return;
+  // Fade the colours for a moment instead of jumping (skipped for people who prefer less motion)
+  if(!reducedMotion()){
+    const root = document.documentElement;
+    root.classList.add("theme-anim");
+    clearTimeout(themeTimer);
+    themeTimer = setTimeout(() => root.classList.remove("theme-anim"), 950);
+  }
+  theme = next;
+  applyTheme();
+}
+// Until the visitor picks a mode, keep following the phone (e.g. if it switches to dark at night)
+function followSystemTheme(){
+  if(!window.matchMedia) return;
+  const query = window.matchMedia("(prefers-color-scheme: dark)");
+  const onChange = e => { if(!store.get("ds_theme")) setTheme(e.matches ? "dark" : "light", false); };
+  if(query.addEventListener) query.addEventListener("change", onChange);
+  else if(query.addListener) query.addListener(onChange);   // older Safari
+}
+
+// ---- One section = one screen (computers) ----
+// Each .fit-screen fills the screen; if it is taller, it is scaled down to fit (not below 80%).
+const FIT_MIN = 0.8;
+const fitQuery = window.matchMedia("(min-width: 1200px) and (min-height: 600px)");
+function fitOne(el){
+  el.style.zoom = ""; el.style.removeProperty("--z");
+  const vh = window.innerHeight;
+  for(let i = 0; i < 3; i++){                         // text reflows when scaled, so check again
+    const h = el.getBoundingClientRect().height;
+    if(h <= vh + 1) break;
+    const z = Math.max(FIT_MIN, (parseFloat(el.style.zoom) || 1) * vh / h);
+    el.style.zoom = z.toFixed(3); el.style.setProperty("--z", z.toFixed(3));
+    if(z === FIT_MIN) break;
+  }
+}
+function fitScreens(){
+  const on = fitQuery.matches && textSize === 1 && "zoom" in document.documentElement.style;
+  document.documentElement.classList.toggle("fit-on", on);
+  $$(".fit-screen").forEach(el => { if(on) fitOne(el); else { el.style.zoom = ""; el.style.removeProperty("--z"); } });
+}
+// Re-fit one screen after its content changes (e.g. a quiz question)
+function refit(el){ if(document.documentElement.classList.contains("fit-on")){ const sc = el.closest(".fit-screen"); if(sc) fitOne(sc); } }
+
+// ---- Moving around the page ----
+const NAV_IDS = ["about", "how", "learn", "certificate", "impact", "contact"];
+
+// Scroll to a part of the page, then move keyboard focus there too
+// ---- Two pages in one file: the home page and the Quizzes page ----
+let view = "home";
+function setView(next){
+  if(next === view) return false;
+  view = next;
+  document.documentElement.classList.toggle("view-quizzes", view === "quizzes");
+  $("#quizPage").hidden = view !== "quizzes";
+  if(view === "quizzes") setActiveNav("quizzes");
+  fitScreens();
+  return true;
+}
+// Open the page that holds this part (used for links, the Back button and a link opened from outside)
+function showPageFor(target){ return setView(target && target.closest("#quizPage") ? "quizzes" : "home"); }
+
+function goTo(target, focusEl){
+  if(!target) return;
+  $$("dialog[open]").forEach(closeDialog);
+  const changed = showPageFor(target);
+  target.scrollIntoView({ behavior: changed ? "instant" : reducedMotion() ? "auto" : "smooth", block: "start" });   // a new page opens at once
+  // a new page gets its own entry in the browser history, so the phone's Back button returns
+  if(target.id){ try{ history[changed ? "pushState" : "replaceState"](null, "", "#" + target.id); }catch(e){} }
+  const f = focusEl || target.querySelector("h1, h2, h3, .step-tab") || target;
+  if(!f.matches("a, button, input, select, textarea, [tabindex]")) f.setAttribute("tabindex", "-1");
+  f.focus({ preventScroll: true });
+}
+// Underline the menu item of the part of the page being read
+function setActiveNav(id){
+  $$("[data-nav]").forEach(a => {
+    const on = a.dataset.nav === id;
+    a.classList.toggle("active", on);
+    if(on) a.setAttribute("aria-current", "true"); else a.removeAttribute("aria-current");
+  });
+}
+function watchSections(){
+  if(!("IntersectionObserver" in window)) return;
+  const spy = new IntersectionObserver(entries => {
+    entries.forEach(entry => { if(entry.isIntersecting) setActiveNav(entry.target.id); });
+  }, { rootMargin: "-45% 0px -50% 0px" });   // a thin band across the middle of the screen
+  ["home", ...NAV_IDS].forEach(id => spy.observe(document.getElementById(id)));
+}
+// Sections fade in gently as they scroll into view
+function revealOnScroll(){
+  const items = $$(".reveal");
+  if(!("IntersectionObserver" in window) || reducedMotion()){ items.forEach(el => el.classList.add("in")); return; }
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(entry => { if(entry.isIntersecting){ entry.target.classList.add("in"); io.unobserve(entry.target); } });
+  }, { rootMargin: "0px 0px -6% 0px", threshold: 0.06 });
+  items.forEach(el => io.observe(el));
+}
+// The hero's swaying lamps and the pulsing "Coming soon" dot pause while they are off screen (section 16 of the
+// styles): they need the main thread on every frame, and nobody can see them move when they are scrolled away.
+function pauseOffscreenDecor(){
+  if(!("IntersectionObserver" in window)) return;
+  const flags = new Map([[$(".hero-art"), "hero-off"], [$(".visit"), "visit-off"]]);
+  const io = new IntersectionObserver(entries => entries.forEach(e =>
+    document.documentElement.classList.toggle(flags.get(e.target), !e.isIntersecting)));
+  flags.forEach((flag, el) => { if(el) io.observe(el); });
+}
+// ---- Lessons ----
+let currentLesson = null;
+
+let activeStep = 0;          // which of the six steps is shown in the step explorer
+
+function renderLessons(){
+  const list = LESSONS[lang];
+  // The six main topics (tabs). Each shows its number, first emoji, title and how many points it has.
+  $("#stepTabs").innerHTML = list.map((les, i) => `
+    <button type="button" role="tab" class="step-tab" id="stab-${les.id}" aria-controls="stepPanel" data-step="${i}">
+      <span class="st-num">${pad2(i + 1)}</span>
+      <span class="st-emo" aria-hidden="true">${les.topics[0][0]}</span>
+      <span class="st-text"><span class="st-title">${esc(les.title)}</span><span class="st-count">${les.topics.length} ${esc(t("skills_word"))}</span></span>
+    </button>`).join("");
+  showStep(activeStep, false);
+  $("#footLessons").innerHTML = list.map(les =>
+    `<li><button type="button" class="foot-link" data-open-lesson="${les.id}">${esc(les.title)}</button></li>`).join("");
+}
+// Show one step: its heading and all its approved points, numbered, exactly as in the approved document
+function showStep(i, focusTab){
+  const list = LESSONS[lang];
+  activeStep = Math.max(0, Math.min(list.length - 1, i));
+  const les = list[activeStep];
+  $$("#stepTabs .step-tab").forEach((b, k) => {
+    const on = k === activeStep;
+    b.setAttribute("aria-selected", String(on));
+    b.tabIndex = on ? 0 : -1;
+    if(on && focusTab) b.focus();
+  });
+  const panel = $("#stepPanel");
+  panel.setAttribute("aria-labelledby", "stab-" + les.id);
+  panel.innerHTML = `
+    <h3 class="sp-title"><span class="sp-step">${esc(t("step_word"))} ${pad2(activeStep + 1)}</span><span class="sp-dot" aria-hidden="true">·</span>${esc(les.title)}</h3>
+    <ol class="sp-list">${les.topics.map(([emoji, point]) => `<li><span class="sp-emo" aria-hidden="true">${emoji}</span><span class="sp-text">${esc(point)}</span></li>`).join("")}</ol>
+    <div class="sp-actions">
+      <button type="button" class="btn btn-dark" data-open-lesson="${les.id}">${icon("i-book")}<span>${esc(t("guide_btn"))}</span></button>
+      ${classroomLink(les.id) ? `<a class="btn btn-outline" id="spClass" href="${esc(classroomLink(les.id))}" target="_blank" rel="noopener">${icon("i-arrow-ur")}<span>${esc(t("class_btn"))}</span></a>` : ""}
+      <span class="sp-listen-note">${icon("i-volume")}<span>${esc(t("read_aloud"))}</span></span>
+    </div>`;
+  refit(panel);
+}
+// The numbered points of a lesson (or of the Get Saathi-ready guide): emoji, the point in bold, then how to do it
+function stepItems(points){
+  return points.map(([emoji, skill, how]) => {
+    const li = document.createElement("li"), mark = document.createElement("span"), box = document.createElement("div"),
+          b = document.createElement("b"), p = document.createElement("p");
+    mark.className = "ld-emoji"; mark.setAttribute("aria-hidden", "true"); mark.textContent = emoji;
+    b.textContent = skill; p.textContent = how;
+    box.append(b, p); li.append(mark, box);
+    return li;
+  });
+}
+// The Step 00 guide: six points with numbered tap-by-tap steps and a tip, then the Classroom words, then the learner's classes.
+// It opens in the same window as the lessons; "Next lesson" leads on to Step 01 and there is no "Previous".
+function prereqItems(g){
+  return g.points.map(([emoji, skill, intro, steps, tip]) => {
+    const li = document.createElement("li"), mark = document.createElement("span"), box = document.createElement("div"),
+          b = document.createElement("b"), p = document.createElement("p"), ol = document.createElement("ol"), tp = document.createElement("p");
+    mark.className = "ld-emoji"; mark.setAttribute("aria-hidden", "true"); mark.textContent = emoji;
+    b.textContent = skill; p.textContent = intro;
+    ol.className = "pr-steps";
+    steps.forEach(text => { const s = document.createElement("li"); s.textContent = text; ol.append(s); });
+    tp.className = "pr-tip";
+    const tb = document.createElement("b"); tb.textContent = g.tipLabel + ": ";
+    const tx = document.createElement("span"); tx.append(tb, tip);
+    const bulb = document.createElement("span"); bulb.setAttribute("aria-hidden", "true"); bulb.textContent = "💡";
+    tp.append(bulb, tx);
+    box.append(b, p, ol, tp); li.append(mark, box);
+    return li;
+  });
+}
+function prereqExtra(g){
+  const frag = document.createDocumentFragment();
+  const h1 = document.createElement("h3"), dl = document.createElement("dl");
+  h1.textContent = g.wordsTitle; dl.className = "pr-words";
+  g.words.forEach(([term, def]) => {
+    const row = document.createElement("div"), dt = document.createElement("dt"), dd = document.createElement("dd");
+    dt.textContent = term; dd.textContent = def; row.append(dt, dd); dl.append(row);
+  });
+  const h2 = document.createElement("h3"), note = document.createElement("p"), ul = document.createElement("ul");
+  h2.textContent = g.joinTitle; note.className = "pr-join-note"; note.textContent = g.joinNote; ul.className = "pr-join";
+  LESSONS[lang].forEach((les, i) => {
+    const li = document.createElement("li"), n = document.createElement("span"), name = document.createElement("span");
+    n.className = "pj-n"; n.textContent = pad2(i + 1); name.className = "pj-t"; name.textContent = les.title;
+    li.append(n, name);
+    const href = classroomLink(les.id);
+    if(href){
+      const a = document.createElement("a");
+      a.className = "btn btn-outline btn-sm"; a.href = href; a.target = "_blank"; a.rel = "noopener";
+      a.append(document.createTextNode(g.joinBtn + " "));
+      a.insertAdjacentHTML("beforeend", icon("i-arrow-ur"));
+      li.append(a);
+    }
+    ul.append(li);
+  });
+  frag.append(h1, dl, h2, note, ul);
+  return frag;
+}
+function openPrereq(){
+  const g = PREREQ[lang];
+  currentLesson = "prereq";
+  stopSpeaking();
+  $("#ldIcon").innerHTML = icon("i-mail");
+  $("#ldKicker").textContent = `${t("pr_tag")} · ${t("step_word")} 00`;
+  $("#ldTitle").textContent = g.title;
+  const lead = $("#ldLead"); lead.textContent = g.intro; lead.hidden = false;
+  $("#ldSteps").replaceChildren(...prereqItems(g));
+  const extra = $("#ldExtra"); extra.replaceChildren(prereqExtra(g)); extra.hidden = false;
+  $("#ldPrev").disabled = true;
+  $("#ldNext").disabled = false;
+  const classBtn = $("#ldClass"); classBtn.removeAttribute("href"); classBtn.hidden = true;
+  const dialog = $("#lessonDialog");
+  openDialog(dialog);
+  $(".ld-body", dialog).scrollTop = 0;
+}
+function openLesson(id){
+  const list = LESSONS[lang];
+  const index = list.findIndex(l => l.id === id);
+  if(index < 0) return;
+  const les = list[index];
+  currentLesson = id;
+  stopSpeaking();
+  $("#ldIcon").innerHTML = icon(LESSON_ICON[id]);
+  $("#ldKicker").textContent = `${t("step_word")} ${pad2(index + 1)} / ${pad2(list.length)}`;
+  $("#ldTitle").textContent = les.title;
+  const steps = $("#ldSteps");
+  // Each approved point: its emoji, the point in bold, then how to do it
+  steps.replaceChildren(...stepItems(les.topics));
+  $("#ldLead").hidden = true; $("#ldExtra").hidden = true; $("#ldExtra").replaceChildren();
+  const classLink = classroomLink(id), classBtn = $("#ldClass");
+  if(classLink){ classBtn.href = classLink; classBtn.hidden = false; } else { classBtn.removeAttribute("href"); classBtn.hidden = true; }
+  $("#ldPrev").disabled = index === 0;
+  $("#ldNext").disabled = index === list.length - 1;
+  const dialog = $("#lessonDialog");
+  openDialog(dialog);
+  $(".ld-body", dialog).scrollTop = 0;
+}
+function stepLesson(direction){
+  const list = LESSONS[lang];
+  const next = list[list.findIndex(l => l.id === currentLesson) + direction];
+  if(next){ openLesson(next.id); $("#ldTitle").focus(); }
+}
+
+// ---- Post-Assessment: like the Pre-Assessment, one big button that opens the team's Google Form (POST_FORM) ----
+const PASS_SHARE = 0.7;                       // 70 % of the questions (14 of 20) for the certificate
+// The numbers used in texts such as "Score {pass} out of {total}", counted from the form's questions (POST_QUIZ_KEY)
+function postNumbers(){
+  const total = POST_QUIZ_KEY.length;
+  return { total, pass: Math.ceil(PASS_SHARE * total), min: Math.ceil(total / 2) };
+}
+// Point the button at the form in the current language. With no link yet, it is greyed out and says "Coming soon".
+function renderPostForm(){
+  const link = formLink(POST_FORM), btn = $("#postFormOpen");
+  if(link){ btn.href = link; btn.removeAttribute("aria-disabled"); }
+  else { btn.removeAttribute("href"); btn.setAttribute("aria-disabled", "true"); }
+  $("#postHint").hidden = !link;
+  $("#postFormSoon").hidden = !!link;
+}
+
+// ---- Pre- and Post-Assessment: each is one big button that opens the team's Google Form in a new tab ----
+// Only real Google Forms links are used (https, docs.google.com/forms or forms.gle).
+// A form's "edit" link is turned into the link for answering, so learners never land on the editor.
+// The Google Classroom class for a step in the current language, or "" (only real https classroom.google.com links)
+function classroomLink(id){
+  const raw = ((CLASSROOM[lang] || {})[id] || "").trim();
+  try{
+    const u = new URL(raw);
+    return u.protocol === "https:" && u.hostname === "classroom.google.com" && u.pathname.startsWith("/c/") ? u.href : "";
+  }catch(e){ return ""; }
+}
+function formLink(links){                    // links = PRE_FORM or POST_FORM
+  const raw = (links[lang] || links.en || "").trim();
+  if(!raw) return "";
+  try{
+    const u = new URL(raw);
+    if(u.protocol !== "https:") return "";
+    if(u.hostname === "forms.gle") return u.href;
+    if(u.hostname !== "docs.google.com" || !u.pathname.startsWith("/forms/")) return "";
+    u.pathname = u.pathname.replace(/\/(edit|viewform|formResponse)?\/?$/, "/viewform");
+    return u.href;
+  }catch(e){ return ""; }
+}
+// Point the button at the form in the current language. With no link yet, it is greyed out and says "Coming soon".
+function renderPreForm(){
+  const link = formLink(PRE_FORM), btn = $("#preFormOpen");
+  if(link){ btn.href = link; btn.removeAttribute("aria-disabled"); }
+  else { btn.removeAttribute("href"); btn.setAttribute("aria-disabled", "true"); }
+  $("#preFormHint").hidden = !link;
+  $("#preFormSoon").hidden = !!link;
+}
+
+// ---- Contact details (shown as "Coming soon" until filled in above) ----
+function renderContact(){
+  const soon = `<span class="is-soon"><span aria-hidden="true">⏳</span>${esc(t("c_soon"))}</span>`;
+  const digits = CONTACT.whatsapp.replace(/\D/g, "");
+  const shown = /^91\d{10}$/.test(digits) ? `+91 ${digits.slice(2, 7)} ${digits.slice(7)}` : "+" + digits;
+  $("#cWa").innerHTML = digits ? `<a href="https://wa.me/${digits}" target="_blank" rel="noopener">${esc(shown)}</a>` : soon;
+  $("#cMail").innerHTML = CONTACT.email ? `<a href="mailto:${esc(CONTACT.email)}">${esc(CONTACT.email).replace("@", "<wbr>@")}</a>` : soon;   // a long address wraps before the @
+}
+
+// ---- Numbers shown on the page are counted from the content, so they are always true ----
+function renderCounts(){
+  const pn = postNumbers();                                    // the Post-Assessment's three gold numbers
+  $("#postStatQ").textContent = pn.total; $("#postStatMin").textContent = pn.min;
+  $("#postStatPass").textContent = pn.pass; $("#postStatOf").textContent = pn.total;
+  $("#readyLessons").textContent = LESSONS[lang].length;
+  $("#readyQuiz").textContent = QUIZ[lang].length;
+  $("#readyLangs").textContent = Object.keys(UI).length;
+  $$(".qz-meta").forEach(el => { el.textContent = t("quiz_meta", { n: QUIZ[lang].length }); });
+}
+
+// ---- Print only the safety card ----
+function printSafetyCard(){
+  stopSpeaking();
+  const copy = $("#safety").cloneNode(true);
+  copy.removeAttribute("id");
+  copy.querySelectorAll("[id]").forEach(el => el.removeAttribute("id"));
+  copy.classList.add("in");
+  $("#printArea").replaceChildren(copy);
+  document.body.classList.add("print-card");
+  window.print();
+}
+
+/* =========================================================================
+   3) WIRE UP EVENTS
+   ========================================================================= */
+// One click listener for the whole page; each kind of button says what it does with a data- attribute
+document.addEventListener("click", event => {
+  const el = event.target.closest("[data-set-lang], [data-set-size], [data-set-theme], [data-open-lesson], [data-open-prereq], [data-close-dialog], a[href^='#']");
+  if(!el) return;
+  if(el.dataset.setLang){ setLanguage(el.dataset.setLang); return; }
+  if(el.dataset.setSize){ setTextSize(el.dataset.setSize); announce(t("size_" + textSize)); return; }
+  if(el.dataset.setTheme){ setTheme(el.dataset.setTheme); announce(t("theme_on_" + theme)); return; }
+  if(el.dataset.openLesson){ openLesson(el.dataset.openLesson); return; }
+  if(el.hasAttribute("data-open-prereq")){ event.preventDefault(); openPrereq(); return; }
+  if(el.hasAttribute("data-close-dialog")){ closeDialog(el.closest("dialog")); return; }
+  const target = document.getElementById(el.getAttribute("href").slice(1));
+  if(target){ event.preventDefault(); goTo(target); }
+});
+
+// Mobile menu
+$("#menuBtn").addEventListener("click", () => { openDialog($("#menu")); $("#menuBtn").setAttribute("aria-expanded", "true"); });
+$("#menu").addEventListener("close", () => $("#menuBtn").setAttribute("aria-expanded", "false"));
+window.matchMedia("(min-width: 1100px)").addEventListener("change", e => { if(e.matches) closeDialog($("#menu")); });
+// Clicking the dark area around a dialog closes it
+$$("dialog").forEach(d => d.addEventListener("click", e => { if(e.target === d) closeDialog(d); }));
+$("#lessonDialog").addEventListener("close", stopSpeaking);
+
+// Lesson window buttons
+$("#ldPrev").addEventListener("click", () => stepLesson(-1));
+$("#ldNext").addEventListener("click", () => stepLesson(1));
+$("#ldListen").addEventListener("click", e => {
+  if(currentLesson === "prereq"){ const g = PREREQ[lang]; toggleListen(e.currentTarget, [g.title, g.intro, ...g.points.flatMap(([, skill, intro, steps, tip]) => [skill, intro, ...steps, tip])]); return; }
+  const les = LESSONS[lang].find(l => l.id === currentLesson);
+  if(les) toggleListen(e.currentTarget, [les.title, ...les.topics.flatMap(([, skill, how]) => [skill, how])]);
+});
+
+// Step explorer: click a topic, or use the arrow keys / Home / End to move between topics
+$("#stepTabs").addEventListener("click", e => {
+  const tab = e.target.closest(".step-tab");
+  if(tab) showStep(Number(tab.dataset.step), false);
+});
+$("#stepTabs").addEventListener("keydown", e => {
+  const keys = { ArrowDown: 1, ArrowRight: 1, ArrowUp: -1, ArrowLeft: -1 };
+  const tab = e.target.closest(".step-tab"); if(!tab) return;
+  const from = Number(tab.dataset.step);           // move from the topic that has keyboard focus
+  if(e.key in keys){ e.preventDefault(); showStep((from + keys[e.key] + 6) % 6, true); }
+  else if(e.key === "Home"){ e.preventDefault(); showStep(0, true); }
+  else if(e.key === "End"){ e.preventDefault(); showStep(5, true); }
+});
+
+
+
+// Safety card
+$("#printCard").addEventListener("click", printSafetyCard);
+window.addEventListener("afterprint", () => document.body.classList.remove("print-card"));
+$("#cardListen").addEventListener("click", e => {
+  toggleListen(e.currentTarget, [$("#cardTitle").textContent, ...[...$$("#rulesList li")].map(li => li.textContent)]);
+});
+
+// Top bar: one tap switches between light and dark
+$("#themeBtn").addEventListener("click", () => {
+  setTheme(theme === "dark" ? "light" : "dark");
+  announce(t("theme_on_" + theme));
+});
+
+// Start
+$("#drawerNav").append($("#navList").cloneNode(true));   // the mobile menu reuses the sidebar's list
+$("#drawerNav ol").removeAttribute("id");
+lang = UI[store.get("ds_lang")] ? store.get("ds_lang") : "en";
+setTextSize(store.get("ds_size", "1"));
+applyLanguage();
+followSystemTheme();
+watchSections();
+revealOnScroll();
+pauseOffscreenDecor();
+fitScreens();
+// Opened with a link to the Quizzes page (or the Back button pressed): show the right page
+function followHash(){
+  const target = location.hash.length > 1 && document.getElementById(location.hash.slice(1));
+  if(target){ showPageFor(target); target.scrollIntoView({ behavior: "instant", block: "start" }); }
+  else showPageFor(null);
+}
+if(location.hash) followHash();
+window.addEventListener("popstate", followHash);
+if(document.fonts && document.fonts.ready) document.fonts.ready.then(fitScreens);   // web fonts change text size slightly
+let fitTimer = 0;
+window.addEventListener("resize", () => { clearTimeout(fitTimer); fitTimer = setTimeout(fitScreens, 150); });
+if("speechSynthesis" in window) window.speechSynthesis.getVoices();   // starts loading the voice list
+else $$(".btn-listen").forEach(b => { b.hidden = true; });             // no read-aloud in this browser

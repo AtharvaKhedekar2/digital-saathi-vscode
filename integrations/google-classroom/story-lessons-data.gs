@@ -1,4 +1,4 @@
-// DATA — story lessons, generated from lessons/*/ (English, Hindi, Marathi). Paste with story-lessons.gs.
+// DATA — story lessons, generated from content/lessons/*/ (English, Hindi, Marathi). Paste with story-lessons.gs.
 // 47 lessons x 3 languages (Step 00 + Steps 01-06). Do not edit by hand; regenerate from the markdown files instead.
 const STORY_LESSONS = {
  "start": {

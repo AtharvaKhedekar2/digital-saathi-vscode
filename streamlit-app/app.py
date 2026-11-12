@@ -23,7 +23,7 @@ from one readable file — easy to show and explain in the viva.
 HOW TO RUN  (do this setup once, before the viva)
 -------------------------------------------------
   1. Install Python 3 from python.org (tick "Add to PATH").
-  2. Open a terminal in this folder and run:
+  2. Open a terminal in this folder (streamlit-app) and run:
          pip install -r requirements.txt
   3. Start the app:
          streamlit run app.py

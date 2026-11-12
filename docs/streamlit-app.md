@@ -4,8 +4,8 @@ You now have **two versions** of Digital Saathi:
 
 | File | Language | How to run | Best for |
 |---|---|---|---|
-| `index.html` | HTML + JavaScript | Double-click it | **Guaranteed demo** — runs offline, nothing to install |
-| `app.py` | Python + Streamlit | `streamlit run app.py` | **Showing code** in the viva; aligns with AI-engineer path |
+| `index.html` (project root) | HTML + JavaScript | Double-click it | **Guaranteed demo** — runs offline, nothing to install |
+| `streamlit-app/app.py` | Python + Streamlit | `streamlit run app.py` | **Showing code** in the viva; aligns with AI-engineer path |
 
 **Plan: demo with `index.html` (it can't fail), and open `app.py` when the examiner says "show me your code."** Keep both ready.
 
@@ -13,7 +13,7 @@ You now have **two versions** of Digital Saathi:
 
 ## One-time setup (do this well before the viva)
 1. Install **Python 3** from <https://python.org> — tick **"Add Python to PATH"** during install.
-2. Open a terminal **in this folder** and install the libraries:
+2. Open a terminal **in the `streamlit-app` folder** and install the libraries:
    ```
    pip install -r requirements.txt
    ```
@@ -42,8 +42,8 @@ You now have **two versions** of Digital Saathi:
 ## How the course works
 Register → finish all 4 lessons → the quiz unlocks → score at least 70% (5 of 6) → certificate → download it and print as PDF.
 
-- All data is saved in **`saathi.db`**, created next to `app.py` the first time the app runs.
-- **The admin** is the only account that sees Analytics. Its username and password are in `.streamlit/secrets.toml`, which is never uploaded to GitHub. Restart the app after changing that file.
+- All data is saved in **`saathi.db`**, created next to `app.py` (in `streamlit-app/`) the first time the app runs.
+- **The admin** is the only account that sees Analytics. Its username and password are in `streamlit-app/.streamlit/secrets.toml`, which is never uploaded to GitHub. Restart the app after changing that file.
 - **Forgotten passwords:** the admin creates a temporary password at the bottom of Analytics, and the learner changes it under My Profile.
 - **Wrong passwords:** 5 wrong tries lock that username for 15 minutes.
 - To start again with empty data, stop the app and delete `saathi.db`. This erases every learner account; the admin account is created again at the next start.

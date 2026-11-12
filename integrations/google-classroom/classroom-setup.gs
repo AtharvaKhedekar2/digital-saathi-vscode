@@ -14,7 +14,7 @@
  *   step3_checkStatus         read-only · state, link and class code of each classroom
  *   step3b_activateWithApi    OPTIONAL · asks Google to switch PROVISIONED classes to ACTIVE
  *   step4_addLessons          ADDS topics, lessons and activities to the ACTIVE classes
- *   step5_exportClassroomInfo read-only · prints the JSON for google-classroom/classrooms.json
+ *   step5_exportClassroomInfo read-only · prints the JSON for integrations/google-classroom/classrooms.json
  *
  * Why PROVISIONED: Google does not let personal (@gmail.com) accounts create ACTIVE classes
  * through the API (it answers 403 PERMISSION_DENIED). A PROVISIONED class is created but not yet
@@ -260,7 +260,7 @@ function step5_exportClassroomInfo() {
       inviteLink: null   // fill in by hand: in Classroom, class card ⋮ / Settings → "Copy class invite link"
     };
   });
-  log_("Copy everything between the two lines into google-classroom/classrooms.json");
+  log_("Copy everything between the two lines into integrations/google-classroom/classrooms.json");
   log_("----------------------------- COPY FROM HERE -----------------------------");
   log_(JSON.stringify(out, null, 2));
   log_("------------------------------ COPY TO HERE ------------------------------");
