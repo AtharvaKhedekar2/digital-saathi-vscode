@@ -984,28 +984,28 @@ const CONTACT = {
 // (learners are not sent to a class in a different language). All three languages now have their six classes.
 const CLASSROOM = {
   en: {
-    phone:  "https://classroom.google.com/c/ODkxMDQ5MTIxNzYy",
-    google: "https://classroom.google.com/c/ODkxMDQ4Nzc2ODk2",
-    family: "https://classroom.google.com/c/ODkxMDQ5MDYxMjcy",
-    safety: "https://classroom.google.com/c/ODkxMDQ5MTI4MzEw",
-    money:  "https://classroom.google.com/c/ODkxMDQ4OTk5Nzgw",
-    ai:     "https://classroom.google.com/c/ODkxMDQ5MDk4OTc4"
+    phone:  "https://classroom.google.com/c/ODkxMDQ5MTIxNzYy?cjc=g7nudgmr",
+    google: "https://classroom.google.com/c/ODkxMDQ4Nzc2ODk2?cjc=ub23f6gl",
+    family: "https://classroom.google.com/c/ODkxMDQ5MDYxMjcy?cjc=g7qixpv5",
+    safety: "https://classroom.google.com/c/ODkxMDQ5MTI4MzEw?cjc=qegsufov",
+    money:  "https://classroom.google.com/c/ODkxMDQ4OTk5Nzgw?cjc=vwwtm667",
+    ai:     "https://classroom.google.com/c/ODkxMDQ5MDk4OTc4?cjc=7ejybc4t"
   },
   hi: {
-    phone:  "https://classroom.google.com/c/ODkxMDYzMTMwNjU5",
-    google: "https://classroom.google.com/c/ODkxMDYyNTczMzAz",
-    family: "https://classroom.google.com/c/ODkxMDYyNDAzODE4",
-    safety: "https://classroom.google.com/c/ODkxMDYxNjA2MzMz",
-    money:  "https://classroom.google.com/c/ODkxMDYzMDY5OTM0",
-    ai:     "https://classroom.google.com/c/ODkxMDYyNjczOTYy"
+    phone:  "https://classroom.google.com/c/ODkxMDYzMTMwNjU5?cjc=fffsjjo2",
+    google: "https://classroom.google.com/c/ODkxMDYyNTczMzAz?cjc=oaqhtpm6",
+    family: "https://classroom.google.com/c/ODkxMDYyNDAzODE4?cjc=mw6xigmd",
+    safety: "https://classroom.google.com/c/ODkxMDYxNjA2MzMz?cjc=wzunwwu2",
+    money:  "https://classroom.google.com/c/ODkxMDYzMDY5OTM0?cjc=qix4rzyg",
+    ai:     "https://classroom.google.com/c/ODkxMDYyNjczOTYy?cjc=5pb3mvjj"
   },
   mr: {
-    phone:  "https://classroom.google.com/c/ODkxMDYyNzg3OTIy",
-    google: "https://classroom.google.com/c/ODkxMDYyNzY3NDU2",
-    family: "https://classroom.google.com/c/ODkxMDYyMjg4MTk1",
-    safety: "https://classroom.google.com/c/ODkxMDYyOTcyMzQw",
-    money:  "https://classroom.google.com/c/ODkxMDYyMDY3NzMy",
-    ai:     "https://classroom.google.com/c/ODkxMDYzMTYxNzYw"
+    phone:  "https://classroom.google.com/c/ODkxMDYyNzg3OTIy?cjc=tg7owrvb",
+    google: "https://classroom.google.com/c/ODkxMDYyNzY3NDU2?cjc=ebv64pa5",
+    family: "https://classroom.google.com/c/ODkxMDYyMjg4MTk1?cjc=6cvns2nl",
+    safety: "https://classroom.google.com/c/ODkxMDYyOTcyMzQw?cjc=2uvl4tbj",
+    money:  "https://classroom.google.com/c/ODkxMDYyMDY3NzMy?cjc=u3uvipkk",
+    ai:     "https://classroom.google.com/c/ODkxMDYzMTYxNzYw?cjc=4rllgt2t"
   }
 };
 
